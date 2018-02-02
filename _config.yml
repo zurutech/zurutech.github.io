@@ -2,7 +2,7 @@
 markdown:         kramdown
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
-highlighter:      pygments
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
