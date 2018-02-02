@@ -1,0 +1,37 @@
+# Dependencies
+markdown:         kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            'Zuru Tech'
+tagline:          'Open Source @ Zuru Tech'
+description:      'Innovation, research & development'
+url:              http://zurutech.github.io
+baseurl:          /
+
+author:
+  name:           'Zuru Tech'
+  url:            https://zuru.tech/
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/zurutech/zurutech.github.io
+
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+
+# https://github.com/jekyll/jekyll/issues/2938
+exclude: [vendor]
+github: [metadata]
