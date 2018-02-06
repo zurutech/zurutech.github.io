@@ -11,8 +11,7 @@ permalink:        pretty
 title:            'Zuru Tech'
 tagline:          'Open Source @ Zuru Tech'
 description:      'Innovation, research & development'
-url:              http://zurutech.github.io
-baseurl:          /
+url:              https://zurutech.github.io
 
 author:
   name:           'Zuru Tech'
