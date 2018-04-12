@@ -1,15 +1,183 @@
+---
+layout: compress
+---
+
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
+{% assign mainTag = page.tags[0] %}
+{% assign postTheme = site.themeColor[mainTag] %}
 
-    {% include sidebar.html %}
+<body style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};" >
 
-    <div class="content container">
-      {{ content }}
-    </div>
+<div>
+    {{ content }}
+</div>
 
-  </body>
+{% include footer.html %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="{{site.baseurl}}/js/bootstrap.min.js"></script>
+<script src="{{site.baseurl}}/js/jquery.min.js"></script>
+<script src="{{site.baseurl}}/js/jquery-ui.min.js"></script>
+<script src="{{site.baseurl}}/js/jQRangeSlider.js"></script>
+<script src="{{site.baseurl}}/js/jQDateRangeSlider-min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{site.baseurl}}/css/customized-jquery.css">
+<script type="text/javascript">
+    var minSliderValue = 0;
+    var maxSliderValue = 0;
+    var allPosts = [];
+    var getTimeStamp = function (timeString) {
+        return Math.round(new Date(firefoxDateIssue(timeString)).getTime()/1000)
+    };
+
+    var firefoxDateIssue = function (time) {
+        if(time.indexOf("+") || time.indexOf("-")) {
+            time = time.substring(0, time.length-6);
+        }
+        return time;
+    };
+
+    var getFirstPublishedDate = function (markers) {
+        var min = markers[0][1];
+        for(var i=0; i<markers.length; i++) {
+            if(min > markers[i][1]) {
+                min = markers[i][1]
+            }
+        }
+        return firefoxDateIssue(min);
+    };
+
+    var getLastPublishedDate = function (markers) {
+        var max = markers[0][1];
+        for(var i=0; i<markers.length; i++) {
+            if(max < markers[i][1]) {
+                max = markers[i][1]
+            }
+        }
+        return firefoxDateIssue(max);
+    };
+
+    var filterByTag = function () {
+        var tagsToFilter = $(".blog-tag-item-filtered").text();
+        var tagsToHide = [];
+        if(tagsToFilter){
+            tagsToHide = tagsToFilter.trim().split(" ");
+        }
+        console.log("tagsToHide", tagsToHide);
+        for(var i=0; i < tagsToHide.length; i++) {
+            if(tagsToHide[i]) {
+                $("." + tagsToHide[i]).hide();
+            }
+        }
+    };
+
+    var compareArrays = function (postTags, tagsToHide) {
+        var counter = 0;
+        for(var i =0; i< tagsToHide.length; i++) {
+            if(postTags.indexOf(tagsToHide[i]) > -1){
+                counter ++;
+            }
+        }
+        return counter === postTags.length;
+    };
+
+    var filterEverything = function () {
+        var minTimeStamp = getTimeStamp(minSliderValue.toString());
+        var maxTimeStamp = getTimeStamp(maxSliderValue.toString());
+
+        var tagsToFilter = $(".blog-tag-item-filtered").text();
+        var tagsToHide = [];
+        if(tagsToFilter){
+            console.log("tagsToFilter", tagsToFilter);
+            tagsToHide = tagsToFilter.trim().split(" ");
+        }
+        var oldScrollPresence = $(document).height() > $(window).height();
+        console.log("tagsToHide", tagsToHide);
+        for(var i=0; i<allPosts.length; i++) {
+            var id = allPosts[i][0];
+            var publishTime = allPosts[i][1];
+            var postTags = allPosts[i]['tags'];
+            var publishTimeStamp = getTimeStamp(publishTime);
+            if(publishTimeStamp > maxTimeStamp || publishTimeStamp< minTimeStamp || compareArrays(postTags, tagsToHide)) {
+                $("#" + id).hide();
+            }
+            else {
+                $("#" + id).show();
+            }
+        }
+        ($(document).height()<=$(window).height() && oldScrollPresence)
+            ? $("#slider").dateRangeSlider('resize'): "";
+    };
+
+    $(document).ready(function () {
+        allPosts = [
+        {% for post in site.posts %}
+        ['{{ post.did | escape}}','{{post.date}}']{% unless forloop.last %},{% endunless %}
+        {% endfor %}];
+
+        var sliderMin = getFirstPublishedDate(allPosts);
+        var sliderMax = getLastPublishedDate(allPosts);
+        minSliderValue = sliderMin;
+        maxSliderValue = sliderMax;
+
+        for(var j=0; j <allPosts.length; j++) {
+            var id = allPosts[j][0];
+            var tagsString = $("#"+id).attr("tags");
+            console.log("tagsString", tagsString);
+            var tags = (!!tagsString) ? tagsString.trim().split(' ') : [];
+            allPosts[j]['tags'] = tags;
+        }
+
+        console.log(allPosts);
+        $("#slider").dateRangeSlider({
+            bounds: {
+                min: new Date(sliderMin),
+                max: new Date(sliderMax)
+            },
+            defaultValues: {
+                min: new Date(sliderMin),
+                max: new Date(sliderMax)
+            }
+        });
+
+        $("#slider").bind("valuesChanging", function (e, data) {
+            minSliderValue = data.values.min;
+            maxSliderValue = data.values.max;
+            filterEverything();
+        });
+
+        $(".blog-tag-item").click(function () {
+           $(this).toggleClass('blog-tag-item-filtered');
+            filterEverything();
+        });
+
+        $( "#slider-range" ).slider({
+            range: true,
+            min: new Date(sliderMin).getTime() ,
+            max: new Date(sliderMax).getTime() ,
+            step: 86400,
+            values: [ new Date(sliderMin).getTime() , new Date(sliderMax).getTime()  ],
+            slide: function( event, ui ) {
+                minSliderValue = new Date(ui.values[0]);
+                maxSliderValue = new Date(ui.values[1]);
+
+                $("#dateRangeMin").text( (new Date(ui.values[ 0 ] ).toDateString()) );
+                $("#dateRangeMax").text( (new Date(ui.values[ 1 ] ).toDateString()) );
+                filterEverything();
+            }
+        });
+        $("#dateRangeMin").text( (new Date($( "#slider-range" ).slider( "values", 0 )).toDateString()) );
+        $("#dateRangeMax").text( (new Date($( "#slider-range" ).slider( "values", 1 )).toDateString()) );
+
+    });
+</script>
+{% if site.analytics %}{% include analytics.html %}{% endif %}
+</body>
+
 </html>

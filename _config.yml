@@ -1,36 +1,79 @@
-# Dependencies
-markdown:         kramdown
-redcarpet:
-  extensions: ['smart', 'tables', 'with_toc_data']
-highlighter:      rouge
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Permalinks
-permalink:        pretty
-
-# Setup
-title:            'Zuru Tech'
-tagline:          'Open Source @ Zuru Tech'
-description:      'Innovation, research & development'
-url:              https://zurutech.github.io
-
-author:
-  name:           'Zuru Tech'
-  url:            https://zuru.tech/
-
-paginate:         5
-
-# Custom vars
-version:          2.1.0
-
-github:
-  repo:           https://github.com/zurutech/zurutech.github.io
+# Site settings
+title: Zuru Tech
+email: dipen@zuru.tech
+description: > # this means to ignore newlines until "baseurl:"
+  Shaping future.
 
 
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
 
-# https://github.com/jekyll/jekyll/issues/2938
-exclude: [vendor]
-github: [metadata]
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://127.0.0.1:4000" # the base hostname & protocol for your site
+#url: "https://dipen-dedania.github.io/" # the base hostname & protocol for your site
+
+#sidebar
+default-image: logo_zuru.png # If there is no featured image in a post then this image will be showed. Also on all pages this image will be showed. Use a 500x250 image.
+
+#footer
+built-by: webjeda
+copyright:
+   name: Zuru
+   link: 'https://zuru.tech/'
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+
+# Tracker
+analytics: UA-113891536-1
+
+# Comments
+disqus-shortname: webjeda-demo
+
+#social
+facebook: https://www.facebook.com/zurutech
+quora: http://quora.com/sharathdt
+twitter: https://twitter.com/zurutechint
+github: https://github.com/zurutech
+
+#facebook like box
+fb-app-id: 549480635219583
+fb-page-url: https://www.facebook.com/zurutech
+fb-page-title: zurutech
+
+# Sass style
+sass:
+  style: compressed
+
+# Ruby Gems
+plugins: [jekyll-seo-tag jekyll-author]
+
+#Theme colors based on tags
+themeColor:
+  coding:
+    backgroundColor: "#E4F1FE"
+    fontColor: "#000000"
+  devices:
+    backgroundColor: "#E8D7EB"
+    fontColor: "#22262A"
+  graphics:
+    backgroundColor: "#fbebde"
+    fontColor: "#122e94"
+  machine-learning:
+    backgroundColor: "#d4f2df"
+    fontColor: "#024542"
+  robotics:
+    backgroundColor: "#C5EFF7"
+    fontColor: "#000000"
+  vr:
+    backgroundColor: "#caf5fc"
+    fontColor: "#122e94"
+  web:
+    backgroundColor: "#001A47"
+    fontColor: "#FF8585"
