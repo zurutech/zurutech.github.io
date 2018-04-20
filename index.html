@@ -5,8 +5,9 @@ layout: default
 {% include header.html %}
 
 <div class="container">
-    <div style="padding-top:1em; width:20em;">
-        <h1 style="flex:1 1 70%; display:inline; margin: auto;text-align: left;margin-bottom: 0.5em;">Zuru Tech blog</h1>
+    <div style="display: flex;">
+        <h1 style="flex:1 1 70%; display:inline; margin: auto;text-align: center;margin-bottom: 0.5em;">Zuru Tech Office
+            blog</h1>
     </div>
     <div class="home">
 
@@ -68,12 +69,12 @@ layout: default
                                             class="post-meta pull-right"><small>{{ post.date | date: "%b %-d, %Y" }}</small></span>
                                     </div>
                                     <div class="panel-body">
-                                        <p class="card-sample-content">
+                                        <small class="card-sample-content">
                                             {%if forloop.first == true%}{{ post.excerpt | strip_html | strip_newlines |
                                             truncate: 120 }}
                                             {%else%}{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
                                             {%endif%}Read
-                                        </p>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -94,12 +95,12 @@ layout: default
                                             class="post-meta pull-right"><small>{{ post.date | date: "%b %-d, %Y" }}</small></span>
                                     </div>
                                     <div class="panel-body">
-                                        <p class="card-sample-content">
+                                        <small class="card-sample-content">
                                             {%if forloop.first == true%}{{ post.excerpt | strip_html | strip_newlines |
                                             truncate: 120 }}
                                             {%else%}{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
                                             {%endif%}Read
-                                        </p>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +126,12 @@ layout: default
                                 </div>
 
                                 <div class="panel-body">
-                                    <p class="card-sample-content">
+                                    <small class="card-sample-content">
                                         {%if forloop.first == true%}{{ post.excerpt | strip_html | strip_newlines |
                                         truncate: 120 }}
                                         {%else%}{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
                                         {%endif%}Read
-                                    </p>
+                                    </small>
                                 </div>
                             </div>
                             {%endif%}

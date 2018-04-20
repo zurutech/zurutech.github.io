@@ -28,7 +28,8 @@ copyright:
 
 # Build settings
 markdown: kramdown
-permalink: /:title/
+permalink: /:categories/:year/:month/:day/:slug
+#permalink: pretty
 
 # Tracker
 analytics: UA-113891536-1

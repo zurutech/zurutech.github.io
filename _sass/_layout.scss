@@ -118,7 +118,8 @@ footer {
   display: inline-flex;
   flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
-  margin: 4em 0 0 0;
+  margin: 0;
+  padding-top: 4em;
 }
 
 .card {

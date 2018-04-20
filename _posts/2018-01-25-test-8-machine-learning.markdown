@@ -3,6 +3,7 @@ author: "pgaleone"
 layout: post
 did: "blog6"
 title:  "Fixed camera setup for object localization and measurement"
+slug:  Fixed camera setup for object localization and measurement
 date:   2018-01-25 8:00:00
 categories: computer-vision
 img: computer-vision.jpg

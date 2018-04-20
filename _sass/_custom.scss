@@ -13,9 +13,7 @@
 }
 
 .blog-tags-list {
-  text-align: right;
-  margin-top:-2.3em;
-  margin-bottom: 1.6em;
+  text-align: center;
 }
 
 .blog-tag-item {
@@ -120,6 +118,148 @@
   }
 }
 
+section.range-slider {
+  @include range-slider(100%, 100px, 50px, #F1EFEF, #413F41, left);
+}
+
+/**
+ * default development theme for jQRangeSlider
+ * Using fam fam icon set from Mark James, http://www.famfamfam.com/lab/icons/silk/ (Creative Commons Attribution 2.5 License)
+ */
+
+.ui-rangeSlider {
+  height: 22px;
+}
+
+.ui-rangeSlider .ui-rangeSlider-innerBar {
+  height: 0.1em;
+  margin: 0.6em;
+  background: black;
+}
+
+.ui-rangeSlider .ui-rangeSlider-handle {
+  width: 1.1em;
+  height: 1.1em;
+  background: black;
+  border-radius: 1em;
+  margin-top: 0.1em;
+  margin-left: -0.3em;
+  cursor: col-resize;
+}
+
+.ui-rangeSlider-handle-inner {
+}
+
+.ui-rangeSlider .ui-rangeSlider-bar {
+  margin: 0.1em -0.9em;
+  background: #00AAFF;
+  height: 0.3em;
+  margin-top: 0.6em;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+}
+
+.ui-rangeSlider .ui-rangeSlider-bar.ui-draggable-dragging {
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+.ui-rangeSlider-arrow {
+  height: 16px;
+  margin: 2px 0;
+  width: 16px;
+  background-repeat: no-repeat;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-leftArrow {
+  background-position: center left;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-rightArrow {
+  background-position: center right;
+}
+
+.ui-rangeSlider-arrow-inner {
+  display: none;
+}
+
+.ui-rangeSlider-container {
+  height: 22px;
+}
+
+.ui-rangeSlider-withArrows .ui-rangeSlider-container {
+  margin: 0 11px;
+}
+
+.ui-rangeSlider-noArrow .ui-rangeSlider-container {
+  margin: 0;
+}
+
+.ui-rangeSlider-label {
+  margin: 0 2px 2px;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  bottom: 20px;
+  padding: 3px 6px 7px;
+  cursor: col-resize;
+  color: #333333;
+  transition: color 1s ease-in;
+}
+
+.ui-rangeSlider-label-inner {
+  display: none;
+}
+
+/*
+ * Edit slider
+ */
+
+input.ui-editRangeSlider-inputValue {
+  width: 3em;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.ui-sliderDemo {
+  margin-bottom: 50px;
+}
+
+.slider,
+.dateSlider {
+  width: 100%;
+  margin: 20px auto;
+  padding-top: 20px;
+}
+
+.tick {
+  border-left: 1px solid black;
+  position: absolute;
+  top: 0;
+  height: 20px;
+  text-align: right;
+}
+
+.sliderZone dl input {
+  text-align: right;
+  margin-left: 5px;
+  margin-right: 0;
+  width: 200px;
+}
+
+.sliderZone img {
+  vertical-align: middle;
+}
+
+.sliderZone dl {
+  margin-bottom: 50px;
+}
+
+.sliderZone {
+  height: 40px;
+}
+
 pre {
   overflow: auto;
   margin-right: 400px;
@@ -160,6 +300,10 @@ dd {
   margin-left: 150px;
 }
 
+.wrapper {
+  width: 100%;
+  float: left;
+}
 
 .sliderZone,
 .logZone {
@@ -265,12 +409,11 @@ input[type=number] {
 }
 
 .wrapper {
-  width: 100%;
-  float: left;
   position: relative;
   z-index: 10;
+  background: aliceblue;
   padding: 70px;
-  box-shadow: 0px 9px 33px #333;
+  box-shadow: 0px 30px 27px #333;
 }
 
 .post-container .site-header .header-link-button {
@@ -379,7 +522,6 @@ input[type=number] {
 
 .sharing-icon{
   font-size: 28px;
-  float: left;
 }
 
 .author-name-title{
@@ -473,14 +615,11 @@ input[type=number] {
 }
 
 .card-title{
-  font-size: 1.7em;
-  padding-left: 0.5em;
+  font-size: 20px;
 }
 
 .card-sample-content{
-  font-size: 0.8em;
-  width:17em;
-  margin:auto;
+  font-size: 12px;
 }
 
 .card-container{
@@ -508,6 +647,7 @@ input[type=number] {
   transition: all 1s cubic-bezier(.155,.86,0,1),box-shadow .2s ease-out;
   text-decoration: none!important;
   margin-bottom: 1.25rem;
+  font-size: .75rem;
 }
 
 .card-art{
@@ -544,7 +684,13 @@ input[type=number] {
   width: 50%;
   margin-top: 208px;
   z-index: 1;
-  position: relative;
+}
+
+.card-text-container{
+  .card-sample-content{
+    line-height: 2.6;
+    font-weight: 300;
+  }
 }
 
 .large-post-container{
@@ -572,6 +718,18 @@ input[type=number] {
 }
 .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl{
   border-top-left-radius: 0.6em !important;
+}
+
+.ui-slider .ui-slider-handle {
+  width: 0.9em !important;
+  height: 0.9em !important;
+  background: none !important;
+  border: #000 !important;
+  background-color: #000 !important;
+}
+
+.ui-slider-horizontal {
+  height: 0.5em !important;
 }
 
 @media (max-width: 991px) {
