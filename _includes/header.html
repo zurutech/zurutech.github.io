@@ -1,6 +1,6 @@
 <header class="site-header">
   <nav class="navbar navbar-default">
-    <div class="container header-container">
+    <div class="container archbox-width">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -10,18 +10,21 @@
           <span class="icon-bar"></span>
         </button>
         <!--<a class="navbar-brand" href="{{site.baseurl}}/">{{site.title}}</a>-->
-        <a href="https://zuru.tech/"><img width="150" class="navbar-brand" src="{{site.baseurl}}/images/{{site.default-image}}"/></a>
+          <a class="navbar-brand" href="https://zuru.tech/" style="height:80px; padding-top:20px; padding-left:0; padding-right:0;">
+              <img class="img-responsive" src="{{site.baseurl}}/images/{{site.default-image}}" alt="ZURU" style="width:129px;">
+          </a>
+        <!--<a href="https://zuru.tech/"><img width="150" class="navbar-brand" src="{{site.baseurl}}/images/{{site.default-image}}"/></a>-->
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav" style="height:80px; float: right; font-family:'HeimatMono-Light', sans-serif;">
           <li><a class="header-link-button" href="{{site.baseurl}}/features">Features</a></li>
           <li><a class="header-link-button" href="{{site.baseurl}}/gallery/">Gallery </a></li>
           <li><a class="header-link-button" href="{{site.baseurl}}/">Blog </a></li>
           <li><a class="header-link-button" href="{{site.baseurl}}/aboutus/">About Us </a></li>
           <li><a class="header-link-button" href="{{site.baseurl}}/contactus/">Contact Us </a></li>
-          <li class="header-hiring-btn"><a class="header-link-button  " href="{{site.baseurl}}/contactus/">We're Hiring! </a></li>
+          <li style="padding-left:20px;"><a class="header-link-button header-hiring-btn" href="{{site.baseurl}}/contactus/">We're Hiring! </a></li>
           <!---
           <li class="dropdown">
             <a href="#" class="dropdown-toggle header-link-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>

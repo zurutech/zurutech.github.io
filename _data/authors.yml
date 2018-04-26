@@ -1,19 +1,9 @@
 pgaleone:
     name: Paolo Galeone
     uri: https://pgaleone.eu
-    email: pat@pathawks.com
-    facebook: "http://www.facebook.com"
-    twitter: "http://www.twitter.com"
-    google: "http://www.google.com"
-    linkedin : "http://linkedin.com"
-    image: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-
-benbalter:
-    uri: https://pgaleone.eu
-    email: pat@pathawks.com
-    name: Benbalter
-    facebook: "http://www.facebook.com"
-    twitter: "http://www.twitter.com"
-    google: "http://www.google.com"
-    linkedin : "http://linkedin.com"
-    image: "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+    email: paolo@zuru.tech
+    twitter: "https://twitter.com/paolo_galeone"
+    linkedin: "https://www.linkedin.com/in/paolo-galeone-6782b311b/"
+    reddit: "https://www.reddit.com/user/pgaleone"
+    image: "https://raw.githubusercontent.com/galeone/galeone.github.io/master/images/me.jpeg"
+    bio: "is a computer engineer and Machine Learning researcher @ Zuru Tech's Team Vision"

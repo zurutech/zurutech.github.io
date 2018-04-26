@@ -94,7 +94,9 @@ It's obvious that $$\alpha$$ is the angle (in radians) between the working dista
 
 The following images will make everything clear:
 
-![Field Of View](/images/camera_setup/fov.png)
+<div markdown="1" class="blog-image-container">
+![Field Of View](/images/camera_setup/fov.png){:class="blog-image"}
+</div>
 
 On the $$y$$ axis the position of $$M_o$$ is highlighted because we have to find the distance $$d$$ that makes the whole object (and the safety margin) visible. Hence:
 

@@ -58,12 +58,23 @@ layout: default
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                    <p class="author-name-title">{{ author.name }}</p>
+                                    <p class="author-name-title"><a href="{{ page.author.uri }}">{{ author.name }}</a> {{ author.bio }}</p>
                                     <div class="social-icon">
-                                        <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
-                                        <a href="{{ author.twitter }}" target="_blank" class="fa fa-twitter icon-maker"></a>
-                                        <a href="{{ author.google }}" target="_blank" class="fa fa-google icon-maker"></a>
-                                        <a href="{{ author.linkedin }}" target="_blank" class="fa fa-linkedin icon-maker"></a>
+                                        {% if author.facebook %}
+                                            <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.twitter %}
+                                            <a href="{{ author.twitter }}" target="_blank" class="fa fa-twitter icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.google %}
+                                            <a href="{{ author.google }}" target="_blank" class="fa fa-google icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.reddit %}
+                                            <a href="{{ author.reddit }}" target="_blank" class="fa fa-reddit icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.linkedin %}
+                                            <a href="{{ author.linkedin }}" target="_blank" class="fa fa-linkedin icon-maker"></a>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -121,7 +132,7 @@ layout: default
                             <div class="panel-body">
                                 <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %} / {% endunless %}  {%endfor%}</p>
                                 <h3 class="panel-title pull-left">{{ post.title | truncate: 40 }}</h3><span
-                                    class="post-meta pull-right"><small>{{ post.date | date: "%b %-d, %Y" }}</small></span>
+                                    class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%b %-d, %Y" }}</small></span>
                             </div>
 
                             <div class="panel-body">
