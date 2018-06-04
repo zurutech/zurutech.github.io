@@ -77,7 +77,7 @@ There are 2 constraints that have to be satisfied when designing an object measu
 1. Being able to measure the whole object
 2. Minimum accuracy
 
-##### Step 3.1: FOV constraint
+###### Step 3.1: FOV constraint
 
 The constraint on the ability of measure the whole object can be satisfied analyzing the Field of View (FOV) of the camera.
 
@@ -118,7 +118,7 @@ we're also removing the focal distance, taking into account that our measurement
 
 The offset term is an optional term, that usually can be found on the camera datashett, that's the relative position of the sensor with respect to the measurement point (in the order of $$[0, 5]$$mm usually).
 
-##### Step 3.2: minimum accuracy constraint
+###### Step 3.2: minimum accuracy constraint
 
 The constraint on the accuracy can be formalized as follow:
 
