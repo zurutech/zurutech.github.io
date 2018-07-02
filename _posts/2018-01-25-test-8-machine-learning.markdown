@@ -31,9 +31,9 @@ Without entering in the detail of camera calibration, all we need to know is tha
 
 $$A =
 \begin{pmatrix}
-f_x & \gamma & c_x \\
- 0 & f_y & c_y \\
- 0 & 0 & 1
+f_x ~~\quad \gamma ~~\quad c_x \\
+ 0 ~~\quad f_y ~~\quad c_y \\
+ 0 ~~~\quad  ~0 ~~\quad ~1
 \end{pmatrix}$$
 
 where $$f_x$$ and $$f_y$$ are the focal distances in px and $$(c_x, c_y)$$ is the optical center in px.
@@ -101,8 +101,8 @@ The following images will make everything clear:
 On the $$y$$ axis the position of $$M_o$$ is highlighted because we have to find the distance $$d$$ that makes the whole object (and the safety margin) visible. Hence:
 
 $$\begin{cases}
-WD &= L \cos \alpha \\
-M_o &= L \sin \alpha
+WD \quad= L \cos \alpha \\
+M_o \quad~~= L \sin \alpha
 \end{cases} \quad \Rightarrow \text{WD} = \frac{M_o}{\tan \alpha}$$
 
 This means that our working distance (noted as d in the picture) can be found exactly.
