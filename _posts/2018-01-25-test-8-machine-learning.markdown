@@ -9,6 +9,7 @@ categories: computer-vision
 img: computer-vision.jpg
 banner: computer-vision.jpg
 tags: machine-learning
+description: "Fixed camera setup for object localization and measurement"
 ---
 A common task in Computer Vision is to use a camera for localize and measure certain objects in the scene. In the industry is common to use images of objects on a high contrast background and use Computer Vision algorithms to extract useful information.
 
