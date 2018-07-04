@@ -176,13 +176,15 @@ layout: compress
         $("#dateRangeMax").text( (new Date($( "#slider-range" ).slider( "values", 1 )).toDateString()) );
 
         /* fix for navigating and highlighting to section already highlighted */
-        $("[itemprop='name'] a").click(function(e){
-            e.preventDefault();
-            window.location.hash="";
-            var _this = this;
-            setTimeout(function () {
-                window.location.hash = _this.hash;
-            });
+        $("a[href!='']").click(function(e){
+            if($(this.hash).length) {
+                e.preventDefault();
+                window.location.hash="";
+                var _this = this;
+                setTimeout(function () {
+                    window.location.hash = _this.hash;
+                });
+            }
         });
     });
 </script>
