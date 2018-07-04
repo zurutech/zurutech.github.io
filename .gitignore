@@ -21,4 +21,3 @@ pkg/
 site/_site/
 test/dest
 tmp/*
-.idea/
