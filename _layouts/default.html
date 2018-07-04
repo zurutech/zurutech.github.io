@@ -175,6 +175,17 @@ layout: compress
         $("#dateRangeMin").text( (new Date($( "#slider-range" ).slider( "values", 0 )).toDateString()) );
         $("#dateRangeMax").text( (new Date($( "#slider-range" ).slider( "values", 1 )).toDateString()) );
 
+        /* fix for navigating and highlighting to section already highlighted */
+        $("a[href!='']").click(function(e){
+            if($(this.hash).length) {
+                e.preventDefault();
+                window.location.hash="";
+                var _this = this;
+                setTimeout(function () {
+                    window.location.hash = _this.hash;
+                });
+            }
+        });
     });
 </script>
 {% if site.analytics %}{% include analytics.html %}{% endif %}
