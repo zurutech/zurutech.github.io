@@ -62,7 +62,7 @@ layout: default
                                 </div>
                                 <div class="padding-0 col-lg-3">
                                     <div class="panel-body">
-                                        <span class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%b %-d, %Y" }}</small></span>
+                                        <span class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small></span>
                                         <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %}
                                             / {% endunless %} {%endfor%}</p>
                                         <h3 class="card-title panel-title pull-left">{{ post.title | truncate: 40}}</h3>
@@ -88,7 +88,7 @@ layout: default
                                      style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}}">
                                     <div class="panel-body">
                                         <span class="post-meta pull-right test">
-                                            <small class="blog-post-date">{{ post.date | date: "%b %-d, %Y" }}</small>
+                                            <small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small>
                                         </span>
                                         <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %}
                                             / {% endunless %} {%endfor%}</p>
@@ -120,7 +120,7 @@ layout: default
                                 {% endif %}
 
                                 <div class="panel-body">
-                                    <span class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%b %-d, %Y" }}</small></span>
+                                    <span class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small></span>
                                     <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %} /
                                         {% endunless %} {%endfor%}</p>
                                     <h3 class="card-title panel-title pull-left">{{ post.title | truncate: 40 }}</h3>

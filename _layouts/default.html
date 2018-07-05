@@ -166,14 +166,13 @@ layout: compress
             slide: function( event, ui ) {
                 minSliderValue = new Date(ui.values[0]);
                 maxSliderValue = new Date(ui.values[1]);
-
-                $("#dateRangeMin").text( (new Date(ui.values[ 0 ] ).toDateString()) );
-                $("#dateRangeMax").text( (new Date(ui.values[ 1 ] ).toDateString()) );
+                $("#dateRangeMin").text( formatDateString(ui.values[ 0 ] ));
+                $("#dateRangeMax").text( formatDateString(ui.values[ 1 ] ));
                 filterEverything();
             }
         });
-        $("#dateRangeMin").text( (new Date($( "#slider-range" ).slider( "values", 0 )).toDateString()) );
-        $("#dateRangeMax").text( (new Date($( "#slider-range" ).slider( "values", 1 )).toDateString()) );
+        $("#dateRangeMin").text( formatDateString($( "#slider-range" ).slider( "values", 0 )) );
+        $("#dateRangeMax").text( formatDateString($( "#slider-range" ).slider( "values", 1 )) );
 
         /* fix for navigating and highlighting to section already highlighted */
         $("a[href!='']").click(function(e){
@@ -187,6 +186,10 @@ layout: compress
             }
         });
     });
+    function formatDateString(value) {
+        var dates = new Date(value).toLocaleString("en-GB", { year: 'numeric', month: 'long', day: 'numeric' });
+        return dates;
+    }
 </script>
 {% if site.analytics %}{% include analytics.html %}{% endif %}
 </body>
