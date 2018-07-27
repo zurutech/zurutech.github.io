@@ -810,9 +810,13 @@ input[type=number] {
   .card .index-anchor .panel .card-image-container>img{
      height: 280px;
    }
-}@media (max-width: 440px) {
+}
+@media (max-width: 440px) {
   .card .index-anchor .panel .card-image-container>img{
      height: 186px;
+   }
+   .author-name-title{
+     height: auto;
    }
 }
 @media (max-width: 992px) {
