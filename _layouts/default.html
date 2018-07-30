@@ -140,6 +140,13 @@ layout: compress
         }
 
         console.log(allPosts);
+
+        $('.author-name-link').on('click', function(){            
+            $('html, body').animate({
+                scrollTop: 0
+            }, 800);
+        });
+
         $("#slider").dateRangeSlider({
             bounds: {
                 min: new Date(sliderMin),
