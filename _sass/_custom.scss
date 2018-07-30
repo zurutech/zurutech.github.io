@@ -790,21 +790,6 @@ input[type=number] {
   }
 
 }
-@media (min-width: 991px) {
-  .archbox-width {
-    width: 70% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-@media (max-width: 991px) {
-  .archbox-width {
-    width: 100% !important;
-    padding-left:15px !important;
-    padding-right:15px !important;
-  }
-}
-
 
 @media (max-width: 768px) {
   .card .index-anchor .panel .card-image-container>img{
@@ -843,6 +828,7 @@ input[type=number] {
   .navbar-nav {
     float: none!important;
     margin-top: 7.5px;
+    margin-bottom: 7.5px;
   }
   .navbar-nav>li {
     float: none;
