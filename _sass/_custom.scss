@@ -523,6 +523,18 @@ input[type=number] {
     float: right;
 }
 
+.txt-copyright{
+  text-align: center;
+}
+
+.m-0{
+  margin: 0;
+}
+
+.custom-lh{
+  line-height: 44px;
+}
+
 .sharing-icon{
   font-size: 28px;
 }
@@ -787,6 +799,14 @@ input[type=number] {
 
   .card-text-container{
     width: 100%;
+  }
+
+  .txt-copyright{
+    text-align: right;
+  }
+  
+  .custom-lh{
+    line-height: unset;
   }
 
 }
