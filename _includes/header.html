@@ -1,46 +1,54 @@
-<header class="site-header">
-  <nav class="navbar navbar-default">
-    <div class="container archbox-width">
-      <div class="row">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!--<a class="navbar-brand" href="{{site.baseurl}}/">{{site.title}}</a>-->
-            <a class="navbar-brand" href="https://zuru.tech/" style="height:80px; padding-top:20px;">
-                <img class="img-responsive" src="{{site.baseurl}}/images/{{site.default-image}}" alt="ZURU" style="width:129px;">
+<header>
+  <div class="navbar navbar-expand-lg fixed-top zuru-grey-bg text-uppercase" id="mainNav">
+    <div class="row m-0">
+      <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 logo-and-menu">
+        <nav class="navbar navbar-expand-lg">
+          <div class="zuru-logo-div">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zuruBlogNavbar">              
+              <span class="icon-bar top-bar"></span>
+              <span class="icon-bar middle-bar"></span>
+              <span class="icon-bar bottom-bar"></span>
+            </button>
+            <a href="{{site.baseurl}}" class="navbar-brand nav-link cursor-pointer active">
+              <img src="{{site.baseurl}}/images/{{site.default-image}}" alt="Zuru Tech">
             </a>
-          <!--<a href="https://zuru.tech/"><img width="150" class="navbar-brand" src="{{site.baseurl}}/images/{{site.default-image}}"/></a>-->
+          </div>
+          <div class="collapse navbar-collapse" id="zuruBlogNavbar">
+            <ul class="nav navbar-nav nav-item-wrp">
+              <li class="nav-item">
+                <a href="https://zuru.tech#features" class="nav-link cursor-pointer">
+                  <span>Features</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://zuru.tech/#screenshots" class="nav-link cursor-pointer">
+                  <span>Gallery</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://zuru.tech/#about" class="nav-link cursor-pointer">
+                  <span>About Us</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://zuru.tech/#careers" class="nav-link cursor-pointer we-are-hiring">
+                  <span>We're Hiring!</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://zuru.tech/#contact-us" class="nav-link cursor-pointer">
+                  <span>Contact Us</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 blog-menu">
+        <div class="blog-item pull-right">
+          <a class="nav-link js-scroll-trigger" href="https://zurutech.github.io/" rel="noopener noreferrer" target="_blank">Blog</a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" style="float: right; font-family:'HeimatMono-Light', sans-serif;">
-                    <li><a class="header-link-button" href="https://zuru.tech#features">Features</a></li>
-                    <li><a class="header-link-button" href="https://zuru.tech#screenshots">Gallery </a></li>
-                    <li><a class="header-link-button" href="{{site.baseurl}}/">Blog </a></li>
-                    <li><a class="header-link-button" href="https://zuru.tech#about">About Us </a></li>
-                    <li><a class="header-link-button" href="https://zuru.tech#contact-us">Contact Us </a></li>
-                    <li style="padding-left:20px;"><a class="header-link-button header-hiring-btn" href="https://zuru.tech#careers">We're Hiring! </a></li>
-
-                    <!---
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle header-link-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a target="_blank" href="https://github.com/sharu725/cards">Project</a></li>
-                        <li><a href="https://github.com/sharu725/cards/archive/master.zip">Download</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a target="_blank" href="https://jekyll-themes.com">More Themes</a></li>
-                      </ul>
-                    </li>
-                  -->
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </nav>
+      </div>
+    </div>
+  </div>
 </header>
