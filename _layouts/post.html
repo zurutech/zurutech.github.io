@@ -3,19 +3,10 @@ layout: default
 ---
 <div class="post-container">
     {% include header.html %}
-    <div class="container {{ page.did }}">
-
-        <!--{% if page.banner %}
-        <img src="{{site.baseurl}}/images/banners/{{ page.banner }}" class="post-banner"/>
-        {% else %}
-        <img src="{{site.baseurl}}/images/banners/banner-default.png" class="post-banner"/>
-        {% endif %}-->
-
-        {% if page.img %}
-        <img width="100%" src="{{site.baseurl}}/images/{{page.img}}" class="post-banner"/>
-        {% else %}
-        <img width="100%" src="{{site.baseurl}}/images/banners/banner-default.png" class="post-banner"/>
-        {% endif %}
+    <div class="internal-page-banner-design">
+        <canvas id="stars" width="300" height="300"></canvas>
+    </div>
+    <div class="container {{ page.did }}">    
 
         {% assign mainTag = page.tags[0] %}
         {% assign postTheme = site.themeColor[mainTag] %}

@@ -451,7 +451,7 @@ input[type=number] {
   z-index: 10;
   background: aliceblue;
   padding: 2em 15%;
-  margin-top: 10em;
+  margin-top: -20em;
   box-shadow: 0px 3px 27px #333;
 }
 
@@ -998,6 +998,23 @@ button.navbar-toggler {
   left: 0;
 }
 /** Custom footer end **/
+
+/** Internal Page Banner Start **/
+.internal-page-banner-design{
+  height: 600px;
+  background-color: #31102F; //#280B29
+  background: #333;
+  overflow: hidden;
+}
+.internal-page-banner-design #stars {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 16rem;
+	height: 100vh;
+	z-index: 1;
+}
+/** Internal Page Banner End **/
 
 
 @media (max-width: 370px){
