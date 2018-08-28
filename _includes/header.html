@@ -1,10 +1,12 @@
 <header>
   <div class="navbar navbar-expand-lg fixed-top zuru-grey-bg text-uppercase" id="mainNav">
     <div class="row m-0">
-      <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10 logo-and-menu">
+      <div class="col-9 col-md-10 logo-and-menu">
         <nav class="navbar navbar-expand-lg">
           <div class="zuru-logo-div">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zuruBlogNavbar">              
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#zuruBlogNavbar" aria-controls="zuruBlogNavbar"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar top-bar"></span>
               <span class="icon-bar middle-bar"></span>
               <span class="icon-bar bottom-bar"></span>
@@ -13,40 +15,73 @@
               <img src="{{site.baseurl}}/images/{{site.default-image}}" alt="Zuru Tech">
             </a>
           </div>
-          <div class="collapse navbar-collapse" id="zuruBlogNavbar">
-            <ul class="nav navbar-nav nav-item-wrp">
-              <li class="nav-item">
-                <a href="https://zuru.tech#features" class="nav-link cursor-pointer">
-                  <span>Features</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://zuru.tech/#screenshots" class="nav-link cursor-pointer">
-                  <span>Gallery</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://zuru.tech/#about" class="nav-link cursor-pointer">
-                  <span>About Us</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://zuru.tech/#careers" class="nav-link cursor-pointer we-are-hiring">
-                  <span>We're Hiring!</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://zuru.tech/#contact-us" class="nav-link cursor-pointer">
-                  <span>Contact Us</span>
-                </a>
-              </li>
-            </ul>
+          <div class="navbar-collapse collapse" id="zuruBlogNavbar">
+            <div class="nav-contianer">
+              <div class="navbar-nav">
+                <div class="nav-item">
+                  <a href="https://zuru.tech#features" class="nav-link cursor-pointer">
+                    <span>Features</span>
+                  </a>
+                </div>
+                <div class="nav-item">
+                  <a href="https://zuru.tech/#screenshots" class="nav-link cursor-pointer">
+                    <span>Gallery</span>
+                  </a>
+                </div>
+                <div class="nav-item">
+                  <a href="https://zuru.tech/#about" class="nav-link cursor-pointer">
+                    <span>About Us</span>
+                  </a>
+                </div>
+                <div class="nav-item">
+                  <a href="https://zuru.tech/#careers" class="nav-link cursor-pointer we-are-hiring">
+                    <span>We're Hiring!</span>
+                  </a>
+                </div>
+                <div class="nav-item">
+                  <a href="https://zuru.tech/#contact-us" class="nav-link cursor-pointer">
+                    <span>Contact Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-footer-zuru d-lg-none">
+              <div class="copyright-section zuru-grey-bg text-center">
+                <div class="copyright-content mx-auto">
+                  <div class="row m-0">
+                    <div class="col-4 social-icons my-auto">
+                      <a href="https://www.facebook.com/zurutechitaly/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-facebook" aria-label="facebook"></i>
+                      </a>
+                      <a href="https://www.linkedin.com/company/zuru-tech-italy" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-linkedin" aria-label="linkedin"></i>
+                      </a>
+                    </div>
+                    <div class="col-8">
+                      <div class="row m-0 copyright-privacy">
+                        <div class="col-md-6">
+                          <span class="m-0">© {{ site.time | date: '%Y' }} - {{site.copyright.name}}. All rights reserved.</span>
+                        </div>
+                        <div class="col-md-6 privacy-cookie">
+                          <span>
+                            <a href="/privacy-policy">Privacy</a> &amp;
+                            <a href="/cookie-policy">Cookie Policy</a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </nav>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 blog-menu">
+      <div class="col-3 col-md-2 my-auto blog-menu">
         <div class="blog-item pull-right">
-          <a class="nav-link js-scroll-trigger" href="https://zurutech.github.io/" rel="noopener noreferrer" target="_blank">Blog</a>
+          <a class="nav-link js-scroll-trigger active" href="https://zurutech.github.io/" rel="noopener noreferrer" target="_blank">
+            <span>Blog</span>
+          </a>
         </div>
       </div>
     </div>
