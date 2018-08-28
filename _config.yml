@@ -23,7 +23,7 @@ default-image: logo_zuru.png # If there is no featured image in a post then this
 #footer
 built-by: webjeda
 copyright:
-   name: Zuru
+   name: ZURU Tech
    link: 'https://zuru.tech/'
 
 # Build settings

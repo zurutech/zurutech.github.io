@@ -9,10 +9,6 @@ html,body {
     padding: 0;
 }
 
-img {
-    max-width: 100%;
-}
-
 .mt50 {
     margin-top: 50px;
 }
@@ -33,11 +29,7 @@ img {
 .p20{
     padding: 20px 0;
 }
-.navbar-brand {
-    font-weight: 900;
-    font-size: 1.85em;
-    padding: 10px;
-    float: left;
+.navbar-brand {    
     @media screen and (max-width: $on-palm) {
         font-size: 1.5em;
     }
@@ -125,6 +117,7 @@ footer {
 
 .card {
     float: none;
+    border: none;
 }
 
 .wrapper{
