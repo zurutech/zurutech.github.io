@@ -1,24 +1,29 @@
-<footer>
-    <div class="container footer-container">
-
-        <div id="footer" class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                <div class="sharing-icon">
-                    <a href="https://www.facebook.com/zurutechitaly/" class="fa fa-facebook icon-maker"></a>
-                    <a href="https://www.linkedin.com/company/zuru-tech-italy/" class="fa fa-linkedin icon-maker"></a>
+<section class="blog-footer">
+    <div class="copyright-section zuru-grey-bg text-center">
+        <div class="copyright-content mx-auto">
+            <div class="row m-0">
+                <div class="col-4 social-icons my-auto">
+                    <a href="https://www.facebook.com/zurutechitaly/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-facebook" aria-label="facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/zuru-tech-italy" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-linkedin" aria-label="linkedin"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 custom-lh">
-                <div class="row">
-                    <div class="col-md-5 col-sm-5 txt-copyright">
-                        <p class="m-0">©{{site.copyright.name}} - {{ site.time | date: '%Y' }}</p>
+                <div class="col-8">
+                    <div class="row m-0 copyright-privacy">
+                        <div class="col-md-6">
+                            <p class="m-0">© {{ site.time | date: '%Y' }} - {{site.copyright.name}}. All rights reserved.</p>
+                        </div>
+                        <div class="col-md-6 privacy-cookie">
+                            <span>
+                                <a href="/privacy-policy">Privacy</a> &amp;
+                                <a href="/cookie-policy">Cookie Policy</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col-md-7 col-sm-7 text-right">
-                        <p class="m-0">Explore our open positions or write us at
-                        <a href="mailto:careers@zuru.tech">careers@zuru.tech</a></p>
-                    </div>    
-                </div>            
+                </div>
             </div>
         </div>
     </div>
-</footer>
+</section>
