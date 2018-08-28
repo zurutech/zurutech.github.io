@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Zuru Tech
+title: Zuru Tech - Blog
 email: dipen@zuru.tech
 description: > # this means to ignore newlines until "baseurl:"
-  Shaping future.
+  We are creating the first app that crafts real buildings, and we are hiring!
 
 
 
