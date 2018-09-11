@@ -35,6 +35,10 @@ body {
   min-height: 100%;
 }
 
+:focus {  
+  outline: none;
+}
+
 :root {
   font-size: 16px;
 }
