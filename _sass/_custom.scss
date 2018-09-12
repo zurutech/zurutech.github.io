@@ -1046,28 +1046,24 @@ button.navbar-toggler {
 		height: calc(100vh - 56px - 113px);
   }    
 }
-@media (max-width: 767px){
-  :root {
-    --navbar-height: 70px;
-    --navbar-hide-height: 3.5rem;
-  }
+@media (max-width: 767px){  
   .zuru-logo-div, .blog-menu{
 		padding: 0;
   }
   .navbar-brand img{
 		width: 70px;
-		height: auto;
+		// height: auto;
 		max-height: 24px;
   }
   div.navbar {
-		height: var(--navbar-hide-height);
+		height: 3.5rem;
 	}
 	.navbar-collapse {
-		height: calc(100vh - var(--navbar-hide-height));
-		top: var(--navbar-hide-height);
+		height: calc(100vh - 3.5rem);
+		top: 3.5rem;
 	}
 	.navbar-collapse.collapsing {
-    height: calc(100vh - var(--navbar-height)) !important;
+    height: calc(100vh - 70px) !important;
   }
   .navbar-brand{
     margin-top: 7px;
@@ -1076,7 +1072,7 @@ button.navbar-toggler {
 	// 	margin-top: var(--navbar-height) !important;
   // }
   .blog-wrp{
-    padding-top: var(--navbar-height) !important;
+    padding-top: 70px !important;
   }
 	#mainNav{
 		position: fixed;
@@ -1094,29 +1090,25 @@ button.navbar-toggler {
     text-align: left;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){
-  :root {
-    --navbar-height: 5rem;
-    --height-from-top: 6rem;
-  }
+@media (min-width: 768px) and (max-width: 991px){ 
   // body{
 	// 	margin-top: var(--navbar-height) !important;
   // }
   .blog-wrp{
-    padding-top: var(--height-from-top) !important;
+    padding-top: 6rem !important;
   }
   div.navbar {
-    height: var(--navbar-height);
+    height: 5rem;
   }
   div.navbar-collapse ul.navbar-nav{
-    height: calc(100vh - var(--navbar-height) - 89px);
+    height: calc(100vh - 5rem - 89px);
   }
   .navbar-collapse {
-    height: calc(100vh - var(--navbar-height));
-    top: var(--navbar-height);
+    height: calc(100vh - 5rem);
+    top: 5rem;
   }
   .navbar-collapse.collapsing {
-    height: calc(100vh - var(--navbar-height)) !important;
+    height: calc(100vh - 5rem) !important;
   }
   .navbar-brand{
     margin-top: 8px;    
@@ -1222,15 +1214,12 @@ button.navbar-toggler {
   //   height: 64px;
   // }
 }
-@media (min-width: 992px){
-  :root {
-    --navbar-height: 7rem;
-  }
+@media (min-width: 992px){  
   // body{
   //   margin-top: 5.75rem;
   // }
   .blog-wrp{
-    padding-top: var(--navbar-height) !important;
+    padding-top: 7rem !important;
   }
   .navbar-expand-lg .navbar-nav .nav-link{
 		padding-right: 1rem;
