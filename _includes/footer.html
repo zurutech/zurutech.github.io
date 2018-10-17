@@ -1,20 +1,29 @@
-<footer>
-    <div class="container footer-container">
-
-        <div id="footer" class="row" style="display:flex;justify-content:center;flex-wrap:wrap">
-        <div class="" style="flex:1 1 50%;display:flex;justify-content:center;align-items:center">
-            <div class="sharing-icon">
-                <a href="https://www.facebook.com/zurutechitaly/" class="fa fa-facebook icon-maker"></a>
-                <a href="https://www.linkedin.com/company/zuru-tech-italy/" class="fa fa-linkedin icon-maker"></a>
+<section class="blog-footer">
+    <div class="copyright-section zuru-grey-bg text-center">
+        <div class="copyright-content mx-auto">
+            <div class="row m-0">
+                <div class="col-4 social-icons my-auto">
+                    <a href="https://www.facebook.com/zurutechitaly/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-facebook" aria-label="facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/zuru-tech-italy" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-linkedin" aria-label="linkedin"></i>
+                    </a>
+                </div>
+                <div class="col-8">
+                    <div class="row m-0 copyright-privacy">
+                        <div class="col-md-6">
+                            <p class="m-0">© {{ site.time | date: '%Y' }} - {{site.copyright.name}}. All rights reserved.</p>
+                        </div>
+                        <div class="col-md-6 privacy-cookie">
+                            <span>
+                                <a href="https://zuru.tech/privacy-policy">Privacy</a> &amp;
+                                <a href="https://zuru.tech/cookie-policy">Cookie Policy</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-            <div style="padding-top:2em; flex:1 1 50%;text-align:center">
-                <p>Explore our open positions or write us at
-                <a href="mailto:careers@zuru.tech">careers@zuru.tech</a></p>
-            </div>
-            <div style="padding-top:2em; flex:1 1 50%;text-align:center">
-                ©{{site.copyright.name}} - 2018
-            </div>
-
     </div>
-</footer>
+</section>

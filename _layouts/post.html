@@ -3,24 +3,15 @@ layout: default
 ---
 <div class="post-container">
     {% include header.html %}
-    <div class="container {{ page.did }}">
-
-        <!--{% if page.banner %}
-        <img src="{{site.baseurl}}/images/banners/{{ page.banner }}" class="post-banner"/>
-        {% else %}
-        <img src="{{site.baseurl}}/images/banners/banner-default.png" class="post-banner"/>
-        {% endif %}-->
-
-        {% if page.img %}
-        <img width="100%" src="{{site.baseurl}}/images/{{page.img}}" class="post-banner"/>
-        {% else %}
-        <img width="100%" src="{{site.baseurl}}/images/banners/banner-default.png" class="post-banner"/>
-        {% endif %}
+    <div class="internal-page-banner-design">
+        <canvas id="stars" width="300" height="300"></canvas>
+    </div>
+    <div class="container {{ page.did }}">    
 
         {% assign mainTag = page.tags[0] %}
         {% assign postTheme = site.themeColor[mainTag] %}
 
-        <div class="wrapper" style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
+        <div class="wrapper">
             <div class="row">
                 <div class="col-md-12">
                     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -37,7 +28,7 @@ layout: default
                             <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
                         </header>
 
-                        <div class="post-content" itemprop="articleBody">
+                        <div class="post-content text-justify" itemprop="articleBody">
                             {{ content }}
                         </div>
 
@@ -58,7 +49,8 @@ layout: default
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                    <p class="author-name-title"><a href="{{ page.author.uri }}">{{ author.name }}</a> {{ author.bio }}</p>
+                                    <!-- If redirect to author page href="{{ author.uri }}" -->
+                                    <p class="author-name-title"><a href="#" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
                                     <div class="social-icon">
                                         {% if author.facebook %}
                                             <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
