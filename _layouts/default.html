@@ -1,5 +1,5 @@
---- 
-layout: compress 
+---
+layout: compress
 ---
 
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ layout: compress
             var tagsToHide = [];
             if (tagsToFilter) {
                 tagsToHide = tagsToFilter.trim().split(" ");
-            }            
+            }
             for (var i = 0; i < tagsToHide.length; i++) {
                 if (tagsToHide[i]) {
                     $("." + tagsToHide[i]).hide();
@@ -90,20 +90,20 @@ layout: compress
 
         var filterEverything = function () {
             var minTimeStamp = getTimeStamp(minSliderValue.toString());
-            var maxTimeStamp = getTimeStamp(maxSliderValue.toString());    
-                    
+            var maxTimeStamp = getTimeStamp(maxSliderValue.toString());
+
             var tagsToFilter = $(".blog-tag-item-filtered").text();
             var tagsToHide = [];
-            if (tagsToFilter) {                
+            if (tagsToFilter) {
                 tagsToHide = tagsToFilter.trim().split(" ");
             }
             var oldScrollPresence = $(document).height() > $(window).height();
             for (var i = 0; i < allPosts.length; i++) {
                 var id = allPosts[i][0];
                 var publishTime = allPosts[i][1];
-                var postTags = allPosts[i]['tags'];                
-                var publishDate = new Date(publishTime.substr(0, publishTime.indexOf(' '))); 
-                var publishTimeStamp = getTimeStamp(publishDate.toString());                   
+                var postTags = allPosts[i]['tags'];
+                var publishDate = new Date(publishTime.substr(0, publishTime.indexOf(' ')));
+                var publishTimeStamp = getTimeStamp(publishDate.toString());
                 if (publishTimeStamp > maxTimeStamp || publishTimeStamp < minTimeStamp || compareArrays(postTags, tagsToHide)) {
                     $("#" + id).hide();
                 }
@@ -122,12 +122,12 @@ layout: compress
             {% endfor %}];
 
         var sliderMin = getFirstPublishedDate(allPosts);
-        var sliderMax = getLastPublishedDate(allPosts);        
-        var minDate = sliderMin.substr(0, sliderMin.indexOf(' ')); 
-        var maxDate = sliderMax.substr(0, sliderMax.indexOf(' ')); 
-        
-        minSliderValue = minDate;
-        maxSliderValue = maxDate;
+        var sliderMax = getLastPublishedDate(allPosts);
+        var minDate = sliderMin.substr(0, sliderMin.indexOf(' '));
+        var maxDate = sliderMax.substr(0, sliderMax.indexOf(' '));
+
+        minSliderValue = new Date(minDate);
+        maxSliderValue = new Date(maxDate);
 
         for (var j = 0; j < allPosts.length; j++) {
             var id = allPosts[j][0];
@@ -174,12 +174,12 @@ layout: compress
             values: [new Date(minDate).getTime(), new Date(maxDate).getTime()],
             slide: function (event, ui) {
                 minSliderValue = new Date(ui.values[0]);
-                maxSliderValue = new Date(ui.values[1]);                
+                maxSliderValue = new Date(ui.values[1]);
                 $("#dateRangeMin").text(formatDateString(ui.values[0]));
                 $("#dateRangeMax").text(formatDateString(ui.values[1]));
                 filterEverything();
             }
-        });                
+        });
         $("#dateRangeMin").text(formatDateString($("#slider-range").slider("values", 0)));
         $("#dateRangeMax").text(formatDateString($("#slider-range").slider("values", 1)));
 
@@ -284,13 +284,13 @@ layout: compress
                 }
             }
 
-            if ('ontouchstart' in document.documentElement && window.DeviceOrientationEvent) {                
+            if ('ontouchstart' in document.documentElement && window.DeviceOrientationEvent) {
                 window.addEventListener('deviceorientation', function (e) {
                     mouse.x = (canvas.clientWidth / 2) - ((e.gamma / 90) * (canvas.clientWidth / 2) * 2);
                     mouse.y = (canvas.clientHeight / 2) - ((e.beta / 90) * (canvas.clientHeight / 2) * 2);
                 }, true);
             }
-            else {                
+            else {
                 document.body.addEventListener('mousemove', function (e) {
                     mouse.x = e.clientX;
                     mouse.y = e.clientY;
