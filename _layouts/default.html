@@ -173,8 +173,10 @@ layout: compress
             step: 86400,
             values: [new Date(minDate).getTime(), new Date(maxDate).getTime()],
             slide: function (event, ui) {
-                minSliderValue = new Date(ui.values[0]);
-                maxSliderValue = new Date(ui.values[1]);
+                minSliderValue = new Date(formatDateString(ui.values[0]));
+                minSliderValue.setMinutes(minSliderValue.getMinutes() + 330);
+                maxSliderValue = new Date(formatDateString(ui.values[1]));
+                maxSliderValue.setMinutes(maxSliderValue.getMinutes() + 330);
                 $("#dateRangeMin").text(formatDateString(ui.values[0]));
                 $("#dateRangeMax").text(formatDateString(ui.values[1]));
                 filterEverything();
