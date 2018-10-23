@@ -123,11 +123,11 @@ layout: compress
 
         var sliderMin = getFirstPublishedDate(allPosts);
         var sliderMax = getLastPublishedDate(allPosts);
-        var minDate = sliderMin.substr(0, sliderMin.indexOf(' '));
-        var maxDate = sliderMax.substr(0, sliderMax.indexOf(' '));
+        var minDate = sliderMin; /* Need to change this because Date() was reading the system time which breaks the range while timezone is in minus i.e. UTC - 05:00 (US/Canada) */
+        var maxDate = sliderMax; /* Need to change this because Date() was reading the system time which breaks the range while timezone is in minus i.e. UTC - 05:00 (US/Canada) */
 
-        minSliderValue = new Date(minDate);
-        maxSliderValue = new Date(maxDate);
+        minSliderValue = minDate;
+        maxSliderValue = maxDate;
 
         for (var j = 0; j < allPosts.length; j++) {
             var id = allPosts[j][0];
@@ -136,7 +136,7 @@ layout: compress
             allPosts[j]['tags'] = tags;
         }
 
-        console.log(allPosts);
+        /*console.log(allPosts);*/
 
         $('.author-name-link').on('click', function () {
             $('html, body').animate({
@@ -174,9 +174,10 @@ layout: compress
             values: [new Date(minDate).getTime(), new Date(maxDate).getTime()],
             slide: function (event, ui) {
                 minSliderValue = new Date(formatDateString(ui.values[0]));
-                minSliderValue.setMinutes(minSliderValue.getMinutes() + 330);
+                var timeZoneDifference = (minSliderValue.getTimezoneOffset()*-1); /* Get the current time zone of the system */
+                minSliderValue.setMinutes(minSliderValue.getMinutes() + timeZoneDifference); /* Add time to make it independent of slider's fetched time */
                 maxSliderValue = new Date(formatDateString(ui.values[1]));
-                maxSliderValue.setMinutes(maxSliderValue.getMinutes() + 330);
+                maxSliderValue.setMinutes(maxSliderValue.getMinutes() + timeZoneDifference);
                 $("#dateRangeMin").text(formatDateString(ui.values[0]));
                 $("#dateRangeMax").text(formatDateString(ui.values[1]));
                 filterEverything();
