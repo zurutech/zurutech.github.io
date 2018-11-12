@@ -123,8 +123,8 @@ layout: default
 
                             <div class="panel-body">
                                 <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %} / {% endunless %}  {%endfor%}</p>
-                                <h3 class="panel-title pull-left">{{ post.title | truncate: 40 }}</h3><span
-                                    class="post-meta pull-right test"><small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small></span>
+                                <h3 class="panel-title float-left">{{ post.title | truncate: 40 }}</h3><span
+                                    class="post-meta float-right test"><small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small></span>
                             </div>
 
                             <div class="panel-body">
