@@ -20,13 +20,13 @@ It all began around 2013 with Project ArchPlan 3D, developed by Carianni brother
 
 Project Zuru Home is not only a BIM app, is the first community-driven holistic multiplayer design framework!
 
-We are really excited to start sharing all this with the world...we can't wait to see what you are going to do with Dreamcatcher!
+We are really excited to start sharing all this with the world...we can't wait to see what you are going to do with Zuru Home!
 
-#### Dreamcatcher Community-driven Early Access
+#### Zuru Home Community-driven Early Access
 
 So, now after many years of development and the relentlessly efforts of our team here in Modena, India and China, we're finally ready to release an early access version of our app.
 
-Dreamcather is a fully-fledged BIM and Early Access v0.8 will be codenamed "Hyena", as a famelic but yet powerful version of our app!
+Zuru Home is a fully-fledged BIM and Early Access v0.8 will be codenamed "Hyena", as a famelic but yet powerful version of our app!
 
 We could summarize all the features and details of this release here, but we'll leave that for our new website which is in the making! 
 
