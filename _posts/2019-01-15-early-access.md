@@ -4,7 +4,7 @@ layout: post
 did: blog6
 title: Announcing Dreamcatcher Early Access!
 slug: Announcing Dreamcatcher Early Access!
-date: {}
+date: 2019-01-16T08:00:00.000Z
 categories: general
 img: early-access.png
 banner: early-access.png
