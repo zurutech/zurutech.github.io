@@ -1,17 +1,18 @@
 ---
-author: "Martin and Alessio"
+author: Martin and Alessio
 layout: post
-did: "blog6"
-title:  "Announcing Dreamcatcher Closed Early Access!"
-slug:  Announcing Dreamcatcher Closed Early Access!
-date:   2019-01-16 8:00:00
+did: blog6
+title: Announcing Dreamcatcher Closed Early Access!
+slug: Announcing Dreamcatcher Closed Early Access!
+date: 2019-01-16T08:00:00.000Z
 categories: general
-img: unknown (1).png
-banner: unknown (1).png
+img: early-access.png
+banner: early-access.png
 tags: early-access
-description: "Announcing Dreamcatcher Closed Early Access!"
+description: Announcing Dreamcatcher Closed Early Access!
+published: true
 ---
-![Project Zuru Home]({{site.baseurl}}/_posts/unknown (1).png)
+![Project Zuru Home]({{site.baseurl}}/_posts/early-access.png)
 
 
 It all began around 2013 with Project ArchPlan 3D, developed by Carianni brothers, which count a dozen years as BIM users as designers of architetural projects of any kind, they saw that things could be done differently, BIM apps were too complex for a casual user to work on...they wanted to change that once and forever and finally give everyone the chance to create a building from scratch with ease.
