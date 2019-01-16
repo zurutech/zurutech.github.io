@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ![Project Zuru Home]({{site.baseurl}}/_posts/unknown (1).png)
 
