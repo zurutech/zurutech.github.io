@@ -13,7 +13,7 @@ description: Announcing Dreamcatcher Closed Early Access!
 published: true
 ---
 <div markdown="1" class="blog-image-container">
-![Field Of View](/_posts/early-access.png){:class="blog-image"}
+![Field Of View](/images/early-access.png){:class="blog-image"}
 </div>
 
 It all began around 2013 with Project ArchPlan 3D, developed by Carianni brothers, which count a dozen years as BIM users as designers of architetural projects of any kind, they saw that things could be done differently, BIM apps were too complex for a casual user to work on...they wanted to change that once and forever and finally give everyone the chance to create a building from scratch with ease.
