@@ -2,14 +2,14 @@
 author: Martin and Alessio
 layout: post
 did: blog6
-title: Announcing Dreamcatcher Closed Early Access!
-slug: Announcing Dreamcatcher Closed Early Access!
+title: Announcing Dreamcatcher Early Access!
+slug: Announcing Dreamcatcher Early Access!
 date: {}
 categories: general
 img: early-access.png
 banner: early-access.png
 tags: early-access
-description: Announcing Dreamcatcher Closed Early Access!
+description: Announcing Dreamcatcher Early Access!
 published: true
 ---
 <div markdown="1" class="blog-image-container">
