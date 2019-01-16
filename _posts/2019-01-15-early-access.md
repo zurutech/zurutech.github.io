@@ -36,11 +36,11 @@ We can just anticipate that's going to be a fully fledged BIM built inside the m
 
 We're going to launch between March and April, many different versions with different audiences will be released.
 
-#### Do I have a chance to partecipate in the closed Early Access release?
+#### Can I partecipate in the closed Early Access release?
 
 Sure! We'll update our website with the registration web 3D game (what's that?! A 3D game for registering into the closed release? Stay tuned...it's going to be fun) :D
 
-#### Requirements minimum specs, multi-platform releases, features, supported formats, other questions
+#### Minimum specs, multi-platform releases, other questions
 
 We know that you still don't know anything about Project Home...but fear not, a new website is coming, packed with detailed description of everything. 
 
