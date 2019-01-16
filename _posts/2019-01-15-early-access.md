@@ -1,5 +1,15 @@
 ---
-published: true
+author: "Martin and Alessio"
+layout: post
+did: "blog6"
+title:  "Announcing Dreamcatcher Closed Early Access!"
+slug:  Announcing Dreamcatcher Closed Early Access!
+date:   2019-01-16 8:00:00
+categories: general
+img: unknown (1).png
+banner: unknown (1).png
+tags: early-access
+description: "Announcing Dreamcatcher Closed Early Access!"
 ---
 ![Project Zuru Home]({{site.baseurl}}/_posts/unknown (1).png)
 
