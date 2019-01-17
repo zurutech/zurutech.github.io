@@ -117,7 +117,7 @@ $$\text{WD}_r = \text{WD} - \min\{T\} - f \pm \text{offset}$$
 
 we're also removing the focal distance, taking into account that our measurement were made from the background to the camera body.
 
-The offset term is an optional term, that usually can be found on the camera datashett, that's the relative position of the sensor with respect to the measurement point (in the order of $$[0, 5]$$mm usually).
+The offset term is an optional term, that usually can be found on the camera datasheet, that's the relative position of the sensor with respect to the measurement point (in the order of $$[0, 5]$$mm usually).
 
 #### Step 3.2: minimum accuracy constraint
 
