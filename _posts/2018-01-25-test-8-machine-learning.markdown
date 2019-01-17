@@ -135,7 +135,7 @@ From the relation of the object in the scene on the object on the sensor (now wi
 
 $$X = \frac{\text{WD}_r \cdot \frac{x}{m}}{f} \Leftrightarrow x = \frac{X f m}{\text{WD}_r} = \frac{Xf_{xy}}{\text{WD}_r}$$
 
-So, now is extremely easy to calculate the number of pixels per millimiter in the scene and check if the previous relation hold:
+So, now is extremely easy to calculate the number of pixels per millimiter in the scene and check if the previous relation holds:
 
 $$\frac{\Delta f m}{\text{WD}_r} \ge 1$$
 
@@ -148,4 +148,4 @@ Instead, if this relation does not hold we have to change the moving part of our
 3. Evaluate the usage of more cameras and stitch the images together
 4. Last resort: change the camera(s)
 
-One last tip: the relation $$x = \frac{X f m}{\text{WD}_r}$$ allow also to measure the system accuracy (in px/mm), hence the number of pixels per single millimiter of the scene, just set $$\Delta=1$$ and you're done!
+One last tip: the relation $$x = \frac{X f m}{\text{WD}_r}$$ allows also to measure the system accuracy (in px/mm), hence the number of pixels per single millimiter of the scene, just set $$\Delta=1$$ and you're done!
