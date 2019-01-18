@@ -8,11 +8,9 @@ date:   2019-01-18 8:00:00
 categories: machine-learning
 img:  horovod.png
 banner: horovod.png
-tags: machine-learning, distributed-computing
+tags: machine-learning
 description: "A quick introduction to Horovod, its perks but mostly its caveats."
 ---
-
-# Horovod: the Good, the Bad and the Ugly
 
 Deep learning is not just data-intensive but also computationally voracious. When you are training GANs, and you want to move on from small MNIST 28x28 images to larger and more vibrant photos you either accept abysmally low batch size capable of fitting on one GPU or you try and go big by tapping into the power of distributed and parallel computing.
 
