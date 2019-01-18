@@ -15,8 +15,10 @@ description: "A quick introduction to Horovod, its perks but mostly its caveats.
 Deep learning is not just data-intensive but also computationally voracious. When you are training GANs, and you want to move on from small MNIST 28x28 images to larger and more vibrant photos you either accept abysmally low batch size capable of fitting on one GPU or you try and go big by tapping into the power of distributed and parallel computing.
 
 ## Horovod?
+<p style="text-align:center">
+    <img src="https://user-images.githubusercontent.com/16640218/34506318-84d0c06c-efe0-11e7-8831-0425772ed8f2.png" alt="Horovod Logo" style="height:400px;width:400px" />
+</p>
 
-![Horovod Logo](https://user-images.githubusercontent.com/16640218/34506318-84d0c06c-efe0-11e7-8831-0425772ed8f2.png)
 
 > Horovod is a distributed training framework for TensorFlow, Keras, and PyTorch. The goal
 > of Horovod is to make distributed Deep Learning fast and easy to use.
