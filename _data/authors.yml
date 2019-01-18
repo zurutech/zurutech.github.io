@@ -1,12 +1,12 @@
 pgaleone:
     name: Paolo Galeone
-    uri: https://pgaleone.eu
+    uri: https://pgaleone.eu/
     email: paolo@zuru.tech
     twitter: "https://twitter.com/paolo_galeone"
     linkedin: "https://www.linkedin.com/in/paolo-galeone-6782b311b/"
     reddit: "https://www.reddit.com/user/pgaleone"
     image: "https://raw.githubusercontent.com/galeone/galeone.github.io/master/images/me.jpeg"
-    bio: "is a computer engineer and Machine Learning researcher @ Zuru Tech's Team Vision"
+    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D @ Zuru Tech Italy"
 
 mr-ubik:
     name: 'Michele "Ubik" Desimoni'
@@ -15,5 +15,5 @@ mr-ubik:
     twitter: "https://twitter.com/mr_ubik"
     linkedin: "https://www.linkedin.com/in/micheledesimoni/"
     reddit: "https://www.reddit.com/user/Mr_Ubik"
-    image: "https://github.githubassets.com/images/icons/emoji/unicode/1f4b0.png"
-    bio: "Mad Scientist for 💰 and :heart: . Pythonista :snake:. Lover of 🐧 🐧.  Walking Beard. Black humor & memes dispenser. Evil Mastermind. Mad Tinkerer 🤖. Machine Learning Engineer @ Zuru Tech"
+    image: "https://avatars2.githubusercontent.com/u/16547060?s=100"
+    bio: "Mad Scientist for 💰and ❤️ . Pythonista 🐍. Lover of 🐧 🐧.  Walking Beard. Black humor & memes dispenser. Evil Mastermind. Mad Tinkerer 🤖.<br>Machine Learning Engineer @ Zuru Tech Italy"
