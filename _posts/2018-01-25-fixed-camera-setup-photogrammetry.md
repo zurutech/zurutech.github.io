@@ -113,11 +113,14 @@ In fact, if we know in advance the set of thickness (in mm) $$T = \left\{T_1, T_
 
 In practice, the real working distance (that's the one we're really interested) can be found as:
 
-$$\text{WD}_r = \text{WD} - \min\{T\} - f \pm \text{offset}$$
-
-we're also removing the focal distance, taking into account that our measurement were made from the background to the camera body.
+$$\text{WD}_r = \text{WD} - \min\{T\} \text{offset}$$
 
 The offset term is an optional term, that usually can be found on the camera datasheet, that's the relative position of the sensor with respect to the measurement point (in the order of $$[0, 5]$$mm usually).
+
+**WARNING**: The working distance computed in this way is a theoretical estimation of the real working distance since the camera model we're using is the pinhole using, hence we're using the thin lens equation as the foundation for our reasoning.
+In practice, the working distance to use in a real-world application must be computed using a software solution (exploiting the information about the size of a known object and the measured object in pixel) since the thin lens equations can't model complex lens system in a precise way.
+Hence, you can use all the content of this article to get a rough estimation of the working distance in order to properly setup the camera physically.
+
 
 #### Step 3.2: minimum accuracy constraint
 
