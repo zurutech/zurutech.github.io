@@ -219,9 +219,12 @@ layout: compress
             noiseLength = 1000,
             noiseStrength = 1;
 
-        var canvas = document.getElementById('stars'),
-            context = canvas.getContext('2d'),
-            mouse = { x: 0, y: 0 },
+        var canvas = document.getElementById('stars');
+        var context = null;
+        if(canvas) {
+            context = canvas.getContext('2d');
+        }
+        var mouse = { x: 0, y: 0 },
             m = {},
             r = 0,
             c = 1000,
