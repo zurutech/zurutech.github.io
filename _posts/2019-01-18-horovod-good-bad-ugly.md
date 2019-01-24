@@ -15,10 +15,9 @@ description: "A quick introduction to Horovod, its perks but mostly its caveats.
 Deep learning is not just data-intensive but also computationally voracious. When you are training GANs, and you want to move on from small MNIST 28x28 images to larger and more vibrant photos you either accept abysmally low batch size capable of fitting on one GPU or you try and go big by tapping into the power of distributed and parallel computing.
 
 ## Horovod?
-<p style="text-align:center">
-    <img src="https://user-images.githubusercontent.com/16640218/34506318-84d0c06c-efe0-11e7-8831-0425772ed8f2.png" alt="Horovod Logo" style="height:400px;width:400px" />
-</p>
-
+<div markdown="1" class="blog-image-container">
+![Horovod Logo](https://user-images.githubusercontent.com/16640218/34506318-84d0c06c-efe0-11e7-8831-0425772ed8f2.png){:class="blog-image"}
+</div>
 
 > Horovod is a distributed training framework for TensorFlow, Keras, and PyTorch. The goal
 > of Horovod is to make distributed Deep Learning fast and easy to use.
@@ -27,7 +26,9 @@ The primary goal behind Horovod is a noble one: making distributed training (and
 
 A plug and play API that minimizes its interference in the codebase coupled with an MPI based implementation of the **Ring-Allreduce**, an algorithm initially proposed in a 2009 paper that was given an experimental TensorFlow adaptation by Baidu in 2017.
 
-![The ring-allreduce algorithm allows worker nodes to average gradients and disperses them to all nodes without the need for a parameter server.](https://eng.uber.com/wp-content/uploads/2017/10/image4-2-768x302.png)
+<div markdown="1" class="blog-image-container">
+![The ring-allreduce algorithm allows worker nodes to average gradients and disperses them to all nodes without the need for a parameter server.](https://eng.uber.com/wp-content/uploads/2017/10/image4-2-768x302.png){:class="blog-image"}
+</div>
 
 The core idea behind this radically more efficient approach (as demonstrated by their benchmark) is to get rid of the centralized parameters servers and let each node communicate with each others multiple time, each time changing the partners and thus letting the workers average the gradients gradually dispersing them over the entirety of the network.
 
