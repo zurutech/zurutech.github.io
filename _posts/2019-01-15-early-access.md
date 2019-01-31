@@ -11,7 +11,7 @@ banner: "early-access.png"
 tags: announcement
 description: "Announcing Zuru Home Early Access!"
 ---
-We are really excited to announce that after more than 5 years of R&D (the project's grassroots set us back to 2013 when me, Martin and my brother Alessio started a project called ArchPlan 3D) we're finally here, getting everything ready for you to try Zuru Home, a complete redefinition of how to build, design, collaborate and visualize architecture!
+We are really excited to announce that after more than 5 years of R&D (the project's grassroots set us back to 2013 when me, Martin and my brother Alessio started a project called ArchPlan 3D and then in 2016 when we joined forces with Zuru) we're finally here, getting everything ready for you to try Zuru Home, a complete redefinition of how to build, design, collaborate and visualize architecture!
 
 Project Zuru Home is not only a BIM app, is the first community-driven holistic multiplayer design framework!
 
