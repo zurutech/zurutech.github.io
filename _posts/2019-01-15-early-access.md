@@ -34,7 +34,7 @@ We can just anticipate that's going to be a fully fledged BIM built inside the m
 
 #### When is the closed Early Access going to be released?
 
-We're going to launch between March and April, many different versions with different audiences will be released.
+We're going to launch between April and May, many different versions with different audiences will be released.
 
 #### Can I partecipate in the closed Early Access release?
 
