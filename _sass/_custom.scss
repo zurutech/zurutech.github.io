@@ -311,6 +311,10 @@ pre {
   margin-right: 400px;
 }
 
+pre.highlight {
+  margin-right: 0px!important;
+}
+
 pre code {
   tab-interval: 2pt;
   display: block;

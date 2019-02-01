@@ -35,3 +35,13 @@ martin-alessio:
     reddit: ""
     image: "/images/FotoAM.jpg"
     bio: "Architecture & Construction lovers with a spicy software sauce.<br>CTO and CDO @ Zuru Tech"
+
+ridham:
+    name: Ridham Tarpara
+    uri: https://zuru.tech/
+    email: ridham@zuru.tech
+    twitter: "https://twitter.com/RidhamTarpara"
+    linkedin: "https://www.linkedin.com/in/ridham-tarpara-97430270/"
+    reddit: ""
+    image: "https://i.imgur.com/Z0ORbCU.png"
+    bio: "Software engineer, Lifelong learner, DevOps Enthusiast<br>Backend Engineer @ Zuru Tech India"
