@@ -1,9 +1,37 @@
 pgaleone:
     name: Paolo Galeone
-    uri: https://pgaleone.eu
+    uri: https://pgaleone.eu/
     email: paolo@zuru.tech
     twitter: "https://twitter.com/paolo_galeone"
     linkedin: "https://www.linkedin.com/in/paolo-galeone-6782b311b/"
     reddit: "https://www.reddit.com/user/pgaleone"
     image: "https://raw.githubusercontent.com/galeone/galeone.github.io/master/images/me.jpeg"
-    bio: "is a computer engineer and Machine Learning researcher @ Zuru Tech's Team Vision"
+    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D @ Zuru Tech Italy"
+
+mr-ubik:
+    name: 'Michele "Ubik" Desimoni'
+    uri: https://essays.ubik.tech
+    email: michele.d@zuru.tech
+    twitter: "https://twitter.com/mr_ubik"
+    linkedin: "https://www.linkedin.com/in/micheledesimoni/"
+    reddit: "https://www.reddit.com/user/Mr_Ubik"
+    image: "https://avatars2.githubusercontent.com/u/16547060?s=100"
+    bio: "Mad Scientist for 💰and ❤️ . Pythonista 🐍. Lover of 🐧 🐧.  Walking Beard. Black humor & memes dispenser. Evil Mastermind. Mad Tinkerer 🤖.<br>Machine Learning Engineer @ Zuru Tech Italy"
+    
+fdimattia:
+    name: Federico Di Mattia
+    email: federico.d@zuru.tech
+    twitter: https://twitter.com/_iLeW_
+    linkedin: https://www.linkedin.com/in/federico-di-mattia-b4543527/
+    image: "https://avatars0.githubusercontent.com/u/7030076?s=100"
+    bio: "Computer Engineer. Early adopter. Head and imagination miner 🎩. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
+
+martin-alessio:
+    name: Martin & Alessio Carianni
+    uri: https://zuru.tech/
+    email: italy@zuru.tech
+    twitter: ""
+    linkedin: "https://www.linkedin.com/company/zuru-tech-italy"
+    reddit: ""
+    image: "/images/FotoAM.jpg"
+    bio: "Architecture & Construction lovers with a spicy software sauce.<br>CTO and CDO @ Zuru Tech"
