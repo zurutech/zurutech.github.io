@@ -1,6 +1,7 @@
 ---
 name: Submit a new article
 about: Follow this template to check if your article can be submitted
+
 ---
 
 Please check to satisfy these requirements:
