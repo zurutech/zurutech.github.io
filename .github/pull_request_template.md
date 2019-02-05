@@ -1,8 +1,10 @@
----
-name: Submit a new article
-about: Follow this template to check if your article can be submitted
+The following is the omnicomprehensive template for the Pull Request.
 
----
+Complete the section about your specific scenario.
+
+### 1. Submit a new article
+
+_Follow this template to check if your article can be submitted._
 
 Please check to satisfy these requirements:
 
@@ -14,3 +16,14 @@ Please check to satisfy these requirements:
 * [ ] Use the oxford comma (setting up Grammarly to use American English should forces you to use it)
 * [ ] Do not hotlink images: put the images inside a subfolder in the images folder of the blog and link there. Double check the images copyright before using them.
 * [ ] The ideal article should start from a problem -> the article content should start from it and describe the flow to solve it.
+
+### 2. Fixing a typo
+
+_Use this template to submit a merge request to fix a minor issue._
+
+Please describe why this change is needed.
+
+### 3. Fixing content
+_Use this template to submit a pull request because the content of the article is wrong._
+
+Please describe why this change is needed: why the content is wrong and what does this PR do.
