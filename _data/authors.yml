@@ -45,3 +45,12 @@ ridham:
     reddit: ""
     image: "https://i.imgur.com/Z0ORbCU.png"
     bio: "Software engineer, Lifelong learner, DevOps Enthusiast<br>Backend Engineer @ Zuru Tech India"
+
+manughelfi:
+    name: Emanuele Ghelfi
+    uri:  https://zuru.tech/
+    email: emanuele@zuru.tech
+    twitter: "https://twitter.com/manughelfi"
+    linkedin: "https://www.linkedin.com/in/emanuele-ghelfi-9a408396/"
+    image: "https://avatars3.githubusercontent.com/u/16719271?s=100"
+    bio: "Computer Engineer. Loves teaching machines to learn. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
