@@ -14,7 +14,7 @@ description: "How to manage your Machine Learning experiments"
 
 Managing Machine Learning experiments is usually painful.
 
-The usual workflow when approaching a problem using Machine Learning tools is the following. You study the problem, define a possible solution, then you implement that solution and measure its quality. Often the solution depends on some parameters, we will refer to the set of parameters with the term configuration. Parameters can include model type, optimizers, learning rate, batch size, steps, losses, and many others.
+The usual workflow when approaching a problem using Machine Learning tools is the following. You study the problem, define a possible solution, then you implement that solution and measure its quality. Often the solution depends on some parameters, we will refer to the set of parameters with the term **configuration**. Parameters can include model type, optimizers, learning rate, batch size, steps, losses, and many others.
 
 The configuration influences highly the performance of your solution. If you have enough time and computational power, it is possible to use a Bayesian approach for solving the hyper-parameter selection problem, but in real situations, it is common to perform a limited set of experiment and select the best configuration among them.
 
