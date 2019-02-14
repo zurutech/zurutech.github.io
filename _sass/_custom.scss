@@ -6,7 +6,7 @@
   url('../css/roboto-regular/Roboto-Regular.woff2') format('woff2'),
   url('../css/roboto-regular/Roboto-Regular.woff') format('woff'),
   url('../css/roboto-regular/Roboto-Regular.ttf') format('truetype'),
-  url('../css/roboto-regular/Roboto-Regular.svg#Roboto-Regular') format('svg');  
+  url('../css/roboto-regular/Roboto-Regular.svg#Roboto-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -22,20 +22,90 @@
   font-style: normal;
 }
 
+.blockquote {
+    padding: 60px 80px 40px;
+    position: relative;
+}
+.blockquote p {
+    font-family: "Utopia-italic";
+    font-size: 35px;
+    font-weight: 700px;
+    text-align: center;
+}
+
+.blockquote:before {
+  position: absolute;
+  font-family: 'FontAwesome';
+  top: 0;
+  content:"\f10d";
+  font-size: 200px;
+  color: rgba(0,0,0,0.1);
+
+}
+
+.blockquote::after {
+    content: "";
+    top: 20px;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    border-bottom: 3px solid #bf0024;
+    height: 3px;
+    width: 200px;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+.otro-blockquote{
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+.otro-blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+.otro-blockquote::after{
+  content: '';
+}
+
+.otro-blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
 html{
 	height: 100%;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
   position: relative;
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
 }
 
-:focus {  
+:focus {
   outline: none;
 }
 
@@ -1049,9 +1119,9 @@ button.navbar-toggler {
 @media (min-width: 401px) and (max-width: 767px){
 	div.navbar-collapse ul.navbar-nav{
 		height: calc(100vh - 56px - 113px);
-  }    
+  }
 }
-@media (max-width: 767px){  
+@media (max-width: 767px){
   .zuru-logo-div, .blog-menu{
 		padding: 0;
   }
@@ -1095,7 +1165,7 @@ button.navbar-toggler {
     text-align: left;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){ 
+@media (min-width: 768px) and (max-width: 991px){
   // body{
 	// 	margin-top: var(--navbar-height) !important;
   // }
@@ -1116,7 +1186,7 @@ button.navbar-toggler {
     height: calc(100vh - 5rem) !important;
   }
   .navbar-brand{
-    margin-top: 8px;    
+    margin-top: 8px;
   }
 }
 @media (max-width: 991px) {
@@ -1125,10 +1195,10 @@ button.navbar-toggler {
   }
   .txt-copyright{
     text-align: right;
-  }  
+  }
   .custom-lh{
     line-height: unset;
-  }   
+  }
   div.navbar-collapse ul.navbar-nav{
     top: 0;
     justify-content: center;
@@ -1219,7 +1289,7 @@ button.navbar-toggler {
   //   height: 64px;
   // }
 }
-@media (min-width: 992px){  
+@media (min-width: 992px){
   // body{
   //   margin-top: 5.75rem;
   // }
@@ -1239,7 +1309,7 @@ button.navbar-toggler {
 @media (max-width: 768px) {
   .card .index-anchor .panel .card-image-container>img{
      height: 280px;
-   }   
+   }
 }
 @media (max-width: 440px) {
   .card .index-anchor .panel .card-image-container>img{
@@ -1262,7 +1332,7 @@ button.navbar-toggler {
 }
 
 /*For Phone Landscape*/
-@media (min-width: 300px) and (max-width: 850px) and (orientation: landscape) {		
+@media (min-width: 300px) and (max-width: 850px) and (orientation: landscape) {
 	.navbar-nav{
 		flex-direction: unset;
 	}
@@ -1271,6 +1341,6 @@ button.navbar-toggler {
 	}
 	.navbar-nav .nav-link{
 		font-size: 0.9rem;
-	}		
+	}
 }
 /*For Phone Landscape Ends*/
