@@ -17,19 +17,19 @@ Managing Machine Learning experiments is usually painful.
 ![Figure 1 - Experiments](/images/sacred3.jpg "Figure 1 - Experiments"){:class="blog-image"}
 </div>
 
-The usual workflow when approaching a problem using Machine Learning tools is the following. You study the problem, define a possible solution, then you implement that solution and measure its quality. Often the solution depends on some parameters, we will refer to the set of parameters with the term **configuration**. Parameters can include model type, optimizers, learning rate, batch size, steps, losses, and many others.
+The usual workflow when approaching a problem using Machine Learning tools is the following. You study the problem, define a possible solution, then you implement that solution and measure its quality. Often the solution depends on some parameters, and we refer to the set of parameters with the term **configuration**. Parameters can include model type, optimizers, learning rate, batch size, steps, losses, and many others.
 
-The configuration highly influences the performance of your solution. If you have enough time and computational power, it is possible to use a Bayesian approach for solving the hyper-parameter selection problem, but in real situations, it is common to perform a limited set of experiment and select the best configuration among them.
+The configuration profoundly influences the performance of your solution. If you have enough time and computational power, it is possible to use a Bayesian approach for solving the hyper-parameter selection problem, but in real situations, it is common to perform a limited set of experiment and select the best configuration among them.
 
-In this article we describe how to manage experiments in a good way, ensuring inspectability and reproducibility. We will focus on Machine Learning experiments in python using [Tensorflow](www.tensorflow.com) even if this approach can be applied to all computational experiments.
+In this article we describe how to manage experiments in a good way, ensuring inspectability and reproducibility. We focus on Machine Learning experiments in python using [Tensorflow](www.tensorflow.com) even if this approach applies to all computational experiments.
 
 ## Simple (Bad) Solution
 
-To keep track of the configuration the usual way to go (at least in Tensorflow) is to save your models and logs inside a folder with a common pattern for the parameters name and value.
+To keep track of the configuration the usual way to go (at least in Tensorflow) is to save your models and logs inside a folder with a shared pattern for the parameters name and value.
 
-Using this setting with [Tensorboard](https://www.tensorflow.org/guide/summaries_and_tensorboard) (the official Tensorflow visualization tool) it is possible to relate the plot to its configuration. However, this is **not** the right way to manage experiments since it is very hard to see how parameters affect performance. In fact, Tensorboard offers none way to order experiments by configuration, selecting only some experiments or order experiments by performance.
-In this way, we do not have any control and tracking of our source code, except for our VCS. Unfortunately, when doing experiments we do not always push our changes since they might be tiny changes or only trials. This can cause issues since our experiments might not be reproducible.
-An experiment using this style can be implemented in the following way:
+Using this setting with [Tensorboard](https://www.tensorflow.org/guide/summaries_and_tensorboard) (the official Tensorflow visualization tool), it is possible to relate the plot to its configuration. However, this is **not** the right way to manage experiments since it is tough to see how parameters affect performance. Tensorboard offers none way to order experiments by configuration, selecting only some experiments or order experiments by performance.
+In this way, we do not have any control and tracking of our source code, except for our VCS. Unfortunately, when doing experiments, we do not always push our changes since they might be tiny changes or only trials, this can cause issues since our experiments might not be reproducible.
+We can implement an experiment using this style in the following way:
 ```python
 # other imports ...
 
@@ -72,7 +72,7 @@ def main():
                 saver.save(sess, logdir)
 ```
 
-In this code snippet we load the model, dataset and other stuff using the configuration loaded. The logdir defined using the configuration is needed for associating a configuration to the correct plot in Tensorboard.
+In this code snippet, we load the model, dataset and other possible configurations, the logdir defined is needed for associating a configuration to the right plot in Tensorboard.
 In this way we obtain the following folder structure using only 4 parameters:
 ```
 ├── lr=0.0002_batch_size=32_kernel_size=5_steps=100
@@ -80,8 +80,7 @@ In this way we obtain the following folder structure using only 4 parameters:
 ├── lr=0.0002_batch_size=32_kernel_size=7_steps=100
 ├── lr=0.0002_batch_size=16_kernel_size=7_steps=100
 ```
-This is not very comfortable and definitely it is not the right way to manage experiments and make them reproducible.
-
+Logging experiments in this way is not very comfortable, and it is not the right way to manage experiments and make them reproducible.
 
 ## Sacred Solution
 
@@ -124,7 +123,7 @@ To visualize and interact with your experiments a nice visualization board for t
 </div>
 *Figure 2 - Omniboard - Experiment details*
 
-Omniboard lets you tag, annotate and order your experiments making inspection and model selection easy.
+Omniboard lets you tag, annotate and order experiments making inspection and model selection easy.
 
 ## Sacred Integration
 
@@ -184,13 +183,14 @@ def main(batch_size, learning_rate, steps, ... params, _run):
                 saver.save(sess, logdir)
 ```
 
-In this way we create a new instance of `Experiment` and an instance of `MongoObserver` in order to store data to MongoDB. We add two different configurations, a default configuration (`default.json`) and an experiment configuration (`experiment.json`). The function decorated with `@ex.automain` is the main function of the experiment and its parameters are automatically injected by Sacred. The `LogFileWriter(ex)` decorator is used to store the location of summaries produced by Tensorflow (created by `tensorflow.summary.FileWriter`) into the experiment record specified by the ex argument. Whenever a new `FileWriter` instantiation is detected in a scope of the decorator or the context manager, the path of the log is copied to the experiment record exactly as passed to the `FileWriter`. The location(s) can be then found under `info["tensorflow"]["logdirs"]` of the experiment.
+In this way, we create a new instance of `Experiment` and an instance of `MongoObserver` to store data to MongoDB. We add two different configurations, a default configuration (`default.json`) and an experiment configuration (`experiment.json`). The function decorated with `@ex.automain` is the main function of the experiment and Sacred automatically injects its parameters. The `LogFileWriter(ex)` decorator is used to store the location of summaries produced by Tensorflow (created by `tensorflow.summary.FileWriter`) into the experiment record specified by the ex argument. Whenever a new `FileWriter` instantiation is detected in a scope of the decorator or the context manager, the path of the log is copied to the experiment record exactly as passed to the `FileWriter`. The location(s) can be then found under `info["tensorflow"]["logdirs"]` of the experiment.
 
 Using this approach the folder structure is clean (folders are named with a progressive id) and we detach the folder name from the actual experiment configuration.
 
 ## Conclusion
-Managing experiments in a correct way is very important, especially when doing research. Reproducibility is an essential requirement for computational studies including
-those based on machine learning techniques. Sacred is a very powerful tool, very easy to integrate in your codebase, saving you the effort of developing a custom way to keep track of your experiments.
+
+Managing experiments in a more efficient way is a crucial priority, especially when doing research. Reproducibility is an essential requirement for computational studies including
+those based on machine learning techniques. Sacred is a potent tool, straightforward to integrate into your codebase, saving you the effort of developing a custom way to keep track of your experiments.
 
 ## References
 
