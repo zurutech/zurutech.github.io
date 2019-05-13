@@ -1,7 +1,7 @@
 ---
 author: "fdimattia"
 layout: post
-did: "blog6"
+did: "blog3"
 title:  "Release Flow: a Git Workflow"
 slug: "Release Flow: a Git Workflow"
 date:   2019-01-25 8:00:00
