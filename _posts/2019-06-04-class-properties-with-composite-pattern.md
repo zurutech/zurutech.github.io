@@ -11,34 +11,11 @@ banner: mmischitelli/class-properties/banner.jpg
 tags: cad-bim
 description: "Class properties with the composite pattern"
 ---
-When you usually declare a C++ class, you'd hide its data members declaring them as private. Then you'd also create getters and setter for those members, thus promoting encapsulation. With the composite pattern, having those data members at the class level is not granted: the actual storage for some data might be inside a component due to increased efficiency or better scope isolation.
+When you usually declare a C++ class, you'd hide its data members declaring them as private. Then you'd also create getters and setter for those members, thus promoting encapsulation. Regardless of where the storage of these properties actually resides, we'd still like to refer them as something that characterizes our class. Something that can be updated, read or even *reverted* to the previous value if something goes wrong or the user presses CTRL+Z.
 
-Regardless of where the storage of these properties resides, we'd still like to refer them as something that characterizes our class. Something that can be updated, read or even *reverted* to the previous value if something goes wrong or the user presses CTRL+Z.
-
-Using the **composite** and **command** patterns we should be able to achieve our goals, producing thousands of lines of code sharing a similar structure as a byproduct.
-
-I'll first illustrate why those patterns are needed. Then I'll show you how much code those patterns produce. And finally will propose my solution, based upon variadic templates and preprocessor macros, that will cut down the total amount of lines of code for each property from **hundreds** to just **tens**.
-
-## Composite pattern
-
-Before jumping into the depths of templates and macros, let's first recap what the composite pattern is.
-
-Let's say we have a class representing a Car. You would declare all its data members as private properties in your header file and, since you need to access that data from the outside, you would also write *Getters* and *Setters* methods for each of them.
-
-Cars, however, are quite complex and might have hundreds or even thousands of parameters, depending on how accurate your representation needs to be. Having two methods for each property might result in a messy and hard to read class declaration. One possible solution is to group properties that span the same domain together in a struct. Unfortunately, grouping properties does nothing against the mess that still lives in the cpp file. The *business logic* that defines how each part behaves and connects to the rest of the car became integral in the definition of our car. Probably, part of this logic will be duplicated among similar vehicles that share the same *components*.
-
-You can avoid this kind of code duplication via inheritance and virtual methods: by doing this, you make sure that each class only defines its own very specific behaviour. The kind of complexity we're dealing with, however, will translate into a pretty long and articulated list of inherited interfaces (IEngineOwner, IPassengerCarrier, IFuelConsumptor, just to name a few..).
-
-The solution to all these problems usually lies in the **Composite Pattern**: different logic domains are placed in their own component class, transforming our Car class in a container of *components*. Components can be swapped at runtime, while the set of methods in the Car class never changes. In this way, we can continue interacting with it without having to worry about how the car behaves if we, for instance, swapped its combustion engine with an electric one!
-
-<div markdown="1" class="blog-image-container"  style="width:761px; display: block; margin-left: auto; margin-right: auto;">
-![Figure 1 - Composite pattern](/images/mmischitelli/class-properties/composite1.png "Figure 1 - Composite pattern"){:class="blog-image"}
-</div>
-
-For more information on why, when and how to use the composite pattern, [Game Programming Pattern](http://gameprogrammingpatterns.com/component.html) has a very comprehensive explanation.
+Using the **command** pattern we should be able to achieve our goal, producing thousands of lines of code sharing a similar structure as a byproduct. I'll first illustrate the pattern, then I'll show how much code those patterns produce. And finally will propose my solution, based upon variadic templates and preprocessor macros, that will cut down the total amount of lines of code for each property from **hundreds** to just **tens**.
 
 ## Command Pattern
-
 Most well-designed software and even games often use this pattern. It's basically a way for converting a method call into an object which can be parametrized, put in a queue, logged and makes it easy to implement undoable operations. It's an *an object-oriented replacement for callbacks* (cit. Gang of Four).
 
 The implementation we'll base our discussion on in the following chapters relies on two classes: the **CommandManager** and the **CommandInterface**. The CommandManager is used to *execute*, *undo* or *redo* operations wrapped inside objects that implement the CommandInterface.
