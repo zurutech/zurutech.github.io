@@ -2,18 +2,18 @@
 author: "mmischitelli"
 layout: post
 did: "mmischi1"
-title:  "Class properties with the composite pattern"
-slug:  Class properties with composite pattern
+title:  "Templated properties"
+slug:  Templated properties
 date:   2019-06-04 8:00:00
 categories: cpp-development
 img: mmischitelli/class-properties/banner.jpg
 banner: mmischitelli/class-properties/banner.jpg
-tags: cad-bim
-description: "Class properties with the composite pattern"
+tags: coding
+description: "Using variadic templates and macros to define class properties"
 ---
 When you usually declare a C++ class, you'd hide its data members declaring them as private. Then you'd also create getters and setter for those members, thus promoting encapsulation. Regardless of where the storage of these properties actually resides, we'd still like to refer them as something that characterizes our class. Something that can be updated, read or even *reverted* to the previous value if something goes wrong or the user presses CTRL+Z.
 
-Using the **command** pattern we should be able to achieve our goal, producing thousands of lines of code sharing a similar structure as a byproduct. I'll first illustrate the pattern, then I'll show how much code those patterns produce. And finally will propose my solution, based upon variadic templates and preprocessor macros, that will cut down the total amount of lines of code for each property from **hundreds** to just **tens**.
+Using the **Command pattern** we should be able to achieve our goal, producing thousands of lines of code sharing a similar structure as a byproduct. I'll first illustrate the pattern, then show how much code that pattern tends to produce. And finally, will propose my solution, based upon variadic templates and preprocessor macros, that will cut down the total amount of lines of code for each property from *hundreds* to just *tens*.
 
 ## Command Pattern
 Most well-designed software and even games often use this pattern. It's basically a way for converting a method call into an object which can be parametrized, put in a queue, logged and makes it easy to implement undoable operations. It's an *an object-oriented replacement for callbacks* (cit. Gang of Four).
@@ -80,14 +80,14 @@ namespace TableCommands
         }
     private:
         void Execute() override {
-            m_OldValue = table->GetSizeX();
-            table->SetSizeX(m_NewValue);
+            m_OldValue = m_TablePtr->GetSizeX();
+            m_TablePtr->SetSizeX(m_NewValue);
         }
         void Undo() override {
-            table->SetSizeX(m_OldValue);
+            m_TablePtr->SetSizeX(m_OldValue);
         }
         void Redo() override {
-            table->SetSizeX(m_NewValue);
+            m_TablePtr->SetSizeX(m_NewValue);
         }
     };
 }
@@ -159,7 +159,7 @@ public:
             return PropertyID(&TSizeXProperty::s_PropID); 
         } 
     private:
-        static const TCHAR s_PropID = 1;
+        static const char s_PropID = 1;
         PropertyID _GetPropertyID() const override { 
             return GetStaticPropertyID(); 
         }
@@ -180,7 +180,7 @@ private:
 
 void MyTable::TSizeXProperty::_Set(float value) { Owner->... }
 float MyTable::TSizeXProperty::_Get() const { return Owner->... }
-std::shared_ptr<ICommand> MyTable::TSizeXProperty::_Command(float value) const override {
+std::shared_ptr<ICommand> MyTable::TSizeXProperty::_Command(float value) const {
     return ...
 }
 ```
@@ -225,13 +225,13 @@ Fortunately, most of work's been already done! Let's now introduce the `IPropert
 ```cpp
 class IPropertyManager
 {
-    typedef std::map<PropertyID, void*> MapType
+    typedef std::map<PropertyID, void*> MapType;
     MapType m_Properties;
 public:
     template<typename PropertyType>
     PropertyType* GetProperty() const
     {
-        auto prop = m_Properties.find(PropertyType::GetStaticPropertyId());
+        auto prop = m_Properties.find(PropertyType::GetStaticPropertyID());
         if (prop != m_Properties.end()) {
             return static_cast<PropertyType*>(prop->second);
         }
@@ -239,7 +239,7 @@ public:
     }
 protected:
     template<typename ClassType>
-    void _InitProperty(TEntityProperty<ClassType>& prop)
+    void _InitProperty(TProperty<ClassType>& prop)
     {
         prop.Owner = static_cast<ClassType*>(this);
         m_Properties.insert(std::pair<PropertyID, void*>(prop.GetPropertyID(), &prop));
@@ -268,3 +268,8 @@ And we're able to interact with properties like this:
 tablePtr->GetProperty<MyTable::TSizeXProperty>()->Set(3.0f);
 const float kSizeY = tablePtr->GetProperty<MyTable::TSizeXProperty>()->Get();
 ```
+
+## Conclusion
+In this post we've seen how much boilerplate code we could end up writing when using the Command pattern. I've then introduced some classes and macros that can help declaring properties in a standardized and concise way, while also enabling us to query classes for some specific property.
+
+As we will see in the next blog post, this is prerequisite that will allow us to create commands in **just one line of code**, greatly reducing the amount of code needed for each one in our software.
