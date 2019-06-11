@@ -15,6 +15,11 @@ In the [previous post](/cpp-development/2019/06/04/templated-properties), we've 
 
 Using these properties and adopting the same concepts, we're going to introduce a generic [command](/cpp-development/2019/06/04/templated-properties#command-pattern) that will be used to automatically make write operations on properties *undoable*.
 
+## Revised SimpleProperty template
+In the previous article, we [introduced](cpp-development/2019/06/04/templated-properties#generic-properties) the `TSimpleProperty` template class deriving from `TProperty`. It is one of the most important building blocks for declaring properties the way we've seen.
+
+During the writing of this article, I was testing and improving my codebase for declaring automatic commands. In particular, I was playing with tuples and variadic properties when I stumbled upon the C++17 [`std::apply`](https://en.cppreference.com/w/cpp/utility/apply).
+
 ## PropertyCommand class
 
 Let's start by introducing the `PropertyCommand` class:
