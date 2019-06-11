@@ -16,13 +16,46 @@ In the [previous post](/cpp-development/2019/06/04/templated-properties), we've 
 Using these properties and adopting the same concepts, we're going to introduce a generic [command](/cpp-development/2019/06/04/templated-properties#command-pattern) that will be used to automatically make write operations on properties *undoable*.
 
 ## Revised SimpleProperty template
-In the previous article, we [introduced](cpp-development/2019/06/04/templated-properties#generic-properties) the `TSimpleProperty` template class deriving from `TProperty`. It is one of the most important building blocks for declaring properties the way we've seen.
+In the previous article, I've [introduced](/cpp-development/2019/06/04/templated-properties#generic-properties) the `TSimpleProperty` template class deriving from `TProperty`. It is one of the most important building blocks for declaring properties the way we've seen.
 
-During the writing of this article, I was testing and improving my codebase for declaring automatic commands. In particular, I was playing with tuples and variadic properties when I stumbled upon the C++17 [`std::apply`](https://en.cppreference.com/w/cpp/utility/apply).
+During the writing of this article, I was testing and improving my codebase for declaring automatic commands. In particular, I was playing with tuples and variadic properties when I stumbled upon the C++17 [`std::apply`](https://en.cppreference.com/w/cpp/utility/apply): it allows calling a *callable object* (in our case, a variadic method) with a tuple of arguments.
+
+This new possibility triggered my creativity and, after some researching and experimenting, made me reconsider the need of having `PropertyType` separated from `AdditionalTypes` in the `TSimpleProperty` templated class. The main reason I was doing this was due to being able to declare the return type in the getter method of any given property.
+
+However, with a little modification, we can get rid of this and put all the types together as variadic arguments in the `TSimpleType` declaration:
+
+```cpp
+template <typename T1, typename ...T>
+struct first { typedef T1 type; };
+
+template<typename OwnerType, typename... Values>
+struct TSimpleProperty : TProperty<OwnerType>
+{
+	typedef typename first<Values...>::type PropertyType;
+
+	void Set(Values... values) {
+		_Set(values...);
+	}
+	PropertyType Get() const { return _Get(); }
+	std::shared_ptr<ICommand> Command(Values... values) const {
+		return _Command(values...);
+	}
+
+private:
+	virtual void _Set(Values... values) = 0;
+	virtual PropertyType _Get() const = 0;
+	virtual std::shared_ptr<ICommand> _Command(Values... values) const = 0;
+	PropertyID _GetPropertyID() const override = 0;
+};
+```
+
+This simplification was made possible thanks to the *templated magic* contained in the `first` struct declared at the top of the above code.
+
+When we declare the `first` struct using the variadic arguments, they're split into the *first* and *all the others* types. The former is then put in the typedef declared in the struct so that we can later access it, when we *further* typedef it in our Property as being its main `PropertyType`. That's it! The need to divide the first type from the others no longer exists.
 
 ## PropertyCommand class
 
-Let's start by introducing the `PropertyCommand` class:
+Back to the topic of this article: automatic commands! Let's start by introducing the `PropertyCommand` class:
 
 ```cpp
 template<typename PropType, typename... Values>
@@ -66,4 +99,49 @@ private:
 		std::apply([&](Values... v) {entProperty->Set(v...); }, m_InputValues);
 	}
 };
+```
+
+As you can see, simplifying our properties also makes the above code almost trivial. The class' architecture is almost identical to the ad-hoc implementation we wrote in the previous post for `TableCommands::SetSizeX`. The most important differences are in the constructor, where we store the variadic arguments in a `std::tuple`, and in the `Execute`, `Undo`, `Redo` methods where we use `std::apply` to invoke the property's setter with the stored tuple of arguments.
+
+## Declaring Automatic Properties
+With the above template, along with the revised property structure, we have all that's needed to declare commands in **just one line of code** (as promised!):
+
+```cpp
+namespace TableCommands
+{
+    class SetSizeXCmd : public PropertyCommand<MyTable::TSizeXProperty,float> { };
+    class SetSizeYCmd : public PropertyCommand<MyTable::TSizeYProperty,float> { };
+}
+```
+
+## Conclusion
+Let's see how we can put all we've seen together in a very simple test program:
+
+```cpp
+int main()
+{
+	auto cmdMgr = std::make_shared<MyCommandManager>();
+	auto tablePtr = std::make_shared<MyTable>();
+	tablePtr->Init();
+
+	tablePtr->GetProperty<MyTable::TSizeXProperty>()->Set(10.0f);
+	std::cout << "[Start] SizeX: " << tablePtr->GetSizeX() << "\n";
+
+	cmdMgr->Execute(TableCommands::SetSizeXCmd::Create(tablePtr, 20.0f));
+	std::cout << "[Execute] SizeX: " << tablePtr->GetSizeX() << "\n";
+
+	cmdMgr->Undo();
+	std::cout << "[Undo] SizeX: " << tablePtr->GetSizeX() << "\n";
+
+	cmdMgr->Redo();
+	std::cout << "[Redo] SizeX: " << tablePtr->GetSizeX() << "\n";
+}
+```
+
+The output of this program:
+```
+[Start] SizeX: 10
+[Execute] SizeX: 20
+[Undo] SizeX: 10
+[Redo] SizeX: 20
 ```
