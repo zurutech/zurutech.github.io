@@ -53,55 +53,48 @@ This simplification was made possible thanks to the *templated magic* contained 
 
 When we declare the `first` struct using the variadic arguments, they're split into the *first* and *all the others* types. The former is then put in the typedef declared in the struct so that we can later access it, when we *further* typedef it in our Property as being its main `PropertyType`. That's it! The need to divide the first type from the others no longer exists.
 
+Please also note that the MACRO we used in the previous article to speed up the creation of properties should be updated to reflect these changes.
+
 ## PropertyCommand class
 
 Back to the topic of this article: automatic commands! Let's start by introducing the `PropertyCommand` class:
 
 ```cpp
-template<typename PropType, typename... Values>
+template<typename Property, typename... Values>
 class PropertyCommand : public ICommand
 {
 	typedef typename first<Values...>::type PropValue;
 
-	std::shared_ptr<IPropertyManager> m_Manager;
+	Property* m_Property;
 	std::tuple<Values...> m_InputValues;
-	PropValue m_NewValue, m_OldValue;
+	std::tuple<Values...> m_UndoValues;
 public:
-	PropertyCommand(std::shared_ptr<IPropertyManager> manager, Values... moreValues)
-		: m_Manager(manager)
-		, m_InputValues(moreValues...)
-		, m_NewValue(std::get<0>(m_InputValues))
-		, m_OldValue(PropValue())
-	{ }
-	static std::shared_ptr<ICommand> Create(std::shared_ptr<IPropertyManager> manager, Values... moreValues) {
-		return std::static_pointer_cast<ICommand>(std::make_shared<PropertyCommand>(manager, moreValues...));
+	PropertyCommand(std::shared_ptr<IPropertyManager> manager, Values... inputValues)
+		: m_InputValues(inputValues...)
+	{
+		m_Property = manager->GetProperty<Property>();
+		auto oldValue = m_Property->Get();
+
+		m_UndoValues = m_InputValues;
+		std::get<0>(m_UndoValues) = oldValue;
+	}
+	static std::shared_ptr<ICommand> Create(std::shared_ptr<IPropertyManager> manager, Values... inputValues) {
+		return std::static_pointer_cast<ICommand>(std::make_shared<PropertyCommand>(manager, inputValues...));
 	}
 private:
-	void Execute() override
-	{
-		auto entProperty = m_Manager->GetProperty<PropType>();
-		m_OldValue = entProperty->Get();
-		std::apply([&](Values... v) {entProperty->Set(v...); }, m_InputValues);
+	void Execute() override {
+		std::apply([&](Values... v) {m_Property->Set(v...); }, m_InputValues);
 	}
-
-	void Undo() override
-	{
-		std::tuple<Values...> undoValues = m_InputValues;
-		std::get<0>(undoValues) = m_OldValue;
-
-		auto entProperty = m_Manager->GetProperty<PropType>();
-		std::apply([&](Values... v) {entProperty->Set(v...); }, undoValues);
+	void Undo() override {
+		std::apply([&](Values... v) {m_Property->Set(v...); }, m_UndoValues);
 	}
-
-	void Redo() override
-	{
-		auto entProperty = m_Manager->GetProperty<PropType>();
-		std::apply([&](Values... v) {entProperty->Set(v...); }, m_InputValues);
+	void Redo() override {
+		std::apply([&](Values... v) {m_Property->Set(v...); }, m_InputValues);
 	}
 };
 ```
 
-As you can see, simplifying our properties also makes the above code almost trivial. The class' architecture is almost identical to the ad-hoc implementation we wrote in the previous post for `TableCommands::SetSizeX`. The most important differences are in the constructor, where we store the variadic arguments in a `std::tuple`, and in the `Execute`, `Undo`, `Redo` methods where we use `std::apply` to invoke the property's setter with the stored tuple of arguments.
+As you can see, simplifying our properties also makes the above code almost trivial. The class' architecture is almost identical to the ad-hoc implementation we wrote in the previous post for `TableCommands::SetSizeX`. The most important differences are in the constructor, where we store the variadic arguments in a `std::tuple`, read the current property's value and put it in another tuple that will be later used in the `Undo` method. Also the `Execute`, `Undo`, `Redo` methods have been hugely simplified thanks to `std::apply`, giving us the possibility of invoking the property's setter with a specific tuple of arguments.
 
 ## Declaring Automatic Properties
 With the above template, along with the revised property structure, we have all that's needed to declare commands in **just one line of code** (as promised!):
@@ -114,7 +107,7 @@ namespace TableCommands
 }
 ```
 
-## Conclusion
+## Testing
 Let's see how we can put all we've seen together in a very simple test program:
 
 ```cpp
@@ -136,12 +129,19 @@ int main()
 	cmdMgr->Redo();
 	std::cout << "[Redo] SizeX: " << tablePtr->GetSizeX() << "\n";
 }
-```
 
-The output of this program:
-```
+===========================
+Output:
+
 [Start] SizeX: 10
 [Execute] SizeX: 20
 [Undo] SizeX: 10
 [Redo] SizeX: 20
 ```
+
+In the minimal code above, we first create instances of our command manager and the `MyTable` test class. Then we set the table's X-size to `10` through its property (alternatively, we could have simply called `->SetSizeX()`) and print its value just to make sure everything works. Then we play a bit with the newly created `SetSizeXCmd` command, updating and reverting the table's X-size, printing it each time to track every change.
+
+## Conclusions
+In these two articles, I proposed a solid property system that can be used to normalise how developers can get or set values, revert updates and even query classes for some specific *property*.
+
+I decided to have more code in the declaration of properties instead of having even more code for commands. In my opinion, if your main use of commands is just to undo/redo values, then there is no need to have complexity in them and they should be as simple as they can be. This will prevent developers from putting custom logic in the command, hiding under the carpet the *dirt* of your codebase.
