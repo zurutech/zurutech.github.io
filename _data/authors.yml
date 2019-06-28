@@ -71,3 +71,10 @@ harsh:
     linkedin: "https://www.linkedin.com/in/harsh-makadia-03109b66/"
     image: "https://user-images.githubusercontent.com/13532530/52191208-8d5efb00-2869-11e9-91d5-b3a26d712541.JPG"
     bio: "Software developer, Dreamer, Travel Buff, Gadget Geek, Adventurer <br>FrontEnd Engineer @ Zuru Tech India"
+
+ml-lab:
+    name: ML &amp; CV Laboratory
+    uri: https://zuru.tech/
+    email: ml@zuru.tech
+    image: "/images/ml-pac.png"
+    bio: "Machine Learning &amp; Computer Vision team.<br>Machine learning solutions for every ZURU product."
