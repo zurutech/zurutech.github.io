@@ -6,16 +6,16 @@ title:  "Every Experiment is Sacred"
 slug:  Every Experiment is sacred
 date:   2019-02-12 8:00:00
 categories: machine-learning
-img: sacred3.jpg
-banner: sacred3.jpg
+img: sacred/sacred3.jpg
+banner: sacred/sacred3.jpg
 tags: machine-learning
 description: "How to manage Machine Learning experiments and make them reproducible."
 ---
-Managing Machine Learning experiments is usually painful.
 
 <div markdown="1" class="blog-image-container"  style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
-![Figure 1 - Experiments](/images/sacred3.jpg "Figure 1 - Experiments"){:class="blog-image"}
+<a href="/images/sacred/sacred3.jpg"><img class="blog-image" src="/images/sacred/sacred3.jpg"> </a>
 </div>
+Managing Machine Learning experiments is usually painful.
 
 The usual workflow when approaching a problem using Machine Learning tools is the following. You study the problem, define a possible solution, then you implement that solution and measure its quality. Often the solution depends on some parameters, and we refer to the set of parameters with the term **configuration**. Parameters can include model type, optimizers, learning rate, batch size, steps, losses, and many others.
 
@@ -114,14 +114,18 @@ Sacred dumps and saves **everything** into MongoDB including:
 To visualize and interact with your experiments a nice visualization board for this tool is [Omniboard](https://github.com/vivekratnavel/omniboard).
 
 <div markdown="1" class="blog-image-container">
-![Figure 1 - Omniboard](/images/omniboard4.png "Figure 1 - Omniboard"){:class="blog-image"}
+<figure>
+<a href="/images/sacred/omniboard4.png"><img class="blog-image" src="/images/sacred/omniboard4.png"> </a>
+<figcaption> Figure 1 - Omniboard </figcaption>
+</figure>
 </div>
-*Figure 1 - Omniboard*
 
 <div markdown="1" class="blog-image-container">
-![Figure 2 - Omniboard - Experiment details](/images/omniboard5.png "Figure 2 - Omniboard - Experiment details"){:class="blog-image"}
+<figure>
+<a href="/images/sacred/omniboard5.png"><img class="blog-image" src="/images/sacred/omniboard5.png"> </a>
+<figcaption> Figure 2 - Omniboard - Experiment details </figcaption>
+</figure>
 </div>
-*Figure 2 - Omniboard - Experiment details*
 
 Omniboard lets you tag, annotate and order experiments making inspection and model selection easy.
 
