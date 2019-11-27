@@ -30,6 +30,7 @@
       .home-logo {
         width: auto;
         height: 25px;
+        margin-bottom: 2px;
       }
     }
     .navbar-toggler {
@@ -167,8 +168,10 @@
   .quick-links {
     width: 100%;
     background-color: #0b2d9d;
-    padding-right: 220px;
-    padding-left: 220px;
+    // padding-right: 220px;
+    // padding-left: 220px;
+    padding-right: 205px;
+    padding-left: 205px;
     font-family: "HindMadurai";
 
     @media (max-width: 1366px) {
@@ -263,6 +266,7 @@
             font-size: 20px;
             color: #fff;
             margin: 0px;
+            padding-left: 1px;
 
             @media (max-width: 767px) {
               display: block;
@@ -362,6 +366,11 @@
 
               &.careers {
                 color: #fff;
+                padding-right: 5px;
+              }
+
+              &.privacy-policy{
+                padding-right: 5px;
               }
 
               &:hover {
