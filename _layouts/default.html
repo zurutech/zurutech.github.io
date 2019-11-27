@@ -26,6 +26,17 @@ layout: compress
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
     <script type="text/javascript">
+        function toggleFunction() {
+            var element = document.getElementById('navbarTogglerDemo03');
+            if(element.classList.contains('show')){
+                element.classList.remove('show');
+            }
+            else{
+                element.classList.add('show');
+            }
+        }
+    </script>
+    <script type="text/javascript">
         var minSliderValue = 0;
         var maxSliderValue = 0;
         var allPosts = [];
