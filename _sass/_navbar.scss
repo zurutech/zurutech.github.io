@@ -4,19 +4,19 @@
   background: rgba(241, 241, 241, 0.7);
   .navbar {
     min-height: 65px;
-    padding-right: 220px !important;
-    padding-left: 220px !important;
+    padding-right: 220px;
+    padding-left: 220px;
     @media (max-width: 1366px) {
       padding-right: 100px !important;
       padding-left: 100px !important;
     }
-    @media (max-width: 992px) {
+    @media (max-width: 992px){
       padding-right: 60px !important;
       padding-left: 60px !important;
     }
     @media (max-width: 767px) {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-right: 20px !important;
+      padding-left: 20px !important;
     }
     @media (min-width: 1921px) {
       padding-right: 510px;
@@ -27,10 +27,17 @@
       padding: 0px;
       left: 0px;
       margin-left: 0px;
+      justify-content: left;
       .home-logo {
         width: auto;
         height: 25px;
-        margin-bottom: 2px;
+      }
+      @media (max-width: 1023px) and (min-width:768px){
+        margin-left: -18px;
+        margin-bottom: 8px;
+      }
+      @media (max-width: 767px) {
+        justify-content: left;
       }
     }
     .navbar-toggler {
@@ -67,7 +74,7 @@
 
             &.careers-menu {
               border-right: 1px solid #000000;
-              @media (max-width: 768px) {
+              @media (max-width: 767px) {
                 border-right: 1px solid #cccccc;
               }
             }
@@ -89,6 +96,7 @@
             backdrop-filter: blur(10px);
             // background: rgba(241, 241, 241, 0.7);
             transition: height 0.35s ease;
+            padding: 0px;
           }
 
           .nav-item {
@@ -107,9 +115,13 @@
       &.navbar-collapse {
         opacity: 1;
         background-color: transparent;
-        @media (max-width: 991px) and (min-width: 768px) {
+        @media (max-width: 991px) and (min-width: 769px) {
           height: auto !important;
-          top: auto !important;
+          top: 0px !important;
+        }
+        @media (max-width: 768px) and (min-width: 768px) {
+          height: 36px !important;
+          top: 0px;
         }
         @media (max-width: 767px) {
           height: auto !important;
@@ -175,18 +187,18 @@
     font-family: "HindMadurai";
 
     @media (max-width: 1366px) {
-      padding-right: 100px;
-      padding-left: 100px;
+      padding-right: 85px;
+      padding-left: 85px;
     }
 
     @media (max-width: 992px) {
-      padding-right: 60px;
-      padding-left: 60px;
+      padding-right: 45px;
+      padding-left: 45px;
     }
 
     @media (min-width: 1921px) {
-      padding-right: 510px;
-      padding-left: 510px;
+      padding-right: 495px !important;
+      padding-left: 495px !important;
     }
 
     @media (max-width: 991px) {
@@ -202,8 +214,8 @@
     }
 
     @media (max-width: 767px) {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-right: 5px;
+      padding-left: 5px;
       &:after {
         top: 47%;
         left: 0px;
@@ -351,7 +363,7 @@
 
               @media (max-width: 767px) {
                 display: inline-block;
-                font-size: 15px;
+                font-size: 16px;
                 color: #fff;
                 width: 100%;
                 text-align: left;
