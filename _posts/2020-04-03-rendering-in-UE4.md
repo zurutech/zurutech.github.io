@@ -6,9 +6,9 @@ title: "Rendering in Unreal Engine 4"
 slug: "RenderingInUE4"
 date: 2020-04-06 08:00:00
 categories: rendering
-img: GPU_profiler.png
-banner: GPU_profiler.png
-tags: rendering
+img: /banners/GPU_profiler.png
+banner: /banners/GPU_profiler.png
+tags: graphics
 description: "A really quick overview of the rendering pipeline in Unreal Engine 4."
 ---
 
@@ -16,7 +16,7 @@ Unreal Engine 4 has a lot of code for doing rendering: it exists in its own modu
 
 The *RHI* module is the other key module for graphics programming as it is the interface for rendering APIs. Here is where the magic happens to allow the abstract rendering code to work on different platforms using different APIs.
 
-The renderer code runs in a separate thread, the *Rendering Thread*. It operates in parallel with the game thread and it's usually one or two frames behind it. It serves to enqueue platform-agnostic render commands into the renderer's command list through the ENQUEUE_RENDER_COMMAND macro. To make sure your code is called by the right thread, you can add checks such as `check(IsInGameThread())` or `check(IsInRenderingThread())` for improving code stability.
+The renderer code runs in a separate thread, the *Rendering Thread*. It operates in parallel with the game thread and it's usually one or two frames behind it. It serves to enqueue platform-agnostic render commands into the renderer's command list through the `ENQUEUE_RENDER_COMMAND` macro. To make sure your code is called by the right thread, you can add checks such as `check(IsInGameThread())` or `check(IsInRenderingThread())` for improving code stability.
 
 Finally, a new thread, the *RHI Thread*, executes these commands via the appropriate graphics API on the backend.
 
