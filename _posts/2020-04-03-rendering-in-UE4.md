@@ -16,6 +16,23 @@ description: "An overview of the real time rendering pipeline in Unreal Engine 4
 
 In this article, I would like to write down a brief description of the rendering process in Unreal Engine 4 and analyze how the engine approaches the main elements of real time rendering.
 
+**Table of Contents**:
+
+1. [Rendering code](#rendering-code)
+2. [Rendering Flow](#rendering-flow)
+3. [Rendering Elements](#rendering-elements)
+    - [Textures](#textures)
+    - [Pipeline Stages and Shaders](#pipeline-stages-and-shaders)
+    - [Materials](#materials)
+    - [Reflections](#reflections)
+    - [Lighting](#lighting)
+    - [Transparency](#transparency)
+    - [Post Processing](#post-processing)
+
+<br>
+<hr>
+<br>
+
 ## Rendering code
 
 The code for rendering exists in the *Renderer* module, which is compiled to a shared library (e.g. *.dll* on Windows) to allow faster iteration. The *Renderer* module depends on the *Engine* module because it has many callbacks into it. However, when the *Engine* needs to call some code in the *Renderer*, this happens through the *IRendererModule* interface.
@@ -30,7 +47,11 @@ Finally, a new thread, the *RHI Thread*, executes these commands via the appropr
 
 To know more about this, check the Unreal documentation: [Parallel Rendering](https://docs.unrealengine.com/en-US/Programming/Rendering/ParallelRendering/index.html).
 
-## Rendering Flow
+<br>
+<hr>
+<br>
+
+## Rendering flow
 
 As briefly described above, Unreal uses three main threads to renders a frame.
 
@@ -51,13 +72,13 @@ To debug these occlusion steps, you can use `stat initviews` that gives you the 
 
 Now that the engine knows what objects needs to be rendered and where they are, it remains to know in what order the renderer need to render those: this is done as first step in the next section.
 
-**Render thread (CPU - GPU)**: the geometry rendering starts. Unreal have both *forward* and *deferred* rendering paths.
+**Render thread (GPU)**: the geometry rendering starts. Unreal have both *forward* and *deferred* rendering paths.
 
-The default one is the *deferred rendering*: the rendering pipeline is divided in *passes*, and the lighting calculation is postponed once all the objects are rendered into the *GBuffer*. Every render pass defines a different part of the renderer. For example, the *base pass* renders the material properties into different buffers, that can be reused later on within the ligth pass, that calculates the ligthing of the scene. Basically, all passes are finally composed together to achieve the final result.
+The default one is the *deferred rendering*: the rendering pipeline is divided in *passes*, and the lighting calculation is postponed once all the objects are rendered into the *GBuffer*. Every render pass defines a different part of the renderer. For example, the *base pass* renders the material properties into different buffers, that can be reused later on within the ligth pass, that calculates the ligthing of the scene. Finally, all passes are composed together to achieve the final result.
 
-*Forward rendering*, instead, it does everything in the same pass, except for post processes that are added at the end. This is simpler for handling transparency and it's usually faster for simple scene that does not require a lot of dynamic lighting.
+*Forward rendering*, instead, it does everything in the same pass, except for post processes that are added at the end. This is simpler for handling transparency and it's usually faster for simple scenes that does not require a lot of dynamic lights.
 
-*Forward* vs *deferred* is a big topic, and both have pros and cons that are outside the scope of this post. All you need to know is that Unreal uses deferred rendering as default, but you may need forward rendering when dealing with VR applications, especially on mobile.
+*Forward* vs *deferred* is a big topic, and both have pros and cons that are outside the scope of this post. All you need to know is that Unreal uses deferred rendering as default, but you may prefer forward rendering when dealing with VR applications, especially on mobile.
 
 The renders starts with a prepass for depth calculation: the *Prepass/Early Z Pass* is done on the GPU  that figures out which models will be displayed where. It consists of a pass of z-depth, to avoid pixel overdraw.
 
@@ -69,7 +90,14 @@ With `stat RHI` you can check the number of drawcalls that are called from the r
 
 Another very useful - and I would say *essential* - tool is [RenderDoc](https://renderdoc.org/): it's a free standalone graphics debugger that allows quick and easy single-frame capture of a single frame to make a detailed inspection of all the calls the application does. It works with every render API. Unreal has a plugin for it, see more [here](https://docs.unrealengine.com/en-US/Engine/Performance/RenderDoc/index.html).
 
-This is a very big topic, so for drawcalls I would finish here.
+Here is a screenshot of a capture of a simple scene in Unreal:
+
+<a href="/images/graphics/FrameInRenderDoc.png"><img class="blog-image" src="/images/graphics/FrameInRenderDoc.png"> </a>
+
+On the left, you can see the *Event browser* that lists all the graphics API commands. In the *Scene* section there are the render passes, and if you expand a pass you'll find the list of draw calls for that step. On the right, there are the outputs of the selected pass: you can see the depth, and some of the GBuffer buffers filled in.
+As you can see on the left of the window, Unreal does a lot of passes for a frame. Even if you have 5 objects in the scene (the floor, the sky, and the three framed elements) the engine fires a lot of draw calls for all the other different passes.
+
+This is a very big topic, so for drawcalls I would finish here. I highly suggest to use *RenderDoc* to see how a frame is composed.
 
 The thing to pay attention is that in real-time rendering objects are rendered one by one, and for the Unreal Engine renderer an object is a primitive component, not an actor. This means that when you have a blueprint with 5 static mesh components in it with a single material each, that will results in 5 draw calls (at least, it's actually 5 drawcalls for every pass the object is rendered into). Plus, if you have a single static mesh component with two materials assigned, then you'll have 2 drawcalls, one per material.
 
@@ -77,9 +105,15 @@ From version 4.22, Unreal developed an automatic draw call merging system, but t
 
 This is just an overview of the Unreal render process: to see more in details effectively how the engine renders a frame, you can check this article: [How Unreal renders a frame](https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame/).
 
+<br>
+<hr>
+<br>
+
 ## Rendering Elements
 
 Let's see the main rendering elements that are important in real time rendering and how Unreal Engine deals with these.
+
+<br>
 
 ### Textures
 
@@ -93,6 +127,8 @@ For every texture, the engine automatically creates **mipmaps (or MIP maps)**. "
 These maps are generated by creating a smaller image with height and width a power of two smaller than the original one: every level is a quarter smaller in size and represent a mipmap level. To do this efficiently, textures should be power of two (1024x1024, 512x512, 256x256 and so on). Please note that is not necessary that the image is squared, it could be rectangular as well: the important thing is that the sizes must be a power of two (for instance, a texture could be 256x1024, and that's still good for mipmaps generation). Here you can see these details in Unreal:
 
 <a href="/images/graphics/texture_mipmaps.png"><img class="blog-image" style="width: 75%" src="/images/graphics/texture_mipmaps.png"> </a>
+
+<br>
 
 ### Pipeline Stages and Shaders
 
@@ -117,6 +153,8 @@ The pixel shader runs all sort of calculations that we need to do for the final 
 
 More on this in the *Materials* section.
 
+<br>
+
 ### Materials
 
 Unreal Engine material system relies on *physically based shading*. It means that the lighting and shading algorithms used in the engine approximate the physical interaction between light and materials.
@@ -133,6 +171,8 @@ In the material editor, you can see how many samplers you're using by looking at
 
 A complex material is more expensive the more pixels it covers on the screen. This can be seen looking at the shader complexity visualization in the engine.
 The complexity is measured in shader instructions: normally should be around 100/200, not lower than 60 usually. Generally, few hundred is fine, but close to thousands it can be a problem.
+
+<br>
 
 ### Reflections
 
@@ -162,6 +202,8 @@ Because all of pros and cons of every system, you should combine them for the be
 Performance implications: having many reflection capures may slowdown the level loading time. Try to not overlap reflection captures because otherwise the pixel shader will end up doing a lot of sampling from different cubemaps and it has to combine them as well, so it will cost performances. Generally, planar reflections should be avoided. For projects that needs to run on limited hardware, try to avoid SSR, otherwise you can push it on desktop or high level targets in favor of the other systems.
 
 Unreal does have also the *skylight* actor that provide a backup if you need to place a lot of reflection captures in your scene. It will capture a cubemap for the entire world within the sky distance threshold. If there is an object in the scene that is not affected by any kind of reflection system, it will backup on the skylight.
+
+<br>
 
 ### Lighting
 
@@ -210,6 +252,8 @@ The polycount of objects matter for dynamic shadows, because of the shadowmaps: 
 Finally, as usual, best results are achieved with a mix of static and dynamic lighting. Use static for distant lights and spots where you need precise indirect lighting and your light is not mean to change.
 Use dynamic lights when you really need the light to change at runtime; use it for interactive and animated objects that needs to be shadowed and are closer to the camera. Always try to fake and tweak lighting with static lights to have better performances.
 
+<br>
+
 ### Transparency
 
 Transparency is one of the biggest performance killer of real time renderer.
@@ -220,6 +264,8 @@ Other than the pixel shader cost (that needs to run more now on top of the alrea
 
 The easiest and fastest mode of transprency is the *masked* mode: in this case, an object is either fully visible or not visible at all, so it's very easy for the renderer to decide which pixel covers what object. If you need transparency values to be between 0 and 1, try at least to use the unlit shading, to avoid to repeat all the lighting calculations for transparent objects only.
 Generally, you should reduce the shader instruction count for translucent objects as much as you can.
+
+<br>
 
 ### Post Processing
 
