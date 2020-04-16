@@ -68,7 +68,7 @@ The render of a frame starts in the main game thread:
 3. *Precomputed Visibility* - Divides the scene into a grid of cells and every cell stores what it could be visible from that position
 4. *Occlusion Culling* - Check the visibility state of every object, if it's occluded by another one at that moment
 
-To debug these occlusion steps, you can use `stat initviews` that gives you the expense and the counts of occluded objects of this render step.
+To debug these occlusion steps, you can type `stat InitViews` in the console command to see the expense and the counts of occluded objects of this render step. To open up the console command, the default key is the *backtick* **`**, or you have it at the bottom of the *Output Log* as well (*Windows->Developer Tools->Output Log*).
 
 Now that the engine knows what objects needs to be rendered and where they are, it remains to know in what order the renderer need to render those: this is done as first step in the next section.
 
@@ -80,13 +80,13 @@ The default one is the *deferred rendering*: the rendering pipeline is divided i
 
 *Forward* vs *deferred* is a big topic, and both have pros and cons that are outside the scope of this post. All you need to know is that Unreal uses deferred rendering as default, but you may prefer forward rendering when dealing with VR applications, especially on mobile.
 
-The renders starts with a prepass for depth calculation: the *Prepass/Early Z Pass* is done on the GPU  that figures out which models will be displayed where. It consists of a pass of z-depth, to avoid pixel overdraw.
+The renders starts with a prepass for depth calculation: the *Prepass/Early Z Pass* is done on the GPU  that figures out which models will be displayed where. It consists of a pass of *z-depth*: when an object is projected on the screen, the depth (z-value) of a generated pixel is stored in a buffer (the z-buffer or depth buffer) representing its distance from the camera. This is needed to understand which object is on top of others and it could be useful to avoid to overdraw some pixels later in the pipeline.
 
 Then, GPU starts to render object by object, firing a *draw call*. This consist of a group of polygons that shares the same properties. Between every drawcall, the render state could change (meaning that the render needs to set the different properties for the actual draw call). Behind the scene, Unreal sorts the drawcalls to optimize the number of state changes. The fewer changes the engine needs to do, the better are the performances. Usually, this optimization consist in grouping drawcalls by materials, and the engine does this automatically.
 
 Drawcalls have a huge impact on performance: every time the render is done executing the commands, it needs to receive the new commands for the next call from the render thread and this adds a significant overhead.
 
-With `stat RHI` you can check the number of drawcalls that are called from the renderer. Broadly (because it depends on a lot of different variables) a reasonable number is 2000/3000 for a desktop application. 5000 is still acceptable for good hardware; over 10000 it's probably a problem. On mobile, a good number is far lower, about a few hundred.
+Typing `stat RHI` in the console command you can check the number of drawcalls that are called from the renderer. Broadly (because it depends on a lot of different variables) a reasonable number is 2000/3000 for a desktop application. 5000 is still acceptable for good hardware; over 10000 it's probably a problem. On mobile, a good number is far lower, about a few hundred.
 
 Another very useful - and I would say *essential* - tool is [RenderDoc](https://renderdoc.org/): it's a free standalone graphics debugger that allows quick and easy single-frame capture of a single frame to make a detailed inspection of all the calls the application does. It works with every render API. Unreal has a plugin for it, see more [here](https://docs.unrealengine.com/en-US/Engine/Performance/RenderDoc/index.html).
 
@@ -99,7 +99,7 @@ As you can see on the left of the window, Unreal does a lot of passes for a fram
 
 This is a very big topic, so for drawcalls I would finish here. I highly suggest to use *RenderDoc* to see how a frame is composed.
 
-The thing to pay attention is that in real-time rendering objects are rendered one by one, and for the Unreal Engine renderer an object is a primitive component, not an actor. This means that when you have a blueprint with 5 static mesh components in it with a single material each, that will results in 5 draw calls (at least, it's actually 5 drawcalls for every pass the object is rendered into). Plus, if you have a single static mesh component with two materials assigned, then you'll have 2 drawcalls, one per material.
+Bear in mind that Unreal Engine renders one primitive component at a time: the render unit is not an actor, but a primitive component. This means that when you have an actor blueprint with 5 static mesh components in it with a single material each, that will results in 5 draw calls (at least, it's actually 5 drawcalls for every pass the primitive is rendered into). Plus, if you assign multiple materials to the single primitive component, you'll end up having a draw call per each material.
 
 From version 4.22, Unreal developed an automatic draw call merging system, but this works with some limitations (more [here](https://dq8iqaixvew1d.cloudfront.net/en-US/Programming/Rendering/MeshDrawingPipeline/index.html)).
 
@@ -143,7 +143,7 @@ Shaders in Unreal are written in HLSL (Hig Level Shading Language): they are sto
 
 The most important and most used shaders in real time rendering are the **Vertex Shader** and the **Pixel Shader**.
 
-As you can see in the image above, the first shader is the *vertex shader*: is the program that runs every vertex (of the object that is being rendered) coming from the input assembler (the first stage of the pipeline: *IA* in the image). In the simplest case, it calculates the transformations of the vertices from the object space to the world space. It can gets more complicated as it can offset and move vertices depending on cloths simulation or winds parameters, for example. Performance wise, the more vertices your polygon has, the more expensive this stage is.
+As you can see in the image above, the first shader is the *vertex shader*: is the program that runs every vertex (of the object that is being rendered) coming from the input assembler (the first stage of the pipeline: *IA* in the image). In the simplest case, it calculates the transformations of the vertices from the object space to the world space. It can gets more complicated as it can offset and move vertices depending on clothes simulation or winds parameters, for example. Performance wise, the more vertices your polygon has, the more expensive this stage is.
 
 *Hull*, *Domain* and *Geometry* shaders (respectively *HS*, *DS* and *GS* in the image) are less common, I'll skip these for this post.
 
@@ -169,8 +169,14 @@ A material/shader has a max number of textures up to 16, which only 13 can be us
 
 In the material editor, you can see how many samplers you're using by looking at the stats tab at the bottom.
 
-A complex material is more expensive the more pixels it covers on the screen. This can be seen looking at the shader complexity visualization in the engine.
-The complexity is measured in shader instructions: normally should be around 100/200, not lower than 60 usually. Generally, few hundred is fine, but close to thousands it can be a problem.
+A material is more expensive the more pixels it covers on the screen. This can be seen looking at the *Shader Complexity* visualization in the engine.
+<a href="/images/graphics/shader_complexity.png"><img class="blog-image" style="width: 70%" src="/images/graphics/shader_complexity.png"> </a>
+
+The complexity is measured in shader instructions: normally should be around 100/200; generally few hundred is fine, and close to thousands it can be a problem.
+For instance, look at the images below; the material looks simple but contains three noise nodes that are expensive, resulting in 468 instructions: now look how it is shown in complexity view mode.
+
+<a href="/images/graphics/shader_complexity_material.png"><img class="blog-image" src="/images/graphics/shader_complexity_material.png"> </a>
+<a href="/images/graphics/shader_complexity_frame.png"><img class="blog-image" src="/images/graphics/shader_complexity_frame.png"> </a>
 
 <br>
 
@@ -182,24 +188,24 @@ In Unreal Engine, there are three different systems for doing real time reflecti
 
 The three systems are:
 
-1. Reflection Captures
+1. *Reflection Captures*
 
     It's an actor that works capturing a static cubemap at its location. As a solution is pretty fast but the visual result is good only if you are in the same position of the reflection capture. The moment you move away from it, the camera won't match the position and the reflections starts to look odd. Usually you don't see that because of the combinations of the other systems (explained later on). Performance wise is the best you can do, since is precalculated, and you can set the size of the cubemap that will be generated. Plus, it only works within the range of the reflection actor: all the object inside that range will sample from the cubemap. Otherwise, objects that are outside the actor range will not receive any reflection.
     Pros: precalculated and so very fast
     Cons: inaccurate, local within the range of the actor
 
-2. Planar Reflections
+2. *Planar Reflections*
 
     These are not very common, fairly never used. They are similar to the reflection captures, but they capture from a plane and they could be real time. Because of this, planar reflections can be heavy, but are good for flat surfaces on a limited area (good for a mirror, bad for an ocean surface). For this system there's the planar reflection actor that you can set to realtime enabling the `capture every frame` option.
 
-3. Screen Space Reflections (SSR)
+3. *Screen Space Reflections (SSR)*
 
     This is the default system. It's a screen space effect and it's precision does not depend on the camera position. It's a real time effect that only shows reflection of what is visible in the scene. As it is a screen space effect, it affects the entire world, it doesn't have a range.
     Problems are: it does have a cost and it's noisy. Plus, it won't reflect stuff that is not on screen (so if something is culled, it won't be reflected, but most of the time you want have it reflected).
 
 Because all of pros and cons of every system, you should combine them for the better results. To debug the reflections in your scene, you can switch to the reflection visualization in the view mode options in the Unreal editor.
 
-Performance implications: having many reflection capures may slowdown the level loading time. Try to not overlap reflection captures because otherwise the pixel shader will end up doing a lot of sampling from different cubemaps and it has to combine them as well, so it will cost performances. Generally, planar reflections should be avoided. For projects that needs to run on limited hardware, try to avoid SSR, otherwise you can push it on desktop or high level targets in favor of the other systems.
+Performance implications: having many reflection captures may slowdown the level loading time. Try to not overlap reflection captures because otherwise the pixel shader will end up doing a lot of sampling from different cubemaps and it has to combine them as well, so it will cost performances. Generally, planar reflections should be avoided. For projects that needs to run on limited hardware, try to avoid SSR, otherwise you can push it on desktop or high level targets in favor of the other systems.
 
 Unreal does have also the *skylight* actor that provide a backup if you need to place a lot of reflection captures in your scene. It will capture a cubemap for the entire world within the sky distance threshold. If there is an object in the scene that is not affected by any kind of reflection system, it will backup on the skylight.
 
@@ -214,10 +220,17 @@ Unreal Engine allows you to have three types of lights:
 
 #### Static Lighting
 
-It's precalculated and stores information onto lightmaps. This is fast (it costs almost 0 at runtime) but increases the application memory. It takes long time to precalculate and it has to be redone every time something changes. Take in consideration that you need a special uv unwrap to use lightmaps: every model needs to have lightmap uvs (the main rules to follow for a lightmap uv is that uvs need to be between 0 and 1 and no overlap in any way). Luckily, Unreal Engine can generate automatically these lightmap UVs, you can see this in the detail panel of the static mesh.
+It's precalculated and stores information onto lightmaps. This is fast (it costs almost 0 at runtime) but increases the application memory. It takes long time to precalculate and it has to be redone every time something changes.
+
+Take in consideration that you need a special uv map (i.e. the process that permits any 3D polygon to have textures projected onto it - if you are unfamiliar with UV mapping, see more [here](https://docs.unrealengine.com/en-US/Engine/Content/Types/StaticMeshes/HowTo/UVChannels/index.html)) to use lightmaps: every model needs to have dedicated lightmap uvs that needs be between 0 and 1 and they shouldn't have any overlap between them. Luckily, Unreal Engine can generate automatically these lightmap UVs, you can see this in the detail panel of the static mesh editor:
+
+<a href="/images/graphics/generate_lightmaps_uv.png"><img class="blog-image" src="/images/graphics/generate_lightmaps_uv.png"> </a>
+
 Due to the fact that is precalculated (so it is offline, not runtime), static lighting handles radiosity and global illumination, giving a great quality result. The quality depends mostly on the uv and the size of the lightmap (the maximum size of a texture is 8k, so consider this for when you have a big object).
-Static lighting is generated using the *lightmass*, that is a standalone application that handles the rendering and the shadow baking. It supports distributed rendering on network and requires a *lightmass importance volume* placed in the scene, where you can tweak the settings in the lightmass section. Anything within the volume will get higher quality lighting calculation. So you should place one or even multiples boxes where it's important to have more quality. During this process, an **ILC (indirect lighting cache)** is built with the lighting informations. This is used for dynamic objects that needs to receive static lighting. The dynamic model will sample from the ILC cache, that is a volume full of samples with the indirect lighting value at that point in space.
-All the ligthmaps are packed in atlasses: you can control these and change parameters by the build lighting option and the quality settings in the lightmass (in the world settings).
+Static lighting is generated using the *lightmass*, that is a standalone application that handles the rendering and the shadow baking. It supports distributed rendering on network and requires a *lightmass importance volume* placed in the scene, where you can tweak the settings in the lightmass section. Anything within the volume will get higher quality lighting calculation. So you should place one or even multiples boxes where it's important to have more quality. During this process, an **ILC (indirect lighting cache)** is built with the lighting informations. This is used for dynamic objects that needs to receive static lighting. The dynamic models will sample from the ILC cache, that is a volume full of samples with the indirect lighting value at that point in space.
+All the ligthmaps are packed in atlases: you can control these and change parameters by the build lighting option and the quality settings in the lightmass (in the world settings).
+
+<a href="/images/graphics/lightmass_world_settings.png"><img class="blog-image" src="/images/graphics/lightmass_world_settings.png"> </a>
 
 Performance implications:
 1 or 50000 static lights in the scene doesn't matter. It performs the same at runtime since they are precalculted, but it heavily affects memory and filesize. The more resolution you have for lightmaps, the more it takes to bake.
@@ -247,7 +260,9 @@ Performance wise, try to not overlap dynamic lights, otherwise some pixel could 
 Shadow maps are really heavy in general, since the renderer has to render the scene depth for the point of view of the light into a cubemap - for every light.
 
 Performance implications: dynamic lights are more expensive in forward rendering than in deferred rendering due to the nature of the two different paths. The more pixels the lights covers in the screen, the more it costs: the radius needs to be as small as possible and you need to avoid overlaps bewteen ligth actors. The most expensive things are shadows: in a very easy way, turn off shadows if you don't need it to gain performance.
-The polycount of objects matter for dynamic shadows, because of the shadowmaps: use DF or CSM, or adjust properly the `max draw distance` settings to every ligths, so that it can culled to avoid useless calculations.
+The polycount of objects matter for dynamic shadows, because of the shadowmaps: use *DF* or *CSM*, or adjust properly the `max draw distance` settings to every ligths, so that it can culled to avoid useless calculations.
+
+<a href="/images/graphics/maxdrawdistance_light_settings.png"><img class="blog-image" src="/images/graphics/maxdrawdistance_light_settings.png"> </a>
 
 Finally, as usual, best results are achieved with a mix of static and dynamic lighting. Use static for distant lights and spots where you need precise indirect lighting and your light is not mean to change.
 Use dynamic lights when you really need the light to change at runtime; use it for interactive and animated objects that needs to be shadowed and are closer to the camera. Always try to fake and tweak lighting with static lights to have better performances.
@@ -259,10 +274,14 @@ Use dynamic lights when you really need the light to change at runtime; use it f
 Transparency is one of the biggest performance killer of real time renderer.
 
 Deferred rendering has difficulties with transparency, since transparent objects are delayed at the end of the pipeline stages but even at that point the GBuffer doesn't have enough information to render trasnlucency object properly.
-Usually, transparency is rendered in forward rendering and then composed on top of the rest. Check the lighting mode in the transparency section in the material editor: these modes are the options that Unreal gives us to render transparent objects.
+Usually, transparency is rendered in forward rendering and then composed on top of the rest. Check the *lighting mode* in the translucency section in the material editor: these modes are the options that Unreal gives us to render transparent objects.
+
+<a href="/images/graphics/translucent_lighting_modes.png"><img class="blog-image" src="/images/graphics/translucent_lighting_modes.png"> </a>
+
 Other than the pixel shader cost (that needs to run more now on top of the already rendered scene) there is also the problem of the render object order.
 
 The easiest and fastest mode of transprency is the *masked* mode: in this case, an object is either fully visible or not visible at all, so it's very easy for the renderer to decide which pixel covers what object. If you need transparency values to be between 0 and 1, try at least to use the unlit shading, to avoid to repeat all the lighting calculations for transparent objects only.
+
 Generally, you should reduce the shader instruction count for translucent objects as much as you can.
 
 <br>
@@ -273,6 +292,12 @@ Post process is a term that is most of the time used to represent a screen pass 
 Basically, it's called post process a render pass that run after the main pass, where usually the whole scene is already rendered. In *forward rendering* this concept is better defined, since the scene is rendered at once with all the lights calculations and shadows and transparency done in the same render pass.
 In *deferred rendering*, there are a lot of render passes, so saying post process means a little bit less. So in general, a post process is better defined as a screen pass shader that is applied at the end of the rendering pipeline to the whole frame. It's basically a pixel shader that runs for every pixel of the final image, not object related.
 
-Unreal has a lot of post processes, the more used are: bloom, depth of field, lens flares, vignette, tonemapping, motion blur, exposure, and a lot more.
+Unreal has a lot of post processes, the more used are: *bloom*, *depth of field*, *lens flares*, *vignette*, *tonemapping*, *motion blur*, *exposure*, and a lot more.
+To see all of them, drag in your scene a *post process volume*: in the details panel, you can enable/disable and edit all the available effects.
+Here is an image showing some of them, as you can see you have a lot of effects here:
 
-You can create a post process in the engine the same way you create a material, because it's *simply* a pixel shader in both cases. Obviously, when selecting the shader type to *post process*, you get access to different parameters compared to a shader for a material, since it will run at the end of the rendering pipeline. You'll have access to the GBuffer textures, as well as per scene informations, but you cannot access to any of the geometry parameters, since all of the objects are already rendered in the previous passes.
+<a href="/images/graphics/post_process_volume_settings.png"><img class="blog-image" src="/images/graphics/post_process_volume_settings.png"> </a>
+
+These effects can be applied on the entire scene if you select the *Infinite Extent (Unbound)* option in that panel, otherwise they will be applied only when the camera is inside the volume.
+
+However, you can create your own post process material the same way you create a material, selecting the shader type to *post process* in the material editor. In fact, a post process effect is *simply* a pixel shader applied to the entire screen. When creating the post process material you'll get access to different parameters compared to a mesh material. Since it will run at the end of the rendering pipeline, you'll have access to the scene textures like the scene color and the depth, but you cannot access to any of the geometry parameters, since all of the objects are already rendered in the previous passes.
