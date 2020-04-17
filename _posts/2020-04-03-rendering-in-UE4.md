@@ -41,7 +41,7 @@ The *RHI (Render Hardware Interface)* is the other key module for graphics progr
 
 Rendering in Unreal it's a complex area, especially if you want to make modifications to customize it for your own purposes. You have to take care of every memory read and write not only to ensure thread safety, but also to avoids race conditions. Here is the complete UE4 documentation for graphics programming: [UE4 Graphics Programming](https://docs.unrealengine.com/en-US/Programming/Rendering/index.html).
 
-The renderer code runs in a separate thread, the *Rendering Thread*. It operates in parallel with the game thread and it's usually one or two frames behind it. It serves to enqueue platform-agnostic render commands into the renderer's command list through the `ENQUEUE_RENDER_COMMAND` macro. To make sure your code is called by the right thread, you can add checks such as `check(IsInGameThread())` or `check(IsInRenderingThread())` for improving code stability.
+The renderer code runs in a separate thread, the *Rendering Thread*. It operates in parallel with the *Game Thread* and it's usually one or two frames behind it. The primary method of communication between the two is the `ENQUEUE_RENDER_COMMAND` macro: it serves to enqueue platform-agnostic render commands into the renderer's command list. It works creating a class with a virtual `Execute` function that contains the code you enter into the macro. The game thread inserts the command into the rendering command queue, and the rendering thread calls the execute function when it gets around to it. To make sure your code is called by the right thread, you can add checks such as `check(IsInGameThread())` or `check(IsInRenderingThread())` for improving code stability.
 
 Finally, a new thread, the *RHI Thread*, executes these commands via the appropriate graphics API on the backend.
 
@@ -145,7 +145,7 @@ The most important and most used shaders in real time rendering are the **Vertex
 
 As you can see in the image above, the first shader is the *vertex shader*: is the program that runs every vertex (of the object that is being rendered) coming from the input assembler (the first stage of the pipeline: *IA* in the image). In the simplest case, it calculates the transformations of the vertices from the object space to the world space. It can gets more complicated as it can offset and move vertices depending on clothes simulation or winds parameters, for example. Performance wise, the more vertices your polygon has, the more expensive this stage is.
 
-*Hull*, *Domain* and *Geometry* shaders (respectively *HS*, *DS* and *GS* in the image) are less common, I'll skip these for this post.
+*Hull*, *Domain* and *Geometry* shaders (respectively *HS*, *DS* and *GS* in the image) are less common, mainly used for the tessellation stages. I'll skip these for this post.
 
 The *pixel shaders* is the other important one: it runs for every pixel the object occupy in the final image. These pixel are calculated in the *rasterization stage* (the *rasterizer* on the image), that handles the 3D vertices data and project those into the 2D screen, resulting in a bunch of pixel that are occupied by the rendered object, and it gives this as input for the pixel shader. I'm not going to focus on the rasterizer, because it's something you can't customize with shader, but you can just set some state of it, like culling mode for example.
 
@@ -182,30 +182,26 @@ For instance, look at the images below; the material looks simple but contains t
 
 ### Reflections
 
-*Reflections* are difficult in real time because they requires the scene to be rendered several times for every reflection setup. To make this works, there are some techniques that simulate reflections effect trying to not impact heavily on performances.
+*Reflections* are difficult in real time because they requires the scene to be rendered several times for every reflection setup. To make this works, there are some techniques that simulate reflection effects trying to not impact heavily on performances.
 
-In Unreal Engine, there are three different systems for doing real time reflections. They are combined and blended together to achieve the best final image quality.
+In Unreal Engine, there are three different systems for doing real time reflections. They are combined and blended together to achieve the best final image quality. The three systems are:
 
-The three systems are:
+1. *Reflection Capture*
 
-1. *Reflection Captures*
-
-    It's an actor that works capturing a static cubemap at its location. As a solution is pretty fast but the visual result is good only if you are in the same position of the reflection capture. The moment you move away from it, the camera won't match the position and the reflections starts to look odd. Usually you don't see that because of the combinations of the other systems (explained later on). Performance wise is the best you can do, since is precalculated, and you can set the size of the cubemap that will be generated. Plus, it only works within the range of the reflection actor: all the object inside that range will sample from the cubemap. Otherwise, objects that are outside the actor range will not receive any reflection.
-    Pros: precalculated and so very fast
-    Cons: inaccurate, local within the range of the actor
+    It's an actor that works capturing a static cubemap at its location. As a solution is pretty fast but the visual result is good only if you are in the same position of the reflection capture. The moment you move away from it, the camera won't match the position and the reflections starts to look odd. Usually you don't see this because of the combinations with other systems (explained below). Performance wise is the best you can do, since it is precalculated it has almost 0 cost at runtime. You can increase the size of the generated cubemap to have a better result. A reflection capture only works within the range of the reflection actor: all the objects inside that range will sample from it. Otherwise, objects outside will not receive any reflection.
 
 2. *Planar Reflections*
 
-    These are not very common, fairly never used. They are similar to the reflection captures, but they capture from a plane and they could be real time. Because of this, planar reflections can be heavy, but are good for flat surfaces on a limited area (good for a mirror, bad for an ocean surface). For this system there's the planar reflection actor that you can set to realtime enabling the `capture every frame` option.
+    These are not very common, fairly never used. They are similar to the reflection captures, but differ as they capture from a plane and they can be set to real time. Because of this, planar reflections can be heavy, but are good for flat surfaces on a limited area (good for a mirror, bad for an ocean surface). The actor for this system is the *planar reflection* actor that you can set to realtime enabling the `capture every frame` option.
 
 3. *Screen Space Reflections (SSR)*
 
-    This is the default system. It's a screen space effect and it's precision does not depend on the camera position. It's a real time effect that only shows reflection of what is visible in the scene. As it is a screen space effect, it affects the entire world, it doesn't have a range.
-    Problems are: it does have a cost and it's noisy. Plus, it won't reflect stuff that is not on screen (so if something is culled, it won't be reflected, but most of the time you want have it reflected).
+    This is the default system. It's a screen space effect and its precision does not depend on the camera position. It's a real time effect that only shows reflection of what is visible in the scene. As it is a screen space effect, it affects the entire world, it doesn't have a range.
+    Problems are: it does have a cost and it's noisy. It won't reflect objects that are not visible on screen (so if something is being culled, it won't be reflected, but most of the time you want have it reflected).
 
-Because all of pros and cons of every system, you should combine them for the better results. To debug the reflections in your scene, you can switch to the reflection visualization in the view mode options in the Unreal editor.
+Every system has pros and cons: you should combine them for the best result.
 
-Performance implications: having many reflection captures may slowdown the level loading time. Try to not overlap reflection captures because otherwise the pixel shader will end up doing a lot of sampling from different cubemaps and it has to combine them as well, so it will cost performances. Generally, planar reflections should be avoided. For projects that needs to run on limited hardware, try to avoid SSR, otherwise you can push it on desktop or high level targets in favor of the other systems.
+Performance implications: having many reflection captures may slowdown the level loading time. Try to not overlap reflection captures because otherwise the pixel shaders involved will end up doing a lot of sampling from different cubemaps and it has to combine them together, resulting in a lot of repeated calculations. Generally, planar reflections should be avoided. For projects that needs to run on limited hardware, try to avoid *SSR*, otherwise you can push it on desktop or high level targets in favor of the other systems.
 
 Unreal does have also the *skylight* actor that provide a backup if you need to place a lot of reflection captures in your scene. It will capture a cubemap for the entire world within the sky distance threshold. If there is an object in the scene that is not affected by any kind of reflection system, it will backup on the skylight.
 
