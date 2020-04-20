@@ -220,13 +220,13 @@ It's precalculated and stores information onto lightmaps. This is fast (it costs
 
 Take in consideration that you need a special uv map (i.e. the process that permits any 3D polygon to have textures projected onto it - if you are unfamiliar with UV mapping, see more [here](https://docs.unrealengine.com/en-US/Engine/Content/Types/StaticMeshes/HowTo/UVChannels/index.html)) to use lightmaps: every model needs to have dedicated lightmap uvs that needs be between 0 and 1 and they shouldn't have any overlap between them. Luckily, Unreal Engine can generate automatically these lightmap UVs, you can see this in the detail panel of the static mesh editor:
 
-<a href="/images/graphics/generate_lightmaps_uv.png"><img class="blog-image" src="/images/graphics/generate_lightmaps_uv.png"> </a>
+<a href="/images/graphics/generate_lightmaps_uv.png"><img class="blog-image" style="width: 50%;" src="/images/graphics/generate_lightmaps_uv.png"> </a>
 
 Due to the fact that is precalculated (so it is offline, not runtime), static lighting handles radiosity and global illumination, giving a great quality result. The quality depends mostly on the uv and the size of the lightmap (the maximum size of a texture is 8k, so consider this for when you have a big object).
 Static lighting is generated using the *lightmass*, that is a standalone application that handles the rendering and the shadow baking. It supports distributed rendering on network and requires a *lightmass importance volume* placed in the scene, where you can tweak the settings in the lightmass section. Anything within the volume will get higher quality lighting calculation. So you should place one or even multiples boxes where it's important to have more quality. During this process, an **ILC (indirect lighting cache)** is built with the lighting informations. This is used for dynamic objects that needs to receive static lighting. The dynamic models will sample from the ILC cache, that is a volume full of samples with the indirect lighting value at that point in space.
 All the ligthmaps are packed in atlases: you can control these and change parameters by the build lighting option and the quality settings in the lightmass (in the world settings).
 
-<a href="/images/graphics/lightmass_world_settings.png"><img class="blog-image" src="/images/graphics/lightmass_world_settings.png"> </a>
+<a href="/images/graphics/lightmass_world_settings.png"><img class="blog-image" style="width: 50%;" src="/images/graphics/lightmass_world_settings.png"> </a>
 
 Performance implications:
 1 or 50000 static lights in the scene doesn't matter. It performs the same at runtime since they are precalculted, but it heavily affects memory and filesize. The more resolution you have for lightmaps, the more it takes to bake.
@@ -258,7 +258,7 @@ Shadow maps are really heavy in general, since the renderer has to render the sc
 Performance implications: dynamic lights are more expensive in forward rendering than in deferred rendering due to the nature of the two different paths. The more pixels the lights covers in the screen, the more it costs: the radius needs to be as small as possible and you need to avoid overlaps bewteen ligth actors. The most expensive things are shadows: in a very easy way, turn off shadows if you don't need it to gain performance.
 The polycount of objects matter for dynamic shadows, because of the shadowmaps: use *DF* or *CSM*, or adjust properly the `max draw distance` settings to every ligths, so that it can culled to avoid useless calculations.
 
-<a href="/images/graphics/maxdrawdistance_light_settings.png"><img class="blog-image" src="/images/graphics/maxdrawdistance_light_settings.png"> </a>
+<a href="/images/graphics/maxdrawdistance_light_settings.png"><img class="blog-image" style="width: 50%;" src="/images/graphics/maxdrawdistance_light_settings.png"> </a>
 
 Finally, as usual, best results are achieved with a mix of static and dynamic lighting. Use static for distant lights and spots where you need precise indirect lighting and your light is not mean to change.
 Use dynamic lights when you really need the light to change at runtime; use it for interactive and animated objects that needs to be shadowed and are closer to the camera. Always try to fake and tweak lighting with static lights to have better performances.
@@ -272,7 +272,7 @@ Transparency is one of the biggest performance killer of real time renderer.
 Deferred rendering has difficulties with transparency, since transparent objects are delayed at the end of the pipeline stages but even at that point the GBuffer doesn't have enough information to render trasnlucency object properly.
 Usually, transparency is rendered in forward rendering and then composed on top of the rest. Check the *lighting mode* in the translucency section in the material editor: these modes are the options that Unreal gives us to render transparent objects.
 
-<a href="/images/graphics/translucent_lighting_modes.png"><img class="blog-image" src="/images/graphics/translucent_lighting_modes.png"> </a>
+<a href="/images/graphics/translucent_lighting_modes.png"><img class="blog-image" style="width: 50%;" src="/images/graphics/translucent_lighting_modes.png"> </a>
 
 Other than the pixel shader cost (that needs to run more now on top of the already rendered scene) there is also the problem of the render object order.
 
@@ -290,9 +290,9 @@ In *deferred rendering*, there are a lot of render passes, so saying post proces
 
 Unreal has a lot of post processes, the more used are: *bloom*, *depth of field*, *lens flares*, *vignette*, *tonemapping*, *motion blur*, *exposure*, and a lot more.
 To see all of them, drag in your scene a *post process volume*: in the details panel, you can enable/disable and edit all the available effects.
-Here is an image showing some of them, as you can see you have a lot of effects here:
+Here is an image showing some of them, as you can see you have a lot of effects here: 
 
-<a href="/images/graphics/post_process_volume_settings.png"><img class="blog-image" src="/images/graphics/post_process_volume_settings.png"> </a>
+<a href="/images/graphics/post_process_volume_settings.png"><img class="blog-image" style="width: 50%; display: inline-block; align: right;" src="/images/graphics/post_process_volume_settings.png"> </a>
 
 These effects can be applied on the entire scene if you select the *Infinite Extent (Unbound)* option in that panel, otherwise they will be applied only when the camera is inside the volume.
 
