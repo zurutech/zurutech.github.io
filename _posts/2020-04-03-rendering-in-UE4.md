@@ -308,3 +308,10 @@ Here is an image showing some of them, as you can see you have a lot of effects 
 These effects can be applied to the entire scene if you select the *Infinite Extent (Unbound)* option in that panel, otherwise they will be applied only when the camera is inside the volume.
 
 However, you can create your post process material the same way you create a material, selecting the shader type to *post process* in the material editor. In fact, a post process effect is *simply* a pixel shader applied to the entire screen. When creating the post process material you'll get access to different parameters compared to a mesh material. Since it will run at the end of the rendering pipeline, you'll have access to the scene textures like the scene color and the depth, but you cannot access to any of the geometry parameters, since all of the objects are already rendered in the previous passes.
+
+<br>
+
+## Conclusions
+
+In this article, I wrote down an high-level overview of the Unreal Engine rendering process and shown some tips to consider when dealing with performances.
+What I would like to do next is describing in detail some interesting aspects of the renderer that we faced while developing new graphics features at [Zuru Tech](https://zuru.tech/).
