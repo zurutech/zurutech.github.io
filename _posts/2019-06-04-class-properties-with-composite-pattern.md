@@ -6,8 +6,7 @@ title:  "Templated properties"
 slug:  Templated properties
 date:   2019-06-04 8:00:00
 categories: cpp-development
-img: mmischitelli/class-properties/banner.jpg
-banner: mmischitelli/class-properties/banner.jpg
+image: images/mmischitelli/class-properties/banner.jpg
 tags: coding
 description: "Using variadic templates and macros to define class properties"
 ---

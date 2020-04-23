@@ -6,8 +6,7 @@ title: "Real time rendering and Unreal Engine 4"
 slug: "RenderingInUE4"
 date: 2020-04-23 01:00:00
 categories: graphics
-img: banners/GPU_profiler.png
-banner: banners/GPU_profiler.png
+image: images/banners/bim-int-rendering.png
 tags: graphics
 description: "An overview of the real time rendering pipeline in Unreal Engine 4."
 ---

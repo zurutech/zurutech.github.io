@@ -6,8 +6,7 @@ title:  "Automatic commands for class properties"
 slug:  Automatic commands for class properties
 date:   2019-06-11 8:00:00
 categories: cpp-development
-img: mmischitelli/class-properties/autocommands.jpg
-banner: mmischitelli/class-properties/autocommands.jpg
+image: images/mmischitelli/class-properties/autocommands.jpg
 tags: coding
 description: "Using class properties to automatically generate commands"
 ---

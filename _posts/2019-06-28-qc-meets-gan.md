@@ -6,8 +6,7 @@ title: "Quality Control meets Generative Intelligence"
 slug: Quality Control meets Generative Intelligence
 date: 2019-06-28 8:00:00
 categories: machine-learning
-img: gans/anomaly.png
-banner: gans/anomaly.png
+image: images/gans/anomaly.png
 tags: machine-learning
 description: "How to use GANs in the anomaly detection domain."
 ---

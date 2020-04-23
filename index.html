@@ -56,7 +56,7 @@ layout: default
                                     style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
                                     <div class="padding-0 col-lg-9">
                                         <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                            <img width="100%" src="{{site.baseurl}}/images/{{post.img}}"
+                                            <img width="100%" src="{{site.baseurl}}/{{post.image}}"
                                                 alt="{{post.title}}">
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@ layout: default
                             <a href="{{ post.url | prepend: site.baseurl }}" class="index-anchor">
                                 <div class="card-container">
                                     <div class="card-art" style="background-color:{{postTheme.fontColor}}">
-                                        <div class="card-art-image" style="background-image: url('/images/{{post.img}}')">
+                                        <div class="card-art-image" style="background-image: url('/{{post.image}}')">
                                         </div>
                                     </div>
                                     <div class="card-text-container"
@@ -116,9 +116,9 @@ layout: default
                                 <div class="panel panel-default"
                                     style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
 
-                                    {% if post.img %}
+                                    {% if post.image %}
                                     <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                        <img width="100%" src="{{site.baseurl}}/images/{{post.img}}" alt="{{post.title}}">
+                                        <img width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
                                     </div>
                                     {% else %}
                                     <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg"

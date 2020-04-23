@@ -6,8 +6,7 @@ title:  "Release Flow: a Git Workflow"
 slug: "Release Flow: a Git Workflow"
 date:   2019-01-25 8:00:00
 categories: git
-img: git-flow.png
-banner: git-flow.png
+image: images/git-flow.png
 tags: machine-learning
 description: "A production ready Git Worflow"
 ---

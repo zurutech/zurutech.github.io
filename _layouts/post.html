@@ -113,9 +113,9 @@ layout: default
                         <div class="panel panel-default"
                              style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
 
-                            {% if post.img %}
+                            {% if post.image %}
                             <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                <img width="100%" src="{{site.baseurl}}/images/{{post.img}}" alt="{{post.title}}">
+                                <img width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
                             </div>
                             {% else %}
                             <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg" alt="{{site.title}}">
