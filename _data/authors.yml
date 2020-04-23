@@ -78,3 +78,11 @@ ml-lab:
     email: ml@zuru.tech
     image: "/images/ml-pac.png"
     bio: "Machine Learning &amp; Computer Vision team.<br>Machine learning solutions for every ZURU product."
+
+alepaoletti:
+    name: Alessio Paoletti
+    uri: https://ale32.github.io/
+    email: alessio.p@zuru.tech
+    linkedin: "https://www.linkedin.com/in/alessiopaoletti32"
+    image: "https://avatars0.githubusercontent.com/u/11610794?s=460&u=e0188bdef61542512fb3975bb8e15cd397a4ec16&v=4"
+    bio: "Software Developer and Graphics Programmer, enthusiast about real time rendering. In love with photography and basketball."
