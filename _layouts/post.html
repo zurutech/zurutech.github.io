@@ -49,8 +49,11 @@ layout: default
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                    <!-- If redirect to author page href="{{ author.uri }}" -->
+                                    {% if author.uri %}
+                                    <p class="author-name-title"><a href="{{ author.uri }}" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
+                                    {% else %}
                                     <p class="author-name-title"><a href="#" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
+                                    {% endif %}
                                     <div class="social-icon">
                                         {% if author.facebook %}
                                             <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
