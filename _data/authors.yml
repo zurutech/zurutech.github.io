@@ -79,7 +79,7 @@ ml-lab:
     image: "/images/ml-pac.png"
     bio: "Machine Learning &amp; Computer Vision team.<br>Machine learning solutions for every ZURU product."
 
-alepaoletti:
+alessio-paoletti:
     name: Alessio Paoletti
     uri: https://ale32.github.io/
     email: alessio.p@zuru.tech
