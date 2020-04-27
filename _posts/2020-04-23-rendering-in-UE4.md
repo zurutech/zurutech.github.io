@@ -1,5 +1,5 @@
 ---
-author: "alepaoletti"
+author: "alessio-paoletti"
 layout: post
 did: "blog10"
 title: "Real time rendering and Unreal Engine 4"
@@ -252,7 +252,7 @@ Shadows are what it really takes time to calculate. Unreal Engine gives us four 
 1. *Regular dynamic shadows*: coming from a movable light. They are usually sharp (and so unrealistic) because there's no way of replicating the multiple bounces lights that generate a soft shadow.
 2. *Per object shadow (stationary light)*: blend between static and dynamic system. It creates a lightmap for what we know that light doesn't change, and then also renders dynamic shadows on top. The result is much better (and softer) than a full dynamic one, but a higher cost.
 3. *Cascaded shadow maps (CSM)*: can only be run on directional light shadows. It works well in distance and open fields because it's based on splitting the shadow maps in distance ranges from the camera. Different shadow maps are calculated with more precision closer to the camera, depending on how we set the cascade distance options.
-4. *Distance field shadows*: uses the distance fields of an object when calculating shadows, instead of the geometry itself. It's very imprecise but very cheap even compared to CSM. Distance fields can calculate shadows in a cheaper way because they store distances on a volume textures (TODO: link here to the volume textures) and the resolution of the textures defines the quality of the shadows. The result is not very detailed, so it is usually used for distant shadows only.
+4. *Distance field shadows*: uses the distance fields of an object when calculating shadows, instead of the geometry itself. It's very imprecise but very cheap even compared to CSM. Distance fields can calculate shadows in a cheaper way because they store distances on a volume textures and the resolution of the textures defines the quality of the shadows. The result is not very detailed, so it is usually used for distant shadows only.
 To activate this in Unreal Engine, check the `Generate Mesh Distance fields` option in the project setting. It may take time to generate DF the first time for all the objects.
 
 There are also other types of shadows that are less used:

@@ -48,7 +48,7 @@ ridham:
 
 manughelfi:
     name: Emanuele Ghelfi
-    uri:  https://zuru.tech/
+    uri: https://eghelfi.xyz/
     email: emanuele@zuru.tech
     twitter: "https://twitter.com/manughelfi"
     linkedin: "https://www.linkedin.com/in/emanuele-ghelfi-9a408396/"
@@ -79,7 +79,7 @@ ml-lab:
     image: "/images/ml-pac.png"
     bio: "Machine Learning &amp; Computer Vision team.<br>Machine learning solutions for every ZURU product."
 
-alepaoletti:
+alessio-paoletti:
     name: Alessio Paoletti
     uri: https://ale32.github.io/
     email: alessio.p@zuru.tech
