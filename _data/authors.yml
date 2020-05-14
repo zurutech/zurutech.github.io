@@ -17,7 +17,7 @@ mr-ubik:
     reddit: "https://www.reddit.com/user/Mr_Ubik"
     image: "https://avatars2.githubusercontent.com/u/16547060?s=100"
     bio: "Mad Scientist for 💰and ❤️ . Pythonista 🐍. Lover of 🐧 🐧.  Walking Beard. Black humor & memes dispenser. Evil Mastermind. Mad Tinkerer 🤖.<br>Machine Learning Engineer @ Zuru Tech Italy"
-    
+
 fdimattia:
     name: Federico Di Mattia
     email: federico.d@zuru.tech
@@ -48,9 +48,41 @@ ridham:
 
 manughelfi:
     name: Emanuele Ghelfi
-    uri:  https://zuru.tech/
+    uri: https://eghelfi.xyz/
     email: emanuele@zuru.tech
     twitter: "https://twitter.com/manughelfi"
     linkedin: "https://www.linkedin.com/in/emanuele-ghelfi-9a408396/"
     image: "https://avatars3.githubusercontent.com/u/16719271?s=100"
     bio: "Computer Engineer. Loves teaching machines to learn. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
+
+mmischitelli:
+    name: Michele Mischitelli
+    uri:  https://eraser85.wordpress.com/
+    email: michele@zuru.tech
+    twitter: "https://twitter.com/michelemischit1"
+    linkedin: "https://www.linkedin.com/in/michelemischitelli"
+    image: "https://avatars2.githubusercontent.com/u/30140945?s=100"
+    bio: "Software Engineer, photographer, doggo team 🐕.<br>Head Architect &amp; Scrum Master @ Zuru Tech Italy"
+
+harsh:
+    name: Harsh Makadia
+    uri: https://zuru.tech/
+    email: hasrh@zuru.tech
+    linkedin: "https://www.linkedin.com/in/harsh-makadia-03109b66/"
+    image: "https://user-images.githubusercontent.com/13532530/52191208-8d5efb00-2869-11e9-91d5-b3a26d712541.JPG"
+    bio: "Software developer, Dreamer, Travel Buff, Gadget Geek, Adventurer <br>FrontEnd Engineer @ Zuru Tech India"
+
+ml-lab:
+    name: ML &amp; CV Laboratory
+    uri: https://zuru.tech/
+    email: ml@zuru.tech
+    image: "/images/ml-pac.png"
+    bio: "Machine Learning &amp; Computer Vision team.<br>Machine learning solutions for every ZURU product."
+
+alessio-paoletti:
+    name: Alessio Paoletti
+    uri: https://ale32.github.io/
+    email: alessio.p@zuru.tech
+    linkedin: "https://www.linkedin.com/in/alessiopaoletti32"
+    image: "https://avatars0.githubusercontent.com/u/11610794?s=460&u=e0188bdef61542512fb3975bb8e15cd397a4ec16&v=4"
+    bio: "Software Developer and Graphics Programmer, enthusiast about real time rendering. In love with photography and basketball."

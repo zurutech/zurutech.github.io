@@ -49,8 +49,11 @@ layout: default
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                    <!-- If redirect to author page href="{{ author.uri }}" -->
+                                    {% if author.uri %}
+                                    <p class="author-name-title"><a href="{{ author.uri }}" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
+                                    {% else %}
                                     <p class="author-name-title"><a href="#" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
+                                    {% endif %}
                                     <div class="social-icon">
                                         {% if author.facebook %}
                                             <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
@@ -113,9 +116,9 @@ layout: default
                         <div class="panel panel-default"
                              style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
 
-                            {% if post.img %}
+                            {% if post.image %}
                             <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                <img width="100%" src="{{site.baseurl}}/images/{{post.img}}" alt="{{post.title}}">
+                                <img width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
                             </div>
                             {% else %}
                             <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg" alt="{{site.title}}">

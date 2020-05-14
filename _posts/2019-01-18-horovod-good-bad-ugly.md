@@ -6,8 +6,7 @@ title:  "Horovod: the Good, the Bad and the Ugly"
 slug:  horovod the good the bad the ugly
 date:   2019-01-18 8:00:00
 categories: machine-learning
-img:  horovod.png
-banner: horovod.png
+image: images/horovod.png
 tags: machine-learning
 description: "A quick introduction to Horovod, its perks but mostly its caveats."
 ---

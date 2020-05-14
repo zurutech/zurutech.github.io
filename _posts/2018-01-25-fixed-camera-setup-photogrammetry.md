@@ -6,8 +6,7 @@ title:  "Fixed camera setup for object localization and measurement"
 slug:  Fixed camera setup for object localization and measurement
 date:   2018-01-25 8:00:00
 categories: computer-vision
-img: computer-vision.jpg
-banner: computer-vision.jpg
+image: images/computer-vision.jpg
 tags: machine-learning
 description: "Fixed camera setup for object localization and measurement"
 ---

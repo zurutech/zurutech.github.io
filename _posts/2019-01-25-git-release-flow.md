@@ -6,8 +6,7 @@ title:  "Release Flow: a Git Workflow"
 slug: "Release Flow: a Git Workflow"
 date:   2019-01-25 8:00:00
 categories: git
-img: git-flow.png
-banner: git-flow.png
+image: images/git-flow.png
 tags: machine-learning
 description: "A production ready Git Worflow"
 ---
@@ -35,7 +34,7 @@ To quickly understand the method, here two useful pictures:
 <br>
 
 
-What is the difference between the two pictures? The difference is that in Figure 1, as you can see, there is an extra branch called *develop*. Apart from this difference, which will be explained shortly, the two images describe in a concise way what it means to work with the Release Flow method. Whether or not you use the develop branch makes no substantial difference and its use is at the discretion of the development team.
+What is the difference between the two pictures? The difference is that in Figure 2, as you can see, there is an extra branch called *develop*. Apart from this difference, which will be explained shortly, the two images describe in a concise way what it means to work with the Release Flow method. Whether or not you use the develop branch makes no substantial difference and its use is at the discretion of the development team.
 
 I will describe the two approaches in the following chapters.
 
