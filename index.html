@@ -138,7 +138,7 @@ layout: default
                                             truncate: 120 }}
                                             {%else%}{{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
                                             {%endif%}
-                                            <a href="{{ post.url | prepend: site.baseurl }}" class="read-more">More</a>
+                                            <span class="read-more">More</span>
                                         </small>
                                     </div>
                                 </div>
