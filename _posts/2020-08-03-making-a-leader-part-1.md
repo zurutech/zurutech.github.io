@@ -52,6 +52,7 @@ While in a lead role, your colleagues should look at you as a source of stabilit
 **Possible answers:**
 - "Have you tried this and that?"
 - "Okay, no problem, let's look at it together!" 
+
 **Problem:** "I have this problem regarding HR." 
 **Possible answers:**
 - "Sure, I see what I can do for you by talking about it with these people if you are fine with it. Or you can talk directly with them if it does not bother you."
