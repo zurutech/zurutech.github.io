@@ -6,10 +6,12 @@ title:  "Making a leader 3 - Skill boosting"
 slug:  making a leader 3 skill boosting
 date:   2020-08-03 8:00:00
 categories: office-blog
-image: TODO
+image: images/banners/banner-teamleading3.png
 tags: team-leading
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
+
+<a href="/images/teamleading3.svg"><img class="blog-image" style="width: 100%" src="/images/teamleading3.svg"> </a>
 
 Welcome to the third article in the series! In this article, I will focus on how each skill can be useful to boost other skills.
 
