@@ -6,10 +6,12 @@ title:  "Making a leader 1 - Necessary Skills"
 slug:  making a leader 1 necessary skills
 date:   2020-08-03 8:00:00
 categories: office-blog
-image: TODO
+image: images/banners/banner-teamleading1.png
 tags: team-leading
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
+
+<a href="/images/teamleading1.svg"><img class="blog-image" style="width: 100%" src="/images/teamleading1.svg"> </a>
 
 Let me state the obvious: as a tech company grows, more employees need to step forward and start managing others.
 
@@ -46,15 +48,14 @@ A person may be able to do his job with his eyes closed, and his hands tied: thi
 
 While in a lead role, your colleagues should look at you as a source of stability and an ally, not their Boss: a leader should be reliable and able to help them with their daily work. Beware, he is not here to solve other people problems, it could happen when there is something complicated to do, but they should know that he got their back all the times, here some example: 
 
-| Issues        | Answers       |
-| ------------- |:-------------:|
-| "I'm not able to achieve this technical goal"      |
+**Problem:** "I'm not able to achieve this technical goal" 
+**Possible answers:**
 - "Have you tried this and that?"
-- "Okay, no problem, let's look at it together!" |
-| ------------- |:-------------:|
-| "I have this problem regarding HR." | 
+- "Okay, no problem, let's look at it together!" 
+**Problem:** "I have this problem regarding HR." 
+**Possible answers:**
 - "Sure, I see what I can do for you by talking about it with these people if you are fine with it. Or you can talk directly with them if it does not bother you."
-- "I understand your concerns, and you should talk about it with this person in the company who can handle your situation. Also, I can be with you during the discussion, if it makes you more comfortable."      | 
+- "I understand your concerns, and you should talk about it with this person in the company who can handle your situation. Also, I can be with you during the discussion, if it makes you more comfortable."  
 
 Every hard and soft skill will have no value if a leader is not able to communicate with others. How is he going to coordinate your members or empower them if he is not able to communicate with them effectively?
 
