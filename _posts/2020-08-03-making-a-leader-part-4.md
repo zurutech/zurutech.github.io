@@ -6,10 +6,12 @@ title:  "Making a leader 4 - The training period"
 slug:  making a leader 4 the training period
 date:   2020-08-03 8:00:00
 categories: office-blog
-image: TODO
+image: images/banners/banner-teamleading4.png
 tags: team-leading
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
+
+<a href="/images/teamleading4.svg"><img class="blog-image" style="width: 100%" src="/images/teamleading4.svg"> </a>
 
 In the fourth and last article of this series, we will talk about a new tech leader's training.
 
