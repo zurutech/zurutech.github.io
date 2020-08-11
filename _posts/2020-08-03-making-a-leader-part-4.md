@@ -58,4 +58,4 @@ I hope you are going to contact me if you have any questions, the best this seri
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
 
-*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/](https://www.humaaans.com/)*
