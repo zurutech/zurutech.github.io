@@ -68,3 +68,6 @@ The first stone is to be good at communication. We will talk about the other sto
 Stay tuned!
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
+
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
+
