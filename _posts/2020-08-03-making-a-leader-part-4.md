@@ -57,3 +57,5 @@ This article was the last entry to the series. I hope you find it helpful and th
 I hope you are going to contact me if you have any questions, the best this series of articles can do to start a discussion about this matter.
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
+
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
