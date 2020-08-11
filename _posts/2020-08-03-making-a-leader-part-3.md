@@ -59,3 +59,5 @@ How do you test him on the field? You place him side-by-side with one of your le
 And that's everything for this article, in the next article we will build on these conclusions, and we will see how to train a new team leader, how to create a training program and how to evaluate your trainee training period.
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
+
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
