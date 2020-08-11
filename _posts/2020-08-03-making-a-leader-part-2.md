@@ -59,3 +59,6 @@ In the next article, we will evaluate how every skill interacts with each other 
 Then, in the last post, we will talk about how we can find and train these leaders inside your company.
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
+
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
+
