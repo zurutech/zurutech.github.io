@@ -24,19 +24,19 @@ Let's go with this mini-series of four articles that will take you 5 minutes of 
 ## Before starting
 First of all, beware that there is no universal way of doing this, this is our approach, and we achieved that with some trial and errors, it worked for us, it may not work for your company.
 
-A cornerstone of this article is that: **when evaluating leaders what you value as soft(secondary) skills become more important than the hard skills**, even if they are technical leaders who do manager work and continue to do some manual labour. Sure, a technological leader still needs to know how to do his job and strive for perfection so he can push himself and his team members to a new level of competence and performance, but you will not be able to do that only by being good at the hard skills. 
+A cornerstone of this article is that: **when evaluating leaders what you value as soft(secondary) skills become more important than the hard skills**, even if they are technical leaders who do manager work and continue to do some "manual labour". Sure, a technological leader still needs to know how to do his job and strive for perfection so he can push himself and his team members to a new level of competence and performance, but you will not be able to do that only by being good at the hard skills. 
 
 After clearing that point, there is another reason for hard skills to be secondary: they change between jobs. Let me make an example if you are a software developer, you need to know how to code and if you are a 3D modeller you need to know how to model, but if you are a software developer lead or a 3d modeller lead you need the same set of soft skills.
 
 That said, let's talk about these skills!
 
 ## Hard Skills
-Hard skills are easier to deal with, so why don't we get rid of them first? First of all, if your company plans to train an employee, it should already be able to evaluate their employees' hard skills since he works every day in that company. Instead, if your company plans to hire, you should already have a proven mechanism of hiring capable people! If you don't have it, it is worth investing in it since it will make a difference in the long run.
+Hard skills are easier to deal with, so why don't we get rid of this part first? If your company plans to train an employee, it should already be able to evaluate their employees' hard skills since he works every day in that company. Instead, if your company plans to hire, you should already have a proven mechanism of hiring capable people! If you don't have it, it is worth investing in it since it will make a difference in the long run.
 
 So these are the undeniable hard skills needed to be a leader:
 - **Be able to do the job**: a technical leader should be competent in his role, e.g., a software team leader, you should be able to code with a mid, or better senior, degree of experience. This competence will give him the ability to read and write good code and to help others grow and correct their mistakes.
 - **Be competent in the tools used by the company**: a technical leader will need to help others using the daily work tools, e.g., source control, and sometimes he should be able to use different tools only required for management, e.g., administration of holiday approval.
- - **Knowledge of the company**: every company has its standard, its processes, its objective, a technical leader should know them so he can lead everyone in the proper direction, the one the company wants to go; e.g., a leader needs to know the company code style if he is going to check other people's code.
+ - **Knowledge of the company**: every company has its standard, its process, its objective, a technical leader should know them so he can lead everyone in the proper direction, the one the company wants to go; e.g., a leader needs to know the company code style if he is going to check other people's code.
 If you sum up the ability to do the job with the tools used by the company and with the standards your company requires, you will have a leader able to produce work that has value in your company.
 
 ## Soft skills
