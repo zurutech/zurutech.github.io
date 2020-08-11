@@ -60,5 +60,5 @@ Then, in the last post, we will talk about how we can find and train these leade
 
 For any question or talk, you can find me at my work email loris@zuru.tech and on linked-in.
 
-*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/(https://www.humaaans.com/)*
+*Image made by Pablo Stanley. Free for commercial or personal use. CC0 Public DomainLicense. [https://www.humaaans.com/](https://www.humaaans.com/)*
 
