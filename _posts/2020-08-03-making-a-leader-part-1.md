@@ -4,7 +4,7 @@ layout: post
 did: "blog2"
 title:  "Making a leader 1 - Necessary Skills"
 slug:  making a leader 1 necessary skills
-date:   2020-08-03 8:00:00
+date:   2020-08-18 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading1.png
 tags: team-leading

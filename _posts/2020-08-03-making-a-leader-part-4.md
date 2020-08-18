@@ -4,7 +4,7 @@ layout: post
 did: "blog2"
 title:  "Making a leader 4 - The training period"
 slug:  making a leader 4 the training period
-date:   2020-08-03 8:00:00
+date:   2020-08-31 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading4.png
 tags: team-leading

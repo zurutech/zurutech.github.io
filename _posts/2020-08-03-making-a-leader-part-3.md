@@ -4,7 +4,7 @@ layout: post
 did: "blog2"
 title:  "Making a leader 3 - Skill boosting"
 slug:  making a leader 3 skill boosting
-date:   2020-08-03 8:00:00
+date:   2020-08-27 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading3.png
 tags: team-leading
