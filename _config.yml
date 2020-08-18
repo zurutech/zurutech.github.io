@@ -23,6 +23,9 @@ analytics: UA-113891536-1
 # Comments
 disqus-shortname:
 
+#For scheduling blog entries
+future: false
+
 # Social
 facebook: https://www.facebook.com/zurutech
 quora:
