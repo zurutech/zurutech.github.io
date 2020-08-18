@@ -19,6 +19,8 @@ What is not very obvious is how you choose those people. The first question is: 
 I think both ways are fine as long as you have an idea of what skills are needed by a manager of a group of technical people, with this awareness you will be able to train and find perfect candidates.
 Here at Zuru Tech Italy, we grow fast, from 5 people to 30 in less than three years, so the training of technical leaders is a matter we discussed and experienced, and if you have some spare minutes, I'm going to tell you how we find and create leaders here at Zuru.
 
+At the end of the series, you will know what we do here at Zuru and what we think. Also, I experienced all this process myself, partially as a trainee, and entirely as a trainer; hopefully, sharing my experiences with you all can be somehow helpful for you and your company!
+
 Let's go with this mini-series of four articles that will take you 5 minutes of reading each!
 
 ## Before starting
