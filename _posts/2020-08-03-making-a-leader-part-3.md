@@ -27,7 +27,7 @@ If you can motivate your teams, with words and by examples, they will be more re
 All the next skills need good communication ability; without it, they are almost useful.
 
  ## Problem-Solving + Managing skills = Organizational skills
-If the leader can logically reason through a problem and manage people skills, he should be able to achieve two critical objectives for every company: maximizing the work output and maximizing employees' happiness.
+Suppose the leader can logically reason through a problem and manage people skills. In that case, he should be able to achieve two critical objectives for every company: maximizing the work output and maximizing employees' happiness.
 
 Let's see how: for maximizing the team play, a technical leader should be able to understand what are the strengths and the weaknesses of his team members. By knowing these characteristics and an employee's work history inside the company, he will understand which job is better suited for every team member, and this will lead your company to achieve a faster completion of tasks and/or a better quality of work.
 
