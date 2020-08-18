@@ -17,6 +17,9 @@ copyright:
 markdown: kramdown
 permalink: /:categories/:year/:month/:day/:slug
 
+#For scheduling blog entries
+future: false
+
 # Tracker
 analytics: UA-113891536-1
 
