@@ -44,7 +44,7 @@ When you know how to evaluate hard skills in your company, all the focus will be
 
 Since softs skills will be the core of the next article, we will focus only on the most critical soft ability for a leader: Communication.
 
-A person may be able to do his job with his eyes closed, and his hands tied: this will not make him a leader. If he cannot communicate with other human beings, he will end up in unnecessary fights, misunderstandings about the objective his teammates should achieve with their next task, lack of respect, and distrust in his ability to lead and listen to other needs.
+A person may be able to do his job with his eyes close, and his hands tied: this will not make him a leader. Suppose he cannot communicate with other human beings, and listen to them: he will end up in unnecessary fights, misunderstandings about the objective the teammates should achieve with their next task. A leader who cannot communicate will have to fight against a lack of respect, and distrust in his ability to lead and listen to others' needs.
 
 While in a lead role, your colleagues should look at you as a source of stability and an ally, not their Boss: a leader should be reliable and able to help them with their daily work. Beware, he is not here to solve other people problems, it could happen when there is something complicated to do, but they should know that he got their back all the times, here some example: 
 
