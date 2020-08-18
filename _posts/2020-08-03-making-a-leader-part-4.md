@@ -54,8 +54,14 @@ Regarding the result of the task, a trainee and a trainer can always ask themsel
 The answer to these questions, combined with the practical achieved result, is the key to evaluating the trainee performance.
 Also, beware that these questions are essential for the trainee as they are essential for the trainer. When the trainee answers these questions, the trainer can deduce the trainee's attitude and ability to improve. When the trainer answers these questions, the trainer creates precious feedback he can share with the trainee for faster growth.
 
+Here's a visual recap of the process:
+
+<a href="/images/hiring-process.jpg"><img class="blog-image" style="width: 100%" src="/images/hiring-process.jpg"> </a> 
+
 ## Conclusion
 This article was the last entry to the series. I hope you find it helpful and that it can bring some insight to you about how we deal with management here at Zuru.
+
+As I said in the first article intro, everything I talked about in this series comes from my direct experience while working a Zuru Tech Italy as a team leader, and it may or may not work for you. I hope you can i use them as a comparison from improving yourself, your company, and every company in the world, regardless of the practical utility you can squeeze from these articles even if you find yourself doing the opposite of what I said as a result. 
 
 I hope you are going to contact me if you have any questions, the best this series of articles can do to start a discussion about this matter.
 
