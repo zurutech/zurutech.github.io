@@ -30,10 +30,10 @@ Being in a managing position, a leader will find himself making decisions usuall
 When he is making a decision, there are many factors that he needs to take into consideration , like:
 - "can I make this decision by myself, or do I need to consult with some superiors, peers, or team members?"
 - "if I have to make this decision with others, how can I bring all the risk-reward elements needed to make the most informed decision?"
-- "Are there different solutions to this problem?", "Which one costs more and which costs less in terms of time, working people and money?", "Which one will give us the highest quality product?"
+- "Are there different solutions to this problem?", "Which one costs more and which costs less in terms of time, working people and money?", "Which one will give us the highest quality product?", "Which one respects the deadlines?"
 - "do I have the technical skills needed to evaluate the solution properly, or do I have to reach out and trust the opinion of some more specialised employees?"
 
-After all these questions and the analysis process, it does not matter if a technical leader has the last word or is only here to facilitate the discussion: he should be able to behave and think logically. If all the team agree that the proposed solutions are valid solutions for the problem at hand, even if they differ in the implementation or slightly differ in the ending results, he can sincerely choose what he thinks is best and advocate the reason behind this choice. 
+After all these questions and the analysis process, it does not matter if a technical leader has the last word or is only here to facilitate the discussion: he should be able to behave and think logically. Suppose all the team agree that the proposed solutions are valid solutions for the problem at hand. In that case, even if they differ in the implementation or slightly differ in the ending results, he can sincerely choose what he thinks is best and advocate the reason behind this choice. 
 So when he can advocate with others with concrete reasons and justify why he makes some decisions, his choices will not be taken as personal matters.
 Beware, sometimes time constrains the ability to assess a situation accurately, so a team leader can't look at all the different perspectives, it is okay as long as he behaves logically, and he is conscious of this factor.
 
