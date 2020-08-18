@@ -69,7 +69,7 @@ themeColor:
     backgroundColor: "#001A47"
     fontColor: "#FF8585"
   team-leading:
-    bagroundColorL: "#c7eddd"
+    backgroundColor: "#c7eddd"
     fontColor: "#000000"
 
 exclude:
