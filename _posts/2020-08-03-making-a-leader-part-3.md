@@ -20,7 +20,7 @@ In the image below, you will see every skill we talked about until now, and how 
 TODO IMAGE
 
 ## Communication to the next level
-In the previous articles, I talked about how communication is essential to leading for various reasons. However, there is one thing that can make the difference between a good communicator and an excellent communicator: the ability to motivate others.
+In the previous articles, I talked about how communication is essential to leading for various reasons. However, there is one thing that can make the difference between a good communicator and an excellent communicator: the ability to motivate and coach others.
 Everyone can be a good leader by being a good communicator without motivating others, and it is okay. However, if you can make them passionate about what they do, this can make the difference.
 If you can motivate your teams, with words and by examples, they will be more responsible, passionate, and less stressed.
 
@@ -41,7 +41,7 @@ At the same time, if a leader knows what an employee likes and dislikes about th
 ## Communication + Problem-Solving = Agreeable decision
 As already said in the second article, when a leader can solve the problem logically and communicate properly, he will build up trust and respect even when his last word on a matter is not what the entire team thinks it is best. 
 Sometimes, a technical leader should make a decision that seems terrible by looking at it technically through your professional lens, but for company reasons, you cannot use other strategies. In these cases, if a leader has excellent communication skills, he can make his team members work with less frustration by honestly telling them the truth. 
-A typical example: "guys, I understand it will not be as good as we wanted, but the deadline is coming, and we will lose money if we do it the right way, right now." He can also negotiate with them when he needs it "if you are with me, then we will change it later and make everything the best way.", but then he has to keep his word.
+A typical example: "guys, I understand it will not be as good as we wanted, but the deadline is coming, and we will lose money if we do it the right way, right now."  He can also honestly talk with them and "negotiate" with them when he needs it "if you are with me, then we will change it later and make everything the best way.", but then he has to keep his word.
 
 ## Teaching Skills + Job Competence = Constructive Feedback
 I already said this, good at communication, and finding recurring employee errors leads to excellent teaching and honest discussions. 
