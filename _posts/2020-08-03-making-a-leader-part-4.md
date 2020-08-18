@@ -23,7 +23,10 @@ There is no clear path in making a training process that will work for the compa
 For us, at Zuru Tech, the ideal time of training goes between 3 and 6 months. We divide the practice into two parts: a first part, where the trainer strictly follows the trainee and where the trainee will gradually learn and test all the skills needed by his future position, and a second part, where the trainee is prepared enough to make his first test with a complete team, doing everything on his own and referring to the trainer only for extremely critical issues.
 
 In particular, during the first period, we will evaluate how the trainee is behaving carefully. We are going to let him have full responsibility for a small task and coordinate a small subteam. At the same time, we will involve him in the decision process: at first, we are going to ask the trainee what he thinks about the trainer's decision; then, we ask the trainee to answer directly without knowing the trainer's opinions. At some point, we will invite the trainee to all the meetings that are usually attended only by the tech lead and the managers.
-This gradual process gives the trainee the possibility to learn one step at a time and provides the company with the opportunity to test the trainee without giving him too many responsibilities, reducing risks that can lead to potential time and money losses.
+This gradual process has two main advantages:
+1) It gives the trainee the possibility to learn one step at a time, it doesn't overburden him with stress and gives him time to understand if he likes his new role.
+2) It provides the company the opportunity to test the trainee reducing risks that can lead to potential time and money loss.
+
 
 ## How to evaluate the trainee process
 During the training process, the trainer will have to assess and train the trainee, how will he do it?
