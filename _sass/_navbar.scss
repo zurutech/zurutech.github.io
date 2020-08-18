@@ -391,6 +391,12 @@
                 padding-right: 5px;
               }
 
+              &.personal-info-btn {
+                line-height: 1.15;
+                outline: 0;
+                cursor: default;
+              }
+
               &:hover {
                 text-decoration: underline;
               }
