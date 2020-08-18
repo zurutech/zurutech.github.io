@@ -11,13 +11,13 @@ tags: team-leading
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
 
-<a href="/images/teamleading3.svg"><img class="blog-image" style="width: 100%" src="/images/teamleading3.svg"> </a>
+<a href="/images/Table.jpg"><img class="blog-image" style="width: 65%" src="/images/Table.jpg" align="right"> </a>
 
 Welcome to the third article in the series! In this article, I will focus on how each skill can be useful to boost other skills.
 
-In the image below, you will see every skill we talked about until now, and how they can merge to support each other or how they originate new skills!
-
-TODO IMAGE
+In the image on the right, you will see every skill we talk about until now: the leader's foundation.
+If you have all the skills mentioned until now, sure you will be a good leader, but if you have the ones listed below, you will be an excellent team leader!
+So let's look at how different skills can support each other or how they originate new skills! 
 
 ## Communication to the next level
 In the previous articles, I talked about how communication is essential to leading for various reasons. However, there is one thing that can make the difference between a good communicator and an excellent communicator: the ability to motivate and coach others.
@@ -51,7 +51,9 @@ Don't forget this also helps when talking about the career path your employee wa
 Yes, everyone with excellent knowledge can teach if he has good communication skills. However, I'm sure your company has its exceptions for the general best practice in the industry. When you have a leader proficient in his field that also knows all the caveats your company has, you have a perfect teacher for every newcomer in your company that will save much time wasted in understanding already known deadends.
 
 ## Conclusions
-That's all I had to say about the skills that can make a very good leader. Now, how will we find and create a new technical leader and a leader for your company?
+<a href="/images/Ven.jpg"><img class="blog-image" style="width: 100%" src="/images/Ven.jpg"> </a> 
+
+In this image, you can see a small recap of what I've explained with this article, and that's all I had to say about the skills that can make an excellent leader. Now, how will we find and create a new technical leader and a leader for your company?
 First, you hire a person or look for an employee in your company who fits the skill set to a reasonable degree. Second, you check if he can bring something new to the table (new energy, new passion, one of the soft skills in the image above that is more developed than anyone else in your technical leaders' team). And, third, you test him on the field.
 
 How do you test him on the field? You place him side-by-side with one of your leaders. You gradually give to your trainee more responsibility, and you gradually introduce him to all the decision processes a technical leader in your company goes through when he works.
