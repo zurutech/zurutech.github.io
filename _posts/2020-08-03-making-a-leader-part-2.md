@@ -2,9 +2,9 @@
 author: "saddy4"
 layout: post
 did: "blog2"
-title:  "Making a leader 2 - Soft Skills"
-slug:  making a leader 2 soft skills
-date:   2020-08-24 8:00:00
+title: "Making a leader 2 - Soft Skills"
+slug: making a leader 2 soft skills
+date:  2020-08-24 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading2.png
 tags: team-leading
