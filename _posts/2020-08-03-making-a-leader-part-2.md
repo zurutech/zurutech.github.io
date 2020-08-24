@@ -18,11 +18,11 @@ In the first article we talked about the hard skills and the most critical soft 
 
 ## Managing
 A technical leader has management duties so he should be able to manage people implying the following activities: 
-- **organise their work**: "who should do this task? "and "this employee finished his job earlier, what can he do now?"; 
-- **planning for failure**: "what are we going to do if this task takes more time than estimated?"; 
-- **be receptive to unhappiness**: if an employee has been overloaded with tedious tasks, "how can we give him something better to do?";
-- **learn and adapt to his team members**: if an employee is always giving wrong deadlines, "how can we adjust the schedule? How can we help him be more accurate during estimation?";
-- **empower them**: honestly speaking to his team members about a daunting task assigned to them and how everyone can deal with it.
+- **organise their work**: "who should do this task? "and "this employee finished his job earlier, what can he do now?"
+- **planning for failure**: "what are we going to do if this task takes more time than estimated?"
+- **be receptive to unhappiness**: if an employee has been overloaded with tedious tasks, "how can we give him something better to do?"
+- **learn and adapt to his team members**: if an employee is always giving wrong deadlines, "how can we adjust the schedule? How can we help him be more accurate during estimation?"
+- **empower them**: honestly speaking to his team members about a daunting task assigned to them and how everyone can deal with it
 
 ## Problem-solving
 Being in a managing position, a leader will find himself making decisions usually, and he has to take responsibility for it. When he was a simple employee, he could always delegate this decision burden to someone above him, but now the leader will decide by himself sooner or later.
