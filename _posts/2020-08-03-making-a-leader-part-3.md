@@ -24,7 +24,7 @@ In the previous articles, I talked about how communication is essential to leadi
 Everyone can be a good leader by being a good communicator without motivating others, and it is okay. However, if you can make them passionate about what they do, this can make the difference.
 If you can motivate your teams, with words and by examples, they will be more responsible, passionate, and less stressed.
 
-All the next skills need good communication ability; without it, they are almost useful.
+All the next skills need good communication ability; without it, they are almost useless.
 
 ## Problem-Solving + Managing skills = Organizational skills
 Suppose the leader can logically reason through a problem and manage people skills. In that case, he should be able to achieve two critical objectives for every company: maximizing the work output and maximizing employees' happiness.
