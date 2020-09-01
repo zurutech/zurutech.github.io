@@ -33,7 +33,7 @@ From the employees perspective, it allows a personal and professional growth, by
 Profitable feedback should observe these rules:
 - No Prejudices and Free from personal involvement or likings; <br>
 - Planned frequently; <br>
-- Respectful; <br><br>
+- Respectful; <br>
 - Positive or Negative; <br>
 - Must include suggestions; <br>
 - Bidirectional. <br>
