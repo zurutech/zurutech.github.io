@@ -173,11 +173,14 @@
 
 .blog-footer {
   width: 100%;
+  /*overriding bottom from _custom.scss to fix image flicker*/
+  bottom: -1px;
   background-color: #0b2d9d;
-
+  padding: 0px !important;
   .container-fluid {
     border-top: 1px solid #515151;
-
+    padding-left:0;
+    padding-right:0;
     @media (max-width: 767px) {
       border: none;
     }
@@ -186,25 +189,23 @@
   .quick-links {
     width: 100%;
     background-color: #0b2d9d;
-    // padding-right: 220px;
-    // padding-left: 220px;
-    padding-right: 205px;
-    padding-left: 205px;
+    padding-right: 220px;
+    padding-left: 220px;
     font-family: "HindMadurai";
 
     @media (max-width: 1366px) {
-      padding-right: 85px;
-      padding-left: 85px;
+      padding-right: 100px;
+      padding-left: 100px;
     }
 
     @media (max-width: 992px) {
-      padding-right: 45px;
-      padding-left: 45px;
+      padding-right: 60px;
+      padding-left: 60px;
     }
 
     @media (min-width: 1921px) {
-      padding-right: 495px !important;
-      padding-left: 495px !important;
+      padding-right: 510px !important;
+      padding-left: 510px !important;
     }
 
     @media (max-width: 991px) {
@@ -215,16 +216,18 @@
         top: 50%;
         left: 0px;
         border-bottom: 1px solid #fff;
-        transform: translate(0, 50%);
+        // transform: translate(0, 50%);
       }
     }
 
     @media (max-width: 767px) {
-      padding-right: 5px;
-      padding-left: 5px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    @media (min-width: 768px) and (max-width: 842px), (max-width: 633px) {
       &:after {
-        top: 47%;
-        left: 0px;
+        top:60%;
+        left:0px;
       }
     }
 
@@ -232,10 +235,10 @@
       padding-top: 10px;
       padding-bottom: 10px;
 
-      @media (max-width: 991px) {
-        padding-top: 0px;
-        padding-bottom: 0px;
-      }
+      // @media (max-width: 991px) {
+      //   padding-top: 0px;
+      //   padding-bottom: 0px;
+      // }
       .copyright {
         width: 100%;
         text-align: center;
@@ -286,6 +289,10 @@
             margin: 0px;
             padding-left: 1px;
 
+            @media (min-width: 993px) and (max-width:1024px) {
+              padding-left: 5px;
+            }
+
             @media (max-width: 767px) {
               display: block;
               font-size: 14px;
@@ -326,7 +333,8 @@
             text-align: center;
             padding-left: 0px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            flex-wrap: wrap;
           }
 
           li {
@@ -338,6 +346,18 @@
             &:hover {
               border: 1px solid #0b2d9d;
               border-radius: 5px;
+            }
+
+            @media (min-width: 768px) and (max-width: 842px), (max-width: 633px) {
+              &:last-child{
+                display: flex;
+                flex-grow: 1;
+                justify-content: center;
+                .footer-button{
+                  padding-top:10px;
+                  padding-bottom:10px;
+                }
+              }
             }
 
             @media (max-width: 767px) {
@@ -360,6 +380,37 @@
               padding: 10px;
               color: #fff;
 
+              &.careers {
+                color: #fff;
+                @media (min-width: 992px) {
+                  padding-right: 5px;
+                }
+              }
+
+              &.privacy-policy {
+                @media (min-width: 992px) {
+                  padding-right: 5px;
+                }
+              }
+
+              &.cookie-policy {
+                @media (max-width: 2460px) {
+                  padding-right: 10px;
+                }
+                @media (max-width: 576px) {
+                  padding-right: 6px;
+                }
+                @media (min-width: 1882px) and (max-width: 1920px), (min-width: 2461px) {
+                  padding-right: 5px;
+                }
+              }
+
+              &.personal-info-btn {
+                line-height: 1.15;
+                outline: 0;
+                cursor: default;
+              }
+
               @media (max-width: 991px) {
                 padding-bottom: 0px;
                 padding-left: 10px;
@@ -372,7 +423,7 @@
                 font-size: 16px;
                 color: #fff;
                 width: 100%;
-                text-align: left;
+                padding-right: 10px;
               }
 
               @media (max-width: 576px) {
@@ -380,21 +431,6 @@
                 padding-left: 6px;
                 padding-right: 6px;
                 padding-top: 0px;
-              }
-
-              &.careers {
-                color: #fff;
-                padding-right: 5px;
-              }
-
-              &.privacy-policy{
-                padding-right: 5px;
-              }
-
-              &.personal-info-btn {
-                line-height: 1.15;
-                outline: 0;
-                cursor: default;
               }
 
               &:hover {
@@ -407,6 +443,8 @@
 
       @media (max-width: 767px) {
         flex-direction: column-reverse;
+        padding-top:0px;
+        padding-bottom: 0px;
       }
     }
 
