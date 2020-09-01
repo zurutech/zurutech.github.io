@@ -12,15 +12,13 @@ description: "A quick description about what is the feedback and why it's so imp
 
 ## What is a feedback in a Company?<br> 
 The feedback is the process that describes how the result of a task performed by a person is reflecting on that person, in order to suggest how to correct and/or improve itself.
- 
-<br> 
+ <br> 
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
 <br> 
 
-## The characteristics of a Feedback<br> 
- 
-A profitable feedback should be observe this rules: <br> 
-- No Prejudices, likings and free from personal involvement; <br> 
+Basically Feedbacks should follows three main stages: 
+
+- No Prejudices and Free from personal involvement or likings; <br> 
 - Planned frequently; <br> 
 - Respect and Openness; <br> 
 - Positive or Negative; <br> 
@@ -37,11 +35,24 @@ From the employees perspective, it allows a personal and professional growth, by
 
 Lack of feedback suggests disinterest and often it’s the root cause of a lose-lose scenario; a very common and uncontrolled feed-forward is the quit of the employees. 
 
+## The characteristics of a good feedback<br> 
+
+A profitable feedback should be observe this rules: <br> 
+- No Prejudices and Free from personal involvement or likings; <br> 
+- Planned frequently; <br> 
+- Respect and Openness; <br> 
+- Positive or Negative; <br> 
+- Must includes suggestions; <br> 
+- Bidirectional <br> 
+<br> 
+
+
+
 ## Conclusions
 
 In Zuru Tech Italy, this aspect is really considered; the company is aware about the benefits of mutual and constant feeds, by removing hierarchical barriers, planning frequent meetings with these aims and encouraging people to be open and feel free to discuss frequently.
 
-Despite is a very young company, it recognize the criticality and the impacts 
+Despite is a very young company, it recognize the criticality of the topic.
 
-For any question or talk, you can find me at my work email luca.d@zuru.tech and on linked-in.
+Your suggestions and comment are really appreciated; contact me to luca.d@zuru.tech or via linked-in.
 
