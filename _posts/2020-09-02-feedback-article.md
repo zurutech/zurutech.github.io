@@ -10,12 +10,11 @@ tags: team-building
 description: "A quick description about what is the feedback and why it's so important"
 ---
 
-## What is a Feedback?<br> 
-A Feedback occurs when an environment reacts to an action or behavior. 
-Every day people are giving and receiveing feedbacks: a response to a greeting from a friend, laughing while watching a comic film and being sad if you experience a negative event, are all feedbacks example, basically based on emotional reactions.
+## What is a Feedback?<br>
+Feedbacks occurs when an environment reacts to an action or behavior.
+Every day in our life we giving and receiving feedbacks: we say hello to a friend we meet, we become happy by watching a comedy, and we are upset if we enter an examination room. Emotional reactions underlie the concept of feedback.
 
-In corporate environments, a feedback turns to the process that describes how the result of a task performed by a person is reflecting on that person, in order to suggest how to correct and/or improve itself.
-
+In a company environment, A feedback turn to the process that describes how the result of a task performed by a person is reflecting on that person, in order to suggest how to correct and/or improve itself.
  <br> 
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
 <br> 
@@ -39,7 +38,7 @@ Lack of feedback suggests disinterest and often it’s the root cause of a lose-
 ## The characteristics of a good feedback<br> 
 
 A profitable feedback should be observe this rules: <br> 
-- No Prejudices and Free from personal involvements or likings; <br> 
+- No Prejudices and Free from personal involvement or likings; <br> 
 - Planned frequently; <br> 
 - Respect and Openness; <br> 
 - Positive or Negative; <br> 
@@ -48,6 +47,9 @@ A profitable feedback should be observe this rules: <br>
 <br> 
 
 ## Conclusions
+
+A smart company is a company that takes care of the health of a working environment. 
+The Feedback's Quality processes is a strong asset in a company: cheap, powerful, build loyalty.
 
 In Zuru Tech Italy, this aspect is really considered; the company is aware about the benefits of mutual and constant feeds, by removing hierarchical barriers, planning frequent meetings with these aims and encouraging people to be open and feel free to discuss frequently.
 
