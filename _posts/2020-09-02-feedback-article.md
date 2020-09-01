@@ -14,10 +14,10 @@ description: "A quick description about what is the feedback and why it's so imp
 
 The feedback is the process that describes how the result of a task performed by a person is reflecting on that person, in order to correct/improve itself.
  
-Provide feedback is a crucial aspect for companies and its workers, because it allows to create a “communication channel” between the people, encourage collaboration, team building and providing guidelines from both sides at “zero cost”.
+Provide feedback is a crucial aspect for companies and its workers: it allows to create a “communication channel” between the people, encourage collaboration, team building and providing guidelines from both sides at “zero cost”.
 
+<a href="/images/Capture.jpg"><img class="blog-image" style="width: 65%" src="/images/Capture.jpg" align="right"> </a>
 
-## PAR1
 
 A profitable feedback should have:
 - No Prejudices, likings and free from personal involvement;
@@ -29,7 +29,6 @@ A profitable feedback should have:
 
 ## PAR2
 
-<a href="/images/Capture.jpg"><img class="blog-image" style="width: 65%" src="/images/Capture.jpg" align="right"> </a>
 
 
 ## Why feedbacks are so important?
