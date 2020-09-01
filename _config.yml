@@ -17,6 +17,9 @@ copyright:
 markdown: kramdown
 permalink: /:categories/:year/:month/:day/:slug
 
+#For scheduling blog entries
+future: false
+
 # Tracker
 analytics: UA-113891536-1
 
@@ -68,6 +71,9 @@ themeColor:
   web:
     backgroundColor: "#001A47"
     fontColor: "#FF8585"
+  team-leading:
+    backgroundColor: "#c7eddd"
+    fontColor: "#000000"
 
 exclude:
   - Gemfile
