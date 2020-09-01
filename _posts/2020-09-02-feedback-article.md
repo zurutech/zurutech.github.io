@@ -16,14 +16,11 @@ The feedback is the process that describes how the result of a task performed by
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
 <br> 
 
-Basically Feedbacks should follows three main stages: 
+Basically a Feedback can be splitted into three meaningful stages:
 
-- No Prejudices and Free from personal involvement or likings; <br> 
-- Planned frequently; <br> 
-- Respect and Openness; <br> 
-- Positive or Negative; <br> 
-- Must includes suggestions; <br> 
-- Bidirectional <br> 
+- Reflection: Focused backwards; 
+- Goal Setting: Focused to the present and
+- Feedforward: Focused to the future, especially to the action to perform thanks to the previous ones;
 <br> 
 
 ## Why feedbacks are so important?<br> 
