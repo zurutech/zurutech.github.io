@@ -39,7 +39,7 @@ Lack of feedback suggests disinterest and often it’s the root cause of a lose-
 A profitable feedback should be observe this rules: <br> 
 - No Prejudices and Free from personal involvement or likings; <br> 
 - Planned frequently; <br> 
-- Respect and Openness; <br> 
+- Respectful; <br> 
 - Positive or Negative; <br> 
 - Must includes suggestions; <br> 
 - Bidirectional. <br> 
