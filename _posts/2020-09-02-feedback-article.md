@@ -28,7 +28,9 @@ A profitable feedback should have:
 - Bidirectional
 
 ## PAR2
+<a href="https://ibb.co/9NNrRT8"><img class="blog-image" style="width: 65%" src="https://ibb.co/9NNrRT8" align="right"> </a>
 
+[url=https://ibb.co/9NNrRT8][img]https://i.ibb.co/g33RsTj/Capture.jpg[/img][/url]
 
 ## Why feedbacks are so important?
 The feedback from the company's perspective allow to understand the workers' needs, the improvement areas and a general monitoring of their work-force. 
