@@ -42,7 +42,7 @@ A profitable feedback should be observe this rules: <br>
 - Respect and Openness; <br> 
 - Positive or Negative; <br> 
 - Must includes suggestions; <br> 
-- Bidirectional <br> 
+- Bidirectional. <br> 
 <br> 
 
 ## Conclusions
