@@ -43,8 +43,6 @@ A profitable feedback should be observe this rules: <br>
 - Bidirectional <br> 
 <br> 
 
-
-
 ## Conclusions
 
 In Zuru Tech Italy, this aspect is really considered; the company is aware about the benefits of mutual and constant feeds, by removing hierarchical barriers, planning frequent meetings with these aims and encouraging people to be open and feel free to discuss frequently.
