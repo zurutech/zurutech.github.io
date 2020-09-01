@@ -27,11 +27,11 @@ Basically a Feedback can be splitted into three meaningful stages:
 <br> 
 
 ## Why feedbacks are so important?<br> 
-The Feedback is an asset for companies and its workers, because it allows to create a “communication channel” between the people, encourage collaboration, trasparency, team building and p
+The Feedback is an asset for companies and its workers, because it allows to create a “communication channel” between the people, encourage collaboration, trasparency, build loyalty.
 From the employer's perspective allow to understand the employees needs, the improvement areas and a general monitoring of their work-force. 
 For some companies, this aspect can be evaluated as time waste; instead, be aware about this status means to be interested in company performance and how to improve it.
-From the employees perspective, it allows a personal and professional growth, by understanding which corrections perform along their job’s journey.
 
+From the employees perspective, it allows a personal and professional growth, by understanding which corrections perform along their job’s journey.
 Lack of feedback suggests disinterest and often it’s the root cause of a lose-lose scenario; a very common and uncontrolled feed-forward is the quit of the employees. 
 
 ## The characteristics of a good feedback<br> 
@@ -50,7 +50,6 @@ A profitable feedback should be observe this rules: <br>
 A smart company is a company that takes care of the health of a working environment and in this perspective, The feedback's Quality processes is a powerful asset with "no costs".
 
 In Zuru Tech Italy, this aspect is really considered; the company is aware about the benefits of mutual and constant feeds, by removing hierarchical barriers, planning frequent meetings with these aims and encouraging people to be open and feel free to discuss frequently.
-
 
 Your suggestions and comment about this topic are really appreciated; contact me to luca.d@zuru.tech or via linked-in.
 
