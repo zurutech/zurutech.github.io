@@ -2,8 +2,8 @@
 author: "lucadandria"
 layout: post
 did: "blog2"
-title: "Why provide feedback?"
-slug: Why provide feedback
+title: "the importance of feedback"
+slug: the importance of feedback
 date: 2020-09-01 16:00:00
 categories: office-blog
 tags: team-building
