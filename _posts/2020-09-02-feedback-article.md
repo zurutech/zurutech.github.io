@@ -10,7 +10,7 @@ tags: team-building
 description: "A quick description about what is the feedback and why it's so important"
 ---
 
-## What is a feedback in a Company?<br> 
+## What is a Feedback?<br> 
 The feedback is the process that describes how the result of a task performed by a person is reflecting on that person, in order to suggest how to correct and/or improve itself.
  <br> 
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
