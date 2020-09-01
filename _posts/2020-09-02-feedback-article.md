@@ -16,7 +16,9 @@ The feedback is the process that describes how the result of a task performed by
 <br> 
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
 <br> 
-## The characteristics of a Feedback <br> 
+
+## The characteristics of a Feedback<br> 
+ 
 A profitable feedback should be observe this rules: <br> 
 - No Prejudices, likings and free from personal involvement; <br> 
 - Planned frequently; <br> 
