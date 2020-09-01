@@ -9,7 +9,7 @@ categories: office-blog
 tags: team-building
 description: "A quick description about what is the feedback and why it's so important"
 ---
-## INTRODUCTION: WHAT IS THE FEEDBACK?
+## WHAT IS THE FEEDBACK?
 ....
 
 The feedback is the process that describes how the result of a task performed by a person is reflecting on that person, in order to correct/improve itself.
@@ -27,10 +27,16 @@ A profitable feedback should have:
 - Must includes suggestions;
 - Bidirectional
 
-
 ## PAR2
 
-....
+
+## Why feedbacks are so important?
+The feedback from the company's perspective allow to understand the workers' needs, the improvement areas and a general monitoring of their work-force. 
+For some companies, this aspect can be evaluated as time waste; instead, knowing this information means being interested in company performance and how to improve it.
+From the workers perspective, it allows a personal and professional growth, by understanding which corrections perform along their job’s path.
+
+Lack of feedback suggests disinterest and often it’s the root cause of a lose-lose scenario.
+
 
 ## Conclusions
 
