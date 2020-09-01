@@ -11,7 +11,11 @@ description: "A quick description about what is the feedback and why it's so imp
 ---
 
 ## What is a Feedback?<br> 
-The feedback is the process that describes how the result of a task performed by a person is reflecting on that person, in order to suggest how to correct and/or improve itself.
+A Feedback occurs when an environment reacts to an action or behavior. 
+Every day people are giving and receiveing feedbacks: a response to a greeting from a friend, laughing while watching a comic film and being sad if you experience a negative event, are all feedbacks example, which are emotional reactions.
+
+In a company we can ta
+
  <br> 
 <a href="/images/Capture.JPG"><img class="blog-image" style="width: 65%" src="/images/Capture.JPG" align="center"> </a>
 <br> 
