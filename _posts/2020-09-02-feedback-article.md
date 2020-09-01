@@ -4,7 +4,7 @@ layout: post
 did: "blog2"
 title: "Why provide feedback?"
 slug: Why provide feedback
-date: 2020-09-02 16:00:00
+date: 2020-09-01 16:00:00
 categories: office-blog
 tags: team-building
 description: "A quick description about what is the feedback and why it's so important"
