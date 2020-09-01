@@ -18,9 +18,9 @@ The feedback is the process that describes how the result of a task performed by
 
 Basically a Feedback can be splitted into three meaningful stages:
 
-- Reflection: Focused backwards; 
-- Goal Setting: Focused to the present and
-- Feedforward: Focused to the future, especially to the action to perform thanks to the previous ones;
+- Reflection: Focused on what you have reached until today; 
+- Goal Setting: Focused on what you want to achieve tomorrow;
+- Feedforward: Focused to the actions to perform based on the previous ones;
 <br> 
 
 ## Why feedbacks are so important?<br> 
