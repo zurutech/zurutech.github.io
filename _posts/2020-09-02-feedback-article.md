@@ -47,7 +47,7 @@ A profitable feedback should be observe this rules: <br>
 
 ## Conclusions
 
-A smart company is a company that takes care of the health of a working environment and in this perspective, The feedback's Quality processes is a powerful asset with "no costs".
+A smart company takes care of the health of a working environment and in this perspective, Feedback's Quality process is a powerful asset with "no costs".
 
 In Zuru Tech Italy, this aspect is really considered; the company is aware about the benefits of mutual and constant feeds, by removing hierarchical barriers, planning frequent meetings with these aims and encouraging people to be open and feel free to discuss frequently.
 
