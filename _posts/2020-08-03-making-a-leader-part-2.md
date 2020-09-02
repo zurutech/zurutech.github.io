@@ -7,7 +7,7 @@ slug: making a leader 2 soft skills
 date:  2020-08-24 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading2.png
-tags: team-leading
+tags: team
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
 <a href="/images/teamleading2.svg"><img class="blog-image" style="width: 100%" src="/images/teamleading2.svg"> </a>
