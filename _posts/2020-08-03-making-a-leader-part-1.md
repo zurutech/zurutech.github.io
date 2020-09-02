@@ -7,7 +7,7 @@ slug:  making a leader 1 necessary skills
 date:   2020-08-18 8:00:00
 categories: office-blog
 image: images/banners/banner-teamleading1.png
-tags: team-leading
+tags: team
 description: "A quick overview on how do we choose and train leaders at zuru"
 ---
 

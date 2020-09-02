@@ -71,7 +71,7 @@ themeColor:
   web:
     backgroundColor: "#001A47"
     fontColor: "#FF8585"
-  team-leading:
+  team:
     backgroundColor: "#c7eddd"
     fontColor: "#000000"
 
