@@ -74,6 +74,10 @@ themeColor:
   team:
     backgroundColor: "#c7eddd"
     fontColor: "#000000"
+  ux-ui:
+    backgroundColor: "#E2D3F4"
+    fontColor: "#013DC4"
+
 
 exclude:
   - Gemfile
