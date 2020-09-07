@@ -6,7 +6,7 @@ pgaleone:
     linkedin: "https://www.linkedin.com/in/paolo-galeone-6782b311b/"
     reddit: "https://www.reddit.com/user/pgaleone"
     image: "https://raw.githubusercontent.com/galeone/galeone.github.io/master/images/me.jpeg"
-    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D @ Zuru Tech Italy"
+    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D<br>Tech Lead @ Zuru Tech Italy"
 
 mr-ubik:
     name: 'Michele "Ubik" Desimoni'
@@ -27,12 +27,10 @@ fdimattia:
     bio: "Computer Engineer. Early adopter. Head and imagination miner 🎩. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
 
 martin-alessio:
-    name: Martin & Alessio Carianni
+    name: Martin &amp; Alessio Carianni
     uri: https://zuru.tech/
     email: italy@zuru.tech
-    twitter: ""
     linkedin: "https://www.linkedin.com/company/zuru-tech-italy"
-    reddit: ""
     image: "/images/FotoAM.jpg"
     bio: "Architecture & Construction lovers with a spicy software sauce.<br>CTO and CDO @ Zuru Tech"
 
@@ -42,7 +40,6 @@ ridham:
     email: ridham@zuru.tech
     twitter: "https://twitter.com/RidhamTarpara"
     linkedin: "https://www.linkedin.com/in/ridham-tarpara-97430270/"
-    reddit: ""
     image: "https://i.imgur.com/Z0ORbCU.png"
     bio: "Software engineer, Lifelong learner, DevOps Enthusiast<br>Backend Engineer @ Zuru Tech India"
 
