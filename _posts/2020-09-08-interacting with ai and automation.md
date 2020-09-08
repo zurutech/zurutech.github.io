@@ -4,7 +4,7 @@ layout: post
 did: "blog2"
 title:  "Interacting with AI and automation - a UX Perspective"
 slug:  "interacting with ai and automation - a ux perspective"
-date:   2020-09-09 8:00:00
+date:   2020-09-08 8:00:00
 categories: ux-ui
 image: images/banners/banner-uxui3.png
 tags: ux-ui
