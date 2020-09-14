@@ -45,7 +45,7 @@ Moreover, installing it is trivial as explained in [the documentation](https://d
 
 ## Executors for UE4 projects
 
-[Unreal Engine](https://www.unrealengine.com/en-US/) is a cross platform game engine, quoting the official website:
+[Unreal Engine](https://www.unrealengine.com/en-US/) is a cross-platform game engine, quoting the official website:
 
 > Unreal Engine is the world’s most open and advanced real-time 3D creation tool. Continuously evolving to serve not only its original purpose as a state-of-the-art game engine, today it gives creators across industries the freedom and control to deliver cutting-edge content, interactive experiences, and immersive virtual worlds.
 
