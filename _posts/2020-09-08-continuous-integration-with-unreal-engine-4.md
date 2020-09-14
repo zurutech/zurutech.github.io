@@ -502,7 +502,7 @@ scheduled-package-development-windows:
         - schedules
 ```
 
-In this way we defined a CI pipeline that looks like this for every commit (in the image there is the support only for 2 OS).
+In this way, we defined a CI pipeline that looks like this for every commit (in the image there is the support only for 2 OS).
 
 <div markdown="1" class="blog-image-container">
 ![CI on commit](/images/ciue4/static-package.png){:class="blog-image"}
