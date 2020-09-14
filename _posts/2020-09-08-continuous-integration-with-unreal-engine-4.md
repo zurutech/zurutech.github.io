@@ -293,7 +293,7 @@ test:
         - ue4
 ```
 
-This job also produces a `output.log` file that can be inspected in case of crashes of the test suite (it might happen).
+This job also produces a file named `output.log` that can be inspected in case of crashes of the test suite (it might happen).
 
 **NOTE**: `ue4cli` offers the `ue4 test` command, but when there is no display connected it doesn't work and we have to use the custom command line you can see above in the `ue4 run` invocation.
 
