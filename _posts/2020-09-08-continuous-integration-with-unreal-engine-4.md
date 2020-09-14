@@ -23,7 +23,7 @@ In this article, I'm going to show you how to configure and use the CI/CD tool p
 - macOS
 - Linux
 
-In the following, CD will stand for Continuous Delivery - so I won't cover the Deployment part.
+In the following, "CD" will stand for Continuous Delivery - so I won't cover the Deployment part.
 
 ## Introduction to the GitLab CI/CD tool
 
