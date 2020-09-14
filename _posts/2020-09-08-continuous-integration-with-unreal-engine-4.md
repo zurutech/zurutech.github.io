@@ -514,4 +514,4 @@ Moreover, configuring GitLab to invoke the CI at scheduled time we can wake up e
 
 ## Conclusion
 
-It requires some (good) sysadmin skill to setup the whole infrastructure for the CI/CD of a Unreal Engine based software, but it is worth it. :)
+It requires some (good) sysadmin skill to set up the whole infrastructure for the CI/CD of a Unreal Engine based software, but it is worth it. :)
