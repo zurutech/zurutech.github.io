@@ -199,7 +199,7 @@ Note how using the `tags` we are able to select the runners. During the runner s
 
 ##### Compilation
 
-On every merge request, we want to be sure that the code the developer is writing *at least* compiles on every platform. After setting up the infrastructure, doing this it is really straightforward.
+On every merge request, we want to be sure that the code the developer is writing *at least* compiles on every platform. After setting up the infrastructure, doing this is really straightforward.
 
 ```yml
 compile-development-linux:
