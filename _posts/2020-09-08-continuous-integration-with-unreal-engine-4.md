@@ -10,7 +10,7 @@ tags: coding
 image: images/ciue4/cicd_pipeline_infograph.png
 ---
 
-Continuous Integration (CI) is an essential step in the development pipeline of a well-designed software infrastructure. The goal of CI is to **automatize the boring stuff** by letting the developers focusing on the code and, at the same time, helping them in producing good quality software.
+Continuous Integration (CI) is an essential step in the development pipeline of well-designed software infrastructure. The goal of CI is to **automatize the boring stuff** by letting the developers focusing on the code and, at the same time, helping them in producing good quality software.
 
 Often, we read together two acronyms (and this article makes no exception) CI & CD. While CI always stands for Continuous Integration, CD have two different meanings:
 
