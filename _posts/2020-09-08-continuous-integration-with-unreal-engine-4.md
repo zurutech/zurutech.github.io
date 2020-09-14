@@ -301,7 +301,7 @@ This job also produces a file named `output.log` that can be inspected in case o
 
 We want to give the developers the possibility of downloading a packaged version of the application, in both shipping (optimized) and debug (with debug symbols, `check`, `ensure`, and so on) version and at the same time set up the `gitlab-ci.yml` file in order to generate automatically builds at fixed time intervals (this option can be configured by Gitlab itself using the web interface).
 
-For this reason, instead of directly defining the jobs we define *templates*. These templaces will be then used for both the *manual* and the *scheduled* jobs.
+For this reason, instead of directly defining the jobs we define *templates*. These templates will be then used for both the *manual* and the *scheduled* jobs.
 
 
 ```yml
