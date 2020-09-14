@@ -164,7 +164,7 @@ stages:
 
 ##### Static Analysis
 
-Every C++ project should follow code style. This CI job uses `clang-format` and `dos2unix` to check if every committed file has the correct encoding (we need UTF-8 encoded files to be sure that every compiler on every platform can read them well) and follows the style rules present in the `.clang-format` file that should be present into every project :)
+Every C++ project should follow a code style. This CI job uses `clang-format` and `dos2unix` to check if every committed file has the correct encoding (we need UTF-8 encoded files to be sure that every compiler on every platform can read them well) and follows the style rules present in the `.clang-format` file that should be present into every project :)
 
 ```yml
 clang-format:
