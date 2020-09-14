@@ -140,7 +140,7 @@ Let's start with the automatization of the boring stuff, we need to find a way t
 2. Does the code I want to merge compile correctly on every platform?
 3. Am I introducing regressions?
 
-To answer all these questions, and be ready to the continuous delivery stuff, we need to define the variables and the stages (of the pipeline) we plan to execute.
+To answer all these questions, and be ready for the continuous delivery stuff, we need to define the variables and the stages (of the pipeline) we plan to execute.
 
 ```yml
 variables:
