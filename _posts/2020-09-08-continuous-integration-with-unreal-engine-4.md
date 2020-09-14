@@ -112,7 +112,7 @@ Using Docker we can cover the CI for the Linux and Windows platforms. macOS, ins
 
 ### Shell executor
 
-The shell executor is just "the current machine". Thus, we can install [GitLab Runner on macOS](https://docs.gitlab.com/runner/install/osx.html) and manually install all the dependencies that are, in our case, only unreal engine and the xcode toolchain.
+The shell executor is just "the current machine". Thus, we can install [GitLab Runner on macOS](https://docs.gitlab.com/runner/install/osx.html) and manually install all the dependencies that are, in our case, only unreal engine and the Xcode toolchain.
 Differently from the Docker executor, the Shell executor have several disadvantages:
 
 - No isolation at all.
