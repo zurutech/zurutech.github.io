@@ -94,10 +94,17 @@ saddy4:
     linkedin: "https://www.linkedin.com/in/loris-casagrandi-3182027a"
     bio: "Software developer and Team Leader @ Zuru Tech Italy. In love with games and game design."
 
-
 lucadandria:
-  name: "Luca D'Andria"
-  email: luca.d@zuru.tech
-  image: "https://avatars1.githubusercontent.com/u/70565462?s=400&u=52eb21e95a1ab92dbc470777a2aef5fbcf0efa39&v=4"
-  linkedin: "https://www.linkedin.com/in/dandrialuca/"
-  bio: "Senior QA Engineer @Zuru Tech Italy. From C64 to Intel486 with Honor"
+    name: "Luca D'Andria"
+    email: luca.d@zuru.tech
+    image: "https://avatars1.githubusercontent.com/u/70565462?s=400&u=52eb21e95a1ab92dbc470777a2aef5fbcf0efa39&v=4"
+    linkedin: "https://www.linkedin.com/in/dandrialuca/"
+    bio: "Senior QA Engineer @Zuru Tech Italy. From C64 to Intel486 with Honor"
+
+martina-loi:
+    name: "Martina Loi"
+    email: martina@zuru.tech
+    image: "/images/profile-pic-martina.jpg"
+    linkedin: "https://www.linkedin.com/in/martinaloi/"
+    medium: "https://medium.com/@martina.loi"
+    bio: "Junior UX Designer @Zuru Tech Italy. Design + Languages + A11y"
