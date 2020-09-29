@@ -23,7 +23,7 @@ In this article, I'm going to show you how to configure and use the CI/CD tool p
 - macOS
 - Linux
 
-In the following, CD will stand for Continuous Delivery - so I won't cover the Deployment part.
+In the following, "CD" will stand for Continuous Delivery - so I won't cover the Deployment part.
 
 ## Introduction to the GitLab CI/CD tool
 
@@ -113,6 +113,7 @@ Using Docker we can cover the CI for the Linux and Windows platforms. macOS, ins
 ### Shell executor
 
 The shell executor is just "the current machine". Thus, we can install [GitLab Runner on macOS](https://docs.gitlab.com/runner/install/osx.html) and manually install all the dependencies that are, in our case, only unreal engine and the Xcode toolchain.
+
 Differently from the Docker executor, the Shell executor has several disadvantages:
 
 - No isolation at all.
