@@ -4,15 +4,15 @@ layout: post
 did: "blog2"
 title: "GitLab CI/CD for cross-platform Unreal Engine 4 projects"
 slug: "GitLab CI/CD for cross-platform Unreal Engine 4 projects"
-date: 2020-09-08 16:00:00
+date: 2020-09-29 06:00:00
 categories: coding
 tags: coding
 image: images/ciue4/cicd_pipeline_infograph.png
 ---
 
-Continuous Integration (CI) is an essential step in the development pipeline of a well-designed software infrastructure. The goal of CI is to **automatize the boring stuff** by letting the developers focusing on the code and, at the same time, helping them in producing good quality software.
+Continuous Integration (CI) is an essential step in the development pipeline of well-designed software infrastructure. The goal of CI is to **automatize the boring stuff** by letting the developers focusing on the code and, at the same time, helping them in producing good quality software.
 
-Often, we read together two acronyms (and this article makes no exception) CI & CD. While CI always stands for Continuous Integration, CD have two different meanings:
+Often, we read together two acronyms (and this article makes no exception) CI & CD. While CI always stands for Continuous Integration, CD has two different meanings:
 
 1. **Continuous Delivery** where a developer's change is automatically bug-tested and uploaded to a repository, or
 2. **Continuous Deployment** where a developer's change is automatically released to the production environment, where the customer can use this brand-new version.
@@ -33,11 +33,11 @@ In the following, CD will stand for Continuous Delivery - so I won't cover the D
 ![GitLab Continuous Integration pipeline](/images/ciue4/cicd_pipeline_infograph.png){:class="blog-image"}
 </div>
 
-The CI/CD toolchain is composed by 3 main parts:
+The CI/CD toolchain is composed of 3 main parts:
 
 - The `gitlab-ci.yml` file that contains the configuration of the CI/CD pipeline. Using this YAML file we can configure the CI/CD behavior: what should happen on every commit or merge request, what should happen at scheduled times, and [many many more](https://docs.gitlab.com/ee/ci/yaml/). This file contains the commands to execute (a batch of commands is called "job") on the specified runner.
-- [GitLab Runners](https://docs.gitlab.com/runner/). A runner is a software able to receive from GitLab a job, execute it, and send back the result to GitLab. Several runner can (and should) run in parallel, allowing the whole infrastructure to scale. The execution of the job is delegated to an "executor".
-- **The executor**. During the configuration of the runner, we can specify what type of executor to use. In particular, it's possible to use the machine where the runner is installed to run directly in its shell the commands (that's the shell executor), or use Docker to execute the commands into a container, or even use a virtual machine or a Kubernates cluster (for a complete reference see: https://docs.gitlab.com/runner/executors/).
+- [GitLab Runners](https://docs.gitlab.com/runner/). A runner is a software able to receive from GitLab a job, execute it, and send back the result to GitLab. Several runners can (and should) run in parallel, allowing the whole infrastructure to scale. The execution of the job is delegated to an "executor".
+- **The executor**. During the configuration of the runner, we can specify what type of executor to use. In particular, it's possible to use the machine where the runner is installed to run directly in its shell the commands (that's the shell executor), or use Docker to execute the commands into a container, or even use a virtual machine or a Kubernetes cluster (for a complete reference see: https://docs.gitlab.com/runner/executors/).
 
 The amazing thing is that GitLab Runner is a software written in Go: this means that it can run perfectly on our three target platforms: Windows, macOS, and Linux.
 
@@ -45,7 +45,7 @@ Moreover, installing it is trivial as explained in [the documentation](https://d
 
 ## Executors for UE4 projects
 
-[Unreal Engine](https://www.unrealengine.com/en-US/) is a cross platform game engine, quoting the official website:
+[Unreal Engine](https://www.unrealengine.com/en-US/) is a cross-platform game engine, quoting the official website:
 
 > Unreal Engine is the world’s most open and advanced real-time 3D creation tool. Continuously evolving to serve not only its original purpose as a state-of-the-art game engine, today it gives creators across industries the freedom and control to deliver cutting-edge content, interactive experiences, and immersive virtual worlds.
 
@@ -88,7 +88,7 @@ ue4-docker build custom:4.25.3 -repo="$REPO_URL" -branch="$BRANCH" \
            --exclude ddc # exclude DDC to speed up the image creation 
 ```
 
-The same command can be executed in a Linux and in a Windows machine. Personally I prefer having a Linux machine that executes a docker container, instead of using a Windows machine to execute a docker container containing a Linux image (for performance reasons and to save time during the creation of the images too).
+The same command can be executed in a Linux and in a Windows machine. Personally, I prefer having a Linux machine that executes a docker container, instead of using a Windows machine to execute a docker container containing a Linux image (for performance reasons and to save time during the creation of the images too).
 
 At the end of the execution of the `ue4-docker` command, we end up with a set of images ready to use like:
 
@@ -112,8 +112,8 @@ Using Docker we can cover the CI for the Linux and Windows platforms. macOS, ins
 
 ### Shell executor
 
-The shell executor is just "the current machine". Thus, we can install [GitLab Runner on macOS](https://docs.gitlab.com/runner/install/osx.html) and manually install all the dependencies that are, in our case, only unreal engine and the xcode toolchain.
-Differently from the Docker executor, the Shell executor have several disadvantages:
+The shell executor is just "the current machine". Thus, we can install [GitLab Runner on macOS](https://docs.gitlab.com/runner/install/osx.html) and manually install all the dependencies that are, in our case, only unreal engine and the Xcode toolchain.
+Differently from the Docker executor, the Shell executor has several disadvantages:
 
 - No isolation at all.
 - No native support for parallel and isolated executions.
@@ -122,7 +122,7 @@ Differently from the Docker executor, the Shell executor have several disadvanta
 
 The only advantage we have is the simplicity of installation: we just have to install UE4 on our machine and we are ready to go.
 
-Supposing to have Unreal Engine already installed (the setup on Max, Linux, Windows is straightforward; it's just a matter of following the [guide](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html)), the only thing we need to do is to install another Python tool created by Adam Rehn: [ue4cli](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html).
+Supposing to have Unreal Engine already installed (the setup on Mac, Linux, Windows is straightforward; it's just a matter of following the [guide](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html)), the only thing we need to do is to install another Python tool created by Adam Rehn: [ue4cli](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html).
 
 This Python package implements a command-line tool called `ue4`: this tool simplifies the invocation/usage of the UE4 toolchain and, perhaps more importantly, it unifies the interface we have to use on different platforms.
 
@@ -140,7 +140,7 @@ Let's start with the automatization of the boring stuff, we need to find a way t
 2. Does the code I want to merge compile correctly on every platform?
 3. Am I introducing regressions?
 
-To answer all these questions, and be ready to the continuous delivery stuff, we need to define the variables and the stages (of the pipeline) we plan to execute.
+To answer all these questions, and be ready for the continuous delivery stuff, we need to define the variables and the stages (of the pipeline) we plan to execute.
 
 ```yml
 variables:
@@ -164,7 +164,7 @@ stages:
 
 ##### Static Analysis
 
-Every C++ project should follow code style. This CI job uses `clang-format` and `dos2unix` to check if every committed file has the correct encoding (we need UTF-8 encoded files to be sure that every compiler on every platform can read them well) and follows the style rules present in the `.clang-format` file that should be present into every project :)
+Every C++ project should follow a code style. This CI job uses `clang-format` and `dos2unix` to check if every committed file has the correct encoding (we need UTF-8 encoded files to be sure that every compiler on every platform can read them well) and follows the style rules present in the `.clang-format` file that should be present into every project :)
 
 ```yml
 clang-format:
@@ -191,7 +191,7 @@ clang-format:
         - docker
 ```
 
-Perhaps the bash scripting is a big heavy to follow, but it does its work well. In short, we install clang, git, bash and dos2unix on an alpine container, and then we search for all the `.cpp` or `.hpp` or `.h` or `.cc` files in the repository, but not in its submodules, and we first use `dos2unix` to check the encoding of all the files and in case there is one not in UTF-8, we print them and exit. After that we invoke the `clang-format -i -style=file $file` on every file. If a file changes, it means that it has been committed without being properly formatted, thus we exit with failure after printing the list of the fails wrongly formatted.
+Perhaps the bash scripting is a big heavy to follow, but it does its work well. In short, we install `clang`, `git`, `bash`, and `dos2unix` on an alpine container, and then we search for all the `.cpp` or `.hpp` or `.h` or `.cc` files in the repository, but not in its submodules, and we first use `dos2unix` to check the encoding of all the files and in case there is one not in UTF-8, we print them and exit. After that we invoke the `clang-format -i -style=file $file` on every file. If a file changes, it means that it has been committed without being properly formatted, thus we exit with failure after printing the list of the fails wrongly formatted.
 
 Al the "mess" with `bash -c $command || true` is because of some well-know issue of the GitLab YAML parser + its execution of the parsed command into the container.
 
@@ -199,7 +199,7 @@ Note how using the `tags` we are able to select the runners. During the runner s
 
 ##### Compilation
 
-On every merge request, we want to be sure that the code the developer is writing *at least* compiles on every platform. After setting up the infrastructure, doing this it is really straightforward.
+On every merge request, we want to be sure that the code the developer is writing *at least* compiles on every platform. After setting up the infrastructure, doing this is really straightforward.
 
 ```yml
 compile-development-linux:
@@ -254,9 +254,9 @@ On macOS, instead, I have to first clean-up the mess left by previous compilatio
 ##### Tests
 
 Tests in the CI can run only on Linux - if the application you're developing requires user interaction or if you're using CEF (Chromium Embedded Framework) especially. In fact, in Linux we have Xvfb (X virtual framebuffer) that's a display server implementing the X11 display server protocol. 
-In fact, we can easily customize the Dockerfile of the Linux container to invoke `Xvfb` in the `ENTRYPOINT` and send it to the background. In this way, every container we spawn have its own display running and all the tests written using the Automation Driver can work easily, even if there isn't a physical display present.
+In fact, we can easily customize the Dockerfile of the Linux container to invoke `Xvfb` in the `ENTRYPOINT` and send it to the background. In this way, every container we spawn has its own display running and all the tests written using the Automation Driver can work easily, even if there isn't a physical display present.
 
-To enable this, it's just a matter of adding to the `start.sh` script invoked in the entrypoint the invocation of Xvfb.
+To enable this, it's just a matter of adding to the `start.sh` script invoked in the `ENTRYPOINT` the invocation of `Xvfb`.
 
 ```
 #!/usr/bin/env bash
@@ -293,15 +293,15 @@ test:
         - ue4
 ```
 
-This job also produces a `output.log` file that can be inspected in case of crashes of the test suite (it might happen).
+This job also produces an `output.log` file that can be inspected in case of crashes of the test suite (it might happen).
 
 **NOTE**: `ue4cli` offers the `ue4 test` command, but when there is no display connected it doesn't work and we have to use the custom command line you can see above in the `ue4 run` invocation.
 
 ### Continuous Delivery
 
-We want to give the developers the possibility of downloading a packaged version of the application, in both shipping (optimized) and debug (with debug symbols, `check`, `ensure`, and so on) version and at the same time setup the `gitlab-ci.yml` file in order to generate automatically builds at fixed time intervals (this option can be configured by Gitlab itself using the web interface).
+We want to give the developers the possibility of downloading a packaged version of the application, in both shipping (optimized) and debug (with debug symbols, `check`, `ensure`, and so on) version and at the same time set up the `gitlab-ci.yml` file in order to generate automatically builds at fixed time intervals (this option can be configured by Gitlab itself using the web interface).
 
-For this reason, instead of directly defining the jobs we define *templates*. These templaces will be then used for both the *manual* and the *scheduled* jobs.
+For this reason, instead of directly defining the jobs we define *templates*. These templates will be then used for both the *manual* and the *scheduled* jobs.
 
 
 ```yml
@@ -424,7 +424,7 @@ For this reason, instead of directly defining the jobs we define *templates*. Th
     interruptible: true
 ```
 
-As usual, the code for the `Windows` and `Linux` (where we use the docker executors) is identical, while for macOS we have to take care of the dirt (and of same strange requirement about the needs for the "C" locale).
+As usual, the code for the `Windows` and `Linux` (where we use the docker executors) is identical, while for macOS we have to take care of the dirt (and of another strange requirement about the needs for the "C" locale).
 
 Now that we have the templates defined, we can define the jobs. One type of job will be executed only by the "scheduled" tasks (e.g. we can then have nightly builds in this way), the other one is manual and let the developer the freedom to press a button, trigger the build and have the artifact ready for download at the end.
 
@@ -502,7 +502,7 @@ scheduled-package-development-windows:
         - schedules
 ```
 
-In this way we defined a CI pipeline that looks like this for every commit (in the image there is the support only for 2 OS).
+In this way, we defined a CI pipeline that looks like this for every commit (in the image there is the support only for 2 OS).
 
 <div markdown="1" class="blog-image-container">
 ![CI on commit](/images/ciue4/static-package.png){:class="blog-image"}
@@ -514,4 +514,4 @@ Moreover, configuring GitLab to invoke the CI at scheduled time we can wake up e
 
 ## Conclusion
 
-It requires some (good) sysadmin skill to setup the whole infrastructure for the CI/CD of a Unreal Engine based software, but it is worth it. :)
+It requires some (good) sysadmin skill to set up the whole infrastructure for the CI/CD of an Unreal Engine-based software, but it is worth it. :)
