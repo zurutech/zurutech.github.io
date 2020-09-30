@@ -123,7 +123,7 @@ Differently from the Docker executor, the Shell executor has several disadvantag
 
 The only advantage we have is the simplicity of installation: we just have to install UE4 on our machine and we are ready to go.
 
-Supposing to have Unreal Engine already installed (the setup on Mac, Linux, Windows is straightforward; it's just a matter of following the [guide](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html)), the only thing we need to do is to install another Python tool created by Adam Rehn: [ue4cli](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html).
+Supposing to have Unreal Engine already installed (the setup on Mac, Linux, Windows is straightforward; it's just a matter of following the [guide](https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html)), the only thing we need to do is to install another Python tool created by Adam Rehn: [ue4cli](https://docs.adamrehn.com/ue4cli/overview/introduction-to-ue4cli).
 
 This Python package implements a command-line tool called `ue4`: this tool simplifies the invocation/usage of the UE4 toolchain and, perhaps more importantly, it unifies the interface we have to use on different platforms.
 
