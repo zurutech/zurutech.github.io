@@ -162,17 +162,13 @@ body {
   color: #000;
   background: #FFD42A;
   border: 1px solid #FFD42A;
-  padding-left: 10px;
+  padding: 0 5px;
   margin: 5px;
   user-select: none;
 }
 
 .blog-tag-item-filtered {
   background: #FFF;
-}
-
-.blog-tags-list :last-child {
-  padding-right: 10px;
 }
 
 @mixin range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:20px, $input-border-radius:14px) {
