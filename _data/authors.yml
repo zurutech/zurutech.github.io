@@ -6,7 +6,7 @@ pgaleone:
     linkedin: "https://www.linkedin.com/in/paolo-galeone-6782b311b/"
     reddit: "https://www.reddit.com/user/pgaleone"
     image: "https://raw.githubusercontent.com/galeone/galeone.github.io/master/images/me.jpeg"
-    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D @ Zuru Tech Italy"
+    bio: "Computer Engineer, Machine Learning researcher. Tensorflow ❤️.<br>Head of Machine Learning & Computer Vision R&D<br>Tech Lead @ Zuru Tech Italy"
 
 mr-ubik:
     name: 'Michele "Ubik" Desimoni'
@@ -27,12 +27,10 @@ fdimattia:
     bio: "Computer Engineer. Early adopter. Head and imagination miner 🎩. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
 
 martin-alessio:
-    name: Martin & Alessio Carianni
+    name: Martin &amp; Alessio Carianni
     uri: https://zuru.tech/
     email: italy@zuru.tech
-    twitter: ""
     linkedin: "https://www.linkedin.com/company/zuru-tech-italy"
-    reddit: ""
     image: "/images/FotoAM.jpg"
     bio: "Architecture & Construction lovers with a spicy software sauce.<br>CTO and CDO @ Zuru Tech"
 
@@ -42,7 +40,6 @@ ridham:
     email: ridham@zuru.tech
     twitter: "https://twitter.com/RidhamTarpara"
     linkedin: "https://www.linkedin.com/in/ridham-tarpara-97430270/"
-    reddit: ""
     image: "https://i.imgur.com/Z0ORbCU.png"
     bio: "Software engineer, Lifelong learner, DevOps Enthusiast<br>Backend Engineer @ Zuru Tech India"
 
@@ -86,3 +83,25 @@ alessio-paoletti:
     linkedin: "https://www.linkedin.com/in/alessiopaoletti32"
     image: "https://avatars0.githubusercontent.com/u/11610794?s=460&u=e0188bdef61542512fb3975bb8e15cd397a4ec16&v=4"
     bio: "Software Developer and Graphics Programmer, enthusiast about real time rendering. In love with photography and basketball."
+    
+saddy4:
+    name: Loris Casagrandi    
+    email: loris@zuru.tech
+    image: "https://raw.githubusercontent.com/zurutech/zurutech.github.io/master/images/loris-profile-pic.jpeg"
+    linkedin: "https://www.linkedin.com/in/loris-casagrandi-3182027a"
+    bio: "Software developer and Team Leader @ Zuru Tech Italy. In love with games and game design."
+
+lucadandria:
+    name: "Luca D'Andria"
+    email: luca.d@zuru.tech
+    image: "https://avatars1.githubusercontent.com/u/70565462?s=400&u=52eb21e95a1ab92dbc470777a2aef5fbcf0efa39&v=4"
+    linkedin: "https://www.linkedin.com/in/dandrialuca/"
+    bio: "Senior QA Engineer @Zuru Tech Italy. From C64 to Intel486 with Honor"
+
+martina-loi:
+    name: "Martina Loi"
+    email: martina@zuru.tech
+    image: "/images/profile-pic-martina.jpg"
+    linkedin: "https://www.linkedin.com/in/martinaloi/"
+    medium: "https://medium.com/@martina.loi"
+    bio: "Junior UX Designer @Zuru Tech Italy. Design + Languages + A11y"

@@ -20,18 +20,20 @@ It is commonly known with the name of **Release Flow**.
 # Release Flow - The Method
 To quickly understand the method, here two useful pictures: 
 
-<div markdown="1" class="blog-image-container" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
-![Figure 1 - Release Flow v1](https://lh3.googleusercontent.com/fSXQ_gxDXcRo0vgnpuwrFL2wdbW2u0tTHHlLLUvPrFqTeejmDzriGzokLyuQIjUNwFMXGTK4-Tl3 "Figure 1 - Release Flow v1"){:class="blog-image"}
-<center>Figure 1 - Release Flow v1</center>
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/feature-branch.png"><img class="blog-image" src="/images/git-release-flow/feature-branch.png"> </a>
+<figcaption> Figure 1 - Release Flow v1 </figcaption>
+</figure>
 </div>
-<br>
 
-
-<div markdown="1" class="blog-image-container" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
-![Figure 2 - Release Flow v2](https://lh3.googleusercontent.com/4v6ply8d-Ruol0lc7z0pOw-Hnz10r5F-hjBWhot0_c5U5LsVmnPiknuW1YOpbGrL8S34XUlSPptE "Figure 2 - Release Flow v2"){:class="blog-image"}
-<center>Figure 2 - Release Flow v2</center>
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/git-model.png"><img class="blog-image" src="/images/git-release-flow/git-model.png"> </a>
+<figcaption> Figure 2 - Release Flow v2 </figcaption>
+</figure>
 </div>
-<br>
+
 
 
 What is the difference between the two pictures? The difference is that in Figure 2, as you can see, there is an extra branch called *develop*. Apart from this difference, which will be explained shortly, the two images describe in a concise way what it means to work with the Release Flow method. Whether or not you use the develop branch makes no substantial difference and its use is at the discretion of the development team.
@@ -42,11 +44,13 @@ I will describe the two approaches in the following chapters.
 
 Taking Figure 3 as a reference, I will now describe as briefly and clearly as possible the workflow. If you will find the explanation a little bit tangled, please do not worry, it is harder said than done.
 
-<div markdown="1" class="blog-image-container" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
-![Figure 3 - Release Flow v1](https://lh3.googleusercontent.com/fSXQ_gxDXcRo0vgnpuwrFL2wdbW2u0tTHHlLLUvPrFqTeejmDzriGzokLyuQIjUNwFMXGTK4-Tl3 "Figure 3 - Release Flow v1"){:class="blog-image"}
-<center> Figure 3 - Release Flow v1 </center>
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/feature-branch.png"><img class="blog-image" src="/images/git-release-flow/feature-branch.png"> </a>
+<figcaption> Figure 3 - Release Flow v1  </figcaption>
+</figure>
 </div>
-<br>
+
 
 
 What we can see in the image are:
@@ -66,15 +70,18 @@ If, most commonly, the release of a 2.0.0 version has been planned (e.g.: M129 a
 
  - Once the 2.0.0 (or M129 in the image) release branch has been created **no other feature should be added for development for that release**. Hence, any other feature will be put on the backlog of future releases.
  - Nothing else will be added from the master branch into the 2.0.0. If you are asking: and what if we find a bug in the master branch? Well, remember that the master branch should be the stable branch without any problem! But if this happens, and surely would happen, you should be able to cherry-pick from the master branch that particular commit and fix the 2.0.0.
- 
-<div markdown="1" class="blog-image-container" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
- ![Figure 4 - feature branch detail](https://lh3.googleusercontent.com/1nQw5zwXPm2S0I3SyNvJQGR_ibX6W3U4QfHoDUCvexdRSOxH78U4ffeNfpUI1m3dHMJx33U6-fMR "Figure 4 - feature branch detail"){:class="blog-image"}
- <center> Figure 4 - Feature Branch Detail </center>
+
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/feature-branch-detail.png"><img class="blog-image" src="/images/git-release-flow/feature-branch-detail.png"> </a>
+<figcaption> Figure 4 - Feature Branch Detail  </figcaption>
+</figure>
 </div>
-<br>
- 
+
+
+
  - Once the 2.0.0 will be officially released to the public, the 2.0.0 branch will be merged into master and that point will be tagged. **From now on, the 2.0.0 branch should be left untouched!** Only important bug fixes should be applied to 2.0.0 and if that bug exists even on the master branch, that should be also cherry-picked into the master branch . When a new bug is fixed in the 2.0.0 release, the 2.0.1 version is released to the public.
- 
+
  As soon as a new version is planned to be released, it should be named as 2.1.0 or 3.0.0 and a new branch (for example the M130 in Figure 3) will be created, and so on. The versioning is chosen at a previous design phase but it is advised to follow the **[Semantic Versioning](https://semver.org/)** approach that describes a version with a MAJOR.MINOR.PATCH number: 
 - MAJOR version when you make incompatible API changes,
 - MINOR version when you add functionality in a backwards-compatible manner, and
@@ -84,11 +91,13 @@ If, most commonly, the release of a 2.0.0 version has been planned (e.g.: M129 a
 
 Figure 5 below represents the second version of the Release Flow workflow and adds to the one presented in Figure 3 the *develop* branch.
 
-<div markdown="1" class="blog-image-container" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
-![Figure 5 - Release Flow v2](https://lh3.googleusercontent.com/4v6ply8d-Ruol0lc7z0pOw-Hnz10r5F-hjBWhot0_c5U5LsVmnPiknuW1YOpbGrL8S34XUlSPptE "Figure 5 - Release Flow v2"){:class="blog-image"}
-<center>Figure 5 - Release Flow v2</center>
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/git-model.png"><img class="blog-image" src="/images/git-release-flow/git-model.png"> </a>
+<figcaption> Figure 5 - Release Flow v2  </figcaption>
+</figure>
 </div>
-<br>
+
 
 
 The *develop* branch should replicate the master and exists to keep always the master branch untouched. What I said in the previous chapter (Release Flow - Version 1) it is still true here but instead of applying it  to the master branch it is referred to the  new *develop* branch. What happens here are the following: 
@@ -98,11 +107,12 @@ The *develop* branch should replicate the master and exists to keep always the m
 - When the development on the release branch it is finished, the branch should be merged into the master and the develop branch. On the master branch, the commit should be tagged for future references.
 - It could happen that we have had already released and tagged a version on master and we find a bug in the development branch where we are currently working. In this case, the bugfix should be treated as a new release. We will create a new branch for the fix, this time starting from the tag on the master branch, solve the bug and then merge the hotfix branch on the develop branch and on the master with a new tag. See Figure 6 for visual detail.
 
-<div markdown="1" class="blog-image-container" style="width:60%;height:60% display: block;margin-left: auto;margin-right: auto;">
-![Figure 6 - Hotfix branch](https://lh3.googleusercontent.com/Z2s7KNJ6sNhKNnWqv-bp12XiBa0mxEVuSQbNND0saqLQ6xhvQDWrq4IEetRqfdTeVdhYB2A5e_GK "Hotfix branch"){:class="blog-image"}
-<center>Figure 6 - Hotfix Branch</center>
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/git-release-flow/feature-branch-hotfix.png"><img class="blog-image" src="/images/git-release-flow/feature-branch-hotfix.png"> </a>
+<figcaption> Figure 6 - Hotfix Branch  </figcaption>
+</figure>
 </div>
-<br>
 
 
 ## An example of workflow
@@ -158,7 +168,7 @@ After the bug it is solved we have to integrate the changes on the release branc
 - `git checkout -b v2.0.0`: return on the branch on which you want to apply the bugfix
 - `git cherry-pick <commit-hash>`: apply the bugfix to the current branch. commit-hash should be the hash of the commit where we did the hotfix
 
- 
+
 # Conclusion
 I've had the opportunity to work with this workflow many times. Above all, I happened to work with a Release Flow - Version 1 to develop many models of industrial machines for ceramic printers, where for each machine we had many software versions for which we had to guarantee stability and efficiency because of the important performance and reliability requirements of ceramic production lines. In addition, each customer had a different version of the software (someone was used to a specific version, someone has an old machine that could no longer be updated, etc.) and so we had to properly maintain each version. Thanks to the Release Flow we were able to maintain many different software versions and to work with large and heterogeneous teams. The main pros are:
 
