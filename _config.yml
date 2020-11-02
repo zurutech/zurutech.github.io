@@ -42,7 +42,10 @@ sass:
   style: compressed
 
 # Ruby Gems
-plugins: [jekyll-seo-tag jekyll-author jekyll-sitemap]
+plugins:
+  - jekyll-seo-tag
+  - jekyll-author
+  - jekyll-sitemap
 
 # Theme colors based on tags
 ##### Tags are the teams ######
