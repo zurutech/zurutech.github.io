@@ -174,7 +174,7 @@
 .blog-footer {
   width: 100%;
   /*overriding bottom from _custom.scss to fix image flicker*/
-  bottom: -1px;
+  bottom: -20px;
   background-color: #0b2d9d;
   padding: 0px !important;
   .container-fluid {
