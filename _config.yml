@@ -83,4 +83,5 @@ themeColor:
 
 
 exclude:
+  - Gemfile.lock 
   - vendor
