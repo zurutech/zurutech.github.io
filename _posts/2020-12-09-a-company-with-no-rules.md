@@ -6,19 +6,20 @@ title:  "A Company With No Rules"
 slug: "A Company With No Rules"
 date:   2020-12-09 8:00:00
 categories: managing
-image: images/a-company-with-no-rules/company.jpg
+image: /images/a-company-with-no-rules/company.jpg
 tags: managing
 description: "A reinvented company where you can express yourself and create anything you want with no limits"
 ---
-# A Company With No Rules
-
 ### A reinvented company where you can express yourself and create anything you want with no limits
 
 Imagine two newly constructed houses, like the ones you see in Figure 1 below. Let's say, for the sake of the explanation, that the building team and the architect were the same for either project. However, there are some differences. Can you spot them?
 
-![images/a-company-with-no-rules/company.jpg](images/a-company-with-no-rules/company.jpg)
-
-Figure 1 - Sasha and Ivan house on the left, Bill and Mitchell house on the right
+<div markdown="1" class="blog-image" style="width:100%;height:100%; display: block;margin-left: auto;margin-right: auto;text-align: center;">
+<figure>
+<a href="/images/a-company-with-no-rules/NoRulesRules_img1.png"><img class="blog-image" src="/images/a-company-with-no-rules/NoRulesRules_img1.png"> </a>
+<figcaption> Figure 1 - Sasha and Ivan house on the left, Bill and Mitchell house on the right </figcaption>
+</figure>
+</div>
 
 I clearly imagine your face and your thoughts right now. Your mind is switching from "Well, yes, there are many obvious differences that I can spot from the pictures" to "Wait, is he making fun of me? The two houses are clearly different. Is this a trick question?". 
 
@@ -65,7 +66,11 @@ The three steps are strictly related and should be considered one after the othe
 
 ### 1. Talent Density
 
-![images/a-company-with-no-rules/Dayflow_-_Teamwork.png](images/a-company-with-no-rules/Dayflow_-_Teamwork.png)
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/a-company-with-no-rules/Dayflow_-_Teamwork.png"><img class="blog-image" src="/images/a-company-with-no-rules/Dayflow_-_Teamwork.png"> </a>
+</figure>
+</div>
 
 Many times the companies have to face unprofessional employees. In this condition, the companies are forced to spend time working on control policies that become more of a burden than useful practice. And because you cannot apply those rules discriminately only to single persons, **all these complicated control processes end up obtaining the opposite results of slowing down the innovation and the work of all the other employees**. Furthermore, it is crucial to understand that the "unprofessional employee" condition goes beyond the simple situation where an employee is considered not to have enough competence skills. It is an error to identify the perfect talent to only be recognized as the "best genius" in a field of competence. We are on a different level here. In particular, the unprofessional employees are instead the ones that act disrespectfully with their own colleagues or regarding their work, not taking their own responsibilities and spending more time complaining about something. These particular traits can easily be identified in the immaturity of people. **The less is the immaturity, the more should be the sense of responsibility. If we create a company with high responsible and talented people, fewer controls can be applied to the employees**. The more talent density we have, the greater freedom we can offer. Moreover, we need to remember one thing. Using the word of Patty McCord, one of the original creator of the Netflix culture:
 
@@ -75,7 +80,11 @@ Once we set up an environment with a great density of talent, we can start with 
 
 ### 2. Increase Candor
 
-![images/a-company-with-no-rules/Allura_-_Feedback_Session.png](images/a-company-with-no-rules/Allura_-_Feedback_Session.png)
+<div markdown="1" class="blog-image" style="width:60%;height:60%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/a-company-with-no-rules/Allura_-_Feedback_Session.png"><img class="blog-image" src="/images/a-company-with-no-rules/Allura_-_Feedback_Session.png"> </a>
+</figure>
+</div>
 
 This is one of the most important things in the Netflix culture. **Increase the candor means to increase the practice of the feedback. Every talent has the maturity and the desire to learn from other people.** Working in a company where the ideas and knowledge are free to flow and where the opinions are eager to be asked is a benefit that is often overlooked. Sometimes, many arrogant employees might prefer to keep their knowledge for themselves to be always ahead of their colleagues. This is clearly an unfair practice that deeply harms the workplace and the company itself. However, plenty of cultural habits impose a situation where it is often challenging, or even impossible, to communicate sincere feedback to the company's directors. Promoting the excellent practice of honest feedback would instead be beneficial to everyone. Every employee/employer would quickly improve himself and be implicitly responsible for each other colleagues, reducing traditional control.
 Moreover, this is the first step in giving more responsibility to every person. **The more responsibility each person has, the more will be their commitment to the company vision.** While this is one of the most critical parts of the culture and one of the most quickly doable ones, we should remember that it is vital to carefully learn that **honest feedback should not justify externalizing one's own frustration against another person**. For this reason, again, a certain level of maturity should already exist in the company (this is the reason why the first step should be mandatory before employ the honest feedback practice). Also, the company should plan to share the knowledge on which is the correct use of honest feedback.
@@ -89,7 +98,11 @@ Having the possibility to loosen the traditional scrutiny operations lead us to 
 
 ### 3. Reduce Control
 
-![images/a-company-with-no-rules/Stuck_at_Home.png](images/a-company-with-no-rules/Stuck_at_Home.png)
+<div markdown="1" class="blog-image" style="width:80%;height:80%; display: block;margin-left: auto;margin-right: auto;">
+<figure>
+<a href="/images/a-company-with-no-rules/Stuck_at_Home.png"><img class="blog-image" src="/images/a-company-with-no-rules/Stuck_at_Home.png"> </a>
+</figure>
+</div>
 
 The last step is to reduce control. Reducing traditional control is the most valuable aspect both for the employers and for the employees and, at the same time, probably the most challenging step to take. Reducing control means to get rid of the abundance of procedures that until now have been outlined by our old-style company: remove any travel policies, expense policies, vacation policies. This kind of practice can be seen as a real leap of faith. Still, if you are at this third step and are really considering applying these final pieces to your puzzle, you should have successfully applied the previous step and are perfectly aware of the talents you work with. Moreover, at this point, the message that the company must convey to its employees must be unequivocal: **ACT IN THE COMPANY'S BEST INTEREST**. You have been given the freedom but, as everyone knows, "*with great power there must also come great responsibility"* (thank you, Stan Lee), so missteps are hardly allowed. Overall, the "no rules rule" would increase the speed at how the employees bring innovation, decrease the time of slowing down practices, increase the sense of belonging to the project, and an incredible valorizing feeling of responsibility. The managers, in the end, would learn to "**lead with context, no control**." **This means to lead, illustrating, entirely transparently, the final goals, and leave to the highly talented teams and employees to manage their own time and reach the desired objectives**. Consequently, instead of having the typical pyramidal hierarchical structure where the CEO is sitting on the top, we would have a tree branching structure where the CEO represents the tree's root with the most important values and goals. From the sources, the tree will grow, and its branches, representing every manager and team, having recognized the root's goals and vision, will adapt and reach their objective to make the whole tree thrive. Shortly, the root does not directly control its branches. Instead, the branches themselves would organize their work and be responsible for doing the best with the resources they need to employ to let the whole tree thrive.
 
