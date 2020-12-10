@@ -5,9 +5,9 @@ did: "fdimattia2"
 title:  "A Company With No Rules"
 slug: "A Company With No Rules"
 date:   2020-12-09 8:00:00
-categories: managing
-image: /images/a-company-with-no-rules/company.jpg
-tags: managing
+categories: team
+image: images/a-company-with-no-rules/company.jpg
+tags: team
 description: "A reinvented company where you can express yourself and create anything you want with no limits"
 ---
 ### A reinvented company where you can express yourself and create anything you want with no limits
@@ -52,7 +52,7 @@ One of the most important companies in Silicon Valley has created a culture that
 
 There is a problem. If you actually read the Deck, it seems like the exact opposite of the dream described above. Besides being the opposite, it also looks very cynical. What the culture conveys, in fact, is to have an environment where employees live in the profound terror of making a mistake and being quickly rejected if they do not meet the required quality. It's a nightmare!
 
-Actually, appearance deceives. We can briefly describe the Netflix culture as the culture of "**Freedom and Responsibility**" or, taking the title from which this article is inspired, to be identified with the slogan **No Rules Rules** [1]. In Netflix, you will find a work environment in which **leading is done by context.** Employees have no limit on vacations, no limit on expenses, and decide how to implement an idea with all the needed resources. A company where the employer conveys the clear goal transparently to every employee who will be proud to commit and find the best solution to lead the entire team to unprecedented innovation levels. Seen in this way, it has a different effect, doesn't it? However, getting to apply this kind of culture is not immediate and is not always suitable for all business types. For sure, it is requested a certain level of maturity. In his book, Reed Hastings describes this kind of maturity, which we will see now. In particular, the maturity requested can be obtained by applying just **three simple rules**, and the results could be immediate. Just start with three small steps. With every little step, you will be closer and closer to the company of your dreams.
+Actually, appearance deceives. We can briefly describe the Netflix culture as the culture of "**Freedom and Responsibility**" or, taking the title from which this article is inspired, to be identified with the slogan **No Rules Rules** [^1]. In Netflix, you will find a work environment in which **leading is done by context.** Employees have no limit on vacations, no limit on expenses, and decide how to implement an idea with all the needed resources. A company where the employer conveys the clear goal transparently to every employee who will be proud to commit and find the best solution to lead the entire team to unprecedented innovation levels. Seen in this way, it has a different effect, doesn't it? However, getting to apply this kind of culture is not immediate and is not always suitable for all business types. For sure, it is requested a certain level of maturity. In his book, Reed Hastings describes this kind of maturity, which we will see now. In particular, the maturity requested can be obtained by applying just **three simple rules**, and the results could be immediate. Just start with three small steps. With every little step, you will be closer and closer to the company of your dreams.
 
 ## The Three Steps
 
@@ -74,7 +74,7 @@ The three steps are strictly related and should be considered one after the othe
 
 Many times the companies have to face unprofessional employees. In this condition, the companies are forced to spend time working on control policies that become more of a burden than useful practice. And because you cannot apply those rules discriminately only to single persons, **all these complicated control processes end up obtaining the opposite results of slowing down the innovation and the work of all the other employees**. Furthermore, it is crucial to understand that the "unprofessional employee" condition goes beyond the simple situation where an employee is considered not to have enough competence skills. It is an error to identify the perfect talent to only be recognized as the "best genius" in a field of competence. We are on a different level here. In particular, the unprofessional employees are instead the ones that act disrespectfully with their own colleagues or regarding their work, not taking their own responsibilities and spending more time complaining about something. These particular traits can easily be identified in the immaturity of people. **The less is the immaturity, the more should be the sense of responsibility. If we create a company with high responsible and talented people, fewer controls can be applied to the employees**. The more talent density we have, the greater freedom we can offer. Moreover, we need to remember one thing. Using the word of Patty McCord, one of the original creator of the Netflix culture:
 
-> The employees are adults. You know, we've created so many layers and so many processes and so many guidelines to keep those employees in place that we've ended up with systems that treat people like they are children. And they're not. Fully formed adults walk in the door every single day. They have rent payments, they have obligations, they're members of society, they want to create a difference in the world. So if we start with the assumption that everybody comes to work to do an amazing job, you'd be surprised what you get. [4]
+> The employees are adults. You know, we've created so many layers and so many processes and so many guidelines to keep those employees in place that we've ended up with systems that treat people like they are children. And they're not. Fully formed adults walk in the door every single day. They have rent payments, they have obligations, they're members of society, they want to create a difference in the world. So if we start with the assumption that everybody comes to work to do an amazing job, you'd be surprised what you get. [^4]
 
 Once we set up an environment with a great density of talent, we can start with the second step: Increase Candor.
 
@@ -91,8 +91,8 @@ Moreover, this is the first step in giving more responsibility to every person. 
 
 On the importance of feedback I will leave you here two more resources:
 
-- [The importance of feedback](https://blog.zuru.tech/team/2020/09/01/the-importance-of-feedback) by Luca D'Andria [2]
-- [Stop Pretending That You Can’t Give Candid Feedback](https://hbr.org/2014/02/stop-pretending-that-you-cant-give-candid-feedback) [3]
+- [The importance of feedback](https://blog.zuru.tech/team/2020/09/01/the-importance-of-feedback) by Luca D'Andria [^2]
+- [Stop Pretending That You Can’t Give Candid Feedback](https://hbr.org/2014/02/stop-pretending-that-you-cant-give-candid-feedback) [^3]
 
 Having the possibility to loosen the traditional scrutiny operations lead us to the last step: Reduce Control.
 
@@ -126,12 +126,8 @@ Studying different cultures and respecting every person is fundamental if we wan
 
 ## References
 
-[1] "No Rules Rules" by Reed Hastings and Erin Meyer
-
-[2] [The importance of feedback](https://blog.zuru.tech/team/2020/09/01/the-importance-of-feedback)
-
-[3] [Stop Pretending That You Can’t Give Candid Feedback](https://hbr.org/2014/02/stop-pretending-that-you-cant-give-candid-feedback)
-
-[4] [Patty McCord, TED](https://www.ted.com/talks/patty_mccord_8_lessons_on_building_a_company_people_enjoy_working_for?language=it) 
-
-[5] [https://www.humaaans.com/](https://www.humaaans.com/)
+[^1]: "No Rules Rules" by Reed Hastings and Erin Meyer
+[^2]: [The importance of feedback](https://blog.zuru.tech/team/2020/09/01/the-importance-of-feedback)
+[^3]: [Stop Pretending That You Can’t Give Candid Feedback](https://hbr.org/2014/02/stop-pretending-that-you-cant-give-candid-feedback)
+[^4]: [Patty McCord, TED](https://www.ted.com/talks/patty_mccord_8_lessons_on_building_a_company_people_enjoy_working_for?language=it)
+[^5]: [https://www.humaaans.com/](https://www.humaaans.com/)
