@@ -14,7 +14,11 @@ layout: default
         <div class="wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting" itemref="blogpost">
+                        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="Zuru Tech">
+                            <meta itemprop="url" content="https://zuru.tech">
+                        </div>
                         <header class="post-header">
                             <p class="post-meta">
                                 <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{
@@ -127,7 +131,7 @@ layout: default
 
                             {% if post.image %}
                             <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                <img width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
+                                <img itemprop="image" itemscope itemtype="http://schema.org/URL" content="{{site.baseurl}}/{{post.image}}" id="blogpost" width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
                             </div>
                             {% else %}
                             <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg" alt="{{site.title}}">
