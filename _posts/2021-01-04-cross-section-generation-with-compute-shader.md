@@ -190,7 +190,7 @@ rhiCmdList.UnlockStructuredBuffer(source->StructuredBuffer);
 
 #### Shader code
 
-There's not much to say, just some math and float precision managing. Notice that the buffer's operations are atomic so you must be more explicit on operations than you could be for example working with an array on a pixel shader. I learned this by hitting my head on this.
+There's not much to say, just some math and float precision managing. Notice that the buffer's operations are atomic so you must be more explicit on operations than you could be for example working with an array on a pixel shader.
 
 ```hlsl
 #define PRECISION_TOLERANCE 0.0001
