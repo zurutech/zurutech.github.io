@@ -1,13 +1,13 @@
 ---
 author: "nicholas-monacolli"
 layout: post
-did: "blog2"
+did: "nicholas-monacolli"
 title: "Cross-section runtime generation with GPU acceleration in ue4"
 slug: "Cross-section runtime generation with GPU acceleration in ue4"
-date: 2020-12-31 06:00:00
+date: 2021-01-04 06:00:00
 categories: coding graphics
 tags: coding graphics
-image: 
+image: images/graphics/CrossSectionExample.png
 ---
 
 **Table of Contents**:
@@ -22,26 +22,27 @@ image:
         - [Outer interface](#outer-interface)
 - [Geometry generation](#geometry-generation)
     - [Sorting](#sorting)
-    - [Fix non-manifold vertices](#fix-non-manifold-vertices)
-    - [Fix non-manifold segments](#fix-non-manifold-segments)
+    - [Fix non-manifold loops](#fix-non-manifold-loops)
     - [Deals with holes and concentric loops](#deals-with-holes-and-concentric-loops)
     - [Build mesh section](#build-mesh-section)
 <br>
 <hr>
 <br>
 
-In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 and how we speed up the process using a compute shader.
-I would like to use this article as a resource for anyone who need to add a compute shader and need to manage buffer read/write between gpu and cpu in unreal engine. You can find many good resources about (an honor mention goes to Temaran) but you need to make a collage from multiple sources so hopefully this could make your life a bit simpler.
-And I hope that could help also if you are facing a similar geometric processing in your project.
+<a href="/images/graphics/CrossSectionExample.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample.png" alt="Cross-section example"> </a>
 
-The standard approach is to mask the material and use the back-faces to display the (fake) cross section surface.
+In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 and how we speed up the process using a compute shader.
+I would like to use this article as a resource for anyone who needs to add a compute shader and need to manage buffer read/write between GPU and CPU in Unreal Engine. You can find many good resources about it (an honorable mention goes to Temaran) but you need to make a collage from multiple sources so hopefully, this could make your life a bit simpler.
+And I hope that could help also if you are facing similar geometric processing in your project.
+
+The standard approach is to mask the material and use the back-faces to display the (fake) cross-section surface.
 This is possible only if you have manifold geometry. If, for example, you have intersections between triangles of the same mesh you cannot rely on this technique.
 
-// image of the glitch
+<a href="/images/graphics/CutGlitch.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CutGlitch.png" alt="Cut glitch"> </a>
 
 After some analysis, we end up deciding to build the actual geometry to display the cross-section.
 
-As this is our first iteration I will place some disclaimer in the article to notify about things that I'd like to explore better. Since it perform well enough for our purpouse it's not sure that updates will come soon but it's definitely something that I want ot do as soon as I can.
+As this is our first iteration I will place some disclaimer in the article to notify about things that I'd like to explore better. Since it performs well enough for our purpose it's not sure that updates will come soon but it's definitely something that I want to do as soon as I can.
 
 ## The Pipeline
 
@@ -61,7 +62,7 @@ FString ModuleShaderDir = FPaths::Combine(FPaths::ProjectDir(), TEXT("Source/Pre
 AddShaderSourceDirectoryMapping(TEXT("/Presenter3D"), ModuleShaderDir);
 ```
 
-I created the class FMeshPlaneIntersectionCS, derived from FGlobalShader, that deals with c++ to hlsl communication, inside which there are: 
+I created the class FMeshPlaneIntersectionCS, derived from FGlobalShader, that deals with c++ to HLSL communication, inside which there are: 
 - parameters declaration:
     ```c++
     DECLARE_GLOBAL_SHADER(FMeshPlaneIntersectionCS);
@@ -92,7 +93,7 @@ I created the class FMeshPlaneIntersectionCS, derived from FGlobalShader, that d
         OutEnvironment.SetDefine(TEXT("THREADGROUPSIZE_Z"), 1);
     }
     ```
-    About threadgroups I will come back later.
+    About threadgroups, I will come back later.
 
 After this class I actually declared the shader:
 ```c++
@@ -122,10 +123,10 @@ private:
 
 #### Inside Render Thread
 
-**Disclaimer:** This flow works only if you set on your mesh "Allow CPU Access" at true. Otherwise RenderData (the interface that give access to the mesh buffers) in the coocked version of the asset will be available only in GPU. So to read them you have to dialogue with RenderThread. I didn't tested yet the performance hit of this specific change (if there is any).
+**Disclaimer:** This flow works only if you set on your mesh "Allow CPU Access" at true. Otherwise, RenderData (the interface that gives access to the mesh buffers) in the cooked version of the asset will be available only in GPU. So to read them you have to dialogue with RenderThread. I didn't tested yet the performance hit of this specific change (if there is any).
 
 Let's start from _runComputeShader_RenderThread.
-Here is where the compute shader is executed, but before dispatch it you need to setup properly input and output.
+Here is where the compute shader is executed, but before dispatch it, you need to setup properly input and output.
 First we need to make our GraphBuilder and allocate memory:
 ```c++
 FMemMark Mark(FMemStack::Get());
@@ -139,7 +140,7 @@ PassParameters->VertexBuffer = vertexBuffer->GetSRV();
 PassParameters->IndexBuffer = rhiCmdList.CreateShaderResourceView(indexBuffer->IndexBufferRHI);
 ```
 Setting up the output buffers require a bit more effort.
-But before going on I'll talk about what we want as output: the parallelization is triangle based. So every thread will compute the intersection between one triangle of the mesh and the plane and output the start (A) and end (B) point of the resulting segment. To skip missed triangles (or monodimentional output) we fill also a validation buffer that store the information so that when we collect shader output we can discard useless data.
+But before going on I'll talk about what we want as output: the parallelization is triangle based. So every thread will compute the intersection between one triangle of the mesh and the plane and output the start (A) and end (B) points of the resulting segment. To skip missed triangles (or monodimensional output) we fill also a validation buffer that stores the information so that when we collect shader output we can discard useless data.
 So, the next thing is to set the output array lenght now:
 ```c++
 uint32 outBufferSize = indexBuffer->GetNumIndices() / 3;
@@ -152,7 +153,7 @@ auto rdgOutSegmentsA = CreateStructuredBuffer(graphBuilder, TEXT("CutSegmentsA")
     sizeof(FVector) * outBufferSize, ERDGInitialDataFlags::None);
 auto uavOutSegmentsA = graphBuilder.CreateUAV(rdgOutSegmentsA);
 ```
-It's almost the same for CutSegmentsB and SegmentsValidation, than we can bind uav buffers to the shader (set them to PassParameters struct as the input).
+It's almost the same for CutSegmentsB and SegmentsValidation, then we can bind UAV buffers to the shader (set them to PassParameters struct as the input).
 
 Now that shader bindings are done we need to get a reference to our shader from the global shader map and setup threadgroups:
 ```c++
@@ -160,7 +161,7 @@ TShaderMapRef<FMeshPlaneIntersectionCS> ComputeShader(GetGlobalShaderMap(GMaxRHI
 FIntVector GroupCounts = FIntVector(outBufferSize, 1, 1);
 ```
 
-**Disclaimer:** For simplicity we just add the needed number of threads on one dimension. This need some attention to be sure that gpu resources are not wasted. If you are interested on look on this without waiting future updates here's an useful link that I found:
+**Disclaimer:** For simplicity in this first iteration I just added the needed number of threads on one dimension. This needs some attention to be sure that GPU resources are not wasted. If you are interested in a look at this without waiting for future updates here's a useful link that I've found:
 https://gpuopen.com/learn/optimizing-gpu-occupancy-resource-usage-large-thread-groups/
 
 Finally we can add our shader to the command list:
@@ -172,7 +173,7 @@ Than we add the extraction commands for our output (an example for CutSegmentsA)
 TRefCountPtr<FPooledRDGBuffer> pooled_verticiesA;
 graphBuilder.QueueBufferExtraction(rdgOutSegmentsA, &pooled_verticiesA, FRDGResourceState::EAccess::Read, FRDGResourceState::EPipeline::Compute);
 ```
-And here we go, just "pull the Execute() trigger" on the Graph Builder and let the gpu do the math for you!
+And here we go, just "pull the Execute() trigger" on the Graph Builder and let the GPU do the math for you!
 
 Now, for all three output buffers, we need to copy data from the their FPooledRDGBuffer to our TArray that we can go on and use them on CPU. That's what _copyBuffer does:
 ```c++
@@ -183,7 +184,7 @@ rhiCmdList.UnlockStructuredBuffer(source->StructuredBuffer);
 
 #### Shader code
 
-There's not much to say, just some math and float precision managing. Notice that the buffers operations are atomic so you must be more explicit on operations than you could be for example working with an array on a pixel shader. I learned this hitting my head on this.
+There's not much to say, just some math and float precision managing. Notice that the buffer's operations are atomic so you must be more explicit on operations than you could be for example working with an array on a pixel shader. I learned this by hitting my head on this.
 
 ```hlsl
 #define PRECISION_TOLERANCE 0.0001
@@ -305,6 +306,7 @@ auto cutter = new (FMeshPlaneIntersection);
 TArray<TTuple<FVector, FVector>> segments = cutter->PerformIntersection(vertexBuffer, indexBuffer, sectionPlane);
 delete (cutter);
 ```
+(Of course, you could change the output format with a data structure more convenient for your needs)
 Our _runComputeShader_RenderThread is sent to the RenderThread through the macro ENQUEUE_RENDER_COMMAND.
 To manage the async operation you have multiple choice, to keep the interface simple I managed it using the render fences, waiting for the result of the computation. If it's a solution compatible with you project do this:
 ```c++
@@ -315,7 +317,7 @@ ENQUEUE_RENDER_COMMAND(PerformGPUIntersection)
 Fence.BeginFence();
 Fence.Wait();
 ```
-After this you have the class members arrays filled with the output of the compute shader ready to be used.
+After this, you have the class members' arrays filled with the output of the compute shader ready to be used.
 
 ## Geometry generation
 
@@ -339,77 +341,24 @@ if (_checkBBoxPlaneIntersection(inMesh, sectionPlaneLocal)) {
 }
 _updateGeometry(loops, sectionPlaneLocal);
 ```
-As you noticed to avoid wasting time converting vertex buffer positions fropm local to world I opted for converting just the plane into local.
+As you noticed to avoid wasting time converting vertex buffer positions from local to world I opted for converting just the plane into local.
 The checkBBoxPlaneIntersection is a simple optimization to avoid work if the plane does not intersect our mesh.
 _cutGeometry you already know what it does. So let's go through the other steps.
 
 ### Sorting
 
-First we need to reorder all the segments that compute shaders sent to us to get one (or more) closed loops that represent the border of our cross-section.
-I'd like to find some smart algorithm that simplify the problem but for now the only solution is to, starting from a segment, check for matching points and put the new one at the end or the beginning of the collected sorted segments. If no match were found but there are still not sorted elements than you start a new loop. And so on...
+First, we need to reorder all the segments that compute shaders sent to us to get one (or more) closed loops that represent the border of our cross-section.
+I'd like to find some smart algorithm that simplifies the problem but for now, the only solution is to, starting from a segment, check for matching points, and put the new one at the end or the beginning of the collected sorted segments. If no match was found but there are still not sorted elements then you start a new loop. And so on...
 
-Sadly in our specific project we could get self intersecting loops, with the intersection point both on a shared vertices or between two segments. Let's see how to deal with them.
+### Fix non-manifold loops
 
-### Fix non-manifold vertices
+Sadly in our specific project, we could get self-intersecting loops, with the intersection point both on shared vertices or between two segments. Let's see how to deal with them:
 
-We check for our loops if there are matching vertices and split them:
-```c++
-for (int loopIndex = 0; loopIndex < loops.Num(); ++loopIndex) {
-    for (int pos = 0; pos < loops[loopIndex].Num(); ++pos) {
-        auto twinIndex = UDCGraphicsUtils::FindFirstNextAlmostEqual(loops[loopIndex][pos], loops[loopIndex], pos + 1);
-        if (twinIndex >= 0) {
-            TArray<FVector> newLoop;
-            for (int elem = pos; elem < twinIndex; ++elem) {
-                newLoop.Add(loops[loopIndex][elem]);
-            }
-            loops.Add(newLoop);
-            loops[loopIndex].RemoveAt(pos, twinIndex - pos);
-        }
-    }
-}
-```
+First, solve it per vertex: we go through every loop and for each point, we search the first next equal value in the loop, if we found one it means that there's a closed path inside the loop so we detach it and add it at the end of the list.
 
-### Fix non-manifold segments
+Then solve it per segment: almost the same process as before but checking segments described by subsequent points, we check if they are intersecting and if yes we compute the intersection point, add it to the main loop (in 2nd position, because it belongs to the two segments evaluated) and detach the inner one.
 
-We check for our loops if there are segment-vs-segment intersection and split them:
-```c++
-int startBreak = -1;
-int endBreak = -1;
-FVector intersectionPos;
-for (int loopIndex = 0; loopIndex < loops.Num(); ++loopIndex) {
-    for (int posIndex = 0; posIndex < loops[loopIndex].Num(); ++posIndex) {
-        for (int evalPosIndex = posIndex + 2; evalPosIndex < loops[loopIndex].Num(); ++evalPosIndex) {
-            auto& A = loops[loopIndex][posIndex];
-            auto& B = loops[loopIndex][posIndex + 1];
-            FVector C;
-            FVector D;
-            if (evalPosIndex == loops[loopIndex].Num() - 1) {
-                if (posIndex == 0) {
-                    continue;
-                }
-                C = loops[loopIndex][evalPosIndex];
-                D = loops[loopIndex][0];
-            } else {
-                C = loops[loopIndex][evalPosIndex];
-                D = loops[loopIndex][evalPosIndex + 1];
-            }
-
-            if (UDCGraphicsUtils::CheckSegmentsIntersection(A, B, C, D)) {
-                intersectionPos = UDCGraphicsUtils::GetSegmentsIntersectionPoint(A, B, C, D);
-                startBreak = posIndex + 1;
-                endBreak = evalPosIndex + 1;
-                loops[loopIndex].Insert(intersectionPos, startBreak);
-                loops.AddZeroed();
-                for (int i = startBreak; i <= endBreak; ++i) {
-                    loops.Last().Add(loops[loopIndex][i]);
-                }
-                loops[loopIndex].RemoveAt(startBreak + 1, endBreak - startBreak);
-                ++posIndex;
-            }
-        }
-    }
-}
-```
+**Disclaimer:** This is another part that I'd like to explore more since it's too much brute force and I'm sure it could be optimized.
 
 This is how we check intersections:
 ```c++
@@ -429,17 +378,20 @@ FVector UDCGraphicsUtils::GetSegmentsIntersectionPoint(const FVector& A, const F
     return A + (B - A) * FVector(q);
 }
 ```
-**Disclaimer:** This is another part that I'd like to explore more since it's too much brute force and I'd like to make it lighter.
 
 ### Deals with holes and concentric loops
 
-We initially planned to manage this but since we didn't have geometry with this behaviour we removed it to reduce performance cost.
-Anyway the flow was:
+I initially planned to manage this but since we didn't have geometry with this behavior I removed it to reduce performance cost.
+Anyway, the flow was:
 - check for bounding box size of the loops
 - check for every loop if his BB is entirely contained in other loop's BB
 - store the result
-- in triangulation phase we simply check if a loop have "fathers" and how many, if the number of father its even than we fill the loops with triangles, otherwise not
+- in the triangulation phase, we simply check if a loop has "fathers" and how many, if the number of the father is even then we fill the loops with triangles, otherwise not
 
 ### Build mesh section
 
-To triangulate the loops we didn't use any particular triangulation algorithm since we can rely on Clipper library in our project. Maybe in a future update I will expand this section.
+To triangulate the loops I didn't use any particular triangulation algorithm since we can rely on Clipper library in our project. Maybe in a future update, I will expand this section.
+
+<a href="/images/graphics/CrossSectionExample_Wireframe.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample_Wireframe.png" alt="Cross-section example wireframe"> </a>
+
+<a href="/images/graphics/CrossSectionExample_Unlit.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample_Unlit.png" alt="Cross-section example unlit"> </a>
