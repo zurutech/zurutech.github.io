@@ -31,6 +31,8 @@ image: images/graphics/CrossSectionExample.png
 
 <a href="/images/graphics/CrossSectionExample.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample.png" alt="Cross-section example"> </a>
 
+## Introduction
+
 In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 and how we speed up the process using a compute shader.
 I would like to use this article as a resource for anyone who needs to add a compute shader and need to manage buffer read/write between GPU and CPU in Unreal Engine. You can find many good resources about it (an honorable mention goes to Temaran) but you need to make a collage from multiple sources so hopefully, this could make your life a bit simpler.
 And I hope that could help also if you are facing similar geometric processing in your project.
@@ -44,11 +46,15 @@ After some analysis, we end up deciding to build the actual geometry to display 
 
 As this is our first iteration I will place some disclaimer in the article to notify about things that I'd like to explore better. Since it performs well enough for our purpose it's not sure that updates will come soon but it's definitely something that I want to do as soon as I can.
 
+---
+
 ## The Pipeline
 
 Since it could be heavy to process complex geometry, we split the work between GPU and CPU to take advantage of the high parallelization offered by the first one architecture.
 
 <a href="/images/graphics/CrossSectionPipeline.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionPipeline.png" alt="Cross-section pipeline"> </a>
+
+---
 
 ## Compute intersection
 
@@ -318,6 +324,8 @@ Fence.BeginFence();
 Fence.Wait();
 ```
 After this, you have the class members' arrays filled with the output of the compute shader ready to be used.
+
+---
 
 ## Geometry generation
 
