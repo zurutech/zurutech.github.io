@@ -2,17 +2,32 @@
 author: "nicholas-monacolli"
 layout: post
 did: "nicholas-monacolli"
-title: "Cross-section runtime generation with GPU acceleration in ue4"
-slug: "Cross-section runtime generation with GPU acceleration in ue4"
+title: "Cross-section runtime generation with GPU acceleration in UE4"
+slug: "Cross-section runtime generation with GPU acceleration in UE4"
 date: 2021-01-04 06:00:00
 categories: coding graphics
 tags: coding graphics
 image: images/graphics/CrossSectionExample.png
+description: "A reinvented company where you can express yourself and create anything you want with no limits"
 ---
+
+In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 (UE4) and how we speed up the process using a compute shader.
+I would like to use this article as a resource for anyone who needs to add a compute shader and need to manage buffer read/write between GPU and CPU in Unreal Engine. You can find many good resources about it (an honorable mention goes to Temaran) but you need to make a collage from multiple sources so hopefully, this could make your life a bit simpler.
+And I hope that could help also if you are facing similar geometric processing in your project.
+
+<a href="/images/graphics/CrossSectionExample.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample.png" alt="Cross-section example"> </a>
+
+The standard approach is to mask the material and use the back-faces to display the (fake) cross-section surface.
+This is possible only if you have manifold geometry. If, for example, you have intersections between triangles of the same mesh you cannot rely on this technique.
+
+<a href="/images/graphics/CutGlitch.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CutGlitch.png" alt="Cut glitch"> </a>
+
+After some analysis, we end up deciding to build the actual geometry to display the cross-section.
+
+As this is our first iteration I will place some disclaimer in the article to notify about things that I'd like to explore better. Since it performs well enough for our purpose it's not sure that updates will come soon but it's definitely something that I want to do as soon as I can.
 
 **Table of Contents**:
 
-- [Introduction](#introduction)
 - [The Pipeline](#the-pipeline)
 - [Compute intersection](#compute-intersection)
     - [Shader declaration](#shader-declaration)
@@ -25,32 +40,13 @@ image: images/graphics/CrossSectionExample.png
     - [Fix non-manifold loops](#fix-non-manifold-loops)
     - [Deals with holes and concentric loops](#deals-with-holes-and-concentric-loops)
     - [Build mesh section](#build-mesh-section)
-<br>
-<hr>
-<br>
-
-<a href="/images/graphics/CrossSectionExample.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample.png" alt="Cross-section example"> </a>
-
-## Introduction
-
-In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 and how we speed up the process using a compute shader.
-I would like to use this article as a resource for anyone who needs to add a compute shader and need to manage buffer read/write between GPU and CPU in Unreal Engine. You can find many good resources about it (an honorable mention goes to Temaran) but you need to make a collage from multiple sources so hopefully, this could make your life a bit simpler.
-And I hope that could help also if you are facing similar geometric processing in your project.
-
-The standard approach is to mask the material and use the back-faces to display the (fake) cross-section surface.
-This is possible only if you have manifold geometry. If, for example, you have intersections between triangles of the same mesh you cannot rely on this technique.
-
-<a href="/images/graphics/CutGlitch.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CutGlitch.png" alt="Cut glitch"> </a>
-
-After some analysis, we end up deciding to build the actual geometry to display the cross-section.
-
-As this is our first iteration I will place some disclaimer in the article to notify about things that I'd like to explore better. Since it performs well enough for our purpose it's not sure that updates will come soon but it's definitely something that I want to do as soon as I can.
+- [Conclusion](#conclusion)
 
 ---
 
 ## The Pipeline
 
-Since it could be heavy to process complex geometry, we split the work between GPU and CPU to take advantage of the high parallelization offered by the first one architecture.
+Since it could be heavy to process complex geometry, we split the work between GPU and CPU to take advantage of the high parallelization offered by the former architecture.
 
 <a href="/images/graphics/CrossSectionPipeline.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionPipeline.png" alt="Cross-section pipeline"> </a>
 
@@ -68,7 +64,7 @@ FString ModuleShaderDir = FPaths::Combine(FPaths::ProjectDir(), TEXT("Source/Pre
 AddShaderSourceDirectoryMapping(TEXT("/Presenter3D"), ModuleShaderDir);
 ```
 
-I created the class FMeshPlaneIntersectionCS, derived from FGlobalShader, that deals with c++ to HLSL communication, inside which there are: 
+I created the class `FMeshPlaneIntersectionCS`, derived from `FGlobalShader`, that deals with C++ to HLSL communication, inside which there are: 
 - parameters declaration:
     ```c++
     DECLARE_GLOBAL_SHADER(FMeshPlaneIntersectionCS);
@@ -108,7 +104,7 @@ IMPLEMENT_GLOBAL_SHADER(FMeshPlaneIntersectionCS, "/Presenter3D/MeshPlaneInterse
 
 ### Shader usage
 
-FMeshPlaneIntersection is the class that act as a manager for our shader:
+`FMeshPlaneIntersection` is the class that act as a manager for our shader:
 ```c++
 class PRESENTER3D_API FMeshPlaneIntersection {
 public:
@@ -129,11 +125,12 @@ private:
 
 #### Inside Render Thread
 
-**Disclaimer:** This flow works only if you set on your mesh "Allow CPU Access" at true. Otherwise, RenderData (the interface that gives access to the mesh buffers) in the cooked version of the asset will be available only in GPU. So to read them you have to dialogue with RenderThread. I didn't tested yet the performance hit of this specific change (if there is any).
+**Disclaimer:** This flow works only if you set on your mesh "Allow CPU Access" at true. Otherwise, `RenderData` (the interface that gives access to the mesh buffers) in the cooked version of the asset will be available only in GPU. So to read them you have to dialogue with `RenderThread`. I didn't tested yet the performance hit of this specific change (if there is any).
 
-Let's start from _runComputeShader_RenderThread.
+Let's start from `_runComputeShader_RenderThread`.
 Here is where the compute shader is executed, but before dispatch it, you need to setup properly input and output.
-First we need to make our GraphBuilder and allocate memory:
+First we need to make our `GraphBuilder` and allocate memory:
+
 ```c++
 FMemMark Mark(FMemStack::Get());
 FRDGBuilder graphBuilder(rhiCmdList);
@@ -171,10 +168,13 @@ FIntVector GroupCounts = FIntVector(outBufferSize, 1, 1);
 https://gpuopen.com/learn/optimizing-gpu-occupancy-resource-usage-large-thread-groups/
 
 Finally we can add our shader to the command list:
+
 ```c++
 FComputeShaderUtils::AddPass(graphBuilder, RDG_EVENT_NAME("MeshPlaneIntersection"), ComputeShader, PassParameters, GroupCounts);
 ```
-Than we add the extraction commands for our output (an example for CutSegmentsA):
+
+Than we add the extraction commands for our output (an example for `CutSegmentsA`):
+
 ```c++
 TRefCountPtr<FPooledRDGBuffer> pooled_verticiesA;
 graphBuilder.QueueBufferExtraction(rdgOutSegmentsA, &pooled_verticiesA, FRDGResourceState::EAccess::Read, FRDGResourceState::EPipeline::Compute);
@@ -307,13 +307,15 @@ void MainCS(uint3 ThreadId : SV_DispatchThreadID)
 #### Outer interface
 
 Usage it's as simple as:
+
 ```c++
 auto cutter = new (FMeshPlaneIntersection);
 TArray<TTuple<FVector, FVector>> segments = cutter->PerformIntersection(vertexBuffer, indexBuffer, sectionPlane);
 delete (cutter);
 ```
+
 (Of course, you could change the output format with a data structure more convenient for your needs)
-Our _runComputeShader_RenderThread is sent to the RenderThread through the macro ENQUEUE_RENDER_COMMAND.
+Our `_runComputeShader_RenderThread` is sent to the RenderThread through the `ENQUEUE_RENDER_COMMAND` macro.
 To manage the async operation you have multiple choice, to keep the interface simple I managed it using the render fences, waiting for the result of the computation. If it's a solution compatible with you project do this:
 ```c++
 FRenderCommandFence Fence;
@@ -323,6 +325,7 @@ ENQUEUE_RENDER_COMMAND(PerformGPUIntersection)
 Fence.BeginFence();
 Fence.Wait();
 ```
+
 After this, you have the class members' arrays filled with the output of the compute shader ready to be used.
 
 ---
@@ -350,8 +353,8 @@ if (_checkBBoxPlaneIntersection(inMesh, sectionPlaneLocal)) {
 _updateGeometry(loops, sectionPlaneLocal);
 ```
 As you noticed to avoid wasting time converting vertex buffer positions from local to world I opted for converting just the plane into local.
-The checkBBoxPlaneIntersection is a simple optimization to avoid work if the plane does not intersect our mesh.
-_cutGeometry you already know what it does. So let's go through the other steps.
+The `checkBBoxPlaneIntersection` is a simple optimization to avoid work if the plane does not intersect our mesh.
+`_cutGeometry` you already know what it does. So let's go through the other steps.
 
 ### Sorting
 
@@ -362,9 +365,9 @@ I'd like to find some smart algorithm that simplifies the problem but for now, t
 
 Sadly in our specific project, we could get self-intersecting loops, with the intersection point both on shared vertices or between two segments. Let's see how to deal with them:
 
-First, solve it per vertex: we go through every loop and for each point, we search the first next equal value in the loop, if we found one it means that there's a closed path inside the loop so we detach it and add it at the end of the list.
+First, solve it per vertex. We go through every loop and for each point, we search the first point with an equal value in the loop; if we found one it means there's a closed path inside the loop so we detach it and add it at the end of the list.
 
-Then solve it per segment: almost the same process as before but checking segments described by subsequent points, we check if they are intersecting and if yes we compute the intersection point, add it to the main loop (in 2nd position, because it belongs to the two segments evaluated) and detach the inner one.
+Then solve it per segment. It is almost the same process used for the vertex, but applied on segments described by subsequent points. We check if they are intersecting and, in that case, we compute the intersection point, add it to the main loop (in 2nd position, because it belongs to the two segments evaluated) and detach the inner one.
 
 **Disclaimer:** This is another part that I'd like to explore more since it's too much brute force and I'm sure it could be optimized.
 
@@ -398,8 +401,12 @@ Anyway, the flow was:
 
 ### Build mesh section
 
-To triangulate the loops I didn't use any particular triangulation algorithm since we can rely on Clipper library in our project. Maybe in a future update, I will expand this section.
+To triangulate the loops I didn't use any particular triangulation algorithm since we can rely on [Clipper](http://www.angusj.com/delphi/clipper.php) in our project. Maybe in a future update, I will expand this section.
 
 <a href="/images/graphics/CrossSectionExample_Wireframe.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample_Wireframe.png" alt="Cross-section example wireframe"> </a>
 
 <a href="/images/graphics/CrossSectionExample_Unlit.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample_Unlit.png" alt="Cross-section example unlit"> </a>
+
+## Conclusion
+
+The article described how I solved the problem of cut geometry at runtime using Unreal Engine 4. There are still some part of the code that might be improved and that require, perhaps, a better analysis (each of them highlighted with a **disclaimer**), but in this article I used an hands-on approach to describe how I solved it, so to be helpful to every other UE4 developer that's facing a similar challenge.
