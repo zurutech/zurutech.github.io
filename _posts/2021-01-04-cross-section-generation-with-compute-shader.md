@@ -8,7 +8,7 @@ date: 2021-01-04 06:00:00
 categories: coding graphics
 tags: coding graphics
 image: images/graphics/CrossSectionExample.png
-description: "A reinvented company where you can express yourself and create anything you want with no limits"
+description: "Our solution to cut geometry at runtime in Unreal Engine 4 (UE4) and how we speed up the process using a compute shader"
 ---
 
 In this article I will talk about our solution to cut geometry at runtime in Unreal Engine 4 (UE4) and how we speed up the process using a compute shader.
