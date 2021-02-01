@@ -401,7 +401,7 @@ Anyway, the flow was:
 
 ### Build mesh section
 
-To triangulate the loops I didn't use any particular triangulation algorithm since we can rely on [Clipper](http://www.angusj.com/delphi/clipper.php) in our project. Maybe in a future update, I will expand this section.
+To triangulate the loops I didn't use any particular triangulation algorithm since we can rely on [Clip2Tri](https://github.com/raptor/clip2tri) library in our project. Maybe in a future update, I will expand this section.
 
 <a href="/images/graphics/CrossSectionExample_Wireframe.png"><img class="blog-image" style="width: 100%" src="/images/graphics/CrossSectionExample_Wireframe.png" alt="Cross-section example wireframe"> </a>
 
