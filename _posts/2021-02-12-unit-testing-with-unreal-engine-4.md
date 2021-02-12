@@ -33,7 +33,7 @@ bool FMyAwesomeTest::RunTest(FString const& Parameters){
 }
 ```
 
-After calling the macro within the compiled code of the project, one has to provide a definition for the `RunTest()` method of the just defined class. Indeed, the macro is just an utility to easily declare and instance a class with the provided name. The `RunTest()` method is the test: it returns a boolean value, to indicate its success or failure. Also, any `UE_LOG(Error)` executed within the test run (including the project and the Engine code) will make the test fail, while any `UE_LOG(Warning)` will let it pass with warnings.
+After calling the macro within the compiled code of the project, one has to provide a definition for the `RunTest()` method of the just defined class. Indeed, the macro is just a utility to easily declare and instance a class with the provided name. The `RunTest()` method is the test: it returns a boolean value, to indicate its success or failure. Also, any `UE_LOG(Error)` executed within the test run (including the project and the Engine code) will make the test fail, while any `UE_LOG(Warning)` will let it pass with warnings.
 
 There also are some assertion methods to be used within these tests. `TestTrue`/`TestFalse`, to check booleans, `TestEqual`/`TestNotEqual`, for equalities, and so on... The failure of an assertion will print a log error, and make the test fail. For instance, the following test
 
@@ -75,7 +75,7 @@ Probably inspired by JUnit, the `Automation Spec` is a very powerful way to writ
 
 ### Automation Spec
 
-In order to write an Automation Spec, we are provided with two macros: `BEGIN_DEFINE_SPEC` and `END_DEFINE_SPEC`. They work pretty much like the previous ones, apart from the fact that whatever method or variable declared within the two will become member of the created test class. This helps grouping constants and utility methods, but also makes it possible to share data between different blocks, as we are about to see. In the case of spec, the `Define()` method must be implemented
+In order to write an Automation Spec, we are provided with two macros: `BEGIN_DEFINE_SPEC` and `END_DEFINE_SPEC`. They work pretty much like the previous ones, apart from the fact that whatever method or variable declared within the two will become a member of the created test class. This helps grouping constants and utility methods, but also makes it possible to share data between different blocks, as we are about to see. In the case of spec, the `Define()` method must be implemented
 
 ```
 BEGIN_DEFINE_SPEC(FClassName, "TestPath", TestFlags)
@@ -257,7 +257,7 @@ ModuleName
 
 I am sometimes asked if Latent Commands can be used in Specs. Indeed, developers trying to use them are often confused by their behaviour in this scenario. Let me try to explain what is going on.
 
-By looking at the `FAutomationSpecBase` implementation, one finds out that an automation spec is like a classic *simple automation test*, in which the `BeforeEach`, `It` and `AfterEach` are enqueued as latent commands. [First reaction: shock!]
+By looking at the `FAutomationSpecBase` implementation, one finds out that an automation spec is like a classic *simple automation test*, in which the `BeforeEach`, `It` and `AfterEach` are enqueued as latent commands.
 
 Hence, when we add a latent command within a test run, we are inserting it into the queue, and it will be executed after the last of the `AfterEach`'s! So, yes, we can use latent commands, but we need to know what we are doing!
 
