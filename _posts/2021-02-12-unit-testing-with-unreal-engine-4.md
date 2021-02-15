@@ -23,7 +23,7 @@ Are you tired of finding regressions in features you spent such great effort imp
 
 First thing first, let us enable the Unreal Test Suite GUI, as explained in the [official documentation](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/index.html#enablingautomationtestplugins). Within the test suite, one can find both the Engine tests and the project-specific ones, and run all or a subset of them.
 
-The easiest method to write a test is by means of the `IMPLEMENT_SIMPLE_AUTOMATION_TEST` macro. It requires a class name, a test name (shown in the GUI) and some flags (in order to filter them by their type). 
+The easiest method to write a test is by means of the `IMPLEMENT_SIMPLE_AUTOMATION_TEST` macro. It requires a class name, a test name (shown in the GUI), and some flags (in order to filter them by their type). 
 
 ```
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMyAwesomeTest, "Test path.Test name", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
@@ -255,7 +255,7 @@ ModuleName
 
 #### Latent commands in Automation Spec
 
-I am sometimes asked if Latent Commands can be used in Specs. Indeed, developers trying to use them are often confused by their behaviour in this scenario. Let me try to explain what is going on.
+I am sometimes asked if Latent Commands can be used in Specs. Indeed, developers trying to use them are often confused by their behavior in this scenario. Let me try to explain what is going on.
 
 By looking at the `FAutomationSpecBase` implementation, one finds out that an automation spec is like a classic *simple automation test*, in which the `BeforeEach`, `It` and `AfterEach` are enqueued as latent commands.
 
@@ -286,7 +286,7 @@ Here it is, you are now able to write unit tests in Unreal Engine 4! By combinin
 
 Tests can also be run within the [CI/CD](https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects), to make sure they are executed at every commit! In Zuru, we also have a stage for test names generation: a script analyzes the command-line log and prints out a list of tests in a fancy formatted `.csv` file. This helps our QA-testers find out whether a feature is covered by test automation!
 
-Please let me know if any of this is unclear. or incorrect. Any feedback is greatly appreciated! Some other posts may follow, explaining how to write functional tests, how to open a map and how to simulate user input... Stay tuned, we are just getting started!
+Please let me know if any of this is unclear. or incorrect. Any feedback is greatly appreciated! Some other posts may follow, explaining how to write functional tests, how to open a map, and how to simulate user input... Stay tuned, we are just getting started!
 
 ### References
 - [Epic's official documentation](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/index.html)
