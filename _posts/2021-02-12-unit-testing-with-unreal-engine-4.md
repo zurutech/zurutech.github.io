@@ -7,7 +7,7 @@ slug: "Unit-testing with Unreal Engine 4"
 date:   2021-02-12 8:00:00
 categories: coding
 image: images/unreal-test-suite/post.png
-tags: team
+tags: coding
 description: "Unit-testing with Unreal Engine 4"
 ---
 
@@ -17,7 +17,7 @@ In general, manual testing requires a lot of time, to be spent at every build, o
 
 But that is not all there is. Writing automated tests, especially unit ones, is a very good practice, for it **forces developers to think** about the functions they implement, outlining input and output (including side effects), eventually spotting unhandled exceptions. 
 
-Are you tired of finding regressions in features you spent such great effort implementing? Get ready, you are about to find out how to write unit tests within Unreal Engine 4!
+Are you tired of finding regressions in features you spent such great effort implementing? Get ready, you are about to find out how to write unit tests in Unreal Engine 4!
 
 ## Unreal Test Suite
 
@@ -69,7 +69,7 @@ Tests may sometimes require some deferred actions, which run across multiple fra
 
 What has been said so far is enough to start writing some simple unit-tests! But what if we wanted to repeat a test for multiple values? Should we copy-paste the code multiple times? 
 
-Of course not! The macro `IMPLEMENT_COMPLEX_AUTOMATION_TEST` allows us to write parametric tests! Yet, since it is not that intuitive to use, nor scalable, Epic has provided us with the [Automation Spec](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/AutomationSpec/index.html) syntax. 
+Of course not! The macro `IMPLEMENT_COMPLEX_AUTOMATION_TEST` allows us to write parametric tests! Yet, since it is not that intuitive to use, nor scalable, Epic provided us with the [Automation Spec](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/AutomationSpec/index.html) syntax. 
 
 Probably inspired by JUnit, the `Automation Spec` is a very powerful way to write parametric tests. The last part of this post will focus on this syntax, but if you are interested in the *complex tests* macro, here is the [official documentation](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/TechnicalGuide/index.html#complextests).
 
@@ -286,8 +286,7 @@ Here it is, you are now able to write unit tests in Unreal Engine 4! By combinin
 
 Tests can also be run within the [CI/CD](https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects), to make sure they are executed at every commit! In Zuru, we also have a stage for test names generation: a script analyzes the command-line log and prints out a list of tests in a fancy formatted `.csv` file. This helps our QA-testers find out whether a feature is covered by test automation!
 
-
-Please let me know if any of this is unclear or incorrect. Any feedback is greatly appreciated! Some other posts may follow, explaining how to write functional tests, how to open a map and how to simulate user input... Stay tuned, we are just getting started!
+Please let me know if any of this is unclear. or incorrect. Any feedback is greatly appreciated! Some other posts may follow, explaining how to write functional tests, how to open a map and how to simulate user input... Stay tuned, we are just getting started!
 
 ### References
 - [Epic's official documentation](https://docs.unrealengine.com/en-US/TestingAndOptimization/Automation/index.html)
