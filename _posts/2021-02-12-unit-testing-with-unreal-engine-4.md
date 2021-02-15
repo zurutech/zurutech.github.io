@@ -35,7 +35,7 @@ bool FMyAwesomeTest::RunTest(FString const& Parameters){
 
 After calling the macro within the compiled code of the project, one has to provide a definition for the `RunTest()` method of the just defined class. Indeed, the macro is just a utility to easily declare and instance a class with the provided name. The `RunTest()` method is the test: it returns a boolean value to indicate its success or failure. Also, any `UE_LOG(Error)` executed within the test run (including the project and the Engine code) will make the test fail, while any `UE_LOG(Warning)` will let it pass with warnings.
 
-There also are some assertion methods to be used within these tests. `TestTrue`/`TestFalse`, to check booleans, `TestEqual`/`TestNotEqual`, for equalities, and so on... The failure of an assertion will log error, and make the test fail. For instance, the following test
+There also are some assertion methods to be used within these tests. `TestTrue`/`TestFalse`, to check booleans, `TestEqual`/`TestNotEqual`, for equalities, and so on... The failure of an assertion will log an error, and make the test fail. For instance, the following test
 
 ```cpp
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMyAwesomeTest, "Test path.Test name", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
