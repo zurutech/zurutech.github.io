@@ -163,7 +163,7 @@ void FClassName::Define() {
 	BeforeEach([this](){
 		UE_LOG(LogTemp, Display, TEXT("b1"));
 	});
-	Describe("Scope1", [](){
+	Describe("Scope1", [this](){
 		BeforeEach([this](){
 			UE_LOG(LogTemp, Display, TEXT("b2"));
 		});
@@ -172,7 +172,7 @@ void FClassName::Define() {
 			UE_LOG(LogTemp, Display, TEXT("t1"));
 		}); 
 	
-		Describe("Scope2", [](){
+		Describe("Scope2", [this](){
 			BeforeEach([this](){
 				UE_LOG(LogTemp, Display, TEXT("b3"));
 			});
@@ -235,7 +235,7 @@ BEGIN_DEFINE_SPEC(FTestClass, "ModuleName.Submodule name", TestFlags)
 END_DEFINE_SPEC(FTestClass)
 
 void FTestClass::Define(){
-	Describe("ComputeCrossProduct(FVector, FVector)", [](){
+	Describe("ComputeCrossProduct(FVector, FVector)", [this](){
 		It("Should correctly compute the cross product among the vectors (1,0,0) and (0,1,0)", 
 		[this](){
 			FVector res = ComputeCrossProduct(FVector::ForwardVector, FVector::RightVector);
