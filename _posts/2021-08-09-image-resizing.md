@@ -19,7 +19,7 @@ The input of a machine learning model is usually resized mainly because models t
 Moreover, many deep learning model architectures require that the input must have the same size and it could happen that raw collected images have different sizes.
 
 The workflow of the development of an ML model starts from a training phase typically in python then, if you satisfied your requirements on the test set, you want to deploy your algorithm.  
-If you need to use your model in a high-performance environment such as C++, e.g. you need to integrate your model in an existing C++ application or in general, you want to use your solution in another programming language[^3], you need a way to export "something" that could be used in the production environment.  
+If you need to use your model in a high-performance environment such as C++, e.g. you need to integrate your model in an existing C++ application or in general, you want to use your solution in another programming language [^3], you need a way to export "something" that could be used in the production environment.  
 A good idea to be sure to preserve the algorithm behavior is to export all the pipeline, thus not only the forward pass of the network, given by the weights and the architecture of the layers but also the pre-and post- processing steps.
 
 Fortunately, the main deep learning frameworks, i.e. **Tensorflow** and **PyTorch**, give you the possibility to export the whole execution graph into a "program", called `SavedModel` or `TorchScript`. We used the term program because these formats include not only the architecture and the trained parameters but also the computation.
@@ -36,11 +36,11 @@ In practice, for each pixel $$(x,y)$$ of the destination image, you need to comp
 
 $$ I_{dst}(x,y) = I_{src}\left(f_x(x,y), f_y(x,y)\right) $$
 
-where $\langle f_x,f_y \rangle : dst \to src$ is the inverse mapping.  
+where $$\langle f_x,f_y \rangle : dst \to src$$ is the inverse mapping.  
 This allows avoiding to have output pixel not assigned to a value.
 
 Usually, when you compute source coordinates you get **floating-point** numbers, so you need to decide how to choose which source pixel to copy into the destination.  
-The naive approach is to round the coordinates to the nearest integers (_nearest-neighbor_ interpolation). However, better results can be achieved by using more sophisticated interpolation methods, where a polynomial function is fit into some neighborhood of the computed pixel $\left(f_x(x,y), f_y(x,y)\right)$, and then the value of the polynomial at $\left(f_x(x,y), f_y(x,y)\right)$ is taken as the interpolated pixel value[^2].
+The naive approach is to round the coordinates to the nearest integers (_nearest-neighbor_ interpolation). However, better results can be achieved by using more sophisticated interpolation methods, where a polynomial function is fit into some neighborhood of the computed pixel $$\left(f_x(x,y), f_y(x,y)\right)$$, and then the value of the polynomial at $$\left(f_x(x,y), f_y(x,y)\right)$$ is taken as the interpolated pixel value [^2].
 
 The problem is that different library could have some little differences in how they implement the interpolation filters but above all, if they introduce the **anti-aliasing filter**. In fact, if we interpret the image scaling as a form of image resampling from the view of the [Nyquist sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), downsampling to a smaller image from a higher-resolution original can only be carried out after applying a suitable 2D anti-aliasing filter to prevent aliasing artifacts.
 
