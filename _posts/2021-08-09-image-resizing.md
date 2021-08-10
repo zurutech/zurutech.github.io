@@ -24,7 +24,7 @@ A good idea to be sure to preserve the behavior, is to export all the pipeline, 
 
 Fortunately, the main frameworks, i.e. **_Tensorflow_** and **_PyTorch_**, give you the possibility to export all the execution graph into a "program", called `SavedModel` or `TorchScript`, these formats include trained parameters but also the computation.
 
-If you are developing a new model from scratch, you can designed your application in order to export all the pipeline, but if you are using a third party library this is not always possible. So for example, you can export only the inference but not the pre-processing. 
+If you are developing a new model from scratch, you can designed your application in order to export all the pipeline, but if you are using a third party library this is not always possible. So for example, you can export only the inference but not the pre-processing.
 
 Here comes the problems with the resizing because probably you need to use a different library to resize your input, maybe because you don't know how it is done or there isn't the implementation of the python library in your deploying language.  
 
@@ -67,10 +67,10 @@ We tested the following libraries and methods:
 
 
 Each methods supports some filters, so we choose a common subset and we tested the previous libraries with different filters. In particular:
-- **nearest**: the most naive approach of subsampling every N-th element and often leads to aliasing. The high-frequency information in the original image becomes misrepresented in the downsampled image. 
+- **nearest**: the most naive approach of subsampling every N-th element and often leads to aliasing. The high-frequency information in the original image becomes misrepresented in the downsampled image.
 - **bilinear**: linear filter that works by interpolating pixel color values, introducing a continuous transition into the output even where the original material has discrete transitions. It is an extension of linear interpolation to a rectangular grid.
 - **bicubic**: similar to _bilinear_ filter but in contrast to it, which only takes 4 pixels (2×2) into account, bicubic interpolation considers 16 pixels (4×4). Images resampled with bicubic interpolation should be smoother and have fewer interpolation artifacts.
-- **lanczos**: calculate the output pixel value using a high-quality Lanczos filter (a truncated sinc) on all pixels that may contribute to the output value, typically it is used a 8x8 neighborhood.
+- **lanczos**: calculate the output pixel value using a high-quality _Lanczos_ filter (a truncated sinc) on all pixels that may contribute to the output value, typically it is used a 8x8 neighborhood.
 - **box** or **area**: is the simplest linear filter; while better than naive subsampling above, it is typically not used. Each pixel of source image contributes to one pixel of the destination image with identical weights.
 
 ### Qualitative results
@@ -78,7 +78,7 @@ Each methods supports some filters, so we choose a common subset and we tested t
 To better see the different results obtained with the presented functions, we follow the test made in [^1]. We create a synthetic image 128x128 with a circle with thickness 1 pixel and we resized with a downscaling factor of 4 (destination image will be 32x32).  
 We decided to focus on downsampling because it involves throwing away
 information and is more error-prone.  
-Here you can see the qualitative results of our investigation: 
+Here you can see the qualitative results of our investigation:
 
 
 <div class="blog-image-container">
@@ -91,15 +91,15 @@ Here you can see the qualitative results of our investigation:
 In the picture we add an icon to highlight if the downsampling method antialias and remove high-frequencies in the correct way. We use a green icon to show good results, yellow if the filter does not provide sufficient antialiasing, red if artifacts are introduced in the low-resolution image.  
 
 As you can see, even downsampling a simple image of a circle provides wildly inconsistent results across different libraries.  
-It seems that Pillow is the only one that performs downsampling in the right way, in fact apart for the _nearest_ filter that, for definition does not apply antialiasing, all the others does not introduce artifacts and produces a connected ring. 
+It seems that `Pillow` is the only one that performs downsampling in the right way, in fact apart for the _nearest_ filter that, for definition does not apply antialiasing, all the others does not introduce artifacts and produces a connected ring.
 
-OpenCV and PyTorch achieve very similar results for all the filters and both does not use antialiasing filter.  
-This sparse input image shows that these implementations do not properly blur, resulting in a disconnected set of dots after downsampling given a poor representation of the input image. 
+`OpenCV` and `PyTorch` achieve very similar results for all the filters and both does not use antialiasing filter.  
+This sparse input image shows that these implementations do not properly blur, resulting in a disconnected set of dots after downsampling given a poor representation of the input image.
 
-TensorFlow has an hybrid behavior, if you don't enable the antialiasing flag (default) the results are the same of OpenCV, instead if you enable it you get the same results of Pillow.
+`TensorFlow` has an hybrid behavior, if you don't enable the antialiasing flag (default) the results are the same of `OpenCV`, instead if you enable it you get the same results of `Pillow`.
 
 The interesting part is that there are differences even for a filter like the _nearest neighbor_ that is quite straightforward to implement. Instead the box filter seems to give the same results among the libraries.  
-The other methods could be group into 2 categories, the ones similar to Pillow and the ones similar to OpenCV.
+The other methods could be group into 2 categories, the ones similar to `Pillow` and the ones similar to `OpenCV`.
 
 We further evaluate the libraries with other synthetic images with patterns.  
 The first one is a grid of white square 50x50 with 5 pixel of black border.
@@ -112,7 +112,7 @@ The first one is a grid of white square 50x50 with 5 pixel of black border.
 </div>
 
 The previous consideration are valid also in this case, and it clear how without the antialiasing the resulting image does not represent correctly the input.
-If you look at OpenCV results, it is curious that are in practice the same than the nearest neighbor of Pillow, it's like incorrectly implemented filters inadvertently resemble the naive approach.
+If you look at `OpenCV` results, it is curious that are in practice the same than the nearest neighbor of `Pillow`, it's like incorrectly implemented filters inadvertently resemble the naive approach.
 
 Another interesting pattern is the following one, it is similar to the previous grid but here we increase the border to 22 pixels and the squares are 20x20 pixel (note that we use a slightly different value for the border and the squares).
 
@@ -120,8 +120,11 @@ Another interesting pattern is the following one, it is similar to the previous 
 
 <div class="blog-image-container">
     <figure>
-        <img alt="grid" src="/images/image-resizing/grid/grid2.png" width=100>
-        <img alt="grid" src="/images/image-resizing/grid/grid2.png" width=100>
+        <img alt="grid" class="blog-image" src="/images/image-resizing/grid/grid2.png" width=300">
+        <img alt="grid" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_nearest.png" width=128>
+        <img alt="grid" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_nearest.png" width=128>
+        <img alt="grid" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_bilinear.png" width=128>
+        <img alt="grid" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_bilinear.png" width=128>
         <figcaption>Grid.</figcaption>
     </figure>
 </div>
@@ -144,9 +147,9 @@ We choose to use synthetic image because we want to to enhance the creation of a
 
 ## Pillow Resize
 
-Since we are interested in deploying our applications in C++, and we noted that the most correct behavior is given by the Pillow resize, we would like to use it in C++.  
-The Pillow [image processing](https://github.com/python-pillow/Pillow/blob/master/src/libImaging/) algorithms are almost all written in C, but they cannot be used directly used because they are designed to be used by the python wrapper.  
-We released a porting of the resize method in a new standalone library that works on `cv::Mat` so it will be compatible with all OpenCV algorithms.
+Since we are interested in deploying our applications in C++, and we noted that the most correct behavior is given by the `Pillow` resize, we would like to use it in C++.  
+The `Pillow` [image processing](https://github.com/python-pillow/Pillow/blob/master/src/libImaging/) algorithms are almost all written in C, but they cannot be used directly used because they are designed to be used by the python wrapper.  
+We released a porting of the resize method in a new standalone library that works on `cv::Mat` so it will be compatible with all `OpenCV` algorithms.
 
 TODO: insert correct link to repo
 
@@ -156,7 +159,7 @@ TODO: insert correct link to repo
 
 # References
 
-[^1]: [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation](https://arxiv.org/abs/2104.11222) 
+[^1]: [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation](https://arxiv.org/abs/2104.11222)
 
 [^2]: [Geometric Image Transformations](https://docs.opencv.org/4.5.2/da/d54/group__imgproc__transform.html)
 
