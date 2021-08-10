@@ -5,7 +5,7 @@ title:  "The dangers behind image resizing"
 slug:   "The dangers behind image resizing"
 date:    2021-08-09 8:00:00
 categories: machine-learning
-image: /images/image-resizing/circle_comparison.svg
+image: /images/image-resizing/circle_comparison.png
 tags: machine-learning
 ---
 
@@ -72,19 +72,13 @@ To make We follow the tests made in [On Buggy Resizing Libraries and Surprising 
 
 <div class="blog-image-container">
     <figure>
-        <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.svg" width="100%">
+        <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.png" width="100%">
         <figcaption>Comparison of methods on synthetic image of a circle</figcaption>
     </figure>
 </div>
 
 As you can see main differences are between 
 
-<div class="blog-image-container">
-    <figure>
-        <img class="blog-image" alt="comparison on grid" src="/images/image-resizing/grid_comparison.svg" >
-        <figcaption>Comparison of methods on synthetic image of a grid</figcaption>
-    </figure>
-</div>
 
 <div class="blog-image-container">
     <figure>
