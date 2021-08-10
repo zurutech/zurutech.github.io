@@ -60,19 +60,36 @@ We tested the following libraries and methods:
 
     This method has a flag `antialias` to enable the anti-aliasing filter (default is false), we tested the method in both cases, either flag disabled and enabled.
 
-- PyTorch v1.9.0: [`torch.nn.functional..interpolate`](https://pytorch.org/docs/stable/generated/torch.nn.functional.interpolate.html)
+- PyTorch v1.9.0: [`torch.nn.functional.interpolate`](https://pytorch.org/docs/stable/generated/torch.nn.functional.interpolate.html)
 
     PyTorch has another method for resizing, that is `torchvision.transforms.Resize`, we decided do not use for the test because is a wrapper around the PIL library, so the results are the same.
 
+Each methods have been tested with different filters, in particular:
+- **nearest**:
+
 To make We follow the tests made in [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation] sss
 
-
-<img src="/images/image-resizing/circle_comparison.svg" alt="comparison" width="100%"/>
 
 <div class="blog-image-container">
     <figure>
         <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.svg" width="100%">
         <figcaption>Comparison of methods on synthetic image of a circle</figcaption>
+    </figure>
+</div>
+
+As you can see main differences are between 
+
+<div class="blog-image-container">
+    <figure>
+        <img class="blog-image" alt="comparison on grid" src="/images/image-resizing/grid_comparison.svg" >
+        <figcaption>Comparison of methods on synthetic image of a grid</figcaption>
+    </figure>
+</div>
+
+<div class="blog-image-container">
+    <figure>
+        <img class="blog-image" alt="comparison on grid" src="/images/image-resizing/grid_comparison.png" >
+        <figcaption>Comparison of methods on synthetic image of a grid</figcaption>
     </figure>
 </div>
 
