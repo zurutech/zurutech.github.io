@@ -67,12 +67,12 @@ We tested the following libraries and methods:
 To make We follow the tests made in [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation] sss
 
 
-<img src="/images/image-resizing/circle_comparison.svg" alt="comparison" />
+<img src="/images/image-resizing/circle_comparison.svg" alt="comparison" width="100%"/>
 
 <div class="blog-image-container">
     <figure>
-        <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.svg">
-        <figcaption>Comparison</figcaption>
+        <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.svg" width="100%">
+        <figcaption>Comparison of methods on synthetic image of a circle</figcaption>
     </figure>
 </div>
 
