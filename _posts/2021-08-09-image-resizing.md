@@ -65,9 +65,14 @@ We tested the following libraries and methods:
     PyTorch has another method for resizing, that is `torchvision.transforms.Resize`, we decided do not use for the test because is a wrapper around the PIL library, so the results are the same.
 
 Each methods have been tested with different filters, in particular:
-- **nearest**:
+- **nearest**: the most naive approach of subsampling every N-th element and often leads to aliasing. The high-frequency information in the original image becomes misrepresented in the downsampled image. Incorrectly implemented filters inadvertently resemble this naive approach.
+- **bilinear**: linear filter that works by interpolating pixel color values, introducing a continuous transition into the output even where the original material has discrete transitions. It is an extension of linear interpolation to a rectangular grid.
+- **bicubic**: similar to _bilinear_ filter but in contrast to it, which only takes 4 pixels (2×2) into account, bicubic interpolation considers 16 pixels (4×4). Images resampled with bicubic interpolation should be smoother and have fewer interpolation artifacts.
+- **lanczos**: calculate the output pixel value using a high-quality Lanczos filter (a truncated sinc) on all pixels that may contribute to the output value, typically it is used a 8x8 neighborhood.
+- **box** or **area**: is the simplest linear filter; while better than naive subsampling above, it is typically not used. Each pixel of source image contributes to one pixel of the destination image with identical weights.
 
-To make We follow the tests made in [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation] sss
+
+To give you an immediate idea of the different results obtained with the presented functions, we follow the test made in [[1]](#paper_fid). We create a synthetic image 128x128 with a circle with thickness 1 pixel and we resized with a downscaling factor of 4 (destination image will be 32x32).
 
 
 <div class="blog-image-container">
@@ -76,6 +81,7 @@ To make We follow the tests made in [On Buggy Resizing Libraries and Surprising 
         <figcaption>Comparison of methods on synthetic image of a circle</figcaption>
     </figure>
 </div>
+
 
 As you can see main differences are between 
 
@@ -86,6 +92,17 @@ As you can see main differences are between
         <figcaption>Comparison of methods on synthetic image of a grid</figcaption>
     </figure>
 </div>
+
+
+We choose to use synthetic image because we want to to enhance the creation of artifact and see the differences between the libraries. These differences are more difficult to see on natural images, i.e. the ones acquired with a camera. In this case, as you see can below the differences are caused by the antialasing filter.
+
+<div class="blog-image-container">
+    <figure>
+        <img class="blog-image" alt="nearest neighbor on dog" src="/images/image-resizing/dog_nearest.png" >
+        <figcaption>Nearest neighbor interpolation on natural image.</figcaption>
+    </figure>
+</div>
+
 
 ## Pillow Resize
 
@@ -101,6 +118,8 @@ TODO: insert correct link to repo
 
 # References
 
-- [1] [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation](https://arxiv.org/abs/2104.11222)
+- [1] [On Buggy Resizing Libraries and Surprising Subtleties in FID Calculation](https://arxiv.org/abs/2104.11222) 
+<a id="paper_fid"></a>
+
 - [2] [Geometric Image Transformations](https://docs.opencv.org/4.5.2/da/d54/group__imgproc__transform.html)
 
