@@ -5,7 +5,7 @@ title:  "The dangers behind image resizing"
 slug:   "The dangers behind image resizing"
 date:    2021-08-09 8:00:00
 categories: machine-learning
-image: /images/image-resizing/circle_comparison.png
+image: images/image-resizing/circle_comparison.png
 tags: machine-learning
 ---
 
@@ -32,7 +32,7 @@ Here come the problems with the resizing because probably you need to use a diff
 The definitions of scaling functions are mathematical and should never be a function of the library being used. Unfortunately, implementations differ across commonly-used libraries and mainly comes from how it is done the **interpolation**.
 
 Typically, to avoid the creation of sampling artifacts, image transformations are done in reverse order that is from destination to source.  
-In practice, for each pixel $(x,y)$ of the destination image, you need to compute the coordinates of the corresponding pixel in the input image and copy the pixel value:
+In practice, for each pixel $$(x,y)$$ of the destination image, you need to compute the coordinates of the corresponding pixel in the input image and copy the pixel value:
 
 $$ I_{dst}(x,y) = I_{src}\left(f_x(x,y), f_y(x,y)\right) $$
 
@@ -80,7 +80,7 @@ Here you can see the qualitative results of our investigation:
 <div class="blog-image-container">
     <figure>
         <img class="blog-image" alt="comparison on circle" src="/images/image-resizing/circle_comparison.png" width="100%">
-        <figcaption>Comparison of methods on the synthetic image of a circle.</figcaption>
+        <figcaption>Figure 1. Comparison of methods on the synthetic image of a circle.</figcaption>
     </figure>
 </div>
 
@@ -103,7 +103,7 @@ The first one is a grid of white square 50x50 with 5 pixels of black border.
 <div class="blog-image-container">
     <figure>
         <img class="blog-image" alt="comparison on grid" src="/images/image-resizing/grid_comparison.png" >
-        <figcaption>Comparison of methods on the synthetic image of a grid.</figcaption>
+        <figcaption>Figure 2. Comparison of methods on the synthetic image of a grid.</figcaption>
     </figure>
 </div>
 
@@ -116,8 +116,8 @@ Other interesting results can be achieved using a pattern similar to the previou
     <figure>
         <img class="blog-image" alt="comparison on grid" src="/images/image-resizing/grid2_comparison.png" >
         <figcaption>
-        Comparison of Pillow and OpenCV on a grid image.
-        From left to right, raw image (652x652), Pillow resized image with the nearest filter, OpenCV resized image with the nearest filter, Pillow resized image with the bilinear filter and OpenCV resized image with the bilinear filter.<br>
+        Figure 3. Comparison of Pillow and OpenCV on a grid image.
+        From left to right, raw image (652x652), Pillow resized image with the nearest filter, OpenCV resized image with the nearest filter, Pillow resized image with the bilinear filter and OpenCV resized image with the bilinear filter.  
         All the low-resolution images are 64x64 and are displayed with the same size as the raw image only for a better view.
         </figcaption>
     </figure>
@@ -132,15 +132,17 @@ We chose to use synthetic images because we want to bring to evidence the creati
 <div class="blog-image-container">
     <figure>
         <img class="blog-image" alt="nearest neighbor on dog" src="/images/image-resizing/dog_nearest.png" >
-        <figcaption>Nearest neighbor interpolation on a natural image.</figcaption>
+        <figcaption>Figure 4. Nearest neighbor interpolation on a natural image.</figcaption>
     </figure>
 </div>
 <div class="blog-image-container">
     <figure>
         <img class="blog-image" alt="bilinear on dog" src="/images/image-resizing/dog_bilinear.png" >
-        <figcaption>Bilinear interpolation on a natural image.</figcaption>
+        <figcaption>Figure 5. Bilinear interpolation on a natural image.</figcaption>
     </figure>
 </div>
+
+<br/>
 
 ## Pillow Resize
 
@@ -152,7 +154,7 @@ TODO: insert correct link to repo
 
 We want to remark again that the right way to use the resize in an ML application is the export the pre-processing step of the algorithm, in this way you are sure that your python model works in the same manner as your deployed model.
 
-
+<br/>
 
 # References
 
@@ -163,6 +165,8 @@ We want to remark again that the right way to use the resize in an ML applicatio
 [^3]: [Deploy and Train TensorFlow models in Go: Human Activity Recognition case study](https://pgaleone.eu/tensorflow/go/2020/11/27/deploy-train-tesorflow-models-in-go-human-activity-recognition/)
 
 
+<br/><br/>
+<hr>
+<br/>
 
-<br><br>
 _I want to acknowledge Guido Salto for helping in the choice of the patterns that better highlight the artifacts and the differences in the results._
