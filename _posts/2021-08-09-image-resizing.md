@@ -121,10 +121,10 @@ Another interesting pattern is the following one, it is similar to the previous 
 <div class="blog-image-container">
     <figure>
         <img alt="raw grid" class="blog-image" src="/images/image-resizing/grid/grid2.png" width=300>
-        <img alt="grid nearest pillow" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_nearest.png" >
-        <img alt="grid nearest cv2" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_nearest.png" >
-        <img alt="grid bilinear pillow" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_bilinear.png">
-        <img alt="grid nearest cv" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_bilinear.png" >
+        <img alt="grid nearest pillow" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_nearest.png" width=128>
+        <img alt="grid nearest cv2" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_nearest.png" width=128>
+        <img alt="grid bilinear pillow" class="blog-image" src="/images/image-resizing/grid/grid2_64_pillow_bilinear.png" width=128>
+        <img alt="grid nearest cv" class="blog-image" src="/images/image-resizing/grid/grid2_64_cv_bilinear.png" width=128>
         <figcaption>Grid.</figcaption>
     </figure>
 </div>
