@@ -144,17 +144,23 @@ We chose to use synthetic images because we want to bring to evidence the creati
 
 <br/>
 
-## Pillow Resize
+## Conclusion
 
-Since we are interested in deploying our applications in C++, and we noted that the most correct behavior is given by the `Pillow` resize, we would like to use it in C++.  
+In this post, we saw that even if image resizing is one of the most used image processing operations, could hide some traps and it is important to carefully choose the library we want to use to resize in particular, if you want to deploy your ML solution. 
+
+Since we noted that the most correct behavior is given by the `Pillow` resize and we are interested in deploying our applications in C++, it could be useful to use it in C++.  
 The `Pillow` [image processing](https://github.com/python-pillow/Pillow/blob/master/src/libImaging/) algorithms are almost all written in C, but they cannot be directly used because they are designed to be part of the python wrapper.  
-We, therefore, released a porting of the resize method in a new standalone library that works on `cv::Mat` so it would be compatible with all `OpenCV` algorithms.
-
-TODO: insert correct link to repo
+We, therefore, released a porting of the resize method in a new standalone library that works on `cv::Mat` so it would be compatible with all `OpenCV` algorithms.  
+You can find the library [here](TODO: insert correct link to repo).
 
 We want to remark again that the right way to use the resize in an ML application is the export the pre-processing step of the algorithm, in this way you are sure that your python model works in the same manner as your deployed model.
 
+
 <br/>
+
+_I want to acknowledge Guido Salto for helping in the choice of the patterns that better highlight the artifacts and the differences in the results._
+
+<br/><br/>
 
 # References
 
@@ -163,10 +169,3 @@ We want to remark again that the right way to use the resize in an ML applicatio
 [^2]: [Geometric Image Transformations](https://docs.opencv.org/4.5.2/da/d54/group__imgproc__transform.html)
 
 [^3]: [Deploy and Train TensorFlow models in Go: Human Activity Recognition case study](https://pgaleone.eu/tensorflow/go/2020/11/27/deploy-train-tesorflow-models-in-go-human-activity-recognition/)
-
-
-<br/><br/>
-<hr>
-<br/>
-
-_I want to acknowledge Guido Salto for helping in the choice of the patterns that better highlight the artifacts and the differences in the results._
