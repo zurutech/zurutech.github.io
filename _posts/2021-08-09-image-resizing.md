@@ -14,8 +14,8 @@ tags: machine-learning
 Since it is one of the most common image processing operations, you can find its implementation in all image processing libraries. Because it is so common, you can expect that the behavior is well defined and will be the same among the libraries.  
 Unfortunately, this is not true because some little implementation details differ from library to library. If you are not aware of it, this could create a lot of trouble for your applications.
 
-A tricky scenario that could happen, and we as the ML team experienced it, could come from the pre-processing step of a machine learning model.
-The input of a machine learning model is usually resized mainly because models train faster on smaller images. An input image that is twice the size requires our network to learn from four times as many pixels, with more memory need and times that add up. 
+A tricky scenario that could happen, and we as the ML team experienced it, could come from the pre-processing step of a machine learning model.  
+Usually, we resize the input of a machine learning model mainly because models train faster on smaller images. An input image that is twice the size requires our network to learn from four times as many pixels, with more memory need and times that add up. 
 Moreover, many deep learning model architectures require that the input must have the same size and it could happen that raw collected images have different sizes.
 
 The workflow of the development of an ML model starts from a training phase typically in Python then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
