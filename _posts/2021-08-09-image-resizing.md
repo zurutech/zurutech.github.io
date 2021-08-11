@@ -29,7 +29,7 @@ Here come the problems with the resizing because probably you need to use a diff
 
 ## But why the behavior of resizing is different?
 
-The definitions of scaling functions are mathematical and should never be a function of the library being used. Unfortunately, implementations differ across commonly-used libraries and mainly comes from how it is done the **interpolation**.
+The definition of scaling function is mathematical and should never be a function of the library being used. Unfortunately, implementations differ across commonly-used libraries and mainly comes from how it is done the **interpolation**.
 
 Typically, to avoid the creation of sampling artifacts, image transformations are done in reverse order that is from destination to source.  
 In practice, for each pixel $$(x,y)$$ of the destination image, you need to compute the coordinates of the corresponding pixel in the input image and copy the pixel value:
