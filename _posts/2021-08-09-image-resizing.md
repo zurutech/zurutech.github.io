@@ -18,7 +18,7 @@ A tricky scenario that could happen, and we as the ML team experienced it, could
 Usually, we resize the input of a machine learning model mainly because models train faster on smaller images. An input image that is twice the size requires our network to learn from four times as many pixels, with more memory need and times that add up. 
 Moreover, many deep learning model architectures require that the input have the same size, and raw collected images might have different sizes.
 
-The workflow of the development of an ML model starts from a training phase typically in Python. Then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
+The workflow of the development of an ML model starts from a training phase, typically in Python. Then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
 Suppose you need to use your model in a high-performance environment such as C++, e.g., you need to integrate your model in an existing C++ application or in general. In that case, you want to use your solution in another programming language [^3], and you need a way to export "something" that could be used in the production environment.  
 A good idea to preserve the algorithm behavior is to export the whole pipeline, thus not only the forward pass of the network, given by the weights and the architecture of the layers but also the pre-and post-processing steps.
 
@@ -49,7 +49,7 @@ The problem is that different library could have some little differences in how 
 
 ## Comparison of libraries
 
-To have an idea of how the different implementations affect the resized output image, we compared of four libraries, the ones we considered the most used, in particular in the ML field. Moreover, we focused on libraries that could be used in Python.
+To have an idea of how the different implementations affect the resized output image, we compared four libraries, the ones we considered the most used, in particular in the ML field. Moreover, we focused on libraries that could be used in Python.
 
 We tested the following libraries and methods:
 1. **OpenCV** v4.5.3: [`cv2.resize`](https://docs.opencv.org/4.5.2/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d)
