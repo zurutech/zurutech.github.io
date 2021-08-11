@@ -16,20 +16,20 @@ Unfortunately, this is not true because some little implementation details diffe
 
 A tricky scenario that could happen, and we as the ML team experienced it, could come from the pre-processing step of a machine learning model.  
 Usually, we resize the input of a machine learning model mainly because models train faster on smaller images. An input image that is twice the size requires our network to learn from four times as many pixels, with more memory need and times that add up. 
-Moreover, many deep learning model architectures require that the input must have the same size and it could happen that raw collected images have different sizes.
+Moreover, many deep learning model architectures require that the input have the same size, and raw collected images might have different sizes.
 
-The workflow of the development of an ML model starts from a training phase typically in Python then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
+The workflow of the development of an ML model starts from a training phase typically in Python. Then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
 Suppose you need to use your model in a high-performance environment such as C++, e.g., you need to integrate your model in an existing C++ application or in general. In that case, you want to use your solution in another programming language [^3], and you need a way to export "something" that could be used in the production environment.  
 A good idea to preserve the algorithm behavior is to export the whole pipeline, thus not only the forward pass of the network, given by the weights and the architecture of the layers but also the pre-and post-processing steps.
 
 Fortunately, the main deep learning frameworks, i.e., **Tensorflow** and **PyTorch**, give you the possibility to export the whole execution graph into a "program," called `SavedModel` or `TorchScript`, respectively. We used the term program because these formats include both the architecture, trained parameters, and computation.
 
 If you are developing a new model from scratch, you can design your application to export the entire pipeline, but this is not always possible if you are using a third-party library. So, for example, you can export only the inference but not the pre-processing.
-Here come the problems with the resizing because probably you need to use a different library to resize your input, maybe because you don't know how the rescaling is done or there isn't the implementation of the Python library in your deploying language.  
+Here come the resizing problems because you probably need to use a different library to resize your input, maybe because you don't know how the rescaling is done, or there isn't the implementation of the Python library in your deploying language.  
 
 ## But why the behavior of resizing is different?
 
-The definition of scaling function is mathematical and should never be a function of the library being used. Unfortunately, implementations differ across commonly-used libraries and mainly comes from how it is done the **interpolation**.
+The definition of scaling function is mathematical and should never be a function of the library being used. Unfortunately, implementations differ across commonly-used libraries and mainly come from how it is done the **interpolation**.
 
 Image transformations are typically done in reverse order (from destination to source) to avoid sampling artifacts. 
 In practice, for each pixel $$(x,y)$$ of the destination image, you need to compute the coordinates of the corresponding pixel in the input image and copy the pixel value:
@@ -44,12 +44,12 @@ The naive approach is to round the coordinates to the nearest integers (_nearest
 
 The problem is that different library could have some little differences in how they implement the interpolation filters but above all, if they introduce the **anti-aliasing filter**. In fact, if we interpret the image scaling as a form of image resampling from the view of the [Nyquist sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), downsampling to a smaller image from a higher-resolution original can only be carried out after applying a suitable 2D anti-aliasing filter to prevent [aliasing artifacts](https://en.wikipedia.org/wiki/Aliasing).
 
-`OpenCV` that could be considered the standard de-facto in image processing does not use an anti-aliasing filter on the contrary, `Pillow`, probably the most known and used image processing library in Python, introduces the anti-aliasing filter.
+`OpenCV` that could be considered the standard de-facto in image processing does not use an anti-aliasing filter. On the contrary, `Pillow`, probably the most known and used image processing library in Python, introduces the anti-aliasing filter.
 
 
 ## Comparison of libraries
 
-To have an idea of how the different implementations affect the resized output image, we made a comparison of four libraries, the ones we considered the most used, in particular in the ML field. Moreover, we focused on libraries that could be used in Python.
+To have an idea of how the different implementations affect the resized output image, we compared of four libraries, the ones we considered the most used, in particular in the ML field. Moreover, we focused on libraries that could be used in Python.
 
 We tested the following libraries and methods:
 1. **OpenCV** v4.5.3: [`cv2.resize`](https://docs.opencv.org/4.5.2/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d)
@@ -67,7 +67,7 @@ Each method supports a set of filters. Therefore, we chose a common subset prese
 - [**_nearest_**](https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation): the most naive approach that often leads to aliasing. The high-frequency information in the original image becomes misrepresented in the downsampled image.
 - [**_bilinear_**](https://en.wikipedia.org/wiki/Bilinear_interpolation): a linear filter that works by interpolating pixel values, introducing a continuous transition into the output even where the original image has discrete transitions. It is an extension of linear interpolation to a rectangular grid.
 - [**_bicubic_**](https://en.wikipedia.org/wiki/Bicubic_interpolation): similar to _bilinear_ filter but in contrast to it, which only takes 4 pixels (2×2) into account, bicubic interpolation considers 16 pixels (4×4). Images resampled with bicubic interpolation should be smoother and have fewer interpolation artifacts.
-- [**_lanczos_**](https://en.wikipedia.org/wiki/Lanczos_resampling): calculate the output pixel value using a high-quality _Lanczos_ filter (a truncated sinc) on all pixels that may contribute to the output value, typically it is used on an 8x8 neighborhood.
+- [**_lanczos_**](https://en.wikipedia.org/wiki/Lanczos_resampling): calculate the output pixel value using a high-quality _Lanczos_ filter (a truncated sinc) on all pixels that may contribute to the output value. Typically it is used on an 8x8 neighborhood.
 - [**_box_**](https://en.wikipedia.org/wiki/Image_scaling#Box_sampling) (aka **_area_**): is the simplest linear filter; while better than naive subsampling above, it is typically not used. Each pixel of the source image contributes to one pixel of the destination image with identical weights.
 
 ### Qualitative results
@@ -128,7 +128,7 @@ With this input, the number of squares in the resulting images is unchanged, but
 
 ### Natural images
 
-We chose to use synthetic images because we want to put in evidence the creation of artifacts and see the differences among libraries. These differences are more difficult to see on natural images, i.e. the ones acquired with a camera. In this case, as you see can in the figures below, the results with the _nearest neighbor_ filter are quite the same while, using the _bilinear_ one the effect of the antialiasing filter become more visible.
+We chose to use synthetic images because we want to evidence the creation of artifacts and see the differences between the libraries. These differences are more difficult to see on natural images, i.e., the ones acquired with a camera. In this case, as you see in the figures below, the results with the _nearest neighbor_ filter are quite the same while, using the _bilinear_ one, the effect of the antialiasing filter becomes more visible.
 
 <div class="blog-image-container">
     <figure>
@@ -154,7 +154,7 @@ The `Pillow` [image processing](https://github.com/python-pillow/Pillow/blob/mas
 We, therefore, released a porting of the resize method in a new standalone library that works on `cv::Mat` so it would be compatible with all `OpenCV` algorithms.  
 You can find the library [here](TODO: insert correct link to repo).
 
-We want to remark again that the right way to use the resize in an ML application is the export the pre-processing step of the algorithm, in this way you are sure that your Python model works in the same manner as your deployed model.
+We want to remark again that the right way to use the resize operation in an ML application is to export the algorithm's pre-processing step. In this way, you are sure that your Python model works similarly to your deployed model.
 
 
 <br/>
