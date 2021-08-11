@@ -9,7 +9,7 @@ image: images/image-resizing/circle_comparison.png
 tags: machine-learning
 ---
 
-**Image resizing** is a very common geometrical transformation of an image and it simply consists of a scaling operation.
+**Image resizing** is a very common geometrical transformation of an image, and it simply consists of a scaling operation.
 
 Since it is one of the most common image processing operations, you can find its implementation in all image processing libraries and, considering it is so common, you can expect that the behavior is well defined and will be the same among the libraries.  
 Unfortunately, this is not true because some little implementation details differ from library to library. If you are not aware of it, this could create a lot of trouble for your applications.
