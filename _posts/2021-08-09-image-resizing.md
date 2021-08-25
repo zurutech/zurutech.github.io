@@ -19,7 +19,7 @@ Usually, we resize the input of a machine learning model mainly because models t
 Moreover, many deep learning model architectures require that the input have the same size, and raw collected images might have different sizes.
 
 The workflow of the development of an ML model starts from a training phase, typically in Python. Then, if your metrics on the test set satisfy your requirements, you may want to deploy your algorithm.  
-Suppose you need to use your model in a high-performance environment such as C++, e.g., you need to integrate your model in an existing C++ application or in general. In that case, you want to use your solution in another programming language [^3], and you need a way to export "something" that could be used in the production environment.  
+Suppose you need to use your model in a production environment written in C++, e.g., you need to integrate your model in an existing C++ application. In that case, you want to use your solution in another programming language [^3], and you need a way to export "something" that could be used in the production environment.
 A good idea to preserve the algorithm behavior is to export the whole pipeline, thus not only the forward pass of the network, given by the weights and the architecture of the layers but also the pre-and post-processing steps.
 
 Fortunately, the main deep learning frameworks, i.e., **Tensorflow** and **PyTorch**, give you the possibility to export the whole execution graph into a "program," called `SavedModel` or `TorchScript`, respectively. We used the term program because these formats include both the architecture, trained parameters, and computation.
@@ -72,7 +72,7 @@ Each method supports a set of filters. Therefore, we chose a common subset prese
 
 ### Qualitative results
 
-To better see the different results obtained with the presented functions, we follow the test made in [^1]. We create a synthetic image 128x128 with a circle of thickness 1 pixel, and we resized it with a downscaling factor of 4 (destination image will be 32x32).  
+To better see the different results obtained with the presented functions, we follow the test made in [^1]. We create a synthetic 128 x 128 image with a circle of thickness 1 px, and we resized it with a downscaling factor of 4 (destination image will be 32 x 32).  
 We decided to focus on downsampling because it involves throwing away information and is more error-prone.  
 
 Here you can see the qualitative results of our investigation:
@@ -124,11 +124,11 @@ Other interesting results can be achieved using a pattern similar to the previou
     </figure>
 </div>
 
-With this input, the number of squares in the resulting images is unchanged, but in some cases, some rows or columns have a rectangular shape.
+With this input the number of squares in the resulting images is unchanged, but in some cases, some rows or columns have a rectangular shape.
 
 ### Natural images
 
-We chose to use synthetic images because we want to evidence the creation of artifacts and see the differences between the libraries. These differences are more difficult to see on natural images, i.e., the ones acquired with a camera. In this case, as you see in the figures below, the results with the _nearest neighbor_ filter are quite the same while, using the _bilinear_ one, the effect of the antialiasing filter becomes more visible.
+We chose to use synthetic images because we want to evidence the creation of artifacts and see the differences between libraries. These differences are more difficult to see on natural images, i.e., the ones acquired with a camera. In this case, as you see in the figures below, the results with the _nearest neighbor_ filter are quite the same while, using the _bilinear_ one, the effect of the antialiasing filter becomes more visible.
 
 <div class="blog-image-container">
     <figure>
@@ -147,12 +147,12 @@ We chose to use synthetic images because we want to evidence the creation of art
 
 ## Conclusion
 
-In this post, we saw that even if image resizing is one of the most used image processing operations, it could hide some traps. It is essential to carefully choose the library we want to use to perform resize operations, particularly if you're going to deploy your ML solution.
+This article demonstrated that even if image resizing is one of the most used image processing operations, it could hide some traps. It is essential to carefully choose the library you want to use to perform resize operations, particularly if you're going to deploy your ML solution.
 
 Since we noticed that the most correct behavior is given by the `Pillow` resize and we are interested in deploying our applications in C++, it could be useful to use it in C++. 
 The `Pillow` [image processing](https://github.com/python-pillow/Pillow/blob/master/src/libImaging/) algorithms are almost all written in C, but they cannot be directly used because they are designed to be part of the Python wrapper.  
 We, therefore, released a porting of the resize method in a new standalone library that works on `cv::Mat` so it would be compatible with all `OpenCV` algorithms.  
-You can find the library [here](TODO: insert correct link to repo).
+You can find the library [here: pillow-resize](https://github.com/zurutech/pillow-resize).
 
 We want to remark again that the right way to use the resize operation in an ML application is to export the algorithm's pre-processing step. In this way, you are sure that your Python model works similarly to your deployed model.
 
