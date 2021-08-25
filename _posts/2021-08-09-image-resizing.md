@@ -145,6 +145,17 @@ We chose to use synthetic images because we want to evidence the creation of art
 
 <br/>
 
+### Image resizing in ML models
+As said in the first part of the article, image resizing could be a problem even in a machine learning application.
+
+Imagine you want to use a model from an ML third-party library. For example, you want to solve a problem of instance segmentation from images, and you find that exists a fantastic library from Facebook Research, called [`Detectron2`](https://github.com/facebookresearch/detectron2), which contains the state-of-the-art for this class of problems.
+The authors provide all kinds of functionality, including scripts from training and evaluation on your own dataset and even the script for exporting your new trained model.
+It could be very difficult and time-consuming to reproduce the same features from scratch, so you decide to use the library in your application.
+
+Suppose you train the network on your data, then you want to put the model into production. Your deployment environment is written in C++, so you export the model as `TorchScript` and you use the `PyTorch` C++ library to load the module and run the experiments. You know that `Detectron` needs images with a fixed size as input, then you use `OpenCV` to rescale your input.
+If you feed the network with the same images, you will expect to get the same results, but unfortunately, this is not true. You check everything and it seems correct.
+If you dig inside the code, you will eventually find that `Detectron` uses `Pillow` to resize the input image, and, as you could see in the section before, the results could be very different.
+
 ## Conclusion
 
 This article demonstrated that even if image resizing is one of the most used image processing operations, it could hide some traps. It is essential to carefully choose the library you want to use to perform resize operations, particularly if you're going to deploy your ML solution.
