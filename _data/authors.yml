@@ -120,3 +120,10 @@ fchiatti:
     linkedin: https://www.linkedin.com/in/francesco-chiatti/
     image: "/images/fchiatti-profile-pic.png"
     bio: "Mathematician and C++ software developer @ Zuru Tech Italy"
+
+mventurelli:
+    name: Marco Venturelli
+    email: marco@zuru.tech
+    linkedin: "https://www.linkedin.com/in/marco-venturelli-986bb7131/"
+    image: "https://avatars.githubusercontent.com/u/78739931?s=400&u=6fdef8aad84374466f4b52cba9ce15f1722fb550&v=4"
+    bio: "Computer Engineer. Love making software that learn from images. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
