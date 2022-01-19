@@ -16,17 +16,15 @@ Hey, which build the QA Team is using right now?
 
 The above questions are something that I heard plenty of times, from many people from different company’s areas.
 
-It makes perfect sense: in a continuous deployment environment, it’s easy to be up-to-date: that’s why, considering that I use a nested Google sheet in a Google site to track the information regarding the build deployed from Gitlab which are started to be manually tested (smoke testing, feature testing, regression testing etc), be quickly informed regarding the latest available one, it could be really helpful.
+It makes perfect sense: in a continuous deployment environment, it’s easy to be up-to-date: that’s why, considering that I use a nested Google sheet in a Google site to track the information regarding the build deployed from Gitlab which are started to be manually tested (smoke testing, feature testing, regression testing, etc), be quickly informed regarding the latest available one, it could be really helpful.
 
 At the moment, the scripts send two notifications using the Discord API and Google API. 
 
 ![1](https://user-images.githubusercontent.com/70565462/150167036-7816763a-5c93-49b2-870b-ae06dcdac511.PNG)
 
-To reach the result, I used **Google App Script** environment, which allows extending Google sheet functionality using VBA-like code, a debugger, and **trigger** feature. 
+To reach the result, I used the  **Google App Script** environment, which allows extending Google sheet functionality using VBA-like code, a debugger, and a **trigger** feature. 
 
-
-Here below the Gsheet tample portion, updated with the uploaded builds retrieved from the Gitlab CI (here the post of Paolo Galeone, https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects regarding this topic).
-
+Here below is the Gsheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (here is the post of Paolo Galeone, https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects regarding this topic).
 
 ![2](https://user-images.githubusercontent.com/70565462/150167250-78363c66-684f-40aa-9be2-dbd5e95c9be2.PNG)
 
@@ -42,7 +40,7 @@ Google App Script is integrated into the Gsheet topbar, via the “Extension” 
 
 
 #### Overview
-In this section there is a recap of some informations retrieved from the other panels (last run, internal statistics, etc.)
+In this section, there is a recap of some information retrieved from the other panels (last run, internal statistics, etc.).
 
 ![10](https://user-images.githubusercontent.com/70565462/150177734-60cf4761-e9ba-4ce2-8a0d-a3daa6cac68b.PNG)
 
@@ -205,8 +203,8 @@ A formatted email with different receipts:
 ## Potential Future Reuse 
 
 A potential improvement could be to use Gitlab API calls to retrieve data to nourish Gsheet statistics and/or retrieve the builds directly from the git repository 
-when the CI/CD ends is daily scheduled task.
-The notification scripts can be re-used in any cases, and the first feedback regarding this first implementation, are really flattering.
+when the CI/CD ends the daily scheduled task.
+The notification scripts can be re-used in many cases, and the first feedback regarding this first implementation is really flattering.
 
 ![6](https://user-images.githubusercontent.com/70565462/150171922-b0440ea5-9e0c-47dd-8e62-de8e006be7d5.PNG)
 
