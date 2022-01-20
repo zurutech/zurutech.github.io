@@ -1,7 +1,6 @@
 ---
 author: "mmischitelli"
 layout: post
-did: "mmischi2"
 title:  "Automatic commands for class properties"
 slug:  Automatic commands for class properties
 date:   2019-06-11 8:00:00

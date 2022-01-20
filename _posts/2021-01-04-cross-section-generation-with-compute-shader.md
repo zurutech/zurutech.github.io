@@ -1,7 +1,6 @@
 ---
 author: "nicholas-monacolli"
 layout: post
-did: "nicholas-monacolli"
 title: "Cross-section runtime generation with GPU acceleration in UE4"
 slug: "Cross-section runtime generation with GPU acceleration in UE4"
 date: 2021-01-04 06:00:00

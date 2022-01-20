@@ -1,7 +1,6 @@
 ---
 author: "fchiatti"
 layout: post
----did: "fchiatti"
 title:  "Unit-testing with Unreal Engine 4"
 slug: "Unit-testing with Unreal Engine 4"
 date:   2021-02-12 8:00:00

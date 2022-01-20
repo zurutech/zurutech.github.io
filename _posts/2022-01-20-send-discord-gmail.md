@@ -3,9 +3,9 @@ author: "lucadandria"
 layout: "post"
 title:  "Daily Builds: Send Discord/Gmail Notifications via Gsheet"
 slug:   "Daily Builds: Send Discord/Gmail Notifications via Gsheet"
-date:    2022-01-20 8:00:00
+date:    2022-01-20 5:00:00
 categories: Testing, CD/CI
-image: images/gappscript.PNG
+image: images/gappscript.png
 tags: scripting, testing, cd, ci
 ---
 

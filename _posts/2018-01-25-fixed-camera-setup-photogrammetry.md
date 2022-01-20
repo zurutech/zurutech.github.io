@@ -1,7 +1,6 @@
 ---
 author: "pgaleone"
 layout: post
-did: "blog1"
 title:  "Fixed camera setup for object localization and measurement"
 slug:  Fixed camera setup for object localization and measurement
 date:   2018-01-25 8:00:00

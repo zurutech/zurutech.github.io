@@ -1,7 +1,6 @@
 ---
 author: "saddy4"
 layout: post
-did: "blog2"
 title:  "Making a leader 1 - Necessary Skills"
 slug:  making a leader 1 necessary skills
 date:   2020-08-18 8:00:00

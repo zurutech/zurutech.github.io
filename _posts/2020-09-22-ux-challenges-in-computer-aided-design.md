@@ -1,7 +1,6 @@
 ---
 author: "martina-loi"
 layout: post
-did: "blog2"
 title:  "UX Challenges in Computer-aided Design"
 slug:  "ux challenges in computer-aided design"
 date:   2020-09-22 8:00:00
