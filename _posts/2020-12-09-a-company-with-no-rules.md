@@ -1,7 +1,6 @@
 ---
 author: "fdimattia"
 layout: post
-did: "fdimattia2"
 title:  "A Company With No Rules"
 slug: "A Company With No Rules"
 date:   2020-12-09 8:00:00

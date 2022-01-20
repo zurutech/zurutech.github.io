@@ -1,7 +1,6 @@
 ---
 author: "saddy4"
 layout: post
-did: "blog2"
 title: "Making a leader 3 - Skill boosting"
 slug: making a leader 3 skill boosting
 date: 2020-08-27 8:00:00

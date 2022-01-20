@@ -1,7 +1,6 @@
 ---
 author: pgaleone
 layout: post
-did: "blog2"
 title: "GitLab CI/CD for cross-platform Unreal Engine 4 projects"
 slug: "GitLab CI/CD for cross-platform Unreal Engine 4 projects"
 date: 2020-09-29 06:00:00

@@ -1,7 +1,6 @@
 ---
 author: "lucadandria"
 layout: post
-did: "blog2"
 title: "The importance of feedback"
 slug: "the importance of feedback"
 date: 2020-09-01 16:00:00

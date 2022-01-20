@@ -1,7 +1,6 @@
 ---
 author: "alessio-paoletti"
 layout: post
-did: "blog10"
 title: "Real time rendering and Unreal Engine 4"
 slug: "RenderingInUE4"
 date: 2020-04-23 01:00:00

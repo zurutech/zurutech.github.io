@@ -1,7 +1,6 @@
 ---
 author: "mmischitelli"
 layout: post
-did: "mmischi1"
 title:  "Templated properties"
 slug:  Templated properties
 date:   2019-06-04 8:00:00

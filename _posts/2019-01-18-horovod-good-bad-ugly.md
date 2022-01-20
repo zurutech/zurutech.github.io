@@ -1,7 +1,6 @@
 ---
 author: "mr-ubik"
 layout: post
-did: "blog2"
 title:  "Horovod: the Good, the Bad and the Ugly"
 slug:  horovod the good the bad the ugly
 date:   2019-01-18 8:00:00

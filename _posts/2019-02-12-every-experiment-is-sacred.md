@@ -1,7 +1,6 @@
 ---
 author: "manughelfi"
 layout: post
-did: "blog4"
 title:  "Every Experiment is Sacred"
 slug:  Every Experiment is sacred
 date:   2019-02-12 8:00:00

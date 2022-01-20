@@ -1,7 +1,6 @@
 ---
 author: "ml-lab"
 layout: post
-did: "blog7"
 title: "Quality Control meets Generative Intelligence"
 slug: Quality Control meets Generative Intelligence
 date: 2019-06-28 8:00:00

@@ -1,7 +1,6 @@
 ---
 author: "saddy4"
 layout: post
-did: "blog2"
 title: "Making a leader 2 - Soft Skills"
 slug: making a leader 2 soft skills
 date:  2020-08-24 8:00:00
