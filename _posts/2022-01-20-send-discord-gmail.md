@@ -1,15 +1,13 @@
 ---
 author: "lucadandria"
 layout: "post"
-title:  "Daily Builds: Send Discord/Gmail Notifications via Gsheet"
-slug:   "Daily Builds: Send Discord/Gmail Notifications via Gsheet"
-date:    2022-01-20 5:00:00
+title:  "Daily Builds: Send Discord/Gmail Notifications via GSheet"
+slug:   "Daily Builds: Send Discord/Gmail Notifications via GSheet"
+date:    2022-01-20 6:00:00
 categories: scripting testing cd ci
 image: images/notif-scripts/gappscript.png
 tags: coding
 ---
-
-## Daily Builds: Send Discord/Gmail Notifications via Gsheet
 
 Hey, where can I find the latest builds?
 
@@ -25,7 +23,7 @@ At the moment, the scripts send two notifications using the Discord API and Goog
 
 To reach the result, I used the  **Google App Script** environment, which allows extending Google sheet functionality using VBA-like code, a debugger, and a **trigger** feature.
 
-Here below is the Gsheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (here is the post of Paolo Galeone, https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects regarding this topic).
+Here below is the GSheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (here is the post of Paolo Galeone, https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects regarding this topic).
 
 ![2](/images/notif-scripts/2.png)
 
@@ -35,7 +33,7 @@ The events that trigger the sending of the notifications are basically the flags
 
 ## Google Apps Script environment
 
-Google App Script is integrated into the Gsheet topbar, via the “Extension” button. The development environment is basically composed of the below sections:
+Google App Script is integrated into the GSheet topbar, via the “Extension” button. The development environment is basically composed of the below sections:
 
 ![3](/images/notif-scripts/3.png)
 
@@ -60,7 +58,7 @@ However, there is a debug section that allows you to test the syntax in the code
 #### Triggers
 
 It’s the function that allows us to **perform a task when an event occurs**.
-In our cases, the task is to execute the functions in the scripting code, **when the Gsheet is updated**.
+In our cases, the task is to execute the functions in the scripting code, **when the GSheet is updated**.
 The if condition written in the script allows the user to run the function silently if the “sending” condition is not met.
 
 <div markdown="1" class="blog-image-container">
@@ -202,7 +200,7 @@ function sendmail() {
         return MailApp.sendEmail({
                 to: "luca@test.it",
                 subject: "New Windows Build",
-                htmlBody: "Download N_" + offsx1 + "_22 Build -" + offdx1 + " Here or below: WIN GDRIVE”
+                htmlBody: "Download N_" + offsx1 + "_22 Build -" + offdx1 + " Here or below: WIN GDRIVE",
             });
     } else if (flag == true && col == 5) { // Linux Selector
         return MailApp.sendEmail({
@@ -239,7 +237,7 @@ A formatted email with different receipts:
 
 ## Potential Future Reuse
 
-A potential improvement could be to use Gitlab API calls to retrieve data to nourish Gsheet statistics and/or retrieve the builds directly from the git repository
+A potential improvement could be to use Gitlab API calls to retrieve data to nourish GSheet statistics and/or retrieve the builds directly from the git repository
 when the CI/CD ends the daily scheduled task.
 The notification scripts can be re-used in many cases, and the first feedback regarding this first implementation is really flattering.
 
