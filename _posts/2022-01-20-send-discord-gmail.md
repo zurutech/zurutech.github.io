@@ -23,7 +23,7 @@ At the moment, the scripts send two notifications using the Discord API and Goog
 
 To reach the result, I used the  **Google App Script** environment, which allows extending Google sheet functionality using VBA-like code, a debugger, and a **trigger** feature.
 
-Here below is the GSheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (here is the post of Paolo Galeone, https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects regarding this topic).
+Here below is the GSheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (here is the post of Paolo Galeone, <a> https://blog.zuru.tech/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects </a> regarding this topic).
 
 ![2](/images/notif-scripts/2.png)
 
