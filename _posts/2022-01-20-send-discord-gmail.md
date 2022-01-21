@@ -21,15 +21,16 @@ At the moment, the scripts send two notifications using the Discord API and Goog
 
 ![1](/images/notif-scripts/1.png)
 
-To reach the result, I used the  **Google App Script** environment, which allows extending Google sheet functionality using VBA-like code, a debugger, and a **trigger** feature.
+To reach the result, I used **Google App Script** is a JavaScript cloud scripting language that provides easy ways to automate tasks across Google products and third-party services and build web applications which allow extending Google sheet functionality. 
+**Google App Script environment** includes some really useful features like a **trigger** panel.
 
 Here below is the GSheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (<a href="/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects">here is the post of Paolo Galeone</a> regarding this topic).
 
 ![2](/images/notif-scripts/2.png)
 
-
 The events that trigger the sending of the notifications are basically the flags under the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flag is set on
 **“true”** the trigger is invoked and the notifications are sent; otherwise, if the flags are set on **“false”**, the trigger works “silently” and will skip any sending.
+
 
 ## Google Apps Script environment
 
@@ -129,8 +130,8 @@ function sendiscord() {
                   else if (str_month == 10) {  month = "11"  }  
                    else if (str_month == 11) {  month = "12"  }
 
-    // Windows Selector
-    if (flag == true && col == 4) {
+   
+    if (flag == true && col == 4) { // Windows Selector
         // POST call using Discord Webhook
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
@@ -149,8 +150,8 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here : WINDOWS GDRIVE"); // Linux Selector
-    } else if (flag == true && col == 5) {
+        sendMessage("Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here : WINDOWS GDRIVE"); 
+    } else if (flag == true && col == 5) {  // Linux Selector
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
             var payload = JSON.stringify({
@@ -170,7 +171,7 @@ function sendiscord() {
         }
         sendMessage("Download Linux N_" + offsx2 + "_" + month + "_" + year + "-" + offdx2 + " Here: “LINUX GDRIVE");
     } // MacOS Selector
-    else if (flag == true && col == 6) {
+    else if (flag == true && col == 6) {  // Mac Selector
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
             var payload = JSON.stringify({
@@ -196,7 +197,8 @@ function sendiscord() {
 ```
 ## Gmail Code Script
 
-Here below is the Gmail code script; in this case, the Google API Calls are automatically allowed thanks to the performed acknowledge provided via your google account, using the Gsheet and App script. Thanks a lot, Google!
+Here below is the Gmail code script; in this case, the Google API Calls are automatically allowed thanks to the acknowledgment provided by using the Google App script. 
+Thanks a lot, Google!
 
 ```javascript
 function sendmail() {
@@ -225,9 +227,9 @@ function sendmail() {
     var r7 = r1.offset(0, -3);
     var offsx3 = r7.getValue();
      
-    // Get Current Month and Year
+    // Get Current Month and Year 
      var date = new Date();
-     var str_month = date.getUTCMonth();
+     var str_month = date.getUTCMonth(); 
      var year = date.getUTCFullYear();
 
    if (str_month == 0){ month = "01" }
