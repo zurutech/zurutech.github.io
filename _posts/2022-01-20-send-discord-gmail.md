@@ -75,6 +75,10 @@ In this section, there are all the entries related to the function executions wi
 
 ## Discord Code Script
 
+Here below the Discord code script. The code parte where the information gets from the data table, is the same used for the Gmail Script. I decided to split to debug/test the single notifications.
+
+Differently from the Gmail script one, we need to allows the user to access to the Discord API via **webhooks**.
+
 ```javascript
 function sendiscord() {
     //  Select the active Sheet
