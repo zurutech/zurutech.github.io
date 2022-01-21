@@ -178,6 +178,8 @@ function sendiscord() {
 ```
 ## Gmail Code Script
 
+Here below is the Gmail code script; in this case, the Google API Calls are automatically allowed thanks to the performed acknowledge provided via your google account, using the Gsheet and App script. Thanks a lot, Google!
+
 ```javascript
 function sendmail() {
     //  Select the active Sheet
@@ -228,7 +230,7 @@ function sendmail() {
     }
 }
 ```
-#### Discord Notifications Screenshot
+#### Discord Notifications Screenshots
 
 The messages coming from the bot defined via webhook:
 
@@ -236,7 +238,7 @@ The messages coming from the bot defined via webhook:
 ![4](/images/notif-scripts/4.png){:class="blog-image"}
 </div>
 
-#### Gmail Notification Screenshots
+#### Gmail Notification Screenshot
 
 A formatted email with different receipts:
 
