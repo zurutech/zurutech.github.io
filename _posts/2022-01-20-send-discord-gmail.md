@@ -122,7 +122,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Uploaded Windows N_" + offsx1 + "_22 Build -" + offdx1 + " Here or below: WINDOWS GDRIVE"); // Linux Selector
+        sendMessage("Download Windows N_" + offsx1 + "_22 Build -" + offdx1 + " Here: WINDOWS GDRIVE"); // Linux Selector
     } else if (flag == true && col == 5) {
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
@@ -141,7 +141,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Uploaded Linux N_" + offsx2 + "_22 Build -" + offdx2 + " Here or below: “LINUX GDRIVE");
+        sendMessage("Download Linux N_" + offsx2 + "_22 Build -" + offdx2 + " Here: “LINUX GDRIVE");
     } // MacOS Selector
     else if (flag == true && col == 6) {
         function sendMessage(message) {
@@ -161,7 +161,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Uploaded MacOSX N_" + offsx3 + "_22 Build -" + offdx3 + " Here or below: “MACOSX GDRIVE");
+        sendMessage("Download MacOSX N_" + offsx3 + "_22 Build -" + offdx3 + " Here: “MACOSX GDRIVE");
     } else {
         console.log("Don't send")
     }
