@@ -111,9 +111,10 @@ function sendiscord() {
     var r7 = r1.offset(0, -3);
     var offsx3 = r7.getValue();
     
-    // Get Current Month
+    // Get Current Month and Year
      var date = new Date();
      var str_month = date.getUTCMonth();
+     var year = date.getUTCFullYear();
 
    if (str_month == 0){ month = "01" }
     else if (str_month == 1) {  month = "02"  } 
@@ -148,7 +149,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download Windows N_" + offsx1 + "_" + month + "_22 Build - " + offdx1 + : WINDOWS GDRIVE"); // Linux Selector
+        sendMessage("Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here : WINDOWS GDRIVE"); // Linux Selector
     } else if (flag == true && col == 5) {
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
@@ -167,7 +168,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download Linux N_" + offsx2 + "_" + month + "_22 Build - " + offdx2 + " Here: “LINUX GDRIVE");
+        sendMessage("Download Linux N_" + offsx2 + "_" + month + "_" + year + "-" + offdx2 + " Here: “LINUX GDRIVE");
     } // MacOS Selector
     else if (flag == true && col == 6) {
         function sendMessage(message) {
@@ -187,7 +188,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download MacOSX N_" + offsx3 + "_" + month + "_22 Build - " + offdx3 + " Here: “MACOSX GDRIVE");
+        sendMessage("Download MacOSX N_" + offsx3 + "_" + month + "_" + year + "-" + offdx3 + " Here: “MACOSX GDRIVE");
     } else {
         console.log("Don't send")
     }
@@ -224,9 +225,10 @@ function sendmail() {
     var r7 = r1.offset(0, -3);
     var offsx3 = r7.getValue();
      
-    // Get Current Month
+    // Get Current Month and Year
      var date = new Date();
      var str_month = date.getUTCMonth();
+     var year = date.getUTCFullYear();
 
    if (str_month == 0){ month = "01" }
     else if (str_month == 1) {  month = "02"  } 
@@ -245,19 +247,19 @@ function sendmail() {
         return MailApp.sendEmail({
                 to: "luca@test.it",
                 subject: "New Windows Build",
-                htmlBody: "Download Windows N_" + offsx1 + "_" + month + "_22 Build - " + offdx1 + " Here or below: WIN GDRIVE",
+                htmlBody: "Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here or below: WIN GDRIVE",
             });
     } else if (flag == true && col == 5) { // Linux Selector
         return MailApp.sendEmail({
             to: "luca@test.it",
             subject: "New Linux Build",
-            htmlBody: "Download Linux N_" + offsx2 + "_" + month + "_22 Build - " + offdx2 + " Here or below: LINUX GDRIVE",
+            htmlBody: "Download Linux N_" + offsx2 + "_" + month + "_" + year + "-" + offdx2 + " Here or below: LINUX GDRIVE",
         });
     } else if (flag == true && col == 6) { // MacOS Selector
         return MailApp.sendEmail({
             to: "luca@test.it",
             subject: "New MacOSX Build",
-            htmlBody: "Download MacOSX N_" + offsx3 + "_" + month + "_22 Build - " + offdx3 + " Here or below: MAC GDRIVE",
+            htmlBody: "Download MacOSX N_" + offsx3 + "_" + month + "_" + year + "-" + offdx3 + " Here or below: MAC GDRIVE",
         });
     } else {
         console.log("Don't send")
