@@ -15,21 +15,20 @@ Hey, which build the QA Team is using right now?
 
 The above questions are something that I heard plenty of times, from many people from different company’s areas.
 
-It makes perfect sense: in a continuous deployment environment, it’s easy to be up-to-date: that’s why, considering that I use a nested Google sheet in a Google site to track the information regarding the build deployed from Gitlab which are started to be manually tested (smoke testing, feature testing, regression testing, etc), be quickly informed regarding the latest available one, it could be really helpful.
+It makes perfect sense: in a continuous deployment environment, it’s easy to be up-to-date: that’s why, considering that I use a nested Google sheet in a Google site to track the information regarding the build deployed from Gitlab CI (<a href="/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects">here is the post of Paolo Galeone</a>), which are ready to be manually tested (smoke testing, feature testing, regression testing, etc), be quickly informed regarding the latest available one, it could be really helpful.
 
 At the moment, the scripts send two notifications using the Discord API and Google API.
 
 ![1](/images/notif-scripts/1.png)
 
-To reach the result, I used **Google App Script** is a JavaScript cloud scripting language that provides easy ways to automate tasks across Google products and third-party services and build web applications which allow extending Google sheet functionality. 
+To reach the result, I used **Google App Script** a JavaScript cloud scripting language that provides easy ways to automate tasks across Google products and third-party services and build web applications which allow extending Google sheet functionality. 
 **Google App Script environment** includes some really useful features like a **trigger** panel.
 
-Here below is the GSheet table portion, updated with the uploaded builds retrieved from the Gitlab CI (<a href="/coding/2020/09/29/gitlab-ci-cd-for-cross-platform-unreal-engine-4-projects">here is the post of Paolo Galeone</a> regarding this topic).
+Here below is the GSheet table portion, updated with the uploaded builds that passed the automation tests in the pipeline:
 
 ![2](/images/notif-scripts/2.png)
 
-The events that trigger the sending of the notifications are basically the flags under the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flag is set on
-**“true”** the trigger is invoked and the notifications are sent; otherwise, if the flags are set on **“false”**, the trigger works “silently” and will skip any sending.
+When the builds are uploaded in the repository and ready to be downloaded (at the moment we are using GDrive), the notifications are ready to be sent to all the stakeholders, but how? The idea is to handle the notification through the flags positioned along the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flags of a specific column is set on **“true”** a consistent notification is sent with the build type and its references.
 
 
 ## Google Apps Script environment
@@ -50,7 +49,7 @@ In this section, there is a recap of some information retrieved from the other p
 #### Editor
 
 It’s the section where you can create scripts that contain functions and the related code; all the scripts as **.gs** as the file extension.
-However, there is a debug section that allows you to test the syntax in the code; all the executions performed via debugger are stored as entries in the Executions panel.
+However, there is a debug section that allows to check the code syntax and run the scripts: all the executions performed via debugger are stored as entries in the **Executions** panel.
 
 <div markdown="1" class="blog-image-container">
 ![9](/images/notif-scripts/9.png){:class="blog-image"}
@@ -58,9 +57,9 @@ However, there is a debug section that allows you to test the syntax in the code
 
 #### Triggers
 
-It’s the function that allows us to **perform a task when an event occurs**.
-In our cases, the task is to execute the functions in the scripting code, **when the GSheet is updated**.
-The if condition written in the script allows the user to run the function silently if the “sending” condition is not met.
+It’s the automatic task that is executed **when an event occurs**: I used the event **when the GSheet is updated**, in order to trigger the execution of the scripts every time the flags are set to true; An if condition inside the code allows to solicit the trigger avoiding any sendings, when the event condition is not met.
+
+So what, the trigger is sensible to all the Gsheet updates, but the invoked functions drives the final outcome.   
 
 <div markdown="1" class="blog-image-container">
 ![7](/images/notif-scripts/7.png){:class="blog-image"}
