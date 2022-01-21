@@ -75,9 +75,14 @@ In this section, there are all the entries related to the function executions wi
 
 ## Discord Code Script
 
-Here below is the Discord code script. The code part where the information gets from the data table is the same used for the Gmail Script. I decided to split to debug/test the single notifications.
+Here below is the Discord code script; the code part where the information gets retrieved from the data table is the same used for the Gmail Script: I decided to split to debug/test the single notifications.
 
-Differently from the Gmail script one, we need to allow the user to access the Discord API via **webhooks**.
+Differently from the Gmail script one, we need to activate a **Webhook** url from the Discord side, in order to allow Gsheet to perform an API Call.
+
+<div markdown="1" class="blog-image-container">
+![11](/images/notif-scripts/11.png){:class="blog-image"}
+</div>
+
 
 ```javascript
 function sendiscord() {
