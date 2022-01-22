@@ -28,7 +28,8 @@ Here below is the GSheet table portion, updated with the uploaded builds that pa
 
 ![2](/images/notif-scripts/2.png)
 
-When the builds are uploaded in the repository and ready to be downloaded (at the moment we are using GDrive), the notifications are ready to be sent to all the stakeholders, but how? The idea is to handle the notification through the flags positioned along the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flags of a specific column is set on **“true”** a consistent notification is sent with the build type and its references.
+When the builds are uploaded in the repository (currently Gdrive) after the successful execution of the automated tests via Gitlab's pipeline (as explained in the <a href="/coding/2021/02/12/unit-testing-with-unreal-engine-4"> Francesco Chiatti's post </a> ), the notifications are ready to be sent to all the stakeholders, but how? 
+The idea is to handle the notifications through the flags positioned along the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flags of a specific column is set on **“true”** a consistent notification is sent with the build type and its references.
 
 
 ## Google Apps Script environment
