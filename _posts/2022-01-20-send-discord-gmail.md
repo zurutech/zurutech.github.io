@@ -115,9 +115,10 @@ function sendiscord() {
      
     
     // Get Current Month and Year
-     var date = new Date();
-     var str_month = date.getUTCMonth();
-     var year = date.getUTCFullYear();
+     var str_month = new Date().getMonth();
+     var f_year = new Date().getFullYear().toString();
+     var year = " ";
+     year = f_year.substring(2,4);
 
    if (str_month == 0){ month = "01" }
     else if (str_month == 1) {  month = "02"  } 
@@ -226,9 +227,10 @@ var m_com = r1.offset (0,1).getValue();
 
 
 // Month, Year 
- var date = new Date();
- var str_month = date.getUTCMonth();
- var year = date.getUTCFullYear();
+   var str_month = new Date().getMonth();
+   var f_year = new Date().getFullYear().toString();
+   var year = " ";
+   year = f_year.substring(2,4);
 
   if (str_month == 0){ month = "01" }
     else if (str_month == 1) {  month = "02"  } 
