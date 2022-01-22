@@ -96,16 +96,22 @@ function sendiscord() {
     // Get the column of the active cell
     var col = r1.getColumn();
     
-    // Get the value of the active cell with a sx offset (Day)
-    var offsx1 = r1.offset (0,-1).getValue();
-    var offsx2 = r1.offset (0,-2).getValue();
-    var offsx3 = r1.offset (0,-3).getValue();
+     //Windows Data
+     var w_day = r1.offset(0,-1).getValue(); 
+     var w_com = r1.offset(0,3).getValue();
+
+    //Linux Data
+    var l_day = r1.offset(0,-2).getValue(); 
+    var l_com = r1.offset(0,2).getValue();
     
-    // Get the value of the active cell with a dx offset (Commit ID)
-    
-    var offdx1 = r1.offset (0,3).getValue(); 
-    var offdx2 = r1.offset (0,2).getValue();
-    var offdx3 = r1.offset (0,1).getValue();
+    //MacOSX Data
+    var m_day = r1.offset (0,-3).getValue(); 
+    var m_com = r1.offset (0,1).getValue();
+
+    var date = new Date();
+    var str_month = date.getUTCMonth();
+    var year = date.getUTCFullYear();
+
      
     
     // Get Current Month and Year
@@ -146,7 +152,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here : WINDOWS GDRIVE"); 
+        sendMessage("Download Windows N_" + w_day + "_" + month + "_" + year + "-" + w_com + " Here : WINDOWS GDRIVE URL"); 
     } else if (flag == true && col == 5) {  // Linux Selector
         function sendMessage(message) {
             var url = "Discord_Webhook_url";
@@ -165,7 +171,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download Linux N_" + offsx2 + "_" + month + "_" + year + "-" + offdx2 + " Here: “LINUX GDRIVE");
+        sendMessage("Download Linux N_" + l_day + "_" + month + "_" + year + "-" + l_com + " Here: “LINUX GDRIVE URL");
     } // MacOS Selector
     else if (flag == true && col == 6) {  // Mac Selector
         function sendMessage(message) {
@@ -185,7 +191,7 @@ function sendiscord() {
             var res = UrlFetchApp.fetch(url, params);
             Logger.log(res.getContentText());
         }
-        sendMessage("Download MacOSX N_" + offsx3 + "_" + month + "_" + year + "-" + offdx3 + " Here: “MACOSX GDRIVE");
+        sendMessage("Download MacOSX N_" + m_day + "_" + month + "_" + year + "-" + m_com + " Here: “MACOSX GDRIVE URL");
     } else {
         console.log("Don't send")
     }
@@ -194,36 +200,37 @@ function sendiscord() {
 ## Gmail Code Script
 
 Here below is the Gmail code script; in this case, the Google API Calls are automatically allowed thanks to the acknowledgment provided by using the Google App script. 
-Thanks a lot, Google!
+Unlike the previous code, I added other information such as the delta between the commits.
 
 ```javascript
-function sendmail() {
-    //  Select the active Sheet
-    var s = SpreadsheetApp.getActiveSpreadsheet();
-    // Select the active Cell
-    var r1 = s.getActiveCell();
-    // Get the value of the active cell (true or false)
-    var flag = r1.getValue();
-    // Get the column of the active cell
-    var col = r1.getColumn();
+function sendmail_t(){ 
+var s = SpreadsheetApp.getActiveSpreadsheet();
+var r1 = s.getActiveCell();
+var flag = r1.getValue();
+var col = r1.getColumn();
 
-    // Get the value of the active cell with a sx offset (Day)
-    var offsx1 = r1.offset (0,-1).getValue();
-    var offsx2 = r1.offset (0,-2).getValue();
-    var offsx3 = r1.offset (0,-3).getValue();
-    
-    // Get the value of the active cell with a dx offset (Commit ID)
-    
-    var offdx1 = r1.offset (0,3).getValue(); 
-    var offdx2 = r1.offset (0,2).getValue();
-    var offdx3 = r1.offset (0,1).getValue();
-    
-    // Get Current Month and Year 
-     var date = new Date();
-     var str_month = date.getUTCMonth(); 
-     var year = date.getUTCFullYear();
+//Windows Data
 
-   if (str_month == 0){ month = "01" }
+var w_day = r1.offset(0,-1).getValue(); 
+var w_com = r1.offset(0,3).getValue();
+
+//Linux Data
+
+var l_day = r1.offset(0,-2).getValue(); 
+var l_com = r1.offset(0,2).getValue();
+
+//MacOSX Data
+
+var m_day = r1.offset (0,-3).getValue(); 
+var m_com = r1.offset (0,1).getValue();
+
+
+// Month, Year 
+ var date = new Date();
+ var str_month = date.getUTCMonth();
+ var year = date.getUTCFullYear();
+
+  if (str_month == 0){ month = "01" }
     else if (str_month == 1) {  month = "02"  } 
       else if (str_month == 2) {  month = "03"  } 
         else if (str_month == 3) {  month = "04"  }  
@@ -236,28 +243,29 @@ function sendmail() {
                   else if (str_month == 10) {  month = "11"  }  
                    else if (str_month == 11) {  month = "12"  }
 
-    if (flag == true && col == 4) { // Win Selector
-        return MailApp.sendEmail({
-                to: "luca@test.it",
-                subject: "New Windows Build",
-                htmlBody: "Download Windows N_" + offsx1 + "_" + month + "_" + year + "-" + offdx1 + " Here or below: WIN GDRIVE",
-            });
-    } else if (flag == true && col == 5) { // Linux Selector
-        return MailApp.sendEmail({
-            to: "luca@test.it",
-            subject: "New Linux Build",
-            htmlBody: "Download Linux N_" + offsx2 + "_" + month + "_" + year + "-" + offdx2 + " Here or below: LINUX GDRIVE",
-        });
-    } else if (flag == true && col == 6) { // MacOS Selector
-        return MailApp.sendEmail({
-            to: "luca@test.it",
-            subject: "New MacOSX Build",
-            htmlBody: "Download MacOSX N_" + offsx3 + "_" + month + "_" + year + "-" + offdx3 + " Here or below: MAC GDRIVE",
-        });
+      
+   if (flag == true && col == 4){
+        w_delta = r1.offset(0,4).getRichTextValue().getLinkUrl();
+        return MailApp.sendEmail({ 
+          to: "luca.d@zuru.tech",
+          subject: "New Windows Build",
+          htmlBody: "Download Windows N_" + w_day + "_" + month + "_" + year + "-" + w_com + " Here or below: WIN GDRIVE URL <br>" + "<br> Delta:" + w_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
+} else if (flag == true && col == 5) {
+        var l_delta = r1.offset(0,3).getRichTextValue().getLinkUrl();
+        return MailApp.sendEmail({ 
+          to: "luca.d@zuru.tech",
+          subject: "New Linux Build",
+          htmlBody: "Download Linux N_" + l_day + "_" + month + "_" + year + "-" + l_com + " Here or below: LINUX GDRIVE URL <br>" + "<br> Delta:" + l_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
+    } else if (flag == true && col == 6) {
+      var m_delta = r1.offset (0,2).getRichTextValue().getLinkUrl();
+        return MailApp.sendEmail({ 
+          to: "luca.d@zuru.tech",
+          subject: "New MacOSX Build",
+          htmlBody: "Download MacOSX N_" + m_day + "_" + month + "_" + year + "-" + m_com + " Here or below: MAC GDRIVE URL <br>" + "<br> Delta:" + m_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
     } else {
-        console.log("Don't send")
+      console.log ("Don't send")
     }
-}
+  }
 ```
 #### Discord Notifications Screenshots
 
