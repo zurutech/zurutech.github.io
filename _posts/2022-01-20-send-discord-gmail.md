@@ -95,22 +95,18 @@ function sendiscord() {
     var flag = r1.getValue();
     // Get the column of the active cell
     var col = r1.getColumn();
-
-    // Get the value of the active cell with a dx offset (Commit ID)
-    var r2 = r1.offset(0, 3);
-    var offdx1 = r2.getValue();
-    var r3 = r1.offset(0, 2);
-    var offdx2 = r3.getValue();
-    var r4 = r1.offset(0, 1);
-    var offdx3 = r4.getValue();
-
+    
     // Get the value of the active cell with a sx offset (Day)
-    var r5 = r1.offset(0, -1);
-    var offsx1 = r5.getValue();
-    var r6 = r1.offset(0, -2);
-    var offsx2 = r6.getValue();
-    var r7 = r1.offset(0, -3);
-    var offsx3 = r7.getValue();
+    var offsx1 = r1.offset (0,-1).getValue();
+    var offsx2 = r1.offset (0,-2).getValue();
+    var offsx3 = r1.offset (0,-3).getValue();
+    
+    // Get the value of the active cell with a dx offset (Commit ID)
+    
+    var offdx1 = r1.offset (0,3).getValue(); 
+    var offdx2 = r1.offset (0,2).getValue();
+    var offdx3 = r1.offset (0,1).getValue();
+     
     
     // Get Current Month and Year
      var date = new Date();
@@ -211,22 +207,17 @@ function sendmail() {
     // Get the column of the active cell
     var col = r1.getColumn();
 
-    // Get the value of the active cell with a dx offset (Commit ID)
-    var r2 = r1.offset(0, 3);
-    var offdx1 = r2.getValue();
-    var r3 = r1.offset(0, 2);
-    var offdx2 = r3.getValue();
-    var r4 = r1.offset(0, 1);
-    var offdx3 = r4.getValue();
-
     // Get the value of the active cell with a sx offset (Day)
-    var r5 = r1.offset(0, -1);
-    var offsx1 = r5.getValue();
-    var r6 = r1.offset(0, -2);
-    var offsx2 = r6.getValue();
-    var r7 = r1.offset(0, -3);
-    var offsx3 = r7.getValue();
-     
+    var offsx1 = r1.offset (0,-1).getValue();
+    var offsx2 = r1.offset (0,-2).getValue();
+    var offsx3 = r1.offset (0,-3).getValue();
+    
+    // Get the value of the active cell with a dx offset (Commit ID)
+    
+    var offdx1 = r1.offset (0,3).getValue(); 
+    var offdx2 = r1.offset (0,2).getValue();
+    var offdx3 = r1.offset (0,1).getValue();
+    
     // Get Current Month and Year 
      var date = new Date();
      var str_month = date.getUTCMonth(); 
