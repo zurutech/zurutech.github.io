@@ -279,10 +279,18 @@ The messages coming from the bot defined via webhook:
 
 #### Gmail Notification Screenshot
 
-A formatted email with different receipts:
+Here the samples email received:
 
 <div markdown="1" class="blog-image-container">
 ![5](/images/notif-scripts/5.png){:class="blog-image"}
+</div>
+
+<div markdown="1" class="blog-image-container">
+![12](/images/notif-scripts/12.png){:class="blog-image"}
+</div>
+
+<div markdown="1" class="blog-image-container">
+![13](/images/notif-scripts/13.png){:class="blog-image"}
 </div>
 
 ## Potential Future Reuse
