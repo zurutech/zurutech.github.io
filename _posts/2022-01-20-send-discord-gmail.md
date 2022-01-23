@@ -302,7 +302,9 @@ A potential improvement could be to use Gitlab API calls to retrieve data to nou
 when the CI/CD ends the daily scheduled task.
 The notification scripts can be re-used in many cases, and the first feedback regarding this first implementation is really flattering.
 
-![6](/images/notif-scripts/6.png)
+<div class="blog-image-container" markdown="1">
+![6](/images/notif-scripts/6.png){:class="blog-image"}
+</div>
 
 ---
 
