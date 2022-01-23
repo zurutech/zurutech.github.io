@@ -76,9 +76,9 @@ In this section, there are all the entries related to the function executions wi
 
 ## Discord Code Script
 
-Here below is the Discord code script; the code part where the information gets retrieved from the data table is the same used for the Gmail Script: I decided to split to debug/test the single notifications.
+Differently from the Gmail script one, a **Webhook** activation from the Discord side is needed.
 
-Differently from the Gmail script one, we need to activate a **Webhook** url from the Discord side, in order to allow Gsheet to perform an API Call.
+Webhooks are user-defined HTTP callbacks that are triggered by specific events; whenever the trigger event occurs, the Discord API client sees the event, collects the data, and immediately sends a notification (HTTP request) to the Webhook URL specified in the application settings. These requests are known as webhooks or callbacks.
 
 <div markdown="1" class="blog-image-container">
 ![11](/images/notif-scripts/11.png){:class="blog-image"}
@@ -200,8 +200,9 @@ function sendiscord() {
 ```
 ## Gmail Code Script
 
-Here below is the Gmail code script; in this case, the Google API Calls are automatically allowed thanks to the acknowledgment provided by using the Google App script. 
-Unlike the previous code, I added other information such as the delta between the commits.
+Here below is the Gmail code script; in this case, the Google API Callbacks are automatically allowed thanks to the acknowledgment provided by using the Google App script and the integration with the other Google Services. 
+
+Unlike the previous code, other data such as the delta between the commits, have been added to the email format.
 
 ```javascript
 function sendmail_t(){ 
