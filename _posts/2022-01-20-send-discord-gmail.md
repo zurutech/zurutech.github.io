@@ -36,7 +36,9 @@ The idea is to handle the notifications through the flags positioned along the c
 
 Google App Script is integrated into the GSheet topbar, via the “Extension” button. The development environment is basically composed of the below sections:
 
-![3](/images/notif-scripts/3.png)
+<div class="blog-image-container" markdown="1">
+![3](/images/notif-scripts/3.png){:class="blog-image"}
+</div>
 
 #### Overview
 
