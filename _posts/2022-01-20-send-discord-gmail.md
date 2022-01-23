@@ -19,9 +19,11 @@ It makes perfect sense: in a continuous deployment environment, it’s easy to b
 
 At the moment, the scripts send two notifications using the Discord API and Google API.
 
-![1](/images/notif-scripts/1.png)
+<div class="blog-image-container" markdown="1">
+![1](/images/notif-scripts/1.png){:class="blog-image"}
+</div>
 
-To reach the result, I used **Google App Script** a JavaScript cloud scripting language that provides easy ways to automate tasks across Google products and third-party services and build web applications which allow extending Google sheet functionality. 
+To achieve the result I used **Google App Script**, a JavaScript cloud scripting language that provides easy ways to automate tasks across Google products and third-party services and build web applications which allow extending Google sheet functionality. 
 **Google App Script environment** includes some really useful features like a **trigger** panel.
 
 Here below is the GSheet table portion, updated with the uploaded builds that passed the automation tests in the pipeline:
