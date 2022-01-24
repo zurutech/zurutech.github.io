@@ -114,9 +114,9 @@ function sendiscord() {
 
     // Current Month  
    var m = new Date().getMonth()+1;
-   var month = ("0" + m.toString())
-  
-   // Current Year 
+   var month = ("0" + m.toString().slice(-2));
+
+     // Current Year 
     var f_year = new Date().getFullYear().toString();
     var year = " ";
     year = f_year.substring(2,4);
@@ -216,7 +216,7 @@ var m_com = r1.offset (0,1).getValue();
 
    // Current Month  
    var m = new Date().getMonth()+1;
-   var month = ("0" + m.toString())
+   var month = ("0" + m.toString().slice(-2));
   
   // Current Year 
    var f_year = new Date().getFullYear().toString();
