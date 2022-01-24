@@ -28,7 +28,9 @@ To achieve the result I used **Google App Script**, a JavaScript cloud scripting
 
 Here below is the GSheet table portion, updated with the uploaded builds that passed the automation tests in the pipeline:
 
-![2](/images/notif-scripts/2.png)
+<div class="blog-image-container" markdown="1">
+![2](/images/notif-scripts/2.png){:class="blog-image"}
+</div>
 
 When the builds are uploaded in the repository (currently Gdrive) after the successful execution of the automated tests via Gitlab's pipeline (as explained in the <a href="/coding/2021/02/12/unit-testing-with-unreal-engine-4"> Francesco Chiatti's post </a> ), the notifications are ready to be sent to all the stakeholders, but how? 
 The idea is to handle the notifications through the flags positioned along the columns **W** (windows), **L** (Linux), **M** (MacOSx): when the flags of a specific column is set on **“true”** a consistent notification is sent with the build type and its references.
@@ -110,32 +112,15 @@ function sendiscord() {
     var m_day = r1.offset (0,-3).getValue(); 
     var m_com = r1.offset (0,1).getValue();
 
-    var date = new Date();
-    var str_month = date.getUTCMonth();
-    var year = date.getUTCFullYear();
+    // Current Month  
+   var m = new Date().getMonth()+1;
+   var month = ("0" + m.toString())
+  
+   // Current Year 
+    var f_year = new Date().getFullYear().toString();
+    var year = " ";
+    year = f_year.substring(2,4);
 
-     
-    
-    // Get Current Month and Year
-     var str_month = new Date().getMonth();
-     var f_year = new Date().getFullYear().toString();
-     var year = " ";
-     year = f_year.substring(2,4);
-
-   if (str_month == 0){ month = "01" }
-    else if (str_month == 1) {  month = "02"  } 
-      else if (str_month == 2) {  month = "03"  } 
-        else if (str_month == 3) {  month = "04"  }  
-         else if (str_month == 4) {  month = "05"  } 
-          else if (str_month == 5) {  month = "06"  }
-           else if (str_month == 6) {  month = "07"  } 
-              else if (str_month == 7) {  month = "08"  }  
-                else if (str_month == 8) {  month = "09" } 
-                 else if (str_month == 9) {  month = "10"  }
-                  else if (str_month == 10) {  month = "11"  }  
-                   else if (str_month == 11) {  month = "12"  }
-
-   
     if (flag == true && col == 4) { // Windows Selector
         // POST call using Discord Webhook
         function sendMessage(message) {
@@ -229,25 +214,14 @@ var m_day = r1.offset (0,-3).getValue();
 var m_com = r1.offset (0,1).getValue();
 
 
-// Month, Year 
-   var str_month = new Date().getMonth();
+   // Current Month  
+   var m = new Date().getMonth()+1;
+   var month = ("0" + m.toString())
+  
+  // Current Year 
    var f_year = new Date().getFullYear().toString();
    var year = " ";
    year = f_year.substring(2,4);
-
-  if (str_month == 0){ month = "01" }
-    else if (str_month == 1) {  month = "02"  } 
-      else if (str_month == 2) {  month = "03"  } 
-        else if (str_month == 3) {  month = "04"  }  
-         else if (str_month == 4) {  month = "05"  } 
-          else if (str_month == 5) {  month = "06"  }
-           else if (str_month == 6) {  month = "07"  } 
-              else if (str_month == 7) {  month = "08"  }  
-                else if (str_month == 8) {  month = "09" } 
-                 else if (str_month == 9) {  month = "10"  }
-                  else if (str_month == 10) {  month = "11"  }  
-                   else if (str_month == 11) {  month = "12"  }
-
       
    if (flag == true && col == 4){
         w_delta = r1.offset(0,4).getRichTextValue().getLinkUrl();
