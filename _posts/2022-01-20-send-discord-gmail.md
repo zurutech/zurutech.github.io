@@ -227,18 +227,21 @@ var m_com = r1.offset (0,1).getValue();
         w_delta = r1.offset(0,4).getRichTextValue().getLinkUrl();
         return MailApp.sendEmail({ 
           to: "luca.d@zuru.tech",
+          noReply: true,
           subject: "New Windows Build",
           htmlBody: "Download Windows N_" + w_day + "_" + month + "_" + year + "-" + w_com + " Here or below: WIN GDRIVE URL <br>" + "<br> Delta:" + w_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
 } else if (flag == true && col == 5) {
         var l_delta = r1.offset(0,3).getRichTextValue().getLinkUrl();
         return MailApp.sendEmail({ 
           to: "luca.d@zuru.tech",
+          noReply: true,
           subject: "New Linux Build",
           htmlBody: "Download Linux N_" + l_day + "_" + month + "_" + year + "-" + l_com + " Here or below: LINUX GDRIVE URL <br>" + "<br> Delta:" + l_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
     } else if (flag == true && col == 6) {
       var m_delta = r1.offset (0,2).getRichTextValue().getLinkUrl();
         return MailApp.sendEmail({ 
           to: "luca.d@zuru.tech",
+          noReply: true,
           subject: "New MacOSX Build",
           htmlBody: "Download MacOSX N_" + m_day + "_" + month + "_" + year + "-" + m_com + " Here or below: MAC GDRIVE URL <br>" + "<br> Delta:" + m_delta + "<br> <br> QA Board: https://sites.google.com/zuru.tech/qaboard/home <br>" + "<br> <img src='https://blog.zuru.tech/images/logo_zuru.png'> <br>",});
     } else {
