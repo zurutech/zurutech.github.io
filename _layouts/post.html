@@ -82,6 +82,7 @@ layout: default
                                     </div>
                                 </div>
                             </div>
+                            {% if jekyll.environment != "development" %}
                             <div id="hyvor-talk-view"></div>
                             <script type="text/javascript">
                                 var HYVOR_TALK_WEBSITE = 997;
@@ -90,7 +91,8 @@ layout: default
                                     id: false
                                 };
                             </script>
-                            <script async type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
+                            <script async type="text/javascript" src="https://talk.hyvor.com/web-api/embed"></script>
+                            {% endif %}
                         </div>
                         {% endif %}
                     </div>
