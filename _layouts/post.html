@@ -14,7 +14,7 @@ layout: default
         <div class="wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting" itemref="blogpost">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
                         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                             <meta itemprop="name" content="Zuru Tech">
                             <meta itemprop="url" content="https://zuru.tech">
@@ -31,7 +31,7 @@ layout: default
                             </p>
                             <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
                         </header>
-
+                        <meta itemprop="thumbnailUrl" itemtype="http://schema.org/URL" content="{{site.baseurl}}/{{post.image}}">
                         <div class="post-content text-justify" itemprop="articleBody">
                             {{ content }}
                         </div>
@@ -133,7 +133,7 @@ layout: default
 
                             {% if post.image %}
                             <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
-                                <img itemprop="image" itemscope itemtype="http://schema.org/URL" content="{{site.baseurl}}/{{post.image}}" id="blogpost" width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
+                                <img width="100%" src="{{site.baseurl}}/{{post.image}}" alt="{{post.title}}">
                             </div>
                             {% else %}
                             <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg" alt="{{site.title}}">
