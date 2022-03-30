@@ -134,3 +134,10 @@ lgrementieri:
     linkedin: "https://www.linkedin.com/in/luca-grementieri/"
     image: "https://avatars.githubusercontent.com/u/20520836?v=4"
     bio: "Mathematician looking at problems from a different perspective. <br>Machine Learning and Computer Vision Engineer @ Zuru Tech Italy"
+
+stefano-strati:
+    name: Stefano Strati
+    email: stefano@zuru.tech
+    linkedin: "https://www.linkedin.com/in/stefano-strati-550914175/"
+    image: "https://avatars.githubusercontent.com/u/93906554?s=96&v=4"
+    bio: "C++ Unreal Engine Developer @ Zuru Tech Italy"
