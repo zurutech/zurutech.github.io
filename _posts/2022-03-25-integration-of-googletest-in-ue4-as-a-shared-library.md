@@ -1,5 +1,5 @@
 ---
-author: "Stefano Strati"
+author: stefano-strati
 layout: post
 title: "Integration of GoogleTest in UE4 as a Shared Library"
 slug:  "Integration of GoogleTest in UE4 as a Shared Library"
@@ -9,10 +9,6 @@ image: images/unreal-googletest-integration/googletest-logo.png
 tags: coding
 description: "This article will show how to integrate GoogleTest as a Shared Library in UE4"
 ---
-
-# Integration of GoogleTest in UE4 as a Shared Library
-
-## Introduction
 
 It often happens that when writing unit tests the SUT (System Under Test) cannot be tested in isolation because it is dependent on other components. In such cases there are generally three possibilities:
 - If the DOCs (Depended On Component) are not contained in the same module of the SUT you can opt for writing an integration test (or at least a higher level test than a unit test with respect to the Test Pyramid).
@@ -40,151 +36,151 @@ On Windows, there is a problem with DLL Boundaries. This problem occurs when an 
 
 1. Adding the following `include` directive in the file `googletest/include/gtest/gtest.h`:
 
-    ```c++
-    #include "gtest/gtest-memory.h"
-    ```
+   ```cpp
+   #include "gtest/gtest-memory.h"
+   ```
 
 2. Adding the following `include` directive in the file `googletest/src/gtest-all.cc`:
 
-    ```c++
-    #include "src/gtest-memory.cc"
-    ```
+   ```cpp
+   #include "src/gtest-memory.cc"
+   ```
 
 3. Adding the file `gtest-memory.h` to the path `googletest/include/gtest`:
 
-    ```c++
-    #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
-    #define GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
+   ```cpp
+   #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
+   #define GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
 
-    #if GTEST_OS_WINDOWS
+   #if GTEST_OS_WINDOWS
 
-    #include <functional>
-    #include "gtest/internal/gtest-port.h"
+   #include <functional>
+   #include "gtest/internal/gtest-port.h"
 
-    namespace testing {
+   namespace testing {
 
-    typedef std::function<void*(size_t)> NewOperatorFunction;
+   typedef std::function<void*(size_t)> NewOperatorFunction;
 
-    typedef std::function<void(void*)> DeleteOperatorFunction;
+   typedef std::function<void(void*)> DeleteOperatorFunction;
 
-    // Sets the function to be used in case of allocation
-    // It's the caller's responsibility to ensure that the function in question does not raise any exceptions
-    GTEST_API_ void SetNewOperatorFunction(NewOperatorFunction function);
+   // Sets the function to be used in case of allocation
+   // It's the caller's responsibility to ensure that the function in question does not raise any exceptions
+   GTEST_API_ void SetNewOperatorFunction(NewOperatorFunction function);
 
-    // Resets the function to be used in case of allocation
-    GTEST_API_ void ResetNewOperatorFunction();
+   // Resets the function to be used in case of allocation
+   GTEST_API_ void ResetNewOperatorFunction();
 
-    // Set the function to be used in case of deallocation
-    // It's the caller's responsibility to ensure that the function in question does not raise any exceptions
-    GTEST_API_ void SetDeleteOperatorFunction(DeleteOperatorFunction function);
+   // Set the function to be used in case of deallocation
+   // It's the caller's responsibility to ensure that the function in question does not raise any exceptions
+   GTEST_API_ void SetDeleteOperatorFunction(DeleteOperatorFunction function);
 
-    // Resets the function to be used in case of deallocation
-    GTEST_API_ void ResetDeleteOperatorFunction();
+   // Resets the function to be used in case of deallocation
+   GTEST_API_ void ResetDeleteOperatorFunction();
 
-    }
+   }
 
-    #endif // GTEST_OS_WINDOWS
+   #endif // GTEST_OS_WINDOWS
 
-    #endif // GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
-    ```
+   #endif // GOOGLETEST_INCLUDE_GTEST_GTEST_MEMORY_H_
+   ```
 
 4. Adding the file `gtest-memory.cc` to the path `googletest/src`:
 
-    ```c++
-    #include "gtest/gtest-memory.h"
+   ```cpp
+   #include "gtest/gtest-memory.h"
 
-    #if GTEST_OS_WINDOWS
+   #if GTEST_OS_WINDOWS
 
-    namespace testing {
+   namespace testing {
 
-    NewOperatorFunction newOperatorFunction;
+   NewOperatorFunction newOperatorFunction;
 
-    DeleteOperatorFunction deleteOperatorFunction;
+   DeleteOperatorFunction deleteOperatorFunction;
 
-    GTEST_API_ void SetNewOperatorFunction(NewOperatorFunction function) {
-        newOperatorFunction = function;
-    }
+   GTEST_API_ void SetNewOperatorFunction(NewOperatorFunction function) {
+       newOperatorFunction = function;
+   }
 
-    GTEST_API_ void ResetNewOperatorFunction() {
-        newOperatorFunction = nullptr;
-    }
+   GTEST_API_ void ResetNewOperatorFunction() {
+       newOperatorFunction = nullptr;
+   }
 
-    GTEST_API_ void SetDeleteOperatorFunction(DeleteOperatorFunction function) {
-        deleteOperatorFunction = function;
-    }
+   GTEST_API_ void SetDeleteOperatorFunction(DeleteOperatorFunction function) {
+       deleteOperatorFunction = function;
+   }
 
-    GTEST_API_ void ResetDeleteOperatorFunction() {
-        deleteOperatorFunction = nullptr;
-    }
+   GTEST_API_ void ResetDeleteOperatorFunction() {
+       deleteOperatorFunction = nullptr;
+   }
 
-    }
+   }
 
-    void* newOperatorTemplateFunction(size_t size) {
-        size = size ? size : 1;
+   void* newOperatorTemplateFunction(size_t size) {
+       size = size ? size : 1;
 
-        if (testing::newOperatorFunction) {
-            return testing::newOperatorFunction(size);
-        }
+       if (testing::newOperatorFunction) {
+           return testing::newOperatorFunction(size);
+       }
 
-        void* ptr;
+       void* ptr;
 
-        while ((ptr = std::malloc(size)) == 0) {
-            std::new_handler newHandler = std::get_new_handler();
+       while ((ptr = std::malloc(size)) == 0) {
+           std::new_handler newHandler = std::get_new_handler();
 
-            if (newHandler) {
-                newHandler();
-            } else {
-                throw std::bad_alloc();
-            }
-        }
+           if (newHandler) {
+               newHandler();
+           } else {
+               throw std::bad_alloc();
+           }
+       }
 
-        return ptr;
-    }
+       return ptr;
+   }
 
-    void* newOperatorTemplateFunctionNoThrow(size_t size) {
-        void* ptr = nullptr;
+   void* newOperatorTemplateFunctionNoThrow(size_t size) {
+       void* ptr = nullptr;
 
-        try {
-            ptr = operator new(size);
-        } catch (...) { }
+       try {
+           ptr = operator new(size);
+       } catch (...) { }
 
-        return ptr;
-    }
+       return ptr;
+   }
 
-    void deleteOperatorTemplateFunction(void* ptr) {
-        if (testing::deleteOperatorFunction) {
-            testing::deleteOperatorFunction(ptr);
-        } else {
-            free(ptr);
-        }  
-    }
+   void deleteOperatorTemplateFunction(void* ptr) {
+       if (testing::deleteOperatorFunction) {
+           testing::deleteOperatorFunction(ptr);
+       } else {
+           free(ptr);
+       }  
+   }
 
-    void* operator new(size_t size) { return newOperatorTemplateFunction(size); }
+   void* operator new(size_t size) { return newOperatorTemplateFunction(size); }
 
-    void* operator new[](size_t size) { return newOperatorTemplateFunction(size); }
+   void* operator new[](size_t size) { return newOperatorTemplateFunction(size); }
 
-    void* operator new(size_t size, const std::nothrow_t&) throw() { return newOperatorTemplateFunctionNoThrow(size); }
+   void* operator new(size_t size, const std::nothrow_t&) throw() { return newOperatorTemplateFunctionNoThrow(size); }
 
-    void* operator new[](size_t size, const std::nothrow_t&) throw() { return newOperatorTemplateFunctionNoThrow(size); }
+   void* operator new[](size_t size, const std::nothrow_t&) throw() { return newOperatorTemplateFunctionNoThrow(size); }
 
-    void operator delete(void* ptr) { deleteOperatorTemplateFunction(ptr); }
+   void operator delete(void* ptr) { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete[](void* ptr) { deleteOperatorTemplateFunction(ptr); }
+   void operator delete[](void* ptr) { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete(void* ptr, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
+   void operator delete(void* ptr, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete[](void* ptr, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
+   void operator delete[](void* ptr, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete(void* ptr, size_t) { deleteOperatorTemplateFunction(ptr); }
+   void operator delete(void* ptr, size_t) { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete[](void* ptr, size_t) { deleteOperatorTemplateFunction(ptr); }
+   void operator delete[](void* ptr, size_t) { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete(void* ptr, size_t, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
+   void operator delete(void* ptr, size_t, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
 
-    void operator delete[](void* ptr, size_t, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
+   void operator delete[](void* ptr, size_t, const std::nothrow_t&) throw() { deleteOperatorTemplateFunction(ptr); }
 
-    #endif // GTEST_OS_WINDOWS
-    ```
+   #endif // GTEST_OS_WINDOWS
+   ```
 
 At [this link](https://gist.github.com/stefano-strati/54865fec970257e578911fbab0fdd97a) you can download the git patch of the changes listed above.
 
@@ -198,49 +194,49 @@ Here are the steps to compile GoogleTest as a dynamic library for UE4 for Window
 
 2. Modify the library as indicated in the paragraph concerning DLL Boundaries or by using [this git patch](https://gist.github.com/stefano-strati/54865fec970257e578911fbab0fdd97a).
 
-3. Place the downloaded source in a folder together with the following file `CMakeList.txt`:
+3. Place the downloaded source in a folder together with the following file `CMakeList.txt`
+    
+   ```cmake
+   cmake_minimum_required(VERSION 3.13)
 
-  ```cmake
-    cmake_minimum_required(VERSION 3.13)
+   if (UNIX)
+       # Settings
+       set(LLVM_DIR "")
+       set(UE4_DIR "")
 
-    if (UNIX)
-        # Settings
-        set(LLVM_DIR "")
-        set(UE4_DIR "")
+       set(LLVM_BIN_DIR "${LLVM_DIR}/build/bin")
+       set(CMAKE_C_COMPILER "${LLVM_BIN_DIR}/clang")
+       set(CMAKE_CXX_COMPILER "${LLVM_BIN_DIR}/clang++")
+   endif (UNIX)
 
-        set(LLVM_BIN_DIR "${LLVM_DIR}/build/bin")
-        set(CMAKE_C_COMPILER "${LLVM_BIN_DIR}/clang")
-        set(CMAKE_CXX_COMPILER "${LLVM_BIN_DIR}/clang++")
-    endif (UNIX)
+   set(CMAKE_C_STANDARD 11)
+   set(CMAKE_CXX_STANDARD 14)
+         
+   set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
-    set(CMAKE_C_STANDARD 11)
-    set(CMAKE_CXX_STANDARD 14)
-          
-    set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+   project("GoogleTestSolution")
 
-    project("GoogleTestSolution")
+   if (UNIX)
+       set(UE4_LIBCXX_DIR "${UE4_DIR}/Engine/Source/ThirdParty/Linux/LibCxx")
+       set(UE4_LIBCXX_INCLUDE_DIR "${UE4_LIBCXX_DIR}/include")
+       set(UE4_LIBCXX_LIB_DIR "${UE4_LIBCXX_DIR}/lib/Linux/x86_64-unknown-linux-gnu")
+       add_compile_options(-nostdinc++ -I${UE4_LIBCXX_INCLUDE_DIR}/ -I${UE4_LIBCXX_INCLUDE_DIR}/c++/v1)
+       add_link_options(-nodefaultlibs -L${UE4_LIBCXX_LIB_DIR}/ ${UE4_LIBCXX_LIB_DIR}/libc++.a ${UE4_LIBCXX_LIB_DIR}/libc++abi.a -lm -lc -lpthread -lgcc_s -lgcc)
+   endif (UNIX)
 
-    if (UNIX)
-        set(UE4_LIBCXX_DIR "${UE4_DIR}/Engine/Source/ThirdParty/Linux/LibCxx")
-        set(UE4_LIBCXX_INCLUDE_DIR "${UE4_LIBCXX_DIR}/include")
-        set(UE4_LIBCXX_LIB_DIR "${UE4_LIBCXX_DIR}/lib/Linux/x86_64-unknown-linux-gnu")
-        add_compile_options(-nostdinc++ -I${UE4_LIBCXX_INCLUDE_DIR}/ -I${UE4_LIBCXX_INCLUDE_DIR}/c++/v1)
-        add_link_options(-nodefaultlibs -L${UE4_LIBCXX_LIB_DIR}/ ${UE4_LIBCXX_LIB_DIR}/libc++.a ${UE4_LIBCXX_LIB_DIR}/libc++abi.a -lm -lc -lpthread -lgcc_s -lgcc)
-    endif (UNIX)
+   set(BUILD_GMOCK TRUE CACHE BOOL "BUILD_GMOCK" FORCE)
+   set(BUILD_SHARED_LIBS TRUE CACHE BOOL "BUILD_SHARED_LIBS" FORCE)
+   set(INSTALL_GTEST FALSE CACHE BOOL "INSTALL_GTEST" FORCE)
 
-    set(BUILD_GMOCK TRUE CACHE BOOL "BUILD_GMOCK" FORCE)
-    set(BUILD_SHARED_LIBS TRUE CACHE BOOL "BUILD_SHARED_LIBS" FORCE)
-    set(INSTALL_GTEST FALSE CACHE BOOL "INSTALL_GTEST" FORCE)
+   set(gmock_build_tests FALSE CACHE BOOL "gmock_build_tests" FORCE)
+   set(gtest_build_samples FALSE CACHE BOOL "gtest_build_samples" FORCE)
+   set(gtest_build_tests FALSE CACHE BOOL "gtest_build_tests" FORCE)
+   set(gtest_disable_pthreads FALSE CACHE BOOL "gtest_disable_pthreads" FORCE)
+   set(gtest_force_shared_crt TRUE CACHE BOOL "gtest_force_shared_crt" FORCE)
+   set(gtest_hide_internal_symbols TRUE CACHE BOOL "gtest_hide_internal_symbols" FORCE)
 
-    set(gmock_build_tests FALSE CACHE BOOL "gmock_build_tests" FORCE)
-    set(gtest_build_samples FALSE CACHE BOOL "gtest_build_samples" FORCE)
-    set(gtest_build_tests FALSE CACHE BOOL "gtest_build_tests" FORCE)
-    set(gtest_disable_pthreads FALSE CACHE BOOL "gtest_disable_pthreads" FORCE)
-    set(gtest_force_shared_crt TRUE CACHE BOOL "gtest_force_shared_crt" FORCE)
-    set(gtest_hide_internal_symbols TRUE CACHE BOOL "gtest_hide_internal_symbols" FORCE)
-
-    add_subdirectory("${CMAKE_SOURCE_DIR}/src")
-    ```
+   add_subdirectory("${CMAKE_SOURCE_DIR}/src")
+   ```
 
 4. Rename the folder containing the downloaded GoogleTest source code to `src`
 
@@ -324,7 +320,7 @@ At the path `GoogleTestmodule/lib/win/x64/Release` copy the binaries generated f
 
 This is the content of the file `GoogleTestModule.Build.cs`:
 
-```c#
+```csharp
 using System.IO;
 using UnrealBuildTool;
 
@@ -469,7 +465,7 @@ The `AutomationTestCore` module is structured as follows:
 
 This is the content of the file `AutomationTestCore.Build.cs`:
 
-```c#
+```csharp
 using System.IO;
 using UnrealBuildTool;
 
@@ -492,7 +488,7 @@ public class AutomationTestCore : ModuleRules {
 
 This is the content of the files `ATCGTestFailureReporter.h` and `ATCGTestFailureReporter.cpp` (for their realization has been followed the idea described in the [article by Von Ihno Lübbers](https://www.maibornwolff.de/en/blog/how-we-create-real-unittests-unreal-engine-googlemock)):
 
-```c++
+```cpp
 #pragma once
 
 #include "ATCGoogleTest.h"
@@ -502,7 +498,7 @@ class FATCGTestFailureReporter final : public testing::EmptyTestEventListener {
 };
 ```
 
-```c++
+```cpp
 #include "ATCGTestFailureReporter.h"
 
 #include "Containers/UnrealString.h"
@@ -522,7 +518,7 @@ void FATCGTestFailureReporter::OnTestPartResult(const testing::TestPartResult& r
 
 This is the content of the files `AutomationTestCoreModule.h` and `AutomationTestCoreModule.cpp`:
 
-```c++
+```cpp
 #pragma once
 
 #include "CoreMinimal.h"
@@ -541,7 +537,7 @@ private:
 };
 ```
 
-```c++
+```cpp
 #include "AutomationTestCoreModule.h"
 
 #include "ATCGTestFailureReporter.h"
@@ -579,7 +575,7 @@ void FAutomationTestCoreModule::ShutdownModule() {
 
 This is the content of the file `ATCGoogleTest.h`:
 
-```c++
+```cpp
 #pragma once
 
 #include "HAL/Platform.h"
@@ -607,11 +603,11 @@ One unresolved problem is that unit tests, having to test parts of code not expo
 
 # References
 
-- https://github.com/google/googletest
-- https://martinfowler.com/bliki/TestPyramid.html
-- https://martinfowler.com/bliki/UnitTest.html
-- https://martinfowler.com/bliki/TestDouble.html
-- https://www.ibm.com/docs/en/aix/7.2?topic=techniques-when-use-dynamic-linking-static-linking
-- https://docs.microsoft.com/en-us/cpp/c-runtime-library/potential-errors-passing-crt-objects-across-dll-boundaries?view=msvc-170
-- https://www.maibornwolff.de/en/blog/how-we-create-real-unittests-unreal-engine-googlemock
-- https://ericlemes.com/2018/12/17/unit-tests-in-unreal-pt-3/
+- [https://github.com/google/googletest](https://github.com/google/googletest)
+- [https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
+- [https://martinfowler.com/bliki/UnitTest.html](https://martinfowler.com/bliki/UnitTest.html)
+- [https://martinfowler.com/bliki/TestDouble.html](https://martinfowler.com/bliki/TestDouble.html)
+- [https://www.ibm.com/docs/en/aix/7.2?topic=techniques-when-use-dynamic-linking-static-linking](https://www.ibm.com/docs/en/aix/7.2?topic=techniques-when-use-dynamic-linking-static-linking)
+- [https://docs.microsoft.com/en-us/cpp/c-runtime-library/potential-errors-passing-crt-objects-across-dll-boundaries?view=msvc-170](https://docs.microsoft.com/en-us/cpp/c-runtime-library/potential-errors-passing-crt-objects-across-dll-boundaries?view=msvc-170)
+- [https://www.maibornwolff.de/en/blog/how-we-create-real-unittests-unreal-engine-googlemock](https://www.maibornwolff.de/en/blog/how-we-create-real-unittests-unreal-engine-googlemock)
+- [https://ericlemes.com/2018/12/17/unit-tests-in-unreal-pt-3/](https://ericlemes.com/2018/12/17/unit-tests-in-unreal-pt-3/)
