@@ -5,13 +5,13 @@ description: We are creating the first app that crafts real buildings - we are h
 
 baseurl: ""
 url: "https://blog.zuru.tech"
-default-image: logo_zuru.png
+default-image: logo_zuru.svg
 
 # Footer
 built-by: webjeda
 copyright:
-   name: ZURU Tech
-   link: 'https://zuru.tech/'
+  name: ZURU Tech
+  link: "https://zuru.tech/"
 
 # Build settings
 markdown: kramdown
@@ -81,7 +81,6 @@ themeColor:
     backgroundColor: "#E2D3F4"
     fontColor: "#013DC4"
 
-
 exclude:
-  - Gemfile.lock 
+  - Gemfile.lock
   - vendor

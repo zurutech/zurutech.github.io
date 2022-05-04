@@ -984,6 +984,7 @@ input[type=number] {
 
 .navbar-brand img {
   height: 50px;
+  filter: invert(1);
 }
 
 .navbar-nav a {
