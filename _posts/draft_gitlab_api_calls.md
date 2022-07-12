@@ -254,6 +254,8 @@ The notification scripts can be re-used in many cases, and the first feedback re
 
 **Resources**
 
-[1] [TITLE](Link)
+[1] [Use the API](https://docs.gitlab.com/ee/api/)
+
+[2] [Gitlab API Resources](https://docs.gitlab.com/ee/api/api_resources.html)
 
 
