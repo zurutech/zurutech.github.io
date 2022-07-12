@@ -9,11 +9,7 @@ the solution which I'm going to describe here.
 
 Part of that, is already reported in this post (expecially the introduction to the Google AppScript Enviroment) [Notifications via Gsheet](https://blog.zuru.tech/scripting/testing/cd/ci/2022/01/20/daily-builds-send-discord-gmail-notifications-via-gsheet)
 
-<div class="blog-image-container" markdown="1">
-![1](/images/notif-scripts/1.png){:class="blog-image"}
-</div>
-
-## Google Apps Script environment
+## 
 
 
 #### Overview
