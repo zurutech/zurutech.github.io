@@ -2,17 +2,16 @@
 
 Here we go again!
 
-The target of this tutorial is to create Gitlab charts by your own, by exploiting the Gsheet functionality.
+The target of this tutorial is to create Gitlab charts based on your needs, by exploiting the Gsheet functionality.
 
-Gitlab is a powerful tool for the development, but for other stakeholders that needs to get and organize data in order to shows charts, could requires an external plugins or
-the solution which I'm going to describe here.
+Gitlab is a powerful tool for software development, but for other stakeholders, the need to show charts could require external plugins or
+the free solution which I'm going to describe in this post.
 
-Part of that, is already reported in this post (expecially the introduction to the Google AppScript Enviroment) [Notifications via Gsheet](https://blog.zuru.tech/scripting/testing/cd/ci/2022/01/20/daily-builds-send-discord-gmail-notifications-via-gsheet)
+The logic is to get desired Gitlab data through the API Calls where the query results can be post-processed and automated into a Gsheet, which includes the possibility to easily create and embed charts.
 
-## 
+I've already reported in this post an example of Gsheet automation via Google AppScript [Notifications via Gsheet](https://blog.zuru.tech/scripting/testing/cd/ci/2022/01/20/daily-builds-send-discord-gmail-notifications-via-gsheet) where you can get a short overview regarding the Coding environment and how it generally works.
 
-
-#### Overview
+#### Gitlab API Calls
 
 In this section, there is a recap of some information retrieved from the other panels (last run, internal statistics, etc.).
 
@@ -21,7 +20,7 @@ In this section, there is a recap of some information retrieved from the other p
 </div>
 
 
-#### Editor
+#### Goo
 
 <div markdown="1" class="blog-image-container">
 ![9](/images/notif-scripts/9.png){:class="blog-image"}
@@ -224,7 +223,19 @@ The messages coming from the bot defined via webhook:
 ![4](/images/notif-scripts/4.png){:class="blog-image"}
 </div>
 
-#### Gmail Notification Screenshot
+#### Chart Samples
+
+Here the samples email received:
+
+<div markdown="1" class="blog-image-container">
+![5](/images/notif-scripts/5.png){:class="blog-image"}
+</div>
+
+<div markdown="1" class="blog-image-container">
+![12](/images/notif-scripts/12.png){:class="blog-image"}
+</div>
+
+#### Embedded Samples
 
 Here the samples email received:
 
