@@ -1,7 +1,7 @@
 ## Introduction
 
 <div class="blog-image-container" markdown="1">
-![10](/images/apicharts/intro.png){:class="blog-image"}
+![Intro](/images/apicharts/intro.png){:class="blog-image"}
 </div>
 
 Here we go again!
@@ -39,13 +39,7 @@ For our purposes we are going to use:
 - **Google Sheet with Appscript** as our **Client**, where we perform the API Calls, using the **GET** verb only;
 - **Gitlab** is the **Server**, that expose its API through the **URI** " https://gitlab.com/api"
 
-<div class="blog-image-container" markdown="1">
-![10](/images/notif-scripts/10.png){:class="blog-image"}
-</div>
-
 ## API Calls Testing: Postman (WIP)
-
-
 
 ## Google AppScript Script: Client API Call
 
@@ -72,15 +66,10 @@ function cri0510() {
 }
 ```
 
-<div markdown="1" class="blog-image-container">
-![11](/images/apicharts/11.png){:class="blog-image"}
-</div>
-
-
 I've scheduled each functions to be triggered each hours, in order to refresh the data called by the API.
 
 <div markdown="1" class="blog-image-container">
-![7](/images/apicharts/triggers.png){:class="blog-image"}
+![triggers](/images/apicharts/triggers.png){:class="blog-image"}
 </div>
 
 #### Google Website Integration
@@ -93,22 +82,22 @@ Google Site is part of the Gsuite, and it's totally integrated with all the othe
 
 
 <div class="blog-image-container" markdown="1">
-![8](/images/apicharts/charts1.png){:class="blog-image"}
+![charts1](/images/apicharts/charts1.png){:class="blog-image"}
 </div>
 
 
 <div class="blog-image-container" markdown="1">
-![8](/images/apicharts/charts2.png){:class="blog-image"}
+![charts2](/images/apicharts/charts2.png){:class="blog-image"}
 </div>
 
 
 <div class="blog-image-container" markdown="1">
-![8](/images/apicharts/charts3.png){:class="blog-image"}
+![charts3](/images/apicharts/charts3.png){:class="blog-image"}
 </div>
 
 
 <div class="blog-image-container" markdown="1">
-![8](/images/apicharts/stats.png){:class="blog-image"}
+![stats](/images/apicharts/stats.png){:class="blog-image"}
 </div>
 
 
