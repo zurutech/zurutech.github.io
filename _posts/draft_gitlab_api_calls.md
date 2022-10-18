@@ -15,7 +15,6 @@ My need was to build always updated QA/QC KPI charts, using some Gitlab data (li
 
 The logic is to get Gitlab data through the API Calls where the query results can be post-processed automatically into a Gsheet, which includes the possibility to easily create and embed easygoing charts.
 
-
 ## API Overview
 First of all, let's give a quick introduction to API Calls.
 
@@ -41,8 +40,15 @@ So, for the purpose of our target, we are going to use:
 
 Gitlab's API is a service that is reachable and usable only if the authorization server approves the client's request ([Git credential manager](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#git-credential-manager)), which contains the security credentials for a login session and identifies the user, the user's groups, the user's privileges.
 
-Among the various options, get a [**personal access token**](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)  could be the easier way to integrate it in our API Calls.
+Among the various options, get a [**Personal access token**](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)  could be the easier way to integrate it in our API Calls.
 
+Through the user's setting panel, Preferences section, is possible to generate the access token:
+
+<div class="blog-image-container" markdown="1">
+![Token](/images/apicharts/token.png){:class="blog-image"}
+</div>
+
+The encrypted string will be inserted directly into the script as our **TOKEY KEY**
 
 
 ## API Calls Testing: Postman (WIP)
@@ -58,7 +64,7 @@ Among the various options, get a [**personal access token**](https://docs.gitlab
 function cri0510() {
   var url = "API URL";
   var headers = {
-  "Authorization": "Bearer Code",
+  "Authorization": "TOKEN KEY
   "Content-Type": "Application/txt"
   };
   var options = {
