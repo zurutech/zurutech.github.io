@@ -6,26 +6,26 @@
 
 Here we go again!
 
-The target of this tutorial is to create Gitlab charts based on your needs, by exploiting the Gsheet functionality and the Gitlab's API.
+The target of this tutorial is to create Gitlab charts based on your needs, by exploiting the Gsheet functionality and Gitlab's API.
 
-Gitlab is a powerful tool for software development, but is not designed for project management and/or for charts; this limit is circumventable
+Gitlab is a powerful tool for software development, but is not designed for project management charts; this limit is circumventable
 by using external plugins or by following the solution which I'm going to describe here.
 
-My main need was to get automatically some data from Gitlab that let me build some QA/QC KPI's (like the number of bugs per sprint).
+My need was to build always updated QA/QC KPI charts, using some Gitlab data (like the number of bugs per sprint, or stats for severity bugs for each sprint).
 
 The logic is to get Gitlab data through the API Calls where the query results can be post-processed automatically into a Gsheet, which includes the possibility to easily create and embed easygoing charts.
 
 
 ## API Overview
-First of all, let's give a quick introduction to the API Calls.
+First of all, let's give a quick introduction to API Calls.
 
 The APIs (Application Programming Interfaces), are software-to-software interfaces which allow different applications to talk to each other and exchange information or functionalities. 
 
-An API call is the process where a client application submits a request to an API made available by the Server; the data request performed is sent back to the client.
+An API call is a process where a client application submits a request to an API made available by the Server; the data request performed is sent back to the client.
 
 The Server exposes its API using an address called **URI** (Uniform Resource Identifier), defined as the unique sequence of characters that identifies a logical or physical resource used by web technologies (source: Wikipedia).
 
-Once you have the URI, then you can formulate the request through a **"verb"**, a command string that distinguish a specific action you want to do with the invoked data on the server. The four most basic request verbs are:
+Once you have the URI, then you can formulate the request through a **"verb"**, a command string that distinguishes a specific action you want to do with the invoked data on the server. The four most basic request verbs are:
 
 - **GET:** To retrieve a resource;
 - **POST:** To create a new resource;
@@ -35,17 +35,14 @@ Once you have the URI, then you can formulate the request through a **"verb"**, 
 So, for the purpose of our target, we are going to use:
 
 - **Google Sheet with Appscript** as our **Client**, through which we will use the **GET** verb only, as long as we want just to get data to nourish our charts;
-- **Gitlab** is the **Server**, that expose its API through the **URI** " [https://gitlab.com/api](https://gitlab.example.com/api/v4)"
+- **Gitlab** is the **Server**, that expose its API through the **URI** " [https://gitlab.com/api](https://gitlab.example.com/api/v4)
 
 ## Gitlab API
 
-<div class="blog-image-container" markdown="1">
-![Auth](/images/apicharts/auth.png){:class="blog-image"}
-</div>
+Gitlab's API is a service that is reachable and usable only if the authorization server approves the client's request ([Git credential manager](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#git-credential-manager)), which contains the security credentials for a login session and identifies the user, the user's groups, the user's privileges.
 
-In computer systems, an access token contains the security credentials for a login session and identifies the user, the user's groups, the user's privileges, and, in some cases, a particular application [5].
+Among the various options, get a [**personal access token**](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)  could be the easier way to integrate it in our API Calls.
 
-I Bearer Token sono un tipo particolare di Access Token, usati per ottenere l'autorizzazione ad accedere ad una risorsa protetta da un Authorization Server conforme con lo standard OAuth2 [6].
 
 
 ## API Calls Testing: Postman (WIP)
@@ -130,7 +127,5 @@ In my opinion it could be easily adopted by a PM and/or a Scrum Master, to build
 [4] [Get started with Sites](https://support.google.com/a/users/answer/9310491?hl=en)
 
 [5] [Access Token](https://en.wikipedia.org/wiki/Access_token)
-
-[6] [OAuth 2.0 Authorization Framework] (https://www.rfc-editor.org/rfc/rfc6749)
 
 
