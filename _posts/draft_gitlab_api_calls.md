@@ -48,23 +48,62 @@ Through the user's setting panel, Preferences section, is possible to generate t
 ![Token](/images/apicharts/token.png){:class="blog-image"}
 </div>
 
-The encrypted string will be inserted directly into the script as our **TOKEY KEY**
+The encrypted string will be inserted directly into the script as **TOKEN KEY** and it works as bypass from the client and server, in order to get back the requested data.
 
 
-## API Calls Testing: Postman (WIP)
+## Write the API Calls
+
+Thanks to the [Gitlab API Resources](https://docs.gitlab.com/ee/api/api_resources.html) it's easy to understand the query's syntax acknowledged by the server.
 
 <div class="blog-image-container" markdown="1">
-![Intro](/images/apicharts/postman.png){:class="blog-image"}
+![Git Api issues](/images/apicharts/git_api_issues.png){:class="blog-image"}
 </div>
 
+For istance, in the above screenshot you can see the GET calls at "**Project**" level, relating to the **"issues"**
+
+We can easily perform some API Calls Tests by using [Postman](https://web.postman.co/).
+
+Postman allows to have your own, multiple workspaces, which allows to create a grouping of API calls.
+
+<div class="blog-image-container" markdown="1">
+![Post_workspace](/images/apicharts/post_workspace.png){:class="blog-image"}
+</div>
+
+Before creating the first API call, we need to add the token key (as explained in the previous paragraph); once you've generated the token key in Gitlab, you can add as "Bearer Token" in the "Authorization" Panel of Postman.
+
+<div class="blog-image-container" markdown="1">
+![api_auth](/images/apicharts/api_auth.png){:class="blog-image"}
+</div>
+
+Now we are ready to sent an API Call, let's try to get **all the issues in closed state**. If everything is properly set, postman will return the result in the bottom part of the UI.
+
+<div class="blog-image-container" markdown="1">
+![closed_issues](/images/apicharts/closed_issues.png){:class="blog-image"}
+</div>
+
+Over the inline way, when the queries include parameters, Postman recognize them as "KEY", and it allows the customization through the "VALUE" column.
+
+<div class="blog-image-container" markdown="1">
+![post_params](/images/apicharts/post_params.png){:class="blog-image"}
+</div>
+
+For mine target, it came to me essential the [Issue statistics](https://docs.gitlab.com/ee/api/issues_statistics.html) query.
+
+Basically this call returns the sum data aggregation of  
+
+<div class="blog-image-container" markdown="1">
+![issue_stats](/images/apicharts/issue_stats.png){:class="blog-image"}
+</div>
+
+I let the reader to try more complex queries by following the Gitlab's documentation.
 
 ## Google AppScript Script: Client API Call
 
 ```javascript
 function cri0510() {
-  var url = "API URL";
+  var url = "API CALL";
   var headers = {
-  "Authorization": "TOKEN KEY
+  "Authorization": "TOKEN KEY"
   "Content-Type": "Application/txt"
   };
   var options = {
@@ -87,31 +126,15 @@ I've scheduled each functions to be triggered each hours, in order to refresh th
 
 #### Google Website Integration
 
-
 To make the consultation of the charts more attractive and professional compared to a Simple Google Sheet, it is very easy to embed them into a Google Site.
 
-Google Site is part of the Gsuite, and it's totally integrated with all the other apps.
-
-
+Google Site is part of the Gsuite, and it's totally integrated with all the other apps; here below the result of the embedding in mine webpage:
 
 <div class="blog-image-container" markdown="1">
-![charts1](/images/apicharts/charts1.png){:class="blog-image"}
+![site_charts](/images/apicharts/site_charts.png){:class="blog-image"}
 </div>
 
-
-<div class="blog-image-container" markdown="1">
-![charts2](/images/apicharts/charts2.png){:class="blog-image"}
-</div>
-
-
-<div class="blog-image-container" markdown="1">
-![charts3](/images/apicharts/charts3.png){:class="blog-image"}
-</div>
-
-
-<div class="blog-image-container" markdown="1">
-![stats](/images/apicharts/stats.png){:class="blog-image"}
-</div>
+In this way the charts are readable from everyone in view only mode, costantly updated in background thanks to the scripts. 
 
 
 ## Potential Reuses
